@@ -4,6 +4,7 @@
     ../saekmi/graphical.nix
     ../saekmi/network.nix
     ../saekmi/system.nix
+    ../saekmi/console.nix
     # Users
     ../saekmi/users
   ];
@@ -68,11 +69,6 @@
   boot.tmpOnTmpfs = true;
   boot.initrd.verbose = false;
   boot.consoleLogLevel = 0;
-
-  console = {
-    font = "Lat2-Terminus24";
-    keyMap = "us";
-  };
 
   # Set your time zone.
   time.timeZone = "Asia/Shanghai";

@@ -31,7 +31,8 @@
     shellcheck
     cmark
     editorconfig-core-c
-    yarn
+    nixfmt
+    nixpkgs-fmt
   ];
 
   nix = {

@@ -25,13 +25,11 @@
 
   networking.networkmanager = {
     enable = true;
+    dns = "dnsmasq";
     wifi.backend = "iwd";
     extraConfig = ''
-      [main]
-      rc-manager = unmanaged
       [keyfile]
       path = /var/lib/NetworkManager/system-connections
     '';
   };
-  networking.nameservers = [ "127.0.0.53" ];
 }

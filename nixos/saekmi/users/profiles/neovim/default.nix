@@ -9,7 +9,7 @@
       set number
       set termguicolors
       set mouse=a
-      set background=dark
+      set background=light
       let mapleader = ';'
       let maplocalleader = '\\'
       set tabstop=4 shiftwidth=4 softtabstop=4 expandtab
