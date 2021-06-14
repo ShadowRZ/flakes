@@ -1,7 +1,9 @@
-{ lib, pkgs, ... }:
-
-{
+{ lib, pkgs, ... }: {
   programs = {
+    # Alacritty
+    alacritty = {
+      enable = true;
+    };
     # Zsh
     zsh = {
       enable = true;
@@ -10,6 +12,13 @@
       autocd = true;
       defaultKeymap = "emacs";
       dotDir = ".config/zsh";
+      shellGlobalAliases = {
+        "..." = "../..";
+        "...." = "../../..";
+        "....." = "../../../..";
+        "......" = "../../../../..";
+        "......." = "../../../../../..";
+      };
       history = {
         extended = true;
         expireDuplicatesFirst = true;
