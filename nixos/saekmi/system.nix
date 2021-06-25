@@ -33,6 +33,7 @@
     editorconfig-core-c
     nixfmt
     nixpkgs-fmt
+    stdmanpages
   ];
 
   nix = {

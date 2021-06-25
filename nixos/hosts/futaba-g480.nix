@@ -16,33 +16,27 @@
     [ "xhci_pci" "ehci_pci" "ahci" "usb_storage" "sd_mod" "sr_mod" ];
 
   fileSystems."/" = {
-    device = "/dev/disk/by-uuid/1e8c1a3a-45aa-4eaf-81f2-faa32d8b1215";
+    device = "/dev/disk/by-uuid/dc3dad35-273d-4619-a694-4faf8b4debe5";
     fsType = "btrfs";
     options = [ "subvol=@nixos" ];
   };
 
   boot.initrd.luks.devices."root".device =
-    "/dev/disk/by-uuid/6e895378-e749-4142-9b56-6eade08b0266";
-
-  fileSystems."/nix" = {
-    device = "/dev/disk/by-uuid/1e8c1a3a-45aa-4eaf-81f2-faa32d8b1215";
-    fsType = "btrfs";
-    options = [ "subvol=@nix" ];
-  };
-
-  fileSystems."/boot" = {
-    device = "/dev/disk/by-uuid/FF84-0190";
-    fsType = "vfat";
-  };
+    "/dev/disk/by-uuid/d23c435d-c81a-4bed-91ff-b10f9aeae1e0";
 
   fileSystems."/home" = {
-    device = "/dev/disk/by-uuid/1e8c1a3a-45aa-4eaf-81f2-faa32d8b1215";
+    device = "/dev/disk/by-uuid/dc3dad35-273d-4619-a694-4faf8b4debe5";
     fsType = "btrfs";
     options = [ "subvol=@home" ];
   };
 
+  fileSystems."/boot" = {
+    device = "/dev/disk/by-uuid/732E-5189";
+    fsType = "vfat";
+  };
+
   swapDevices =
-    [{ device = "/dev/disk/by-uuid/f69e9399-f438-4ca4-b9ce-216d3314e327"; }];
+    [{ device = "/dev/disk/by-uuid/04342f1b-0f87-4a25-bc92-7a9b0268d9b1"; }];
 
   powerManagement.cpuFreqGovernor = pkgs.lib.mkDefault "performance";
 

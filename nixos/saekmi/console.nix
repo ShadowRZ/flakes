@@ -1,9 +1,7 @@
 { pkgs, ... }: {
   console = {
-    font = "ter-v24b";
-    packages = [ pkgs.terminus_font ];
+    font = "Lat2-Terminus16";
     keyMap = "us";
-    earlySetup = true;
     colors = [
       "1d2021" # 00
       "fb4934" # 01

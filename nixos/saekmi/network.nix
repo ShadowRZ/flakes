@@ -32,4 +32,5 @@
       path = /var/lib/NetworkManager/system-connections
     '';
   };
+  networking.usePredictableInterfaceNames = true;
 }

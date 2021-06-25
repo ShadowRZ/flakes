@@ -17,21 +17,6 @@
   # changes in each release.
   home.stateVersion = "21.05";
 
-  # Packages to install.
-  home.packages = with pkgs; [
-    diff-so-fancy # Diff So Fancy
-    kdenlive # Kdenlive
-    blender # Blender
-    gocryptfs # gocryptfs
-    zim # Zim
-    qtcreator # Qt Creator
-    dia # Dia
-    easyrpg-player # EasyRPG Player
-    graphviz # Graphviz
-    hugo # Hugo
-    yarn # Yarn
-  ];
-
   ###### Program configs start here.
   programs = {
     ### GnuPG
@@ -90,10 +75,7 @@
       loadAutoconfig = true;
     };
     ### OBS
-    obs-studio = {
-      enable = true;
-      plugins = with pkgs; [ obs-gstreamer ];
-    };
+    obs-studio = { enable = true; };
   };
   ###### End of program configs.
   ###### Services configs start here.

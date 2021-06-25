@@ -15,21 +15,15 @@
     ffmpeg-full
     gnome-themes-extra
     imagemagick
-    imlib2
-    librsvg
     libsForQt5.qtstyleplugins
-    manpages
     papirus-icon-theme
     qt5.qtgraphicaleffects
-    stdmanpages
     xsel
     okular
     lxqt.lximage-qt
-    kate
     krusader
     kinfocenter
     plasma-vault
-    oneko
     electron
     gimp
     inkscape
@@ -56,7 +50,6 @@
     fcitx5-pinyin-moegirl
     fcitx5-pinyin-zhwiki
     # Others
-    qliveplayer
     kgpg
     plasma-systemmonitor
     libreoffice
@@ -107,7 +100,7 @@
     roboto-slab # Roboto Slab
     ibm-plex # IBM Plex
     iosevka # Iosevka
-    powerline-fonts # Powerline
+    _3270font # Fonts of IBM 3270
     noto-fonts # Base Noto Fonts
     noto-fonts-cjk # CJK Noto Fonts
     noto-fonts-extra # Extra Noto Fonts

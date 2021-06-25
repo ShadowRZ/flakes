@@ -1,9 +1,7 @@
 { lib, pkgs, ... }: {
   programs = {
     # Alacritty
-    alacritty = {
-      enable = true;
-    };
+    alacritty = { enable = true; };
     # Zsh
     zsh = {
       enable = true;
