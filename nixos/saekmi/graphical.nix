@@ -55,6 +55,7 @@
     libreoffice
     vlc
     wine
+    ark
     # IM Clients
     element-desktop
     tdesktop

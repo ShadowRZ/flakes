@@ -34,6 +34,8 @@
     nixfmt
     nixpkgs-fmt
     stdmanpages
+    unzip
+    p7zip
   ];
 
   nix = {
