@@ -50,7 +50,6 @@
     fcitx5-pinyin-moegirl
     fcitx5-pinyin-zhwiki
     # Others
-    kgpg
     plasma-systemmonitor
     libreoffice
     vlc

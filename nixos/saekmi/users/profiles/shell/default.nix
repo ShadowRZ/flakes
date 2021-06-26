@@ -1,7 +1,5 @@
 { lib, pkgs, ... }: {
   programs = {
-    # Alacritty
-    alacritty = { enable = true; };
     # Zsh
     zsh = {
       enable = true;
@@ -77,11 +75,6 @@
       defaultCommand = fd;
       fileWidgetCommand = fd;
       changeDirWidgetCommand = "${alt_c_cmd}/bin/cdr-skim.zsh";
-    };
-    # Nix Index
-    nix-index = {
-      enable = true;
-      enableZshIntegration = true;
     };
   };
 }

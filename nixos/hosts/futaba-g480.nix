@@ -4,7 +4,6 @@
     ../saekmi/graphical.nix
     ../saekmi/network.nix
     ../saekmi/system.nix
-    ../saekmi/console.nix
     # Users
     ../saekmi/users
   ];

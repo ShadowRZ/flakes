@@ -1,6 +1,6 @@
 { pkgs, ... }: {
   imports =
-    [ ../profiles/git ../profiles/direnv ../profiles/neovim ../profiles/shell ];
+    [ ../profiles/git ../profiles/neovim ../profiles/shell ];
 
   # Home Manager needs a bit of information about you and the
   # paths it should manage.
