@@ -35,6 +35,8 @@
     stdmanpages
     unzip
     p7zip
+    unar
+    convmv
   ];
 
   nix = {

@@ -20,6 +20,7 @@
         graphviz # Graphviz
         hugo # Hugo
         yarn # Yarn
+        nwjs # NW.js
       ];
     };
   };
