@@ -26,6 +26,8 @@ in {
           # Users' flake
           inputs.nickcao.overlay
           inputs.berberman.overlay
+          # My flake
+          self.overlay
         ];
         # Configuration revision.
         system.configurationRevision = nixpkgs.lib.mkIf (self ? rev) self.rev;

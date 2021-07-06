@@ -55,6 +55,7 @@
     vlc
     wine
     ark
+    calibre
     # IM Clients
     element-desktop
     tdesktop
