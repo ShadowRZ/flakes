@@ -69,9 +69,6 @@
   services.xserver.layout = "us";
   # services.xserver.xkbOptions = "eurosign:e";
 
-  # Enable CUPS to print documents.
-  services.printing.enable = true;
-
   services.xserver = {
     enable = true;
     libinput.enable = true;
