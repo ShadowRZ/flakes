@@ -21,6 +21,8 @@
         hugo # Hugo
         yarn # Yarn
         nwjs # NW.js
+        nextcloud-client # Nextcloud Client
+        qownnotes # QOwnNotes
       ];
     };
   };

@@ -9,29 +9,30 @@
   hardware.pulseaudio.enable = true;
 
   environment.systemPackages = with pkgs; [
-    glxinfo
-    firefox
-    materia-theme
-    ffmpeg-full
+    glxinfo # GLX Info
+    firefox # Firefox
+    materia-theme # Materia GTK Theme
+    ffmpeg-full # FFmpeg
     gnome-themes-extra
-    imagemagick
+    imagemagick # ImageMagick
     libsForQt5.qtstyleplugins
-    papirus-icon-theme
-    qt5.qtgraphicaleffects
-    xsel
-    okular
-    lxqt.lximage-qt
-    krusader
-    kinfocenter
-    plasma-vault
-    electron
-    gimp
-    inkscape
-    dfeet
-    mpv
-    smplayer
-    qmmp
-    avidemux
+    papirus-icon-theme # Papirus
+    qt5.qtgraphicaleffects # Qt Graphical Effects
+    xsel # xsel
+    okular # Okular
+    lxqt.lximage-qt # LXImage-Qt
+    krusader # Krusader
+    kinfocenter # Kinfocenter
+    plasma-vault # Plasma Vault
+    electron # Electron
+    gimp # GIMP
+    inkscape # Inkscape
+    dfeet # D-Feet
+    mpv # mpv
+    smplayer # SMPlayer
+    qmmp # QMMP
+    avidemux # Avidemux
+    # Emacs
     (pkgs.emacsUnstable.override {
       withGTK3 = true; # Use GTK+3
       withGTK2 = false; # Don't use GTK+2
@@ -53,7 +54,6 @@
     plasma-systemmonitor
     libreoffice
     vlc
-    wine
     ark
     calibre
     # IM Clients
