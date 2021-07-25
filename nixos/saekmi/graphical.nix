@@ -55,7 +55,6 @@
     libreoffice
     vlc
     ark
-    calibre
     # IM Clients
     element-desktop
     tdesktop

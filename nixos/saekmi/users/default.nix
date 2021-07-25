@@ -23,6 +23,7 @@
         nwjs # NW.js
         nextcloud-client # Nextcloud Client
         qownnotes # QOwnNotes
+        claws-mail # Claws Mail
       ];
     };
   };
