@@ -24,7 +24,14 @@
         nextcloud-client # Nextcloud Client
         qownnotes # QOwnNotes
         claws-mail # Claws Mail
+        retroarch # RetroArch
       ];
     };
+  };
+
+  nixpkgs.config.retroarch = {
+    enableDesmume = true;
+    enableMGBA = true;
+    enablePPSSPP = true;
   };
 }
