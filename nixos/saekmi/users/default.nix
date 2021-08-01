@@ -25,6 +25,7 @@
         qownnotes # QOwnNotes
         claws-mail # Claws Mail
         retroarch # RetroArch
+        electron # Electron
       ];
     };
   };

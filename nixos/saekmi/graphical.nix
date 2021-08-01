@@ -24,7 +24,6 @@
     krusader # Krusader
     kinfocenter # Kinfocenter
     plasma-vault # Plasma Vault
-    electron # Electron
     gimp # GIMP
     inkscape # Inkscape
     dfeet # D-Feet
