@@ -1,11 +1,13 @@
 { config, pkgs, ... }: {
 
   imports = [
-    ../saekmi/graphical.nix
-    ../saekmi/network.nix
-    ../saekmi/system.nix
+    ../pieces/graphical
+    ../pieces/graphical/packages.nix
+    ../pieces/graphical/videoaccel.nix
+    ../pieces/network.nix
+    ../pieces/system.nix
     # Users
-    ../saekmi/users
+    ../pieces/users
   ];
 
   nixpkgs.config.allowUnfree = true;

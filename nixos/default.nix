@@ -10,8 +10,6 @@ in {
     modules = [
       # Entry point
       ./hosts/futaba-g480.nix
-      # Users
-      ./saekmi/users
       # Home Manager Module
       home-manager.nixosModules.home-manager
       # (modulesPath + "/installer/scan/not-detected.nix")
