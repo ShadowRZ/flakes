@@ -6,8 +6,10 @@
     # Configure keymap in X11
     layout = "us";
     libinput.enable = true;
+    # SDDM
     displayManager.sddm = { enable = true; };
-    desktopManager.plasma5.enable = true;
+    # Awesome
+    windowManager.awesome.enable = true;
     # Modesettings driver
     videoDrivers = [ "modesettings" ];
   };
