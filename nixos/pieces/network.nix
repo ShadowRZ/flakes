@@ -9,7 +9,7 @@
 
   services.resolved = {
     enable = true;
-    fallbackDns = [ "223.5.5.5" "223.6.6.6" ];
+    fallbackDns = [ "127.0.53.53" "223.5.5.5" "223.6.6.6" ];
   };
 
   services.smartdns = {
@@ -39,9 +39,8 @@
     extraConfig = ''
       [keyfile]
       path = /var/lib/NetworkManager/system-connections
-      [global-dns-domain-*]
-      servers=127.0.53.53
     '';
+    insertNameservers = [ "127.0.53.53" ];
   };
   networking.usePredictableInterfaceNames = true;
 }

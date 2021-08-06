@@ -37,6 +37,7 @@
     p7zip
     unar
     convmv
+    neofetch
   ];
 
   nix = {
@@ -54,7 +55,7 @@
       experimental-features = nix-command flakes
     '';
     binaryCaches = pkgs.lib.mkForce [
-      "https://mirror.sjtu.edu.cn/nix-channels/store"
+      "https://mirrors.bfsu.edu.cn/nix-channels/store"
       "https://cache.nichi.workers.dev"
       "https://berberman.cachix.org"
       "https://nichi.cachix.org"

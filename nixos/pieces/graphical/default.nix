@@ -1,17 +1,30 @@
 { pkgs, ... }:
 
 {
-  services.xserver = {
-    enable = true;
-    # Configure keymap in X11
-    layout = "us";
-    libinput.enable = true;
-    # SDDM
-    displayManager.sddm = { enable = true; };
-    # Awesome
-    windowManager.awesome.enable = true;
-    # Modesettings driver
-    videoDrivers = [ "modesettings" ];
+  services = {
+    gnome.gnome-keyring.enable = true;
+    upower.enable = true;
+
+    dbus = {
+      enable = true;
+      packages = [ pkgs.gnome.dconf ];
+    };
+
+    xserver = {
+      enable = true;
+      # Configure keymap in X11
+      layout = "us";
+      libinput = {
+        enable = true;
+        touchpad.disableWhileTyping = true;
+      };
+      # SDDM
+      displayManager.sddm = { enable = true; };
+      # Awesome
+      windowManager.awesome.enable = true;
+      # Modesettings driver
+      videoDrivers = [ "modesettings" ];
+    };
   };
 
   # Select internationalisation properties.
@@ -42,4 +55,5 @@
   ];
 
   hardware.pulseaudio.enable = true;
+  systemd.services.upower.enable = true;
 }
