@@ -12,11 +12,7 @@
     papirus-icon-theme # Papirus
     qt5.qtgraphicaleffects # Qt Graphical Effects
     xsel # xsel
-    okular # Okular
     lxqt.lximage-qt # LXImage-Qt
-    krusader # Krusader
-    kinfocenter # Kinfocenter
-    plasma-vault # Plasma Vault
     gimp # GIMP
     inkscape # Inkscape
     dfeet # D-Feet
@@ -39,7 +35,6 @@
     fcitx5-pinyin-moegirl
     fcitx5-pinyin-zhwiki
     # Others
-    plasma-systemmonitor
     libreoffice
     vlc
     ark
@@ -49,4 +44,9 @@
     hexchat
     dino
   ];
+
+  # SpaceFM
+  programs.spacefm = {
+    enable = true;
+  };
 }

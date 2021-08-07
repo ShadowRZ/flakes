@@ -1,4 +1,4 @@
-{ pkgs, ... }: {
+{ config, pkgs, ... }: {
   imports = [
     ../profiles/git
     ../profiles/neovim
@@ -80,16 +80,60 @@
       loadAutoconfig = true;
     };
     ### OBS
-    obs-studio = { enable = true; };
+    obs-studio = {
+      enable = true;
+      plugins = with pkgs.obs-studio-plugins; [
+        obs-gstreamer
+      ];
+    };
   };
   ###### End of program configs.
   ###### Services configs start here.
   services = { kdeconnect = { enable = true; }; };
   ###### End of service configs.
+  ###### GTK configs start here.
+  gtk = {
+    enable = true;
+    font = {
+      name = "更纱黑体 UI SC";
+      size = 13;
+    };
+    iconTheme = { name = "Papirus"; };
+    theme = { name = "Materia-light-compat"; };
+    # GTK 2
+    gtk2 = {
+      configLocation = "${config.xdg.configHome}/gtk-2.0/gtkrc";
+      extraConfig = ''
+        gtk-can-change-accels = 1
+        gtk-enable-animations=1
+        gtk-primary-button-warps-slider=0
+        gtk-alternative-button-order = 1
+        gtk-cursor-theme-size=32
+        gtk-cursor-theme-name="Bibata_Amber"
+      '';
+    };
+    gtk3 = {
+      extraConfig = {
+        gtk-decoration-layout = "icon:minimize,maximize,close";
+        gtk-enable-animations = true;
+        gtk-can-change-accels = true;
+        gtk-cursor-theme-name = "Bibata_Amber";
+        gtk-cursor-theme-size = 32;
+      };
+    };
+  };
+  ###### End of GTK configs.
+  ###### X Session configs.
+  xsession.pointerCursor = {
+    package = pkgs.bibata-cursors;
+    name = "Bibata_Amber";
+  };
+  ###### End of X Session configs.
 
   systemd.user.sessionVariables = {
     LESSHISTFILE = "-";
     GST_VAAPI_ALL_DRIVERS = "1";
     MOZ_X11_EGL = "1";
+    QT_QPA_PLATFORMTHEME = "qt5ct";
   };
 }
