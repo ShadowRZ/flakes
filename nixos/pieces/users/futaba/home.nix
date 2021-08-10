@@ -117,7 +117,7 @@
         allow-loopback-pinentry
         allow-emacs-pinentry
       '';
-      pinentryFlavor = "gtk2";
+      pinentryFlavor = "gnome3";
     };
   };
   ###### End of service configs.
@@ -163,23 +163,26 @@
   # Shell session variables.
   home.sessionVariables = {
     LESSHISTFILE = "-";
-    # GST_VAAPI_ALL_DRIVERS = "1";
-    # MOZ_X11_EGL = "1";
-    # QT_QPA_PLATFORMTHEME = "qt5ct";
-  };
-
-  # Session variables for systemd user units.
-  systemd.user.sessionVariables = {
-    LESSHISTFILE = "-";
     GST_VAAPI_ALL_DRIVERS = "1";
     MOZ_X11_EGL = "1";
     QT_QPA_PLATFORMTHEME = "qt5ct";
   };
 
-  # ~/.xprofile
+  # Session variables for systemd user units.
+  systemd.user.sessionVariables = {
+    QT_QPA_PLATFORMTHEME = "qt5ct";
+  };
+
   home.file = {
+    # ~/.xprofile
     ".xprofile" = {
       source = ./xprofile.sh;
+    };
+    # ~/.config/zsh/.zprofile
+    ".config/zsh/.zprofile" = {
+      text = ''
+        . /etc/profiles/per-user/futaba/etc/profile.d/hm-session-vars.sh
+      '';
     };
   };
 

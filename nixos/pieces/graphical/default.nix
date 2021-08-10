@@ -6,7 +6,7 @@
 
     dbus = {
       enable = true;
-      packages = [ pkgs.gnome.dconf ];
+      packages = with pkgs; [ gnome.dconf gcr ];
     };
 
     xserver = {
