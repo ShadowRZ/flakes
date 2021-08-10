@@ -9,10 +9,8 @@
       description = "佐仓双叶";
       extraGroups = [ "wheel" "networkmanager" ];
       packages = with pkgs; [
-        diff-so-fancy # Diff So Fancy
         kdenlive # Kdenlive
         blender # Blender
-        gocryptfs # gocryptfs
         zim # Zim
         qtcreator # Qt Creator
         dia # Dia

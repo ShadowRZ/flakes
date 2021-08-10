@@ -68,7 +68,7 @@
         sub-align-x = "right";
         sub-font-size = 45;
         sub-justify = "auto";
-        sub-font = "851tegakizatsu";
+        sub-font = "等距更纱黑体 Slab SC";
         sub-border-size = 3;
         sub-color = "#DE8148";
       };
@@ -86,10 +86,40 @@
         obs-gstreamer
       ];
     };
+    ### Zathura
+    zathura = {
+      enable = true;
+    };
   };
   ###### End of program configs.
   ###### Services configs start here.
-  services = { kdeconnect = { enable = true; }; };
+  services = {
+    ### KDE Connect
+    kdeconnect = {
+      enable = true;
+    };
+    ### GNOME Keyring
+    gnome-keyring = {
+      enable = true;
+    };
+    ### poweralertd
+    poweralertd = {
+      enable = true;
+    };
+    ### XScreenSaver
+    xscreensaver = {
+      enable = true;
+    };
+    ### GnuPG Agent
+    gpg-agent = {
+      enable = true;
+      extraConfig = ''
+        allow-loopback-pinentry
+        allow-emacs-pinentry
+      '';
+      pinentryFlavor = "gtk2";
+    };
+  };
   ###### End of service configs.
   ###### GTK configs start here.
   gtk = {
@@ -110,13 +140,14 @@
         gtk-alternative-button-order = 1
       '';
     };
+    # GTK 3
     gtk3 = {
       extraConfig = {
         gtk-decoration-layout = "icon:minimize,maximize,close";
         gtk-enable-animations = true;
         gtk-can-change-accels = true;
         gtk-cursor-theme-name = "Bibata_Amber";
-        gtk-cursor-theme-size = 32;
+        gtk-cursor-theme-size = 24;
       };
     };
   };
@@ -125,9 +156,11 @@
   xsession.pointerCursor = {
     package = pkgs.bibata-cursors;
     name = "Bibata_Amber";
+    size = 24;
   };
   ###### End of X Session configs.
 
+  # Shell session variables.
   home.sessionVariables = {
     LESSHISTFILE = "-";
     # GST_VAAPI_ALL_DRIVERS = "1";
@@ -135,9 +168,35 @@
     # QT_QPA_PLATFORMTHEME = "qt5ct";
   };
 
+  # Session variables for systemd user units.
+  systemd.user.sessionVariables = {
+    LESSHISTFILE = "-";
+    GST_VAAPI_ALL_DRIVERS = "1";
+    MOZ_X11_EGL = "1";
+    QT_QPA_PLATFORMTHEME = "qt5ct";
+  };
+
+  # ~/.xprofile
   home.file = {
     ".xprofile" = {
       source = ./xprofile.sh;
+    };
+  };
+
+  # Language
+  home.language = {
+    base = "zh_CN.UTF-8";
+  };
+
+  # Fcitx 5
+  i18n = {
+    inputMethod = {
+      enabled = "fcitx5";
+      fcitx5.addons = with pkgs; [
+        fcitx5-chinese-addons 
+        fcitx5-pinyin-moegirl
+        fcitx5-pinyin-zhwiki
+      ];
     };
   };
 }

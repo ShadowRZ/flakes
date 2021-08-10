@@ -32,13 +32,10 @@
     # Qt 5 tools
     libsForQt5.full
     material-decoration
-    # Fcitx
-    fcitx5-pinyin-moegirl
-    fcitx5-pinyin-zhwiki
     # Others
     libreoffice
     vlc
-    ark
+    xarchiver
     # IM Clients
     element-desktop
     tdesktop

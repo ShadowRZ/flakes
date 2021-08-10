@@ -33,6 +33,8 @@
     nixfmt
     nixpkgs-fmt
     stdmanpages
+    man-pages
+    man-pages-posix
     unzip
     p7zip
     unar
@@ -82,16 +84,13 @@
       defaultEditor = true;
     };
     zsh = { enable = true; };
-    gnupg.agent = {
-      enable = true;
-      enableSSHSupport = false;
-      pinentryFlavor = "qt";
-    };
     mtr = { enable = true; };
     command-not-found = { enable = true; };
     dconf = { enable = true; };
     udevil = { enable = true; };
   };
+
+  services.devmon.enable = true;
 
   # Udev
   services.udev.packages = with pkgs; [
