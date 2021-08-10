@@ -17,6 +17,7 @@
       libinput = {
         enable = true;
         touchpad.disableWhileTyping = true;
+        mouse.scrollMethod = "edge";
       };
       # SDDM
       displayManager.sddm = { enable = true; };

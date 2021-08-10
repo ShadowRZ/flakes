@@ -20,6 +20,7 @@
     smplayer # SMPlayer
     qmmp # QMMP
     avidemux # Avidemux
+    android-file-transfer # Android File Transfer
     # Emacs
     (pkgs.emacsUnstable.override {
       withGTK3 = true; # Use GTK+3

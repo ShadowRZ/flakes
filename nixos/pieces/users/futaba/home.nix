@@ -99,7 +99,7 @@
       size = 13;
     };
     iconTheme = { name = "Papirus"; };
-    theme = { name = "Materia-light-compat"; };
+    theme = { name = "Materia-light-compact"; };
     # GTK 2
     gtk2 = {
       configLocation = "${config.xdg.configHome}/gtk-2.0/gtkrc";
@@ -108,8 +108,6 @@
         gtk-enable-animations=1
         gtk-primary-button-warps-slider=0
         gtk-alternative-button-order = 1
-        gtk-cursor-theme-size=32
-        gtk-cursor-theme-name="Bibata_Amber"
       '';
     };
     gtk3 = {
@@ -130,10 +128,16 @@
   };
   ###### End of X Session configs.
 
-  systemd.user.sessionVariables = {
+  home.sessionVariables = {
     LESSHISTFILE = "-";
-    GST_VAAPI_ALL_DRIVERS = "1";
-    MOZ_X11_EGL = "1";
-    QT_QPA_PLATFORMTHEME = "qt5ct";
+    # GST_VAAPI_ALL_DRIVERS = "1";
+    # MOZ_X11_EGL = "1";
+    # QT_QPA_PLATFORMTHEME = "qt5ct";
+  };
+
+  home.file = {
+    ".xprofile" = {
+      source = ./xprofile.sh;
+    };
   };
 }
