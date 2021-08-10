@@ -87,10 +87,7 @@
     mtr = { enable = true; };
     command-not-found = { enable = true; };
     dconf = { enable = true; };
-    udevil = { enable = true; };
   };
-
-  services.devmon.enable = true;
 
   # Udev
   services.udev.packages = with pkgs; [

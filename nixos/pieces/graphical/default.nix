@@ -6,22 +6,18 @@
 
     dbus = {
       enable = true;
-      packages = with pkgs; [ gnome.dconf gcr ];
+      packages = with pkgs; [ gnome.dconf ];
     };
 
     xserver = {
       enable = true;
       # Configure keymap in X11
       layout = "us";
-      libinput = {
-        enable = true;
-        touchpad.disableWhileTyping = true;
-        mouse.scrollMethod = "edge";
-      };
+      libinput.enable = true;
       # SDDM
       displayManager.sddm = { enable = true; };
-      # Awesome
-      windowManager.awesome.enable = true;
+      # Plasma 5
+      desktopManager.plasma5.enable = true;
       # Modesettings driver
       videoDrivers = [ "modesettings" ];
     };

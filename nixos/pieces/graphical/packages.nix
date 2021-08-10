@@ -21,6 +21,10 @@
     qmmp # QMMP
     avidemux # Avidemux
     android-file-transfer # Android File Transfer
+    # Bibata
+    bibata-cursors
+    bibata-extra-cursors
+    bibata-cursors-translucent
     # Emacs
     (pkgs.emacsUnstable.override {
       withGTK3 = true; # Use GTK+3
@@ -35,16 +39,11 @@
     # Others
     libreoffice
     vlc
-    xarchiver
+    ark
     # IM Clients
     element-desktop
     tdesktop
     hexchat
     dino
   ];
-
-  # SpaceFM
-  programs.spacefm = {
-    enable = true;
-  };
 }

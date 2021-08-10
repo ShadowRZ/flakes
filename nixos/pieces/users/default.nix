@@ -9,6 +9,7 @@
       description = "佐仓双叶";
       extraGroups = [ "wheel" "networkmanager" ];
       packages = with pkgs; [
+        krusader # Krusader
         kdenlive # Kdenlive
         blender # Blender
         zim # Zim

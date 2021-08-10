@@ -3,8 +3,6 @@
     ../profiles/git
     ../profiles/neovim
     ../profiles/shell
-    ../profiles/picom
-    ../profiles/dunst
   ];
 
   # Home Manager needs a bit of information about you and the
@@ -98,18 +96,6 @@
     kdeconnect = {
       enable = true;
     };
-    ### GNOME Keyring
-    gnome-keyring = {
-      enable = true;
-    };
-    ### poweralertd
-    poweralertd = {
-      enable = true;
-    };
-    ### XScreenSaver
-    xscreensaver = {
-      enable = true;
-    };
     ### GnuPG Agent
     gpg-agent = {
       enable = true;
@@ -117,78 +103,16 @@
         allow-loopback-pinentry
         allow-emacs-pinentry
       '';
-      pinentryFlavor = "gnome3";
+      pinentryFlavor = "qt";
     };
   };
   ###### End of service configs.
-  ###### GTK configs start here.
-  gtk = {
-    enable = true;
-    font = {
-      name = "更纱黑体 UI SC";
-      size = 13;
-    };
-    iconTheme = { name = "Papirus"; };
-    theme = { name = "Materia-light-compact"; };
-    # GTK 2
-    gtk2 = {
-      configLocation = "${config.xdg.configHome}/gtk-2.0/gtkrc";
-      extraConfig = ''
-        gtk-can-change-accels = 1
-        gtk-enable-animations=1
-        gtk-primary-button-warps-slider=0
-        gtk-alternative-button-order = 1
-      '';
-    };
-    # GTK 3
-    gtk3 = {
-      extraConfig = {
-        gtk-decoration-layout = "icon:minimize,maximize,close";
-        gtk-enable-animations = true;
-        gtk-can-change-accels = true;
-        gtk-cursor-theme-name = "Bibata_Amber";
-        gtk-cursor-theme-size = 24;
-      };
-    };
-  };
-  ###### End of GTK configs.
-  ###### X Session configs.
-  xsession.pointerCursor = {
-    package = pkgs.bibata-cursors;
-    name = "Bibata_Amber";
-    size = 24;
-  };
-  ###### End of X Session configs.
 
-  # Shell session variables.
-  home.sessionVariables = {
+  # Session variables.
+  systemd.user.sessionVariables = {
     LESSHISTFILE = "-";
     GST_VAAPI_ALL_DRIVERS = "1";
     MOZ_X11_EGL = "1";
-    QT_QPA_PLATFORMTHEME = "qt5ct";
-  };
-
-  # Session variables for systemd user units.
-  systemd.user.sessionVariables = {
-    QT_QPA_PLATFORMTHEME = "qt5ct";
-  };
-
-  home.file = {
-    # ~/.xprofile
-    ".xprofile" = {
-      source = ./xprofile.sh;
-    };
-    # ~/.config/zsh/.zprofile
-    ".config/zsh/.zprofile" = {
-      text = ''
-        . /etc/profiles/per-user/futaba/etc/profile.d/hm-session-vars.sh
-      '';
-    };
-  };
-
-  # Language
-  home.language = {
-    base = "zh_CN.UTF-8";
   };
 
   # Fcitx 5
