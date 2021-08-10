@@ -28,8 +28,6 @@
   };
 
   outputs = inputs@{ self, ... }: {
-    # Overlays.
-    overlay = import ./pkgs;
     # NixOS configurations.
     nixosConfigurations = import ./nixos {
       inherit inputs self;
