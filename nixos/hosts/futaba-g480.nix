@@ -85,6 +85,20 @@
   # Hostname
   networking.hostName = "futaba-g480";
 
+  # libinput Touchpad.
+  services.xserver.libinput = {
+    touchpad = {
+      disableWhileTyping = true;
+      horizontalScrolling = false;
+      scrollMethod = "edge";
+    };
+    mouse = {
+      disableWhileTyping = true;
+      horizontalScrolling = false;
+      scrollMethod = "edge";
+    };
+  };
+
   # System State Version
   system.stateVersion = "21.05";
 }
