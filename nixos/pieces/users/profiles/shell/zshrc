@@ -203,3 +203,6 @@ typeset -U fpath
 
 # keep shell state frozen
 ttyctl -f
+
+# export a proper GPG_TTY for interactive session
+export GPG_TTY=$(tty)
