@@ -44,6 +44,19 @@
     sarasa-gothic # Sarasa Gothic
   ];
 
-  hardware.pulseaudio.enable = true;
+  # rtkit
+  security.rtkit.enable = true;
+
+  # PipeWire
+  services.pipewire = {
+    enable = true;
+    # ALSA
+    alsa.enable = true;
+    # PulseAudio
+    pulse.enable = true;
+    # JACK
+    jack.enable = true;
+  };
+
   systemd.services.upower.enable = true;
 }
