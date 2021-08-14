@@ -1,7 +1,71 @@
+# History related options.
+setopt HIST_VERIFY
+setopt HIST_FIND_NO_DUPS
+setopt HIST_SAVE_NO_DUPS
+setopt HIST_REDUCE_BLANKS
+# Completion related options.
+setopt ALWAYS_TO_END
+setopt AUTO_MENU
+setopt LIST_TYPES
+setopt LIST_PACKED
+unsetopt MENU_COMPLETE
+# Navigation related options.
+setopt PUSHD_MINUS
+setopt PUSHD_IGNORE_DUPS
+setopt PUSHD_SILENT
+setopt PUSHD_TO_HOME
+setopt AUTO_PUSHD
+# Globbing related options.
+setopt BAD_PATTERN
+setopt EXTENDED_GLOB
+setopt NOMATCH
+setopt MAGIC_EQUAL_SUBST
+# I/O related options.
+setopt NO_CLOBBER
+setopt INTERACTIVE_COMMENTS
+setopt RC_QUOTES
+setopt CORRECT
+unsetopt FLOW_CONTROL
+# Jobs.
+setopt LONG_LIST_JOBS
+setopt NO_BG_NICE
+# Remove any RPROMPT after executing command.
+setopt TRANSIENT_RPROMPT
+# Prompt.
+setopt PROMPT_SUBST
+# ZLE.
+unsetopt BEEP
+
+autoload -Uz colors
+colors
+
+# Spelling correct prompt.
+SPROMPT="%B%F{yellow}[Correct]%f%b %B%F{red}%R%f%b -> %B%F{green}%r%f%b ? [%B(N)%b/y/a/e]"
+REPORTTIME=5
+CORRECT_IGNORE='_*'
+# Time format.
+() {
+    local white_b=$fg_bold[white] yellow_b=$fg_bold[yellow] blue=$fg[blue] rst=$reset_color
+    TIMEFMT=(
+        "${yellow_b}EST=%*Es$rst $white_b%J$rst"$'\n' # First line
+        "${yellow_b} CPU$rst: USR: $blue%U$rst SYS: $blue%S$rst PER:$blue%P$rst"$'\n' # Second line
+        "${yellow_b} MEM$rst: $blue%M$rst" # Third line
+    )
+}
+
 # useful functions
 autoload -Uz zmv zcalc zargs url-quote-magic bracketed-paste-magic
 zle -N self-insert url-quote-magic
 zle -N bracketed-paste bracketed-paste-magic
+
+# Colored man pages and more.
+export LESS_TERMCAP_mb=$'\E[01;31m'
+export LESS_TERMCAP_md=$'\E[01;31m'
+export LESS_TERMCAP_me=$'\E[0m'
+export LESS_TERMCAP_se=$'\E[0m'
+export LESS_TERMCAP_so=$'\E[01;44;33m'
+export LESS_TERMCAP_ue=$'\E[0m'
+export LESS_TERMCAP_us=$'\E[01;32m'
 
 # key binds
 # create a zkbd compatible hash;
@@ -67,23 +131,6 @@ bindkey -M vicmd 'j' history-substring-search-down
 # if in tmux launch skim in tmux pane
 [[ ${+TMUX} == 1 ]] \
   && SKIM_TMUX=1
-
-#load compinit
-autoload -Uz compinit
-
-if [[ -f ~/.zcompdump ]]; then
-  typeset -i updated_at=$(date +'%j' -r ~/.zcompdump \
-    || stat -f '%Sm' -t '%j' ~/.zcompdump)
-
-  # save time if completion cache has been update recently
-  if [ $(date +'%j') != $updated_at ]; then
-    compinit -u
-  else
-    compinit -C
-  fi
-else
-  compinit -C
-fi
 
 # Case insens only when no case match; after all completions loaded
 zstyle ':completion:*' matcher-list \
@@ -201,8 +248,18 @@ fi
 typeset -U path
 typeset -U fpath
 
-# keep shell state frozen
-ttyctl -f
+# Customized word selecting.
+for f in backward-kill-word \
+         backward-word \
+         capitalize-word \
+         down-case-word \
+         forward-word \
+         kill-word \
+         transpose-words \
+         up-case-word; do
+    autoload -Uz $f-match
+    zle -N $f $f-match
+done
 
-# export a proper GPG_TTY for interactive session
-export GPG_TTY=$(tty)
+autoload -Uz select-word-style
+select-word-style shell

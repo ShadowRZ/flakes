@@ -90,7 +90,5 @@
   };
 
   # Udev
-  services.udev.packages = with pkgs; [
-    android-udev-rules
-  ];
+  services.udev.packages = with pkgs; [ android-udev-rules ];
 }

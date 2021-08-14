@@ -4,6 +4,7 @@
     zsh = {
       enable = true;
       enableAutosuggestions = true;
+      enableSyntaxHighlighting = true;
       enableVteIntegration = true;
       autocd = true;
       defaultKeymap = "emacs";
@@ -32,7 +33,6 @@
           "${oh-my-zsh}/share/oh-my-zsh/plugins/sudo/sudo.plugin.zsh"
           "${oh-my-zsh}/share/oh-my-zsh/plugins/extract/extract.plugin.zsh"
           "${zsh-you-should-use}/share/zsh/plugins/you-should-use/you-should-use.plugin.zsh"
-          "${zsh-fast-syntax-highlighting}/share/zsh/site-functions/fast-syntax-highlighting.plugin.zsh"
           "${zsh-history-substring-search}/share/zsh-history-substring-search/zsh-history-substring-search.zsh"
         ];
         source = map (source: "source ${source}") sources;

@@ -32,6 +32,9 @@ in {
           useUserPackages = true;
           useGlobalPkgs = true;
         };
+        # Consistant nixpkgs version.
+        nix.nixPath = [ "nixpkgs=${nixpkgs}" ];
+        nix.registry.p.flake = self;
       }
     ];
   };

@@ -1,9 +1,5 @@
 { config, pkgs, ... }: {
-  imports = [
-    ../profiles/git
-    ../profiles/neovim
-    ../profiles/shell
-  ];
+  imports = [ ../profiles/git ../profiles/neovim ../profiles/shell ];
 
   # Home Manager needs a bit of information about you and the
   # paths it should manage.
@@ -58,9 +54,7 @@
 
         # Enable builtin OSC
         osc = true;
-        osc-vidscale = false;
-        osc-layout = "slimbox";
-        osd-bar = true;
+        script-opts = "osc-vidscale=false,osc-bar=true,osc-layout=silmbox";
 
         # Subtitles.
         sub-align-x = "right";
@@ -80,22 +74,16 @@
     ### OBS
     obs-studio = {
       enable = true;
-      plugins = with pkgs.obs-studio-plugins; [
-        obs-gstreamer
-      ];
+      plugins = with pkgs.obs-studio-plugins; [ obs-gstreamer ];
     };
-    ### Zathura
-    zathura = {
-      enable = true;
-    };
+    ### Password store
+    password-store = { enable = true; };
   };
   ###### End of program configs.
   ###### Services configs start here.
   services = {
     ### KDE Connect
-    kdeconnect = {
-      enable = true;
-    };
+    kdeconnect = { enable = true; };
     ### GnuPG Agent
     gpg-agent = {
       enable = true;
@@ -120,7 +108,7 @@
     inputMethod = {
       enabled = "fcitx5";
       fcitx5.addons = with pkgs; [
-        fcitx5-chinese-addons 
+        fcitx5-chinese-addons
         fcitx5-pinyin-moegirl
         fcitx5-pinyin-zhwiki
       ];
