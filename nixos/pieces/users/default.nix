@@ -21,17 +21,9 @@
         yarn # Yarn
         nwjs # NW.js
         nextcloud-client # Nextcloud Client
-        qownnotes # QOwnNotes
         claws-mail # Claws Mail
-        retroarch # RetroArch
         electron # Electron
       ];
     };
-  };
-
-  nixpkgs.config.retroarch = {
-    enableDesmume = true;
-    enableMGBA = true;
-    enablePPSSPP = true;
   };
 }

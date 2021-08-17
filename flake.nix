@@ -9,8 +9,6 @@
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
     # NUR
     nur.url = "github:nix-community/NUR";
-    # Emacs Overlay
-    emacs-overlay.url = "github:nix-community/emacs-overlay";
     # Neovim Nightly
     neovim-nightly.url = "github:nix-community/neovim-nightly-overlay";
     # Flake utils

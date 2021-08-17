@@ -17,8 +17,6 @@ in {
       {
         # Overlays
         nixpkgs.overlays = [
-          # Emacs Overlay
-          inputs.emacs-overlay.overlay
           # Neovim Nightly
           inputs.neovim-nightly.overlay
           # Users' flake

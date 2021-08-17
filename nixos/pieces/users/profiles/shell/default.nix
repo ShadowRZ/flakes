@@ -48,11 +48,7 @@
             || source ${p10k}
         '';
       in ''
-        ${plugins}
-        ${zshrc}
-        ${promptInit}
-      '';
-      initExtraFirst = ''
+        # Powerlevek10k Instant prompt
         if [[ -r "${
           "\${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-\${(%):-%n}"
         }.zsh" ]]; then
@@ -60,6 +56,9 @@
             "\${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-\${(%):-%n}"
           }.zsh"
         fi
+        ${plugins}
+        ${zshrc}
+        ${promptInit}
       '';
     };
     # Skim

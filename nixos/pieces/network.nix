@@ -7,11 +7,6 @@
     (qv2ray.override { plugins = [ qv2ray-plugin-ss ]; })
   ];
 
-  services.resolved = {
-    enable = true;
-    fallbackDns = [ "127.0.53.53" "223.5.5.5" "223.6.6.6" ];
-  };
-
   services.smartdns = {
     enable = true;
     settings = with pkgs; {
@@ -20,7 +15,7 @@
         "${smartdns-china-list}/apple.china.smartdns.conf"
         "${smartdns-china-list}/google.china.smartdns.conf"
       ];
-      bind = [ "127.0.53.53:53" ];
+      bind = [ "127.0.0.53:53" ];
       server-https = [
         "https://223.5.5.5/dns-query -group china -exclude-default-group"
         "https://101.6.6.6:8443/dns-query"
@@ -35,12 +30,13 @@
 
   networking.networkmanager = {
     enable = true;
-    dns = "systemd-resolved";
+    dns = "none";
     extraConfig = ''
       [keyfile]
       path = /var/lib/NetworkManager/system-connections
     '';
-    insertNameservers = [ "127.0.53.53" ];
   };
+
+  networking.nameservers = [ "127.0.0.53" ];
   networking.usePredictableInterfaceNames = true;
 }

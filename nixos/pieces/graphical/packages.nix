@@ -6,30 +6,23 @@
     firefox # Firefox
     materia-theme # Materia GTK Theme
     ffmpeg-full # FFmpeg
-    gnome-themes-extra
+    gnome-themes-extra # Extra GNOME themes like HighContrast
     imagemagick # ImageMagick
-    libsForQt5.qtstyleplugins
     papirus-icon-theme # Papirus
     qt5.qtgraphicaleffects # Qt Graphical Effects
-    xsel # xsel
+    xsel # xsel clipboard tool
     lxqt.lximage-qt # LXImage-Qt
     gimp # GIMP
     inkscape # Inkscape
     dfeet # D-Feet
-    mpv # mpv
     smplayer # SMPlayer
-    qmmp # QMMP
+    quodlibet # Quod Libet
     avidemux # Avidemux
-    android-file-transfer # Android File Transfer
+    emacs # Emacs
     # Bibata
     bibata-cursors
     bibata-extra-cursors
     bibata-cursors-translucent
-    # Emacs
-    (pkgs.emacsUnstable.override {
-      withGTK3 = true; # Use GTK+3
-      withGTK2 = false; # Don't use GTK+2
-    })
     # Virtualisation
     virt-viewer
     virt-manager
@@ -37,13 +30,15 @@
     libsForQt5.full
     material-decoration
     # Others
-    libreoffice
-    vlc
-    ark
+    libreoffice # LibreOffice
+    vlc # VLC
+    ark # Ark
     # IM Clients
-    element-desktop
-    tdesktop
-    hexchat
-    dino
+    element-desktop # Element Desktop
+    nheko # Nheko
+    ### Above are Matrix clients.
+    tdesktop # Telegram Desktop
+    hexchat # HexChat
+    dino # Dino
   ];
 }

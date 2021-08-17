@@ -14,16 +14,11 @@
     htop
     iputils
     jq
-    moreutils
-    nmap
     ripgrep
-    skim
     utillinux
-    whois
     file
     less
     ncdu
-    tig
     wget
     htop
     tree
@@ -32,13 +27,11 @@
     editorconfig-core-c
     nixfmt
     nixpkgs-fmt
-    stdmanpages
     man-pages
     man-pages-posix
     unzip
     p7zip
     unar
-    convmv
     neofetch
   ];
 
@@ -84,10 +77,30 @@
       defaultEditor = true;
     };
     zsh = { enable = true; };
-    mtr = { enable = true; };
     command-not-found = { enable = true; };
     dconf = { enable = true; };
   };
+
+  environment.variables = let
+    _nix-shell = pkgs.writeScriptBin "nix-shell.bash" ''
+      #!${pkgs.bash}/bin/bash
+      # Execute Bash in pure Nix Shell (Intended shell for nix-shell)
+      if [[ $IN_NIX_SHELL == 'pure' ]]; then
+        # $BASH -> Expands to the full filename used to invoke this instance of bash.
+        exec "$BASH" "$@"
+      fi
+
+      # Remember the user shell.
+      shell=$SHELL
+
+      # nix-shell run this script as (shell) --rcfile $2
+      rcfile="$2"
+      source "$rcfile"
+
+      # Run user shell.
+      exec -a "$shell" "$shell"
+    '';
+  in { NIX_BUILD_SHELL = "${_nix-shell}"; };
 
   # Udev
   services.udev.packages = with pkgs; [ android-udev-rules ];
