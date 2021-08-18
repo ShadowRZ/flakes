@@ -7,8 +7,6 @@
     # Home Manager
     home-manager.url = "github:nix-community/home-manager";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
-    # NUR
-    nur.url = "github:nix-community/NUR";
     # Neovim Nightly
     neovim-nightly.url = "github:nix-community/neovim-nightly-overlay";
     # Flake utils

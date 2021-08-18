@@ -16,7 +16,6 @@
     inkscape # Inkscape
     dfeet # D-Feet
     smplayer # SMPlayer
-    quodlibet # Quod Libet
     avidemux # Avidemux
     emacs # Emacs
     # Bibata

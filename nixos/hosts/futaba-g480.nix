@@ -2,6 +2,7 @@
 
   imports = [
     ../pieces/graphical
+    ../pieces/graphical/audios.nix
     ../pieces/graphical/packages.nix
     ../pieces/graphical/videoaccel.nix
     ../pieces/network.nix
