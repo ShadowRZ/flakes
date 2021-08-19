@@ -82,7 +82,7 @@
   };
 
   environment.variables = let
-    _nix-shell = pkgs.writeScriptBin "nix-shell.bash" ''
+    some-nix-shell = pkgs.writeScriptBin "some-nix-shell" ''
       #!${pkgs.bash}/bin/bash
       # Execute Bash in pure Nix Shell (Intended shell for nix-shell)
       if [[ $IN_NIX_SHELL == 'pure' ]]; then
@@ -100,7 +100,7 @@
       # Run user shell.
       exec -a "$shell" "$shell"
     '';
-  in { NIX_BUILD_SHELL = "${_nix-shell}"; };
+  in { NIX_BUILD_SHELL = "${some-nix-shell}/bin/some-nix-shell"; };
 
   # Udev
   services.udev.packages = with pkgs; [ android-udev-rules ];
