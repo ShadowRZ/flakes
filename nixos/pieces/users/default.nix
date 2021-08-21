@@ -23,6 +23,8 @@
         nextcloud-client # Nextcloud Client
         claws-mail # Claws Mail
         electron # Electron
+        qsynth # QSynth
+        aegisub # AegiSub
       ];
     };
   };

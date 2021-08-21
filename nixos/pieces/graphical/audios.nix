@@ -4,10 +4,11 @@
   environment.systemPackages = with pkgs; [
     ardour # Ardour
     lmms # LMMS
-    muse # MusE
     qtractor # Qtractor
     sonic-pi # Sonic Pi
     zynaddsubfx # ZynAddSubFX
+    sonic-visualiser # Sonic Visualiser
+    vmpk # VMPK
   ];
 
   # rtkit

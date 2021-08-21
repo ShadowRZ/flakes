@@ -47,7 +47,7 @@
   boot.loader.efi.canTouchEfiVariables = false;
 
   # Kernel.
-  boot.kernelPackages = pkgs.linuxPackages;
+  boot.kernelPackages = pkgs.linuxPackages_zen;
   boot.extraModulePackages = with config.boot.kernelPackages; [ broadcom_sta ];
   boot.kernelParams = pkgs.lib.mkAfter [
     "quiet"

@@ -17,7 +17,8 @@
       ];
       bind = [ "127.0.0.53:53" ];
       server-https = [
-        "https://223.5.5.5/dns-query -group china -exclude-default-group"
+        "https://dns.alidns.com/dns-query -group china -exclude-default-group"
+        "https://dns.quad9.net/dns-query"
         "https://101.6.6.6:8443/dns-query"
       ];
     };

@@ -12,12 +12,16 @@
     qt5.qtgraphicaleffects # Qt Graphical Effects
     xsel # xsel clipboard tool
     lxqt.lximage-qt # LXImage-Qt
+    lxqt.qps # Qps
+    lxqt.lxqt-archiver # LXQt Archiver
+    lxqt.pavucontrol-qt # Pavucontrol (Qt)
     gimp # GIMP
     inkscape # Inkscape
     dfeet # D-Feet
     smplayer # SMPlayer
     avidemux # Avidemux
     emacs # Emacs
+    kate # Kate / KWrite
     # Bibata
     bibata-cursors
     bibata-extra-cursors
@@ -31,7 +35,7 @@
     # Others
     libreoffice # LibreOffice
     vlc # VLC
-    ark # Ark
+    mediainfo-gui # MediaInfo GUI
     # IM Clients
     element-desktop # Element Desktop
     nheko # Nheko

@@ -98,6 +98,13 @@
       enable = true;
       socketActivation.enable = true;
     };
+    ### FluidSynth
+    fluidsynth = {
+      enable = true;
+      soundService = "pipewire-pulse";
+    };
+    ### EasyEffects
+    easyeffects = { enable = true; };
   };
   ###### End of service configs.
 

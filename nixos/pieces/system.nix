@@ -33,6 +33,9 @@
     p7zip
     unar
     neofetch
+    mediainfo
+    inxi
+    lshw
   ];
 
   nix = {
