@@ -1,14 +1,14 @@
 { config, pkgs, ... }: {
 
   imports = [
-    ../pieces/graphical
-    ../pieces/graphical/audios.nix
-    ../pieces/graphical/packages.nix
-    ../pieces/graphical/videoaccel.nix
-    ../pieces/network.nix
-    ../pieces/system.nix
+    ./pieces/graphical
+    ./pieces/graphical/audios.nix
+    ./pieces/graphical/packages.nix
+    ./pieces/graphical/videoaccel.nix
+    ./pieces/network.nix
+    ./pieces/system.nix
     # Users
-    ../pieces/users
+    ./pieces/users
   ];
 
   nixpkgs.config.allowUnfree = true;
@@ -84,7 +84,7 @@
   networking.firewall.enable = false;
 
   # Hostname
-  networking.hostName = "futaba-g480";
+  networking.hostName = "futaba-necronomicon";
 
   # libinput Touchpad.
   services.xserver.libinput = {

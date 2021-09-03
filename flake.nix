@@ -23,11 +23,42 @@
     berberman.inputs.nixpkgs.follows = "nixpkgs";
   };
 
-  outputs = inputs@{ self, ... }: {
+  outputs = inputs@{
+    self,
+    home-manager,
+    nixpkgs,
+    ...
+  }: {
     # NixOS configurations.
-    nixosConfigurations = import ./nixos {
-      inherit inputs self;
+    nixosConfigurations.futaba-necronomicon = nixpkgs.lib.nixosSystem {
       system = "x86_64-linux";
+      modules = [
+        ./nixos/necronomicon
+        # Home Manager Module
+        home-manager.nixosModules.home-manager
+        # (modulesPath + "/installer/scan/not-detected.nix")
+        nixpkgs.nixosModules.notDetected
+        {
+          # Overlays
+          nixpkgs.overlays = [
+            # Neovim Nightly
+            inputs.neovim-nightly.overlay
+            # Users' flake
+            inputs.nickcao.overlay
+            inputs.berberman.overlay
+          ];
+          # Configuration revision.
+          system.configurationRevision = nixpkgs.lib.mkIf (self ? rev) self.rev;
+          # Home Manager.
+          home-manager = {
+            useUserPackages = true;
+            useGlobalPkgs = true;
+          };
+          # Consistant nixpkgs version.
+          nix.nixPath = [ "nixpkgs=${nixpkgs}" ];
+          nix.registry.p.flake = self;
+        }
+      ];
     };
   };
 }
