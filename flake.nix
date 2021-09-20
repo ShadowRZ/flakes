@@ -46,6 +46,12 @@
             # Users' flake
             inputs.nickcao.overlay
             inputs.berberman.overlay
+            # Fix SmartDNS
+            (final: prev: {
+              smartdns = prev.smartdns.overrideAttrs (attrs: {
+                postPatch = "rm systemd/smartdns.service";
+              });
+            })
           ];
           # Configuration revision.
           system.configurationRevision = nixpkgs.lib.mkIf (self ? rev) self.rev;
