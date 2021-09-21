@@ -7,9 +7,8 @@
     extraConfig = ''
       set title
       set number
-      set termguicolors
       set mouse=a
-      set background=light
+      set background=dark
       let mapleader = ';'
       let maplocalleader = '\\'
       set tabstop=4 shiftwidth=4 softtabstop=4 expandtab
@@ -19,7 +18,9 @@
       let g:airline_theme = 'deus'
       if has_key(environ(), "DISPLAY")
           let g:airline_powerline_fonts = 1
+          set termguicolors
       endif
+      colorscheme nord
       set tabstop=2 shiftwidth=2 expandtab smarttab
       " completion
       inoremap <expr> <Tab>   pumvisible() ? "\<C-n>" : "\<Tab>"
@@ -35,6 +36,7 @@
       vim-autoformat
       vim-airline
       vim-airline-themes
+      nord-nvim
     ];
   };
 }
