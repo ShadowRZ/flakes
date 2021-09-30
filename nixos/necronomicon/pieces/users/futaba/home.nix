@@ -16,6 +16,12 @@
   # changes in each release.
   home.stateVersion = "21.05";
 
+  # Packages.
+  home.packages = with pkgs; [
+    # KDE Connect (started by Plasma systemd startup)
+    kdeconnect
+  ];
+
   ###### Program configs start here.
   programs = {
     ### GnuPG
@@ -82,8 +88,6 @@
   ###### End of program configs.
   ###### Services configs start here.
   services = {
-    ### KDE Connect
-    kdeconnect = { enable = true; };
     ### GnuPG Agent
     gpg-agent = {
       enable = true;
