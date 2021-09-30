@@ -69,11 +69,6 @@
   time.timeZone = "Asia/Shanghai";
 
   environment.pathsToLink = [ "/share/zsh" ];
-  # Virtualisation
-  virtualisation = {
-    # VitrualBox
-    virtualbox.host.enable = true;
-  };
 
   # Firewall
   networking.firewall.enable = false;
