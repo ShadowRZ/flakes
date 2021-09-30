@@ -26,10 +26,6 @@
   # Select internationalisation properties.
   i18n.defaultLocale = "en_US.UTF-8";
 
-  # Flatpak.
-  services.flatpak.enable = true;
-  xdg.portal.enable = true;
-
   # Fonts.
   fonts.fonts = with pkgs; [
     roboto # Roboto
@@ -45,4 +41,18 @@
   ];
 
   systemd.services.upower.enable = true;
+
+  environment.systemPackages = with pkgs; [
+    # VA-API.
+    vaapiIntel
+    intel-gpu-tools
+    libva-utils
+  ];
+
+  hardware.opengl.enable = true;
+  hardware.opengl.driSupport = true;
+  hardware.opengl.driSupport32Bit = true;
+  hardware.opengl.extraPackages = with pkgs; [ vaapiIntel ];
+  hardware.opengl.extraPackages32 = with pkgs; [ vaapiIntel ];
+
 }

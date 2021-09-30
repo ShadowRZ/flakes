@@ -4,7 +4,6 @@
     ./pieces/graphical
     ./pieces/graphical/audios.nix
     ./pieces/graphical/packages.nix
-    ./pieces/graphical/videoaccel.nix
     ./pieces/network.nix
     ./pieces/system.nix
     # Users
@@ -72,12 +71,8 @@
   environment.pathsToLink = [ "/share/zsh" ];
   # Virtualisation
   virtualisation = {
-    # Libvirt
-    libvirtd.enable = true;
     # VitrualBox
     virtualbox.host.enable = true;
-    # LXC
-    lxc.enable = true;
   };
 
   # Firewall

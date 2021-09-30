@@ -1,5 +1,5 @@
 { config, pkgs, ... }: {
-  imports = [ ../profiles/git ../profiles/neovim ../profiles/shell ];
+  imports = [ ./profiles/git ./profiles/neovim ./profiles/shell ];
 
   # Home Manager needs a bit of information about you and the
   # paths it should manage.

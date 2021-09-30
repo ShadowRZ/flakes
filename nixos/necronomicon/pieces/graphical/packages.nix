@@ -3,7 +3,6 @@
 {
   environment.systemPackages = with pkgs; [
     glxinfo # GLX Info
-    firefox # Firefox
     materia-theme # Materia GTK Theme
     ffmpeg-full # FFmpeg
     gnome-themes-extra # Extra GNOME themes like HighContrast
@@ -11,9 +10,8 @@
     papirus-icon-theme # Papirus
     qt5.qtgraphicaleffects # Qt Graphical Effects
     xsel # xsel clipboard tool
+    ark # Ark
     lxqt.lximage-qt # LXImage-Qt
-    lxqt.qps # Qps
-    lxqt.lxqt-archiver # LXQt Archiver
     lxqt.pavucontrol-qt # Pavucontrol (Qt)
     gimp # GIMP
     inkscape # Inkscape
@@ -26,11 +24,9 @@
     bibata-cursors
     bibata-extra-cursors
     bibata-cursors-translucent
-    # Virtualisation
-    virt-viewer
-    virt-manager
     # Qt 5 tools
     libsForQt5.full
+    # KWin Material Decoration
     material-decoration
     # Others
     libreoffice # LibreOffice
