@@ -16,7 +16,6 @@
     nickcao.url = "github:NickCao/flakes";
     nickcao.inputs.nixpkgs.follows = "nixpkgs";
     flake-compat.follows = "nickcao/flake-compat";
-    naersk.follows = "nickcao/naersk";
     rust-overlay.follows = "nickcao/rust-overlay";
     ## Berberman
     berberman.url = "github:berberman/flakes";
