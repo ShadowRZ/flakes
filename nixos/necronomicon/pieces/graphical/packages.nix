@@ -3,6 +3,7 @@
 {
   environment.systemPackages = with pkgs; [
     glxinfo # GLX Info
+    firefox # Firefox
     materia-theme # Materia GTK Theme
     ffmpeg-full # FFmpeg
     gnome-themes-extra # Extra GNOME themes like HighContrast

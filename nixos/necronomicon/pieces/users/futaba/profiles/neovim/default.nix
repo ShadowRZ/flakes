@@ -15,7 +15,6 @@
       let g:netrw_liststyle = 3 " tree style
       let g:netrw_banner = 0 " no banner
       let g:netrw_browse_split = 3 " new tab
-      let g:airline_theme = 'deus'
       if has_key(environ(), "DISPLAY")
           let g:airline_powerline_fonts = 1
           set termguicolors
