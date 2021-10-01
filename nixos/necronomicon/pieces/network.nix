@@ -28,6 +28,13 @@
     nssmdns = true;
   };
 
+  ## Keybase / KBFS
+  services.keybase.enable = true;
+  services.kbfs = {
+    enable = true;
+    extraFlags = [ "-label kbfs" "-mount-type normal" ];
+  };
+
   networking.networkmanager = {
     enable = true;
     dns = "none";
