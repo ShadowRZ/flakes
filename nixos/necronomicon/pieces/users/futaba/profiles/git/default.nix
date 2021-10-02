@@ -3,7 +3,7 @@
     enable = true;
     # Basic
     userEmail = "23130178+ShadowRZ@users.noreply.github.com";
-    userName = "雨宫恋叶";
+    userName = "夜坂雅";
     signing = {
       signByDefault = true;
       key = "3237D49E8F815A45213364EA4FF35790F40553A9";
