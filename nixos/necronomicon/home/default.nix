@@ -20,6 +20,11 @@
   home.packages = with pkgs; [
     # KDE Connect (started by Plasma systemd startup)
     kdeconnect
+    # Fcitx 5
+    (fcitx5-with-addons.override {
+      addons =
+        [ fcitx5-chinese-addons fcitx5-pinyin-moegirl fcitx5-pinyin-zhwiki ];
+    })
   ];
 
   ###### Program configs start here.
@@ -117,17 +122,13 @@
     LESSHISTFILE = "-";
     GST_VAAPI_ALL_DRIVERS = "1";
     MOZ_X11_EGL = "1";
+    # Fcitx 5
+    GTK_IM_MODULE = "fcitx";
+    QT_IM_MODULE = "fcitx";
+    XMODIFIERS = "@im=fcitx";
+    # Inherits from home.sessionVariables
+    PASSWORD_STORE_DIR = config.home.sessionVariables.PASSWORD_STORE_DIR;
+    GNUPGHOME = config.home.sessionVariables.GNUPGHOME;
   };
 
-  # Fcitx 5
-  i18n = {
-    inputMethod = {
-      enabled = "fcitx5";
-      fcitx5.addons = with pkgs; [
-        fcitx5-chinese-addons
-        fcitx5-pinyin-moegirl
-        fcitx5-pinyin-zhwiki
-      ];
-    };
-  };
 }

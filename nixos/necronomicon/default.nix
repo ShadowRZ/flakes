@@ -1,14 +1,6 @@
 { config, pkgs, ... }: {
 
-  imports = [
-    ./pieces/graphical
-    ./pieces/graphical/audios.nix
-    ./pieces/graphical/packages.nix
-    ./pieces/network.nix
-    ./pieces/system.nix
-    # Users
-    ./pieces/users
-  ];
+  imports = [ ./core ./networking ./graphical ];
 
   nixpkgs.config.allowUnfree = true;
 
@@ -44,7 +36,6 @@
   # Use the systemd-boot EFI boot loader.
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = false;
-
   # Kernel.
   boot.kernelPackages = pkgs.linuxPackages_zen;
   boot.extraModulePackages = with config.boot.kernelPackages; [ broadcom_sta ];
@@ -60,7 +51,6 @@
   # wl is in brodacom_sta.
   boot.kernelModules = [ "wl" "kvm-intel" ];
   boot.initrd.kernelModules = [ "i915" ];
-
   boot.tmpOnTmpfs = true;
   boot.initrd.verbose = false;
   boot.consoleLogLevel = 0;
@@ -68,11 +58,11 @@
   # Set your time zone.
   time.timeZone = "Asia/Shanghai";
 
+  # Link /share/zsh
   environment.pathsToLink = [ "/share/zsh" ];
 
   # Firewall
   networking.firewall.enable = false;
-
   # Hostname
   networking.hostName = "futaba-necronomicon";
 
@@ -89,6 +79,29 @@
       scrollMethod = "edge";
     };
   };
+
+  # Users
+  users.users.futaba = {
+    uid = 1000;
+    isNormalUser = true;
+    shell = pkgs.zsh;
+    description = "佐仓双叶";
+    extraGroups = [ "wheel" "networkmanager" ];
+    packages = with pkgs; [
+      krusader # Krusader
+      kdenlive # Kdenlive
+      blender # Blender
+      qtcreator # Qt Creator
+      easyrpg-player # EasyRPG Player
+      graphviz # Graphviz
+      hugo # Hugo
+      yarn # Yarn
+      claws-mail # Claws Mail
+      electron # Electron
+      aegisub # AegiSub
+    ];
+  };
+  home-manager.users.futaba = import ./home;
 
   # System State Version
   system.stateVersion = "21.05";

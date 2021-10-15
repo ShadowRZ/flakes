@@ -1,6 +1,9 @@
 { pkgs, ... }:
 
 {
+
+  imports = [ ./packages.nix ./audios.nix ];
+
   services = {
     upower.enable = true;
 

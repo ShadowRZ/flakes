@@ -21,8 +21,6 @@
         whitespace-error-style = "22 reverse";
       };
     };
-    extraConfig = {
-      init.defaultBranch = "master";
-    };
+    extraConfig = { init.defaultBranch = "master"; };
   };
 }

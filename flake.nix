@@ -20,14 +20,12 @@
     ## Berberman
     berberman.url = "github:berberman/flakes";
     berberman.inputs.nixpkgs.follows = "nixpkgs";
+    ## @ShadowRZ's private flake.
+    shadowrz.url = "path:./pkgs";
+    shadowrz.inputs.nixpkgs.follows = "nixpkgs";
   };
 
-  outputs = inputs@{
-    self,
-    home-manager,
-    nixpkgs,
-    ...
-  }: {
+  outputs = inputs@{ self, home-manager, nixpkgs, ... }: {
     # NixOS configurations.
     nixosConfigurations.futaba-necronomicon = nixpkgs.lib.nixosSystem {
       system = "x86_64-linux";
@@ -45,11 +43,11 @@
             # Users' flake
             inputs.nickcao.overlay
             inputs.berberman.overlay
+            inputs.shadowrz.overlay
             # Fix SmartDNS
             (final: prev: {
-              smartdns = prev.smartdns.overrideAttrs (attrs: {
-                postPatch = "rm systemd/smartdns.service";
-              });
+              smartdns = prev.smartdns.overrideAttrs
+                (attrs: { postPatch = "rm systemd/smartdns.service"; });
             })
           ];
           # Configuration revision.

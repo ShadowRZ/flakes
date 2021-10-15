@@ -56,8 +56,14 @@
             "\${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-\${(%):-%n}"
           }.zsh"
         fi
+
+        ### Plugins -- 8< --
         ${plugins}
+
+        ### Zshrc -- 8< --
         ${zshrc}
+
+        ### Prompt -- 8< --
         ${promptInit}
       '';
     };
