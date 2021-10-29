@@ -60,6 +60,7 @@
           # Consistant nixpkgs version.
           nix.nixPath = [ "nixpkgs=${nixpkgs}" ];
           nix.registry.p.flake = self;
+          nix.registry.nixpkgs.flake = nixpkgs;
         }
       ];
     };
