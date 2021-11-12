@@ -23,6 +23,7 @@
     ## @ShadowRZ's private flake.
     shadowrz.url = "path:./pkgs";
     shadowrz.inputs.nixpkgs.follows = "nixpkgs";
+    shadowrz.inputs.flake-utils.follows = "flake-utils";
   };
 
   outputs = inputs@{ self, home-manager, nixpkgs, ... }: {
@@ -30,7 +31,7 @@
     nixosConfigurations.futaba-necronomicon = nixpkgs.lib.nixosSystem {
       system = "x86_64-linux";
       modules = [
-        ./nixos/necronomicon
+        ./nixos/configuration.nix
         # Home Manager Module
         home-manager.nixosModules.home-manager
         # (modulesPath + "/installer/scan/not-detected.nix")
@@ -57,10 +58,13 @@
             useUserPackages = true;
             useGlobalPkgs = true;
           };
-          # Consistant nixpkgs version.
-          nix.nixPath = [ "nixpkgs=${nixpkgs}" ];
+          # Pin NIX_PATH
+          nix.nixPath = [
+            "nixpkgs=${nixpkgs}"
+          ];
           nix.registry.p.flake = self;
           nix.registry.nixpkgs.flake = nixpkgs;
+          nix.registry.shadowrz.flake = inputs.shadowrz;
         }
       ];
     };

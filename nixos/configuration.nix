@@ -1,37 +1,16 @@
-{ config, pkgs, ... }: {
+# Edit this configuration file to define what should be installed on
+# your system.  Help is available in the configuration.nix(5) man page
+# and in the NixOS manual (accessible by running ‘nixos-help’).
 
-  imports = [ ./core ./networking ./graphical ];
+{ config, pkgs, ... }:
 
-  nixpkgs.config.allowUnfree = true;
-
-  # Bootup.
-  boot.initrd.availableKernelModules =
-    [ "xhci_pci" "ehci_pci" "ahci" "usb_storage" "sd_mod" "sr_mod" ];
-
-  fileSystems."/" = {
-    device = "/dev/disk/by-uuid/dc3dad35-273d-4619-a694-4faf8b4debe5";
-    fsType = "btrfs";
-    options = [ "subvol=@nixos" ];
-  };
-
-  boot.initrd.luks.devices."root".device =
-    "/dev/disk/by-uuid/d23c435d-c81a-4bed-91ff-b10f9aeae1e0";
-
-  fileSystems."/home" = {
-    device = "/dev/disk/by-uuid/dc3dad35-273d-4619-a694-4faf8b4debe5";
-    fsType = "btrfs";
-    options = [ "subvol=@home" ];
-  };
-
-  fileSystems."/boot" = {
-    device = "/dev/disk/by-uuid/732E-5189";
-    fsType = "vfat";
-  };
-
-  swapDevices =
-    [{ device = "/dev/disk/by-uuid/04342f1b-0f87-4a25-bc92-7a9b0268d9b1"; }];
-
-  powerManagement.cpuFreqGovernor = pkgs.lib.mkDefault "performance";
+{
+  imports = [ # Include the results of the hardware scan.
+    ./hardware-configuration.nix
+    ./profiles/core.nix
+    ./profiles/networking.nix
+    ./profiles/graphical.nix
+  ];
 
   # Use the systemd-boot EFI boot loader.
   boot.loader.systemd-boot.enable = true;
@@ -101,8 +80,19 @@
       aegisub # AegiSub
     ];
   };
-  home-manager.users.futaba = import ./home;
+  home-manager.users.futaba = import ./futaba-home;
 
-  # System State Version
-  system.stateVersion = "21.05";
+  # Misc
+  nixpkgs.config.allowUnfree = true;
+  powerManagement.cpuFreqGovernor = pkgs.lib.mkDefault "performance";
+
+  # This value determines the NixOS release from which the default
+  # settings for stateful data, like file locations and database versions
+  # on your system were taken. It‘s perfectly fine and recommended to leave
+  # this value at the release version of the first install of this system.
+  # Before changing this value read the documentation for this option
+  # (e.g. man configuration.nix or on https://nixos.org/nixos/options.html).
+  system.stateVersion = "21.05"; # Did you read the comment?
+
 }
+

@@ -23,12 +23,10 @@
     htop
     tree
     shellcheck
-    cmark
     editorconfig-core-c
     nixfmt
     nixpkgs-fmt
     man-pages
-    man-pages-posix
     unzip
     p7zip
     unar
@@ -67,12 +65,6 @@
     package = pkgs.nixUnstable;
   };
 
-  programs.bash = {
-    promptInit = ''
-      eval "$(${pkgs.starship}/bin/starship init bash)"
-    '';
-  };
-
   # System programs
   programs = {
     neovim = {
@@ -85,7 +77,7 @@
   };
 
   environment.variables = let
-    some-nix-shell = pkgs.writeScriptBin "some-nix-shell" ''
+    nix-build-shell = pkgs.writeScript "nix-build-shell" ''
       #!${pkgs.bash}/bin/bash
       # Execute Bash in pure Nix Shell (Intended shell for nix-shell)
       if [[ $IN_NIX_SHELL == 'pure' ]]; then
@@ -103,7 +95,7 @@
       # Run user shell.
       exec -a "$shell" "$shell"
     '';
-  in { NIX_BUILD_SHELL = "${some-nix-shell}/bin/some-nix-shell"; };
+  in { NIX_BUILD_SHELL = "${nix-build-shell}"; };
 
   # Udev
   services.udev.packages = with pkgs; [ android-udev-rules ];

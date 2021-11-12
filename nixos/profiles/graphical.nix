@@ -1,17 +1,13 @@
 { pkgs, ... }:
 
 {
-
-  imports = [ ./packages.nix ./audios.nix ];
-
   services = {
     upower.enable = true;
-
     dbus = {
       enable = true;
       packages = with pkgs; [ gnome.dconf ];
     };
-
+    # X11 Server
     xserver = {
       enable = true;
       # Configure keymap in X11
@@ -24,7 +20,19 @@
       # Modesettings driver
       videoDrivers = [ "modesettings" ];
     };
+    # PipeWire
+    pipewire = {
+      enable = true;
+      # ALSA
+      alsa.enable = true;
+      # PulseAudio
+      pulse.enable = true;
+      # JACK
+      jack.enable = true;
+    };
   };
+  # rtkit
+  security.rtkit.enable = true;
 
   # Select internationalisation properties.
   i18n.defaultLocale = "en_US.UTF-8";
@@ -50,6 +58,45 @@
     vaapiIntel
     intel-gpu-tools
     libva-utils
+    # Graphical packages.
+    ardour # Ardour
+    sonic-visualiser # Sonic Visualiser
+    glxinfo # GLX Info
+    firefox # Firefox
+    materia-theme # Materia GTK Theme
+    ffmpeg-full # FFmpeg
+    gnome-themes-extra # Extra GNOME themes like HighContrast
+    imagemagick # ImageMagick
+    papirus-icon-theme # Papirus
+    qt5.qtgraphicaleffects # Qt Graphical Effects
+    xsel # xsel clipboard tool
+    ark # Ark
+    feh # Feh
+    gimp # GIMP
+    inkscape # Inkscape
+    dfeet # D-Feet
+    smplayer # SMPlayer
+    avidemux # Avidemux
+    emacs # Emacs
+    kate # Kate / KWrite
+    # Bibata
+    bibata-cursors
+    bibata-extra-cursors
+    bibata-cursors-translucent
+    # Qt 5 tools
+    libsForQt5.full
+    # KWin Material Decoration
+    material-decoration
+    # Others
+    libreoffice # LibreOffice
+    vlc # VLC
+    mediainfo-gui # MediaInfo GUI
+    # IM Clients
+    element-desktop # Element Desktop
+    nheko # Nheko
+    ### Above are Matrix clients.
+    hexchat # HexChat
+    dino # Dino
   ];
 
   hardware.opengl.enable = true;

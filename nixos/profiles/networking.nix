@@ -1,11 +1,5 @@
 { pkgs, ... }: {
 
-  environment.systemPackages = with pkgs; [
-    v2ray
-    v2ray-geoip
-    v2ray-domain-list-community
-  ];
-
   services.smartdns = {
     enable = true;
     settings = with pkgs; {
@@ -17,9 +11,9 @@
       bind = [ "127.0.0.53:53" ];
       server-https = [
         "https://dns.alidns.com/dns-query -group china -exclude-default-group"
-        "https://dns.quad9.net/dns-query"
-        "https://101.6.6.6:8443/dns-query"
+        "https://185.222.222.222/dns-query"
       ];
+      server-tls = [ "9.9.9.9:853" ];
     };
   };
 
