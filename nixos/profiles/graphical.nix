@@ -86,7 +86,7 @@
     # Qt 5 tools
     libsForQt5.full
     # KWin Material Decoration
-    material-decoration
+    material-kwin-decoration
     # Others
     libreoffice # LibreOffice
     vlc # VLC

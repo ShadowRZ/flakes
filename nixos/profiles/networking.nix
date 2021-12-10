@@ -11,9 +11,8 @@
       bind = [ "127.0.0.53:53" ];
       server-https = [
         "https://dns.alidns.com/dns-query -group china -exclude-default-group"
-        "https://185.222.222.222/dns-query"
       ];
-      server-tls = [ "9.9.9.9:853" ];
+      server-tls = [ "149.112.112.112:853" ];
     };
   };
 
