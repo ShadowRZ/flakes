@@ -52,7 +52,7 @@
     '';
     binaryCaches = pkgs.lib.mkForce [
       "https://mirrors.bfsu.edu.cn/nix-channels/store"
-      "https://cache.nichi.workers.dev"
+      "https://cache.nixos.org"
       "https://berberman.cachix.org"
       "https://nichi.cachix.org"
       "https://nix-community.cachix.org"
