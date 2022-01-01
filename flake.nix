@@ -11,6 +11,9 @@
     neovim-nightly.url = "github:nix-community/neovim-nightly-overlay";
     # Flake utils
     flake-utils.url = "github:numtide/flake-utils";
+    # NVFetcher
+    nvfetcher.url = "github:berberman/nvfetcher";
+    nvfetcher.inputs.nixpkgs.follows = "nixpkgs";
     # Users' flake
     ## NickCao
     nickcao.url = "github:NickCao/flakes";
@@ -20,6 +23,7 @@
     ## Berberman
     berberman.url = "github:berberman/flakes";
     berberman.inputs.nixpkgs.follows = "nixpkgs";
+    berberman.inputs.nvfetcher.follows = "nvfetcher";
     ## @ShadowRZ's private flake.
     shadowrz.url = "path:./pkgs";
     shadowrz.inputs.nixpkgs.follows = "nixpkgs";
