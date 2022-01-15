@@ -54,13 +54,12 @@
       "https://mirrors.bfsu.edu.cn/nix-channels/store"
       "https://cache.nixos.org"
       "https://berberman.cachix.org"
-      "https://nichi.cachix.org"
+      "https://s3.nichi.co/cache"
       "https://nix-community.cachix.org"
     ];
     binaryCachePublicKeys = [
       "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs="
       "berberman.cachix.org-1:UHGhodNXVruGzWrwJ12B1grPK/6Qnrx2c3TjKueQPds="
-      "nichi.cachix.org-1:ZWn4Jui6odEcNEMjcHM/WXbDSVO4Ai+jrzWHf+pqwj0="
     ];
     package = pkgs.nixUnstable;
   };
