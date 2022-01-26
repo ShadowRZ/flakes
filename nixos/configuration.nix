@@ -43,7 +43,7 @@
   # Firewall
   networking.firewall.enable = false;
   # Hostname
-  networking.hostName = "futaba-necronomicon";
+  networking.hostName = "hermitmedjed-s";
 
   # libinput Touchpad.
   services.xserver.libinput = {

@@ -32,7 +32,7 @@
 
   outputs = inputs@{ self, home-manager, nixpkgs, ... }: {
     # NixOS configurations.
-    nixosConfigurations.futaba-necronomicon = nixpkgs.lib.nixosSystem {
+    nixosConfigurations.hermitmedjed-s = nixpkgs.lib.nixosSystem {
       system = "x86_64-linux";
       modules = [
         ./nixos/configuration.nix

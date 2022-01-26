@@ -5,7 +5,7 @@
     upower.enable = true;
     dbus = {
       enable = true;
-      packages = with pkgs; [ gnome.dconf ];
+      packages = with pkgs; [ dconf ];
     };
     # X11 Server
     xserver = {

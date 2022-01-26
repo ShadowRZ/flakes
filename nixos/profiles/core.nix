@@ -51,7 +51,7 @@
       experimental-features = nix-command flakes
     '';
     binaryCaches = pkgs.lib.mkForce [
-      "https://mirrors.bfsu.edu.cn/nix-channels/store"
+      "https://mirror.sjtu.edu.cn/nix-channels/store"
       "https://cache.nixos.org"
       "https://berberman.cachix.org"
       "https://s3.nichi.co/cache"
