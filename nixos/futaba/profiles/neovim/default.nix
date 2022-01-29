@@ -42,8 +42,6 @@
       deoplete-nvim
       deoplete-lsp
       deoplete-rust
-      vim-lsp
-      deoplete-vim-lsp
       deoplete-zsh
     ];
   };
