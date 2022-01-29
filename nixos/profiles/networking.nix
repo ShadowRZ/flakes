@@ -1,5 +1,4 @@
 { pkgs, ... }: {
-
   services.smartdns = {
     enable = true;
     settings = with pkgs; {
@@ -12,7 +11,7 @@
       server-https = [
         "https://dns.alidns.com/dns-query -group china -exclude-default-group"
       ];
-      server-tls = [ "149.112.112.112:853" ];
+      server-tls = [ "9.9.9.9:853" "149.112.112.112:853" ];
     };
   };
 

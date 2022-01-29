@@ -52,7 +52,7 @@
     ### Gh
     gh = {
       enable = true;
-      gitProtocol = "ssh";
+      settings.git_protocol = "ssh";
     };
     ### mpv
     mpv = {

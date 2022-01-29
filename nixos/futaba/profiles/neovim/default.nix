@@ -26,6 +26,8 @@
       inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
       set completeopt=menuone,noinsert,noselect
       set shortmess+=c
+      " deoplete
+      let g:deoplete#enable_at_startup = 1
     '';
     plugins = with pkgs.vimPlugins; [
       nvim-lspconfig
@@ -36,6 +38,13 @@
       vim-airline
       vim-airline-themes
       nord-nvim
+      # Deoplete
+      deoplete-nvim
+      deoplete-lsp
+      deoplete-rust
+      vim-lsp
+      deoplete-vim-lsp
+      deoplete-zsh
     ];
   };
 }

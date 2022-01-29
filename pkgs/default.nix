@@ -1,3 +1,3 @@
 final: prev: {
-  material-decoration = prev.callPackage ./material-decoration {};
+  kose-font = prev.callPackage ./data/fonts/kose-font {};
 }

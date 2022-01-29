@@ -2,14 +2,15 @@
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
-{ config, pkgs, ... }:
-
-{
-  imports = [ # Include the results of the hardware scan.
+{ config, pkgs, ... }: {
+  imports = [
+    # Include the results of the hardware scan.
     ./hardware-configuration.nix
+    # Profiles.
     ./profiles/core.nix
     ./profiles/networking.nix
     ./profiles/graphical.nix
+    ./profiles/python.nix
   ];
 
   # Use the systemd-boot EFI boot loader.
@@ -80,7 +81,7 @@
       aegisub # AegiSub
     ];
   };
-  home-manager.users.futaba = import ./futaba-home;
+  home-manager.users.futaba = import ./futaba;
 
   # Misc
   nixpkgs.config.allowUnfree = true;
@@ -99,6 +100,4 @@
   # Before changing this value read the documentation for this option
   # (e.g. man configuration.nix or on https://nixos.org/nixos/options.html).
   system.stateVersion = "21.05"; # Did you read the comment?
-
 }
-

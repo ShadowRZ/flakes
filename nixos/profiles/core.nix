@@ -1,6 +1,4 @@
-{ config, lib, pkgs, ... }:
-
-{
+{ config, lib, pkgs, ... }: {
   # System level packages.
   environment.systemPackages = with pkgs; [
     binutils
@@ -49,8 +47,9 @@
       keep-derivations = true
       fallback = true
       experimental-features = nix-command flakes
+      flake-registry = /etc/nix/registry.json
     '';
-    binaryCaches = pkgs.lib.mkForce [
+    binaryCaches = lib.mkForce [
       "https://mirror.sjtu.edu.cn/nix-channels/store"
       "https://cache.nixos.org"
       "https://berberman.cachix.org"
@@ -60,6 +59,7 @@
     binaryCachePublicKeys = [
       "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs="
       "berberman.cachix.org-1:UHGhodNXVruGzWrwJ12B1grPK/6Qnrx2c3TjKueQPds="
+      "hydra.nichi.co-0:P3nkYHhmcLR3eNJgOAnHDjmQLkfqheGyhZ6GLrUVHwk="
     ];
     package = pkgs.nixUnstable;
   };
