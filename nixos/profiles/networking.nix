@@ -8,10 +8,13 @@
         "${smartdns-china-list}/google.china.smartdns.conf"
       ];
       bind = [ "127.0.0.53:53" ];
-      server-https = [
-        "https://dns.alidns.com/dns-query -group china -exclude-default-group"
+      server-tls = [
+        "223.5.5.5:853 -tls-host-verify dns.alidns.com -group china -exclude-default-group"
+        "223.6.6.6:853 -tls-host-verify dns.alidns.com -group china -exclude-default-group"
+        "9.9.9.9:853 -tls-host-verify dns.quad9.net"
+        "149.112.112.112:853 -tls-host-verify dns.quad9.net"
       ];
-      server-tls = [ "9.9.9.9:853" "149.112.112.112:853" ];
+      speed-check-mode = "tcp:443,tcp:80,ping";
     };
   };
 
@@ -20,16 +23,10 @@
     nssmdns = true;
   };
 
-  ## Keybase / KBFS
-  services.keybase.enable = true;
-  services.kbfs = {
-    enable = true;
-    extraFlags = [ "-label kbfs" "-mount-type normal" ];
-  };
-
   networking.networkmanager = {
     enable = true;
     dns = "none";
+    wifi.backend = "iwd";
     extraConfig = ''
       [keyfile]
       path = /var/lib/NetworkManager/system-connections
