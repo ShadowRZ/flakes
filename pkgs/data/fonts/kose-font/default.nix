@@ -3,7 +3,8 @@
 let
   pname = "kose-font";
   version = "20210514";
-in fetchFromGitHub {
+in
+fetchFromGitHub {
   name = "${pname}-${version}";
   owner = "lxgw";
   repo = "kose-font";
