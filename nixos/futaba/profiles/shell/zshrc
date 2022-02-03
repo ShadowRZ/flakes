@@ -1,3 +1,4 @@
+### - 8< - Options {{{
 # History related options.
 setopt HIST_VERIFY
 setopt HIST_FIND_NO_DUPS
@@ -35,38 +36,8 @@ setopt TRANSIENT_RPROMPT
 setopt PROMPT_SUBST
 # ZLE.
 unsetopt BEEP
-
-autoload -Uz colors
-colors
-
-# Spelling correct prompt.
-SPROMPT="%B%F{yellow}[Correct]%f%b %B%F{red}%R%f%b -> %B%F{green}%r%f%b ? [%B(N)%b/y/a/e]"
-REPORTTIME=5
-CORRECT_IGNORE='_*'
-# Time format.
-() {
-    local white_b=$fg_bold[white] yellow_b=$fg_bold[yellow] blue=$fg[blue] rst=$reset_color
-    TIMEFMT=(
-        "${yellow_b}EST=%*Es$rst $white_b%J$rst"$'\n' # First line
-        "${yellow_b} CPU$rst: USR: $blue%U$rst SYS: $blue%S$rst PER:$blue%P$rst"$'\n' # Second line
-        "${yellow_b} MEM$rst: $blue%M$rst" # Third line
-    )
-}
-
-# useful functions
-autoload -Uz zmv zcalc zargs url-quote-magic bracketed-paste-magic
-zle -N self-insert url-quote-magic
-zle -N bracketed-paste bracketed-paste-magic
-
-# Colored man pages and more.
-export LESS_TERMCAP_mb=$'\E[01;31m'
-export LESS_TERMCAP_md=$'\E[01;31m'
-export LESS_TERMCAP_me=$'\E[0m'
-export LESS_TERMCAP_se=$'\E[0m'
-export LESS_TERMCAP_so=$'\E[01;44;33m'
-export LESS_TERMCAP_ue=$'\E[0m'
-export LESS_TERMCAP_us=$'\E[01;32m'
-
+### }}}
+### - 8< - Bindings {{{
 # key binds
 # create a zkbd compatible hash;
 # to add other keys to this hash, see: man 5 terminfo
@@ -127,11 +98,8 @@ bindkey -M emacs '^N' history-substring-search-down
 # bind k and j for VI mode
 bindkey -M vicmd 'k' history-substring-search-up
 bindkey -M vicmd 'j' history-substring-search-down
-
-# if in tmux launch skim in tmux pane
-[[ ${+TMUX} == 1 ]] \
-  && SKIM_TMUX=1
-
+### }}}
+### - 8< - Completions {{{
 # Case insens only when no case match; after all completions loaded
 zstyle ':completion:*' matcher-list \
   "" 'm:{a-zA-Z}={A-Za-z}' 'r:|[._-]=* r:|=*' 'l:|=* r:|=*'
@@ -140,13 +108,19 @@ zstyle ':completion:*:*:git:*' user-commands ${${(M)${(k)commands}:#git-*}/git-/
 
 # Auto rehash for new binaries
 zstyle ':completion:*' rehash true
+# Squeeze slashes
+zstyle ':completion:*' squeeze-slashes true
+# Preserve some prefix
+zstyle ':completion:*' preserve-prefix '//[^/]##/'
+# Add space
+zstyle ':completion:*' add-space true
 # allow one error for every three characters typed in approximate completer
 zstyle ':completion:*:approximate:'    max-errors 'reply=( $((($#PREFIX+$#SUFFIX)/3 )) numeric )'
 # don't complete backup files as executables
 zstyle ':completion:*:complete:-command-::commands' ignored-patterns '(*\~)'
 # start menu completion only if it could find no unambiguous initial string
 zstyle ':completion:*:correct:*'       insert-unambiguous true
-zstyle ':completion:*:corrections'     format '%B%F{yellow}[Complete]%f%b%F{red} From %B%d (errors: %e)%b%f'
+zstyle ':completion:*:corrections'     format '%B%F{yellow}[Complete]%f%b%F{red} From %BCorrected (%e errors)%b%f'
 zstyle ':completion:*:correct:*'       original true
 # activate color-completion
 zstyle ':completion:*:default'         list-colors ${(s.:.)LS_COLORS}
@@ -196,9 +170,14 @@ zstyle ':completion:*:manuals'    separate-sections true
 zstyle ':completion:*:manuals.*'  insert-sections   true
 zstyle ':completion:*:man:*'      menu yes select
 zstyle ':completion:*' special-dirs ..
-zstyle ':completion:*:cd:*' ignore-parents parent pwd
+zstyle ':completion:*:cd:*' ignore-parents parent pwd .. directory
 # Select a completer
 zstyle ':completion:*' completer _complete _match _correct _approximate _expand_alias _ignored _files
+### }}}
+
+# if in tmux launch skim in tmux pane
+[[ ${+TMUX} == 1 ]] \
+  && SKIM_TMUX=1
 
 # Terminal Title
 autoload -Uz add-zsh-hook
@@ -235,3 +214,34 @@ done
 
 autoload -Uz select-word-style
 select-word-style shell
+
+autoload -Uz colors
+colors
+
+# Spelling correct prompt.
+SPROMPT="%B%F{yellow}[Correct]%f%b %B%F{red}%R%f%b -> %B%F{green}%r%f%b ? [%B(N)%b/y/a/e]"
+REPORTTIME=5
+CORRECT_IGNORE='_*'
+# Time format.
+() {
+    local white_b=$fg_bold[white] yellow_b=$fg_bold[yellow] blue=$fg[blue] rst=$reset_color
+    TIMEFMT=(
+        "${yellow_b}EST=%*Es$rst $white_b%J$rst"$'\n' # First line
+        "${yellow_b} CPU$rst: USR: $blue%U$rst SYS: $blue%S$rst PER:$blue%P$rst"$'\n' # Second line
+        "${yellow_b} MEM$rst: $blue%M$rst" # Third line
+    )
+}
+
+# useful functions
+autoload -Uz zmv zcalc zargs url-quote-magic bracketed-paste-magic
+zle -N self-insert url-quote-magic
+zle -N bracketed-paste bracketed-paste-magic
+
+# Colored man pages and more.
+export LESS_TERMCAP_mb=$'\E[01;31m'
+export LESS_TERMCAP_md=$'\E[01;31m'
+export LESS_TERMCAP_me=$'\E[0m'
+export LESS_TERMCAP_se=$'\E[0m'
+export LESS_TERMCAP_so=$'\E[01;44;33m'
+export LESS_TERMCAP_ue=$'\E[0m'
+export LESS_TERMCAP_us=$'\E[01;32m'

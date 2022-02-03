@@ -70,7 +70,7 @@
     # Skim
     skim = let
       fd = "${pkgs.fd}/bin/fd -H";
-      alt_c_cmd = pkgs.writeScriptBin "cdr-skim.zsh" ''
+      alt_c_cmd = pkgs.writeScript "cdr-skim.zsh" ''
         #!${pkgs.zsh}/bin/zsh
         ${lib.fileContents ./cdr-skim.zsh}
       '';
@@ -79,7 +79,7 @@
       enableZshIntegration = true;
       defaultCommand = fd;
       fileWidgetCommand = fd;
-      changeDirWidgetCommand = "${alt_c_cmd}/bin/cdr-skim.zsh";
+      changeDirWidgetCommand = "${alt_c_cmd}";
     };
   };
 }

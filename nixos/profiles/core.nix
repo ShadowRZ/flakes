@@ -35,12 +35,26 @@
   ];
 
   nix = {
-    autoOptimiseStore = true;
+    settings = {
+      sandbox = true;
+      trusted-users = [ "root" "@wheel" ];
+      substituters = lib.mkForce [
+        "https://mirror.sjtu.edu.cn/nix-channels/store"
+        "https://cache.nixos.org"
+        "https://berberman.cachix.org"
+        "https://s3.nichi.co/cache"
+        "https://nix-community.cachix.org"
+      ];
+      trusted-public-keys = [
+        "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs="
+        "berberman.cachix.org-1:UHGhodNXVruGzWrwJ12B1grPK/6Qnrx2c3TjKueQPds="
+        "hydra.nichi.co-0:P3nkYHhmcLR3eNJgOAnHDjmQLkfqheGyhZ6GLrUVHwk="
+      ];
+      auto-optimise-store = true;
+      allowed-users = [ "@wheel" ];
+    };
     gc.automatic = true;
     optimise.automatic = true;
-    useSandbox = true;
-    allowedUsers = [ "@wheel" ];
-    trustedUsers = [ "root" "@wheel" ];
     extraOptions = ''
       min-free = 536870912
       keep-outputs = true
@@ -49,18 +63,6 @@
       experimental-features = nix-command flakes
       flake-registry = /etc/nix/registry.json
     '';
-    binaryCaches = lib.mkForce [
-      "https://mirror.sjtu.edu.cn/nix-channels/store"
-      "https://cache.nixos.org"
-      "https://berberman.cachix.org"
-      "https://s3.nichi.co/cache"
-      "https://nix-community.cachix.org"
-    ];
-    binaryCachePublicKeys = [
-      "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs="
-      "berberman.cachix.org-1:UHGhodNXVruGzWrwJ12B1grPK/6Qnrx2c3TjKueQPds="
-      "hydra.nichi.co-0:P3nkYHhmcLR3eNJgOAnHDjmQLkfqheGyhZ6GLrUVHwk="
-    ];
     package = pkgs.nixUnstable;
   };
 

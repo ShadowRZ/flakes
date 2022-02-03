@@ -1,5 +1,6 @@
 { config, pkgs, ... }: {
-  imports = [ ./profiles/git ./profiles/neovim ./profiles/shell ];
+  imports =
+    [ ./profiles/git ./profiles/neovim ./profiles/shell ./profiles/email ];
 
   # Home Manager needs a bit of information about you and the
   # paths it should manage.
@@ -59,21 +60,24 @@
       enable = true;
       config = {
         # OSD configs.
-        osd-font = "等距更纱黑体 Slab SC";
+        osd-font = "小赖字体 SC";
         osd-font-size = 40;
         osd-on-seek = "msg-bar";
 
         # Enable builtin OSC
         osc = true;
-        script-opts = "osc-vidscale=false,osc-bar=true,osc-layout=silmbox";
+        script-opts = "osc-vidscale=no,osc-greemandgrumpy=no";
 
         # Subtitles.
         sub-align-x = "right";
         sub-font-size = 45;
         sub-justify = "auto";
-        sub-font = "等距更纱黑体 Slab SC";
+        sub-font = "小赖字体 SC";
         sub-border-size = 3;
         sub-color = "#DE8148";
+
+        # (Try to) prefer hardware decoding.
+        hwdec = "auto-safe";
       };
       scripts = with pkgs.mpvScripts; [ mpris ];
     };

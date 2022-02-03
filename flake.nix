@@ -63,9 +63,7 @@
             useGlobalPkgs = true;
           };
           # Pin NIX_PATH
-          nix.nixPath = [
-            "nixpkgs=${nixpkgs}"
-          ];
+          nix.nixPath = [ "nixpkgs=${nixpkgs}" ];
           nix.registry.p.flake = self;
           nix.registry.nixpkgs.flake = nixpkgs;
           nix.registry.shadowrz.flake = inputs.shadowrz;
