@@ -788,8 +788,7 @@
         "rust-overlay": [
           "nickcao",
           "rust-overlay"
-        ],
-        "shadowrz": "shadowrz"
+        ]
       }
     },
     "rust-overlay": {
@@ -828,25 +827,6 @@
         "owner": "oxalica",
         "repo": "rust-overlay",
         "type": "github"
-      }
-    },
-    "shadowrz": {
-      "inputs": {
-        "flake-utils": [
-          "flake-utils"
-        ],
-        "nixpkgs": [
-          "nixpkgs"
-        ]
-      },
-      "locked": {
-        "narHash": "sha256-2v0mO5w2BmwN6/bHTiEH6yvT0kRoxBEVEZvqK80MjeQ=",
-        "path": "./pkgs",
-        "type": "path"
-      },
-      "original": {
-        "path": "./pkgs",
-        "type": "path"
       }
     },
     "sops-nix": {
