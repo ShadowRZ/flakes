@@ -6,16 +6,20 @@
       himalaya.enable = true;
       imap = {
         host = "disroot.org";
+        port = 993;
+        tls.enable = true;
+      };
+      smtp = {
+        host = "disroot.org";
+        port = 465;
         tls.enable = true;
       };
       passwordCommand = "pass show ShadowRZ/Email";
       primary = true;
       realName = "夜坂雅";
-      smtp = {
-        host = "disroot.org";
-        tls.enable = true;
-      };
       userName = "shadowrz@disroot.org";
     };
   };
+  # Also globally enable Himalaya.
+  programs.himalaya.enable = true;
 }
