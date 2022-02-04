@@ -88,6 +88,7 @@
     # Others
     libreoffice # LibreOffice
     vlc # VLC
+    lightly-qt # Lightly Qt theme
     mediainfo-gui # MediaInfo GUI
     # IM Clients
     element-desktop # Element Desktop
@@ -95,6 +96,9 @@
     ### Above are Matrix clients.
     hexchat # HexChat
     dino # Dino
+    # GTK
+    gtk3.dev
+    gtk4.dev
   ];
 
   hardware.opengl.enable = true;
