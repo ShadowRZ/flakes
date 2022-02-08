@@ -13,6 +13,7 @@
         "223.6.6.6:853 -tls-host-verify dns.alidns.com -group china -exclude-default-group"
         "9.9.9.9:853 -tls-host-verify dns.quad9.net"
         "149.112.112.112:853 -tls-host-verify dns.quad9.net"
+        "1.0.0.1:853 -tls-host-verify cloudflare-dns.com"
       ];
       speed-check-mode = "tcp:443,tcp:80,ping";
     };
@@ -32,6 +33,13 @@
       path = /var/lib/NetworkManager/system-connections
     '';
   };
+
+  environment.systemPackages = with pkgs; [
+    v2ray
+    v2ray-geoip
+    v2ray-domain-list-community
+    v2raya
+  ];
 
   networking.nameservers = [ "127.0.0.53" ];
   networking.usePredictableInterfaceNames = true;

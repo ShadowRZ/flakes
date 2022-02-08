@@ -40,7 +40,7 @@
       trusted-users = [ "root" "@wheel" ];
       substituters = lib.mkForce [
         "https://mirror.sjtu.edu.cn/nix-channels/store"
-        "https://cache.nixos.org"
+        "https://mirrors.bfsu.edu.cn/nix-channels/store"
         "https://berberman.cachix.org"
         "https://s3.nichi.co/cache"
         "https://nix-community.cachix.org"
@@ -63,7 +63,6 @@
       experimental-features = nix-command flakes
       flake-registry = /etc/nix/registry.json
     '';
-    package = pkgs.nixUnstable;
   };
 
   # System programs
