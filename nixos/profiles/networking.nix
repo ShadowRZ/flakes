@@ -38,7 +38,6 @@
     v2ray
     v2ray-geoip
     v2ray-domain-list-community
-    v2raya
   ];
 
   networking.nameservers = [ "127.0.0.53" ];

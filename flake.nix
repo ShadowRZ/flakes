@@ -44,7 +44,7 @@
               # Neovim Nightly
               inputs.neovim-nightly.overlay
               # Users' flake
-              inputs.nickcao.overlay
+              inputs.nickcao.overlays.default
               inputs.berberman.overlay
               self.overlay
               # Fix SmartDNS
