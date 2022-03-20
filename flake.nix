@@ -9,6 +9,8 @@
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
     # Neovim Nightly
     neovim-nightly.url = "github:nix-community/neovim-nightly-overlay";
+    # Wayland tools
+    nixpkgs-wayland.url = "github:nix-community/nixpkgs-wayland";
     # Flake utils
     flake-utils.url = "github:numtide/flake-utils";
     # NVFetcher
@@ -34,6 +36,8 @@
         system = "x86_64-linux";
         modules = [
           ./nixos/configuration.nix
+          # Wayfire
+          ./modules/programs/wayfire.nix
           # Home Manager Module
           home-manager.nixosModules.home-manager
           # (modulesPath + "/installer/scan/not-detected.nix")
@@ -43,15 +47,17 @@
             nixpkgs.overlays = [
               # Neovim Nightly
               inputs.neovim-nightly.overlay
+              # Wayland tools
               # Users' flake
               inputs.nickcao.overlays.default
               inputs.berberman.overlay
               self.overlay
-              # Fix SmartDNS
               (final: prev: {
+                # Fix SmartDNS
                 smartdns = prev.smartdns.overrideAttrs
                   (attrs: { postPatch = "rm systemd/smartdns.service"; });
               })
+              inputs.nixpkgs-wayland.overlay
             ];
             # Configuration revision.
             system.configurationRevision =

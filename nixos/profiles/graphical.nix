@@ -11,10 +11,11 @@
       # Configure keymap in X11
       layout = "us";
       libinput.enable = true;
-      # SDDM
-      displayManager.sddm = { enable = true; };
-      # Plasma 5
-      desktopManager.plasma5.enable = true;
+      # GDM
+      displayManager.gdm = {
+        enable = true;
+        wayland = true;
+      };
       # Modesettings driver
       videoDrivers = [ "modesettings" ];
     };
@@ -52,6 +53,7 @@
   systemd.services.upower.enable = true;
 
   environment.systemPackages = with pkgs; [
+    wayfire # Wayfire
     # VA-API.
     vaapiIntel
     intel-gpu-tools
@@ -67,6 +69,7 @@
     imagemagick # ImageMagick
     papirus-icon-theme # Papirus
     qt5.qtgraphicaleffects # Qt Graphical Effects
+    qt5.qtwayland # Qt Wayland
     xsel # xsel clipboard tool
     ark # Ark
     feh # Feh
@@ -106,5 +109,11 @@
   hardware.opengl.driSupport32Bit = true;
   hardware.opengl.extraPackages = with pkgs; [ vaapiIntel ];
   hardware.opengl.extraPackages32 = with pkgs; [ vaapiIntel ];
+
+  # Wayland programs.
+  programs = {
+    wayfire.enable = true;
+    waybar.enable = true;
+  };
 
 }
