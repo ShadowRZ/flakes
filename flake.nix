@@ -9,6 +9,8 @@
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
     # Neovim Nightly
     neovim-nightly.url = "github:nix-community/neovim-nightly-overlay";
+    # Emacs Overlay
+    emacs-overlay.url = "github:nix-community/emacs-overlay";
     # Wayland tools
     nixpkgs-wayland.url = "github:nix-community/nixpkgs-wayland";
     # Flake utils
@@ -49,6 +51,9 @@
               # Neovim Nightly
               inputs.neovim-nightly.overlay
               # Wayland tools
+              inputs.nixpkgs-wayland.overlay
+              # Emacs Overlay
+              inputs.emacs-overlay.overlay
               # Users' flake
               inputs.nickcao.overlays.default
               inputs.berberman.overlay
@@ -57,6 +62,7 @@
                 # Fix SmartDNS
                 smartdns = prev.smartdns.overrideAttrs
                   (attrs: { postPatch = "rm systemd/smartdns.service"; });
+                shadowrz.subreaper = import ./subreaper prev;
               })
               inputs.nixpkgs-wayland.overlay
             ];
