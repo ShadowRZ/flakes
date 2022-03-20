@@ -14,6 +14,7 @@
       # GDM
       displayManager.gdm = {
         enable = true;
+        # Ensure GDM boots in Wayland.
         wayland = true;
       };
       # Modesettings driver
@@ -53,7 +54,6 @@
   systemd.services.upower.enable = true;
 
   environment.systemPackages = with pkgs; [
-    wayfire # Wayfire
     # VA-API.
     vaapiIntel
     intel-gpu-tools
@@ -61,7 +61,6 @@
     # Graphical packages.
     ardour # Ardour
     sonic-visualiser # Sonic Visualiser
-    glxinfo # GLX Info
     firefox # Firefox
     materia-theme # Materia GTK Theme
     ffmpeg-full # FFmpeg
@@ -70,28 +69,22 @@
     papirus-icon-theme # Papirus
     qt5.qtgraphicaleffects # Qt Graphical Effects
     qt5.qtwayland # Qt Wayland
-    xsel # xsel clipboard tool
-    ark # Ark
     feh # Feh
     gimp # GIMP
     inkscape # Inkscape
     dfeet # D-Feet
     smplayer # SMPlayer
     avidemux # Avidemux
-    emacs # Emacs
-    kate # Kate / KWrite
+    emacsPgtk # Emacs with Pure GTK.
     # Bibata
     bibata-cursors
     bibata-extra-cursors
     bibata-cursors-translucent
     # Qt 5 tools
     libsForQt5.full
-    # KWin Material Decoration
-    material-kwin-decoration
     # Others
     libreoffice # LibreOffice
     vlc # VLC
-    lightly-qt # Lightly Qt theme
     mediainfo-gui # MediaInfo GUI
     # IM Clients
     element-desktop # Element Desktop
@@ -112,7 +105,7 @@
 
   # Wayland programs.
   programs = {
-    wayfire.enable = true;
+    hikari.enable = true;
     waybar.enable = true;
   };
 

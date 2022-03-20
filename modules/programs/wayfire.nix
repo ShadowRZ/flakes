@@ -39,6 +39,4 @@ in {
     # For screen sharing (this option only has an effect with xdg.portal.enable):
     xdg.portal.extraPortals = [ pkgs.xdg-desktop-portal-wlr ];
   };
-
-  meta.maintainers = with lib.maintainers; [ primeos colemickens ];
 }

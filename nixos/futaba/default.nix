@@ -17,16 +17,21 @@
   # changes in each release.
   home.stateVersion = "21.05";
 
-  # Packages.
   home.packages = with pkgs; [
-    # KDE Connect (started by Plasma systemd startup)
-    kdeconnect
-    # Fcitx 5
-    (fcitx5-with-addons.override {
-      addons =
-        [ fcitx5-chinese-addons fcitx5-pinyin-moegirl fcitx5-pinyin-zhwiki ];
-    })
+    grim
+    slurp
+    swaybg
+    wlogout
+    wlr-randr
+    wl-clipboard
+    wlogout
   ];
+
+  i18n.inputMethod = {
+    enabled = "fcitx5";
+    fcitx5.addons =
+      [ fcitx5-chinese-addons fcitx5-pinyin-moegirl fcitx5-pinyin-zhwiki ];
+  };
 
   ###### Program configs start here.
   programs = {
@@ -89,10 +94,15 @@
     ### OBS
     obs-studio = {
       enable = true;
-      plugins = with pkgs.obs-studio-plugins; [ obs-gstreamer ];
+      plugins = with pkgs.obs-studio-plugins; [ obs-gstreamer wlrobs ];
     };
     ### Password store
     password-store = { enable = true; };
+    ### Mako
+    mako = {
+      enable = true;
+      font = "小赖字体 SC 20";
+    };
   };
   ###### End of program configs.
   ###### Services configs start here.
@@ -113,6 +123,8 @@
     };
     ### EasyEffects
     easyeffects = { enable = true; };
+    ### KDE Connect
+    kdeconnect = { enable = true; };
   };
   ###### End of service configs.
 
