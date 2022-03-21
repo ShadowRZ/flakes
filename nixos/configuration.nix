@@ -7,10 +7,10 @@
     # Include the results of the hardware scan.
     ./hardware-configuration.nix
     # Profiles.
-    ./profiles/core.nix
-    ./profiles/networking.nix
-    ./profiles/graphical.nix
-    ./profiles/python.nix
+    ./modules/core
+    ./modules/networking
+    ./modules/graphical
+    ./modules/environment
   ];
 
   # Use the systemd-boot EFI boot loader.

@@ -30,6 +30,17 @@ in {
       systemPackages = with pkgs; [ hikari ];
     };
     security.polkit.enable = true;
+    security.pam.services.hikari-unlocker = {
+      # Upstream PAM rules
+      text = ''auth include login'';
+    };
+    # SUID required
+    security.wrappers.hikari-unlocker = {
+      owner = "root";
+      group = "root";
+      setuid = true;
+      source = "${pkgs.hikari}/bin/hikari-unlocker";
+    };
     hardware.opengl.enable = mkDefault true;
     # To make a Hikari session available if a display manager like SDDM is enabled:
     services.xserver.displayManager.sessionPackages = [ hikariSession ];
