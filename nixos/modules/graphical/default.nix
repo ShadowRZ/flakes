@@ -11,11 +11,27 @@
       # Configure keymap in X11
       layout = "us";
       libinput.enable = true;
-      # GDM
-      displayManager.gdm = {
+      # LightDM
+      displayManager.lightdm = {
         enable = true;
-        # Ensure GDM boots in Wayland.
-        wayland = true;
+        # GTK Greeter
+        greeters.gtk = {
+          enable = true;
+          clock-format = "%H:%M:%S";
+          cursorTheme = {
+            name = "Bibata-Modern-Amber";
+            package = pkgs.bibata-cursors;
+            size = 24;
+          };
+          iconTheme = {
+            name = "Papirus";
+            package = pkgs.papirus-icon-theme;
+          };
+          theme = {
+            name = "adw-gtk3";
+            package = pkgs.adw-gtk3;
+          };
+        };
       };
       # Modesettings driver
       videoDrivers = [ "modesettings" ];
