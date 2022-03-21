@@ -20,11 +20,11 @@
   home.packages = with pkgs; [
     grim
     slurp
-    swaybg
     wlogout
     wlr-randr
     wl-clipboard
     wlogout
+    qt5ct
   ];
 
   i18n.inputMethod = {
@@ -135,7 +135,12 @@
   systemd.user.sessionVariables = {
     LESSHISTFILE = "-";
     GST_VAAPI_ALL_DRIVERS = "1";
-    MOZ_X11_EGL = "1";
+    QT_QPA_PLATFORMTHEME = "qt5ct";
+    # Wayland
+    QT_QPA_PLATFORM = "wayland";
+    CLUTTER_BACKEND = "wayland";
+    SDL_VIDEODRIVER = "wayland";
+    MOZ_ENABLE_WAYLAND = "1";
     # Fcitx 5
     GTK_IM_MODULE = "fcitx";
     QT_IM_MODULE = "fcitx";

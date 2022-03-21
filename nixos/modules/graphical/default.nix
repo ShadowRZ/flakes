@@ -85,7 +85,6 @@
     papirus-icon-theme # Papirus
     qt5.qtgraphicaleffects # Qt Graphical Effects
     qt5.qtwayland # Qt Wayland
-    feh # Feh
     gimp # GIMP
     inkscape # Inkscape
     dfeet # D-Feet
@@ -111,6 +110,13 @@
     # GTK
     gtk3.dev
     gtk4.dev
+    # Others
+    xfce.mousepad
+    xfce.orage
+    xfce.parole
+    xfce.ristretto
+    xfce.xfce4-appfinder
+    synapse
   ];
 
   hardware.opengl.enable = true;
@@ -122,7 +128,13 @@
   # Wayland programs.
   programs = {
     hikari.enable = true;
-    waybar.enable = true;
+    spacefm = {
+      enable = true;
+      settings = {
+        tmp_dir = "/tmp";
+        terminal_su = "${pkgs.sudo}/bin/sudo";
+      };
+    };
   };
 
 }
