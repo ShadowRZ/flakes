@@ -12,8 +12,7 @@ let
       cat > $out/share/wayland-sessions/wayfire.desktop << EOF
       [Desktop Entry]
       Name=Wayfire
-      Exec=${pkgs.wayfire}/bin/wayfire
-      TryExec=${pkgs.wayfire}/bin/wayfire
+      Exec=${pkgs.shadowrz.subreaper} ${pkgs.wayfire}/bin/wayfire
       Icon=
       Type=Application
       DesktopNames=Wayfire

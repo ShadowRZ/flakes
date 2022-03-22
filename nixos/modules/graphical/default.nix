@@ -127,7 +127,7 @@
 
   # Wayland programs.
   programs = {
-    hikari.enable = true;
+    wayfire.enable = true;
     spacefm = {
       enable = true;
       settings = {
