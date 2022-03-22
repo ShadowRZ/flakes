@@ -19,7 +19,7 @@
           let g:airline_powerline_fonts = 1
           set termguicolors
       endif
-      colorscheme catppuccin
+      colorscheme ayu
       set tabstop=2 shiftwidth=2 expandtab smarttab
       " completion
       inoremap <expr> <Tab>   pumvisible() ? "\<C-n>" : "\<Tab>"
@@ -37,7 +37,7 @@
       vim-autoformat
       vim-airline
       vim-airline-themes
-      catppuccin-nvim
+      ayu-vim
       # Deoplete
       deoplete-nvim
       deoplete-lsp

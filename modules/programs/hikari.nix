@@ -13,7 +13,7 @@ let
       [Desktop Entry]
       Name=Hikari
       Comment=Stacking compositor with tilling capabilities
-      Exec=${pkgs.shadowrz.subreaper} ${pkgs.hikari}/bin/hikari
+      Exec=${pkgs.hikari}/bin/hikari
       Type=Application
       EOF
     '';

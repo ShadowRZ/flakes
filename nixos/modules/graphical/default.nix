@@ -3,7 +3,7 @@
     upower.enable = true;
     dbus = {
       enable = true;
-      packages = with pkgs; [ dconf ];
+      packages = with pkgs; [ dconf gcr ];
     };
     # X11 Server
     xserver = {
@@ -91,6 +91,7 @@
     smplayer # SMPlayer
     avidemux # Avidemux
     emacsPgtk # Emacs with Pure GTK.
+    quodlibet # Quod Libet
     # Bibata
     bibata-cursors
     bibata-extra-cursors
@@ -99,7 +100,6 @@
     libsForQt5.full
     # Others
     libreoffice # LibreOffice
-    vlc # VLC
     mediainfo-gui # MediaInfo GUI
     # IM Clients
     element-desktop # Element Desktop
@@ -112,11 +112,11 @@
     gtk4.dev
     # Others
     xfce.mousepad
-    xfce.orage
-    xfce.parole
-    xfce.ristretto
     xfce.xfce4-appfinder
-    synapse
+    xfce.thunar
+    imv
+    celluloid
+    waybar
   ];
 
   hardware.opengl.enable = true;
@@ -128,13 +128,6 @@
   # Wayland programs.
   programs = {
     wayfire.enable = true;
-    spacefm = {
-      enable = true;
-      settings = {
-        tmp_dir = "/tmp";
-        terminal_su = "${pkgs.sudo}/bin/sudo";
-      };
-    };
   };
 
 }

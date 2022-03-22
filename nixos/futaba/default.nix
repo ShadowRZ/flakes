@@ -117,7 +117,7 @@
         allow-loopback-pinentry
         allow-emacs-pinentry
       '';
-      pinentryFlavor = "qt";
+      pinentryFlavor = "gnome3";
     };
     ### Emacs Daemon
     emacs = {
