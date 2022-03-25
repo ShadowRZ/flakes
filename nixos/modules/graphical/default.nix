@@ -5,33 +5,11 @@
       enable = true;
       packages = with pkgs; [ dconf gcr ];
     };
-    # X11 Server
     xserver = {
-      enable = true;
-      # Configure keymap in X11
-      layout = "us";
-      libinput.enable = true;
-      # LightDM
-      displayManager.lightdm = {
+      # GDM
+      displayManager.gdm = {
         enable = true;
-        # GTK Greeter
-        greeters.gtk = {
-          enable = true;
-          clock-format = "%H:%M:%S";
-          cursorTheme = {
-            name = "Bibata-Modern-Amber";
-            package = pkgs.bibata-cursors;
-            size = 24;
-          };
-          iconTheme = {
-            name = "Papirus";
-            package = pkgs.papirus-icon-theme;
-          };
-          theme = {
-            name = "adw-gtk3";
-            package = pkgs.adw-gtk3;
-          };
-        };
+        wayland = true;
       };
       # Modesettings driver
       videoDrivers = [ "modesettings" ];
@@ -127,7 +105,8 @@
 
   # Wayland programs.
   programs = {
-    wayfire.enable = true;
+    labwc.enable = true;
+    waybar.enable = true;
   };
 
 }
