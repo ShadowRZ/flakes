@@ -7,14 +7,12 @@ let
   labwcSession = pkgs.stdenvNoCC.mkDerivation {
     name = "labwc-session";
     phases = ["installPhase"];
-    installPhase = let
-      runner = pkgs.shadowrz.mkSystemdRun "${pkgs.labwc}/bin/labwc";
-    in ''
+    installPhase = ''
       mkdir -p $out/share/wayland-sessions
       cat > $out/share/wayland-sessions/labwc.desktop << EOF
       [Desktop Entry]
       Name=layfire
-      Exec=${runner}
+      Exec=${pkgs.labwc}/bin/labwc
       Type=Application
       Comment=A wayland stacking compositor
       EOF

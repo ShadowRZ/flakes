@@ -64,7 +64,6 @@
                 smartdns = prev.smartdns.overrideAttrs
                   (attrs: { postPatch = "rm systemd/smartdns.service"; });
                 shadowrz.subreaper = import ./subreaper final;
-                shadowrz.mkSystemdRun = import ./lib/systemd-run.nix final;
               })
               inputs.nixpkgs-wayland.overlay
             ];
