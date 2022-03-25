@@ -4,15 +4,17 @@ with lib;
 
 let
   cfg = config.programs.labwc;
-  wayfireSession = pkgs.stdenvNoCC.mkDerivation {
+  labwcSession = pkgs.stdenvNoCC.mkDerivation {
     name = "labwc-session";
     phases = ["installPhase"];
-    installPhase = ''
+    installPhase = let
+      runner = pkgs.shadowrz.mkSystemdRun "${pkgs.labwc}/bin/labwc";
+    in ''
       mkdir -p $out/share/wayland-sessions
       cat > $out/share/wayland-sessions/labwc.desktop << EOF
       [Desktop Entry]
       Name=layfire
-      Exec=${pkgs.labwc}/bin/labwc
+      Exec=${runner}
       Type=Application
       Comment=A wayland stacking compositor
       EOF

@@ -6,6 +6,7 @@
       packages = with pkgs; [ dconf gcr ];
     };
     xserver = {
+      enable = true;
       # GDM
       displayManager.gdm = {
         enable = true;
