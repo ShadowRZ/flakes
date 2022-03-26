@@ -1,9 +1,9 @@
-{ pkgs, ... }: {
+{ pkgs, lib, ... }: {
   services = {
     upower.enable = true;
     dbus = {
       enable = true;
-      packages = with pkgs; [ dconf gcr ];
+      packages = with pkgs; [ dconf gcr gnome.nautilus ];
     };
     xserver = {
       enable = true;
@@ -25,12 +25,16 @@
       # JACK
       jack.enable = true;
     };
+    # GVFS
+    gvfs = {
+      enable = true;
+    };
   };
   # rtkit
   security.rtkit.enable = true;
 
   # Select internationalisation properties.
-  i18n.defaultLocale = "en_US.UTF-8";
+  i18n.defaultLocale = "zh_CN.UTF-8";
 
   # Fonts.
   fonts.fonts = with pkgs; [
@@ -58,6 +62,7 @@
     sonic-visualiser # Sonic Visualiser
     firefox # Firefox
     materia-theme # Materia GTK Theme
+    arc-theme # Arc theme
     ffmpeg-full # FFmpeg
     gnome-themes-extra # Extra GNOME themes like HighContrast
     imagemagick # ImageMagick
@@ -70,7 +75,7 @@
     smplayer # SMPlayer
     avidemux # Avidemux
     emacsPgtk # Emacs with Pure GTK.
-    quodlibet # Quod Libet
+    rhythmbox # Rhythmbox
     # Bibata
     bibata-cursors
     bibata-extra-cursors
@@ -92,7 +97,7 @@
     # Others
     xfce.mousepad
     xfce.xfce4-appfinder
-    xfce.thunar
+    gnome.nautilus
     imv
     celluloid
     waybar
@@ -106,8 +111,7 @@
 
   # Wayland programs.
   programs = {
-    labwc.enable = true;
-    waybar.enable = true;
+    wayfire.enable = true;
+    gnome-terminal.enable = true;
   };
-
 }

@@ -8,7 +8,7 @@
       set title
       set number
       set mouse=a
-      set background=dark
+      set background=light
       let mapleader = ';'
       let maplocalleader = '\\'
       set tabstop=4 shiftwidth=4 softtabstop=4 expandtab
@@ -19,7 +19,7 @@
           let g:airline_powerline_fonts = 1
           set termguicolors
       endif
-      colorscheme ayu
+      colorscheme base16-summerfruit-light
       set tabstop=2 shiftwidth=2 expandtab smarttab
       " completion
       inoremap <expr> <Tab>   pumvisible() ? "\<C-n>" : "\<Tab>"
@@ -37,7 +37,7 @@
       vim-autoformat
       vim-airline
       vim-airline-themes
-      ayu-vim
+      base16-vim
       # Deoplete
       deoplete-nvim
       deoplete-lsp

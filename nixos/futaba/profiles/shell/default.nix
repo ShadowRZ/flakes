@@ -65,6 +65,8 @@
 
         ### Prompt -- 8< --
         ${promptInit}
+
+        [[ -z $DISPLAY && -z $WAYLAND_DISPLAY ]] && export LANG=en_US.UTF-8
       '';
     };
     # Skim
