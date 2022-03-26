@@ -1,5 +1,5 @@
 { pkgs, ... }: {
-  environment.systemPackages = with pkgs; [
+  environment.systemPackages = with pkgs.gst_all_1; [
     gstreamer
     gst-plugins-base
     gst-plugins-good
