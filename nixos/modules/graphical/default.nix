@@ -8,9 +8,19 @@
     xserver = {
       enable = true;
       # GDM
-      displayManager.gdm = {
+      displayManager.lightdm = {
         enable = true;
-        wayland = true;
+        greeters.enso = {
+          enable = true;
+          cursorTheme = {
+            name = "Bibata-Modern-Amber";
+            package = pkgs.bibata-cursors;
+          };
+          iconTheme = {
+            name = "ePapirus";
+            package = pkgs.papirus-icon-theme;
+          };
+        };
       };
       # Modesettings driver
       videoDrivers = [ "modesettings" ];
