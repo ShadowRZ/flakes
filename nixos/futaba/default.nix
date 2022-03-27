@@ -117,8 +117,6 @@
     };
     ### EasyEffects
     easyeffects = { enable = true; };
-    ### KDE Connect
-    kdeconnect = { enable = true; };
   };
   ###### End of service configs.
 
