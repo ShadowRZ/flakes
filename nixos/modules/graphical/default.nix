@@ -101,6 +101,8 @@
     imv
     celluloid
     waybar
+    # Polkit daemon
+    polkit_gnome
   ];
 
   hardware.opengl.enable = true;
