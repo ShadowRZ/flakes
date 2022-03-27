@@ -19,9 +19,11 @@
     };
   };
 
-  services.avahi = {
-    enable = true;
-    nssmdns = true;
+  services = {
+    avahi = {
+      enable = true;
+      nssmdns = true;
+    };
   };
 
   networking.networkmanager = {
@@ -31,6 +33,9 @@
     extraConfig = ''
       [keyfile]
       path = /var/lib/NetworkManager/system-connections
+      [connectivity]
+      uri = http://google.cn/generate_204
+      response = 
     '';
   };
 
