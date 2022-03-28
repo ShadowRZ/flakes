@@ -18,13 +18,20 @@
   home.stateVersion = "21.05";
 
   home.packages = with pkgs; [
-    grim
-    slurp
-    wlogout
-    wlr-randr
-    wl-clipboard
-    wlogout
-    qt5ct
+    aegisub
+    bubblewrap
+    w3m
+    nwjs
+    optipng
+    nix-prefetch-github
+    fontforge-gtk
+    android-tools
+    nheko
+    rclone
+    assimp
+    gnome.dconf-editor
+    lsof
+    helvum
   ];
 
   ###### Program configs start here.

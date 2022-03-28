@@ -122,7 +122,19 @@
     kermit-terminal
     # Polkit daemon
     polkit_gnome
+    # Wayland base toolsets
+    grim
+    slurp
+    wlogout
+    wlr-randr
+    wl-clipboard
+    wlogout
+    swaybg
+    swaylock
   ];
+
+  # Basic PAM for swaylock
+  security.pam.services.swaylock = {};
 
   hardware.opengl.enable = true;
   hardware.opengl.driSupport = true;
@@ -133,5 +145,6 @@
   # Wayland programs.
   programs = {
     wayfire.enable = true;
+    qt5ct.enable = true;
   };
 }
