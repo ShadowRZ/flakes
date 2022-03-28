@@ -10,7 +10,7 @@
       # GDM
       displayManager.lightdm = {
         enable = true;
-        greeters.enso = {
+        greeters.gtk = {
           enable = true;
           cursorTheme = {
             name = "Bibata-Modern-Amber";
@@ -119,6 +119,7 @@
     imv
     celluloid
     waybar
+    kermit-terminal
     # Polkit daemon
     polkit_gnome
   ];
@@ -132,6 +133,5 @@
   # Wayland programs.
   programs = {
     wayfire.enable = true;
-    gnome-terminal.enable = true;
   };
 }
