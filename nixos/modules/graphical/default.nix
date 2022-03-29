@@ -131,6 +131,16 @@
     wlogout
     swaybg
     swaylock
+    (deadbeef-with-plugins.override {
+      plugins = with deadbeefPlugins; [
+        headerbar-gtk3
+        mpris2
+        (statusnotifier.override {
+          libdbusmenu-glib = libdbusmenu;
+        })
+        lyricbar
+      ];
+    })
   ];
 
   # Basic PAM for swaylock
