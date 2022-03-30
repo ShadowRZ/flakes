@@ -103,12 +103,14 @@
     gtk4.dev
     # Others
     xfce.mousepad
+    xfce.ristretto
     xfce.xfce4-appfinder
     gnome.nautilus
     imv
     celluloid
     waybar
     kermit-terminal
+    gthumb
     # Polkit daemon
     polkit_gnome
     # Wayland base toolsets
