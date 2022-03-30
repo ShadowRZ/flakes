@@ -48,6 +48,8 @@
             || source ${p10k}
         '';
       in ''
+        # Subreap
+        zmodload lilydjwg/subreap >/dev/null 2>&1
         # Powerlevek10k Instant prompt
         if [[ -r "${
           "\${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-\${(%):-%n}"

@@ -63,6 +63,10 @@
                 # Fix SmartDNS
                 smartdns = prev.smartdns.overrideAttrs
                   (attrs: { postPatch = "rm systemd/smartdns.service"; });
+                # lilydjwg/subreap
+                zsh = prev.zsh.overrideAttrs (attrs: {
+                  patches = attrs.patches ++ [ ./patches/zsh-subreap.patch ];
+                });
                 shadowrz.subreaper = import ./subreaper final;
               })
               inputs.nixpkgs-wayland.overlay
