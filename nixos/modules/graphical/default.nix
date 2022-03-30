@@ -7,20 +7,9 @@
     };
     xserver = {
       enable = true;
-      # GDM
-      displayManager.lightdm = {
+      # SDDM
+      displayManager.sddm = {
         enable = true;
-        greeters.gtk = {
-          enable = true;
-          cursorTheme = {
-            name = "Bibata-Modern-Amber";
-            package = pkgs.bibata-cursors;
-          };
-          iconTheme = {
-            name = "ePapirus";
-            package = pkgs.papirus-icon-theme;
-          };
-        };
       };
       # Modesettings driver
       videoDrivers = [ "modesettings" ];
