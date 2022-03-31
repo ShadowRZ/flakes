@@ -10,6 +10,7 @@
       # SDDM
       displayManager.sddm = {
         enable = true;
+        theme = "sugar-candy";
       };
       # Modesettings driver
       videoDrivers = [ "modesettings" ];
@@ -132,6 +133,9 @@
         lyricbar
       ];
     })
+    # SDDM
+    sddm-sugar-candy
+    qt5.qtvirtualkeyboard
   ];
 
   # Basic PAM for swaylock
