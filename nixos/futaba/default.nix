@@ -127,7 +127,7 @@
   };
   ###### End of service configs.
 
-  # Session variables.
+  # Session variables for Systemd user units.
   systemd.user.sessionVariables = {
     LESSHISTFILE = "-";
     GST_VAAPI_ALL_DRIVERS = "1";
@@ -144,6 +144,10 @@
     # Inherits from home.sessionVariables
     PASSWORD_STORE_DIR = config.home.sessionVariables.PASSWORD_STORE_DIR;
     GNUPGHOME = config.home.sessionVariables.GNUPGHOME;
+  };
+
+  home.sessionVariables = {
+    LANG = "zh_CN.UTF-8";
   };
 
 }

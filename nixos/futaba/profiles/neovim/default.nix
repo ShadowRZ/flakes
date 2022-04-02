@@ -3,46 +3,32 @@
     enable = true;
     vimAlias = true;
     viAlias = true;
+    vimdiffAlias = true;
     package = pkgs.neovim-nightly;
     extraConfig = ''
-      set title
-      set number
-      set mouse=a
-      set background=light
-      let mapleader = ';'
-      let maplocalleader = '\\'
-      set tabstop=4 shiftwidth=4 softtabstop=4 expandtab
-      let g:netrw_liststyle = 3 " tree style
-      let g:netrw_banner = 0 " no banner
-      let g:netrw_browse_split = 3 " new tab
-      if has_key(environ(), "DISPLAY")
-          let g:airline_powerline_fonts = 1
-          set termguicolors
-      endif
-      colorscheme base16-summerfruit-light
-      set tabstop=2 shiftwidth=2 expandtab smarttab
-      " completion
-      inoremap <expr> <Tab>   pumvisible() ? "\<C-n>" : "\<Tab>"
-      inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
-      set completeopt=menuone,noinsert,noselect
-      set shortmess+=c
-      " deoplete
-      let g:deoplete#enable_at_startup = 1
+      ${builtins.readFile ./vimrc.vim}
+      " -- 8< -- Lua
+      lua << EOF
+      ${builtins.readFile ./nvim.lua}
+      EOF
     '';
     plugins = with pkgs.vimPlugins; [
       nvim-lspconfig
-      completion-nvim
-      vim-nix
-      vim-lastplace
-      vim-autoformat
-      vim-airline
-      vim-airline-themes
+      vim-fugitive
+      lightline-vim
       base16-vim
-      # Deoplete
-      deoplete-nvim
-      deoplete-lsp
-      deoplete-rust
-      deoplete-zsh
+      # nvim-cmp
+      nvim-cmp
+      cmp-nvim-lsp
+      luasnip
+      # Tree Sitter
+      (nvim-treesitter.withPlugins (
+        plugins: with plugins; [
+          tree-sitter-nix
+          tree-sitter-lua
+          tree-sitter-rust
+        ]
+      ))
     ];
   };
 }

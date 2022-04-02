@@ -3,7 +3,7 @@
     upower.enable = true;
     dbus = {
       enable = true;
-      packages = with pkgs; [ dconf gcr gnome.nautilus ];
+      packages = with pkgs; [ dconf gcr gnome.nautilus polkit_gnome ];
     };
     xserver = {
       enable = true;
@@ -110,7 +110,7 @@
     imv
     celluloid
     waybar
-    kermit-terminal
+    tilix
     gthumb
     # Polkit daemon
     polkit_gnome

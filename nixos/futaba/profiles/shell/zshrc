@@ -98,6 +98,22 @@ bindkey -M emacs '^N' history-substring-search-down
 # bind k and j for VI mode
 bindkey -M vicmd 'k' history-substring-search-up
 bindkey -M vicmd 'j' history-substring-search-down
+
+function foreground-last-job () {
+    if (( ${#jobstates} )); then
+        zle .push-input
+        [[ -o hist_ignore_space ]] && BUFFER=' ' || BUFFER=''
+        BUFFER="${BUFFER}fg"
+        zle .accept-line
+    else
+        zle -M '[ZLE] No background jobs. Doing nothing.'
+    fi
+}
+zle -N foreground-last-job
+
+bindkey '^Z' foreground-last-job
+bindkey -M emacs '^Z' foreground-last-job
+bindkey -M viins '^Z' foreground-last-job
 ### }}}
 ### - 8< - Completions {{{
 # Case insens only when no case match; after all completions loaded
@@ -245,3 +261,5 @@ export LESS_TERMCAP_se=$'\E[0m'
 export LESS_TERMCAP_so=$'\E[01;44;33m'
 export LESS_TERMCAP_ue=$'\E[0m'
 export LESS_TERMCAP_us=$'\E[01;32m'
+
+# vim:fdm=marker

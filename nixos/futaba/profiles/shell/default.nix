@@ -49,7 +49,12 @@
         '';
       in ''
         # Subreap
-        zmodload lilydjwg/subreap >/dev/null 2>&1
+        {
+          zmodload lilydjwg/subreap
+          subreap
+        } >/dev/null 2>&1
+        # Fake tty function
+        tty() { echo $TTY; }
         # Powerlevek10k Instant prompt
         if [[ -r "${
           "\${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-\${(%):-%n}"
@@ -68,7 +73,9 @@
         ### Prompt -- 8< --
         ${promptInit}
 
-        [[ -z $DISPLAY && -z $WAYLAND_DISPLAY ]] && export LANG=en_US.UTF-8
+        [[ -z $DISPLAY && -z $WAYLAND_DISPLAY ]] && export LANG=en_US.UTF-8 
+        # Unload fake tty function
+        unfunction tty
       '';
     };
     # Skim
