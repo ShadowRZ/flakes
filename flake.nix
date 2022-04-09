@@ -7,6 +7,9 @@
     # Home Manager
     home-manager.url = "github:nix-community/home-manager";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
+    # NUR
+    nur.url = "github:nix-community/NUR";
+    nur.inputs.nixpkgs.follows = "nixpkgs";
     # Neovim Nightly
     neovim-nightly.url = "github:nix-community/neovim-nightly-overlay";
     # Emacs Overlay
@@ -22,8 +25,6 @@
     ## NickCao
     nickcao.url = "github:NickCao/flakes";
     nickcao.inputs.nixpkgs.follows = "nixpkgs";
-    flake-compat.follows = "nickcao/flake-compat";
-    rust-overlay.follows = "nickcao/rust-overlay";
     ## Berberman
     berberman.url = "github:berberman/flakes";
     berberman.inputs.nixpkgs.follows = "nixpkgs";
@@ -51,6 +52,8 @@
             nixpkgs.overlays = [
               # Neovim Nightly
               inputs.neovim-nightly.overlay
+              # NUR
+              inputs.nur.overlay
               # Wayland tools
               inputs.nixpkgs-wayland.overlay
               # Emacs Overlay
