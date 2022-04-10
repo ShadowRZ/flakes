@@ -63,9 +63,6 @@
               inputs.berberman.overlay
               self.overlay
               (final: prev: {
-                # Fix SmartDNS
-                smartdns = prev.smartdns.overrideAttrs
-                  (attrs: { postPatch = "rm systemd/smartdns.service"; });
                 # lilydjwg/subreap
                 zsh = prev.zsh.overrideAttrs (attrs: {
                   patches = attrs.patches ++ [ ./patches/zsh-subreap.patch ];

@@ -43,7 +43,7 @@
         "https://mirrors.bfsu.edu.cn/nix-channels/store"
         "https://berberman.cachix.org"
         "https://nixpkgs-wayland.cachix.org"
-        "https://s3.nichi.co/cache"
+        "https://cache.nichi.co"
         "https://nix-community.cachix.org"
       ];
       trusted-public-keys = [
