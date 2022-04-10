@@ -1,6 +1,11 @@
 { config, pkgs, ... }: {
-  imports =
-    [ ./profiles/git ./profiles/neovim ./profiles/shell ./profiles/email ];
+  imports = [
+    ./profiles/git
+    ./profiles/neovim
+    ./profiles/shell
+    ./profiles/email
+    ./profiles/firefox
+  ];
 
   # Home Manager needs a bit of information about you and the
   # paths it should manage.
@@ -146,8 +151,6 @@
     GNUPGHOME = config.home.sessionVariables.GNUPGHOME;
   };
 
-  home.sessionVariables = {
-    LANG = "zh_CN.UTF-8";
-  };
+  home.sessionVariables = { LANG = "zh_CN.UTF-8"; };
 
 }

@@ -68,7 +68,6 @@
     # Graphical packages.
     ardour # Ardour
     sonic-visualiser # Sonic Visualiser
-    firefox # Firefox
     materia-theme # Materia GTK Theme
     arc-theme # Arc theme
     ffmpeg-full # FFmpeg
