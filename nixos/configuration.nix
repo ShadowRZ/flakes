@@ -17,7 +17,7 @@
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = false;
   # Kernel.
-  boot.kernelPackages = pkgs.linuxPackages_zen;
+  boot.kernelPackages = pkgs.linuxPackages_xanmod;
   boot.extraModulePackages = with config.boot.kernelPackages; [ broadcom_sta ];
   boot.kernelParams = pkgs.lib.mkAfter [
     "quiet"
