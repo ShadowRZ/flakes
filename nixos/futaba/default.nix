@@ -100,7 +100,7 @@
     ### OBS
     obs-studio = {
       enable = true;
-      plugins = with pkgs.obs-studio-plugins; [ obs-gstreamer wlrobs ];
+      plugins = with pkgs.obs-studio-plugins; [ wlrobs ];
     };
     ### Password store
     password-store = { enable = true; };
