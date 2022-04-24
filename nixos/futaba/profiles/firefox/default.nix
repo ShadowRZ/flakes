@@ -3,7 +3,7 @@
     enable = true;
     package = pkgs.firefox-wayland.override {
       extraPolicies = {
-        PasswordManagerEnabled = false;
+        PasswordManagerEnabled = true;
         DisableFirefoxAccounts = true;
         DisablePocket = true;
         EnableTrackingProtection = {
