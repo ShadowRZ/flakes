@@ -7,10 +7,10 @@
     };
     xserver = {
       enable = true;
-      # SDDM
-      displayManager.sddm = {
+      # GDM
+      displayManager.gdm = {
         enable = true;
-        theme = "sugar-candy";
+        wayland = true;
       };
       # Modesettings driver
       videoDrivers = [ "modesettings" ];
