@@ -12,7 +12,7 @@ let
       cat > $out/share/wayland-sessions/labwc.desktop << EOF
       [Desktop Entry]
       Name=layfire
-      Exec=${pkgs.labwc}/bin/labwc
+      Exec=${pkgs.shadowrz.wl-session} ${pkgs.labwc}/bin/labwc
       Type=Application
       Comment=A wayland stacking compositor
       EOF
