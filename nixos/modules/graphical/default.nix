@@ -141,4 +141,8 @@
     wayfire.enable = true;
     qt5ct.enable = true;
   };
+
+  nixpkgs.overlays = [
+    (import ./wayfire-overlay.nix)
+  ];
 }
