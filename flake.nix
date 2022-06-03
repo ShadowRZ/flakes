@@ -62,14 +62,8 @@
               inputs.nickcao.overlays.default
               inputs.berberman.overlay
               self.overlay
-              (final: prev: {
-                # lilydjwg/subreap
-                zsh = prev.zsh.overrideAttrs (attrs: {
-                  patches = attrs.patches ++ [ ./patches/zsh-subreap.patch ];
-                });
-                shadowrz.subreaper = import ./subreaper final;
-              })
               inputs.nixpkgs-wayland.overlay
+              (import ./override/package-overlay.nix)
             ];
             # Configuration revision.
             system.configurationRevision =
