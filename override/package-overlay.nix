@@ -4,7 +4,7 @@ final: prev: {
     (attrs: { patches = attrs.patches ++ [ ./patches/zsh-subreap.patch ]; });
   shadowrz.subreaper = import ./subreaper final;
   shadowrz.wl-session = final.writeScript "wl-session" ''
-    ${final.bashInteractive}/bin/bash
+    #!${final.runtimeShell}
     
     # systemctl(1) path
     systemctl_path=${final.systemd}/bin/systemctl
@@ -14,7 +14,7 @@ final: prev: {
     if [[ "$XDG_SESSION_TYPE" = "wayland" ]] && 
        [[ -n $SHELL ]] && [[ -n __ETC_PROFILE_DONE ]]; then
         # Ensure systemd user services get NIX_PROFILES (for GTK+)
-        ${final.bashInteractive}/bin/bash -l -c "[[ -n $NIX_PROFILES ]] && $systemctl_path --user import-environment NIX_PROFILES"
+        ${final.runtimeShell} -l -c "[[ -n $NIX_PROFILES ]] && $systemctl_path --user import-environment NIX_PROFILES"
         exec -l "$SHELL" "$@"
     fi
   '';

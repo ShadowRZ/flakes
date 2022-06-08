@@ -118,9 +118,7 @@
       plugins = with deadbeefPlugins; [
         headerbar-gtk3
         mpris2
-        (statusnotifier.override {
-          libdbusmenu-glib = libdbusmenu;
-        })
+        statusnotifier
         lyricbar
       ];
     })
