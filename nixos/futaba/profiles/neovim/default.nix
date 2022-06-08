@@ -4,23 +4,13 @@
     vimAlias = true;
     viAlias = true;
     vimdiffAlias = true;
-    package = pkgs.neovim-nightly;
     extraConfig = ''
-      ${builtins.readFile ./vimrc.vim}
-      " -- 8< -- Lua
-      lua << EOF
-      ${builtins.readFile ./nvim.lua}
-      EOF
+      ${builtins.readFile ./init.vim}
     '';
     plugins = with pkgs.vimPlugins; [
-      nvim-lspconfig
       vim-fugitive
       lightline-vim
       base16-vim
-      # nvim-cmp
-      nvim-cmp
-      cmp-nvim-lsp
-      luasnip
       # Tree Sitter
       (nvim-treesitter.withPlugins (
         plugins: with plugins; [

@@ -10,8 +10,6 @@
     # NUR
     nur.url = "github:nix-community/NUR";
     nur.inputs.nixpkgs.follows = "nixpkgs";
-    # Neovim Nightly
-    neovim-nightly.url = "github:nix-community/neovim-nightly-overlay";
     # Emacs Overlay
     emacs-overlay.url = "github:nix-community/emacs-overlay";
     # Wayland tools
@@ -50,8 +48,6 @@
           {
             # Overlays
             nixpkgs.overlays = [
-              # Neovim Nightly
-              inputs.neovim-nightly.overlay
               # NUR
               inputs.nur.overlay
               # Wayland tools
