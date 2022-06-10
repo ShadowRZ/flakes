@@ -56,6 +56,7 @@
     noto-fonts-extra # Extra Noto Fonts
     noto-fonts-emoji # Noto Color Emoji
     sarasa-gothic # Sarasa Gothic
+    font-awesome_6 # Font Awesome 6
   ];
 
   systemd.services.upower.enable = true;
