@@ -29,6 +29,14 @@
     gvfs = {
       enable = true;
     };
+    # GNOME Keyring
+    gnome.gnome-keyring = {
+      enable = true;
+    };
+    # Tumbler
+    tumbler = {
+      enable = true;
+    };
   };
   # rtkit
   security.rtkit.enable = true;
