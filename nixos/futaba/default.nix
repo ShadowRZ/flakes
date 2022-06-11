@@ -23,12 +23,12 @@
   home.stateVersion = "21.05";
 
   home.packages = with pkgs; [
-    aegisub
     bubblewrap
     w3m
     nwjs
     optipng
     nix-prefetch-github
+    nix-prefetch-git
     fontforge-gtk
     android-tools
     nheko
@@ -37,6 +37,9 @@
     gnome.dconf-editor
     lsof
     helvum
+    vscode
+    wine-staging
+    winetricks
   ];
 
   i18n.inputMethod = {

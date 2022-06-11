@@ -67,12 +67,8 @@
     intel-gpu-tools
     libva-utils
     # Graphical packages.
-    ardour # Ardour
-    sonic-visualiser # Sonic Visualiser
-    materia-theme # Materia GTK Theme
     arc-theme # Arc theme
     ffmpeg-full # FFmpeg
-    gnome-themes-extra # Extra GNOME themes like HighContrast
     imagemagick # ImageMagick
     papirus-icon-theme # Papirus
     qt5.qtgraphicaleffects # Qt Graphical Effects
@@ -80,10 +76,11 @@
     gimp # GIMP
     inkscape # Inkscape
     dfeet # D-Feet
-    smplayer # SMPlayer
     avidemux # Avidemux
     emacsPgtk # Emacs with Pure GTK.
-    rhythmbox # Rhythmbox
+    lollypop # Lollypop
+    pavucontrol # PulseAudio control
+    pulseaudio # PulseAudio tools
     # Bibata
     bibata-cursors
     bibata-extra-cursors
@@ -103,15 +100,13 @@
     gtk3.dev
     gtk4.dev
     # Others
-    xfce.mousepad
     xfce.ristretto
     xfce.xfce4-appfinder
     gnome.nautilus
-    imv
-    celluloid
+    celluloid # Celluloid
     waybar
-    tilix
-    gthumb
+    tilix # Tilix
+    gthumb # Gthumb
     # Polkit daemon
     polkit_gnome
     # Wayland base toolsets
@@ -131,9 +126,6 @@
         lyricbar
       ];
     })
-    # SDDM
-    sddm-sugar-candy
-    qt5.qtvirtualkeyboard
   ];
 
   # Basic PAM for swaylock

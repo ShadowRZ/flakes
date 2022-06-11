@@ -77,6 +77,7 @@
       claws-mail # Claws Mail
       electron # Electron
       aegisub # AegiSub
+      keepassxc # KeePassXC
     ];
   };
   home-manager.users.futaba = import ./futaba;
