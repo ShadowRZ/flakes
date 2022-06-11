@@ -2,8 +2,6 @@
 set title
 set number
 set mouse=a
-set background=light
-colorscheme base16-summerfruit-light
 
 " Leader
 let mapleader = ';'
@@ -15,16 +13,6 @@ let g:netrw_banner = 0 " no banner
 let g:netrw_browse_split = 4
 let g:netrw_altv = 1
 let g:netrw_winsize = 25
-
-" Under a environment where $DISPLAY is set
-if has_key(environ(), "DISPLAY")
-    set termguicolors
-endif
-
-" Under Termux
-if has_key(environ(), "TERMUX_VERSION")
-    set termguicolors
-endif
 
 " Tab / Spaces / Indent
 set tabstop=8 shiftwidth=4 softtabstop=4 expandtab
@@ -57,6 +45,16 @@ function! LightlineFilename()
     return filename . modified
 endfunction
 
+" Under a environment where $DISPLAY is set or under Termux
+if has_key(environ(), "DISPLAY") || has_key(environ(), "TERMUX_VERSION")
+    set termguicolors
+    set background=light
+    let g:everforest_background = 'soft'
+    colorscheme everforest
+    let g:lightline.colorscheme = 'everforest'
+endif
+
+" Tree Sitter
 lua << EOF
 require('nvim-treesitter.configs').setup {
     highlight = {

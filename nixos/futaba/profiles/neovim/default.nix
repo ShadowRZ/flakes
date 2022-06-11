@@ -10,7 +10,7 @@
     plugins = with pkgs.vimPlugins; [
       vim-fugitive
       lightline-vim
-      base16-vim
+      everforest
       # Tree Sitter
       (nvim-treesitter.withPlugins (
         plugins: with plugins; [
