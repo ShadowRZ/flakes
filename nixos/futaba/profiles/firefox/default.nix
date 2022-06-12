@@ -54,33 +54,39 @@
     };
     # Firefox extensions
     # TODO: Add links to https://addons.mozilla.org
-    extensions = with pkgs.nur.repos.rycee.firefox-addons; [
-      add-custom-search-engine
-      auto-tab-discard
-      behind-the-overlay-revival
-      clearurls
-      cookies-txt
-      copy-selection-as-markdown
-      decentraleyes
-      display-_anchors
-      don-t-fuck-with-paste
-      export-tabs-urls-and-titles
-      firefox-color
-      form-history-control
-      multi-account-containers
-      no-pdf-download
-      offline-qr-code-generator
-      single-file
-      stylus
-      tabliss
-      tree-style-tab
-      (ublock-origin.override {
-        version = "1.42.4";
-        url = "https://github.com/gorhill/uBlock/releases/download/1.42.4/uBlock0_1.42.4.firefox.signed.xpi";
-        sha256 = "sha256-vDwzXJYSactA3RFVF4jQ2GdK78rNyPvfbBmEXq6jOc4=";
-      })
-      violentmonkey
-      wappalyzer
-    ];
+    extensions = with pkgs.nur.repos.rycee.firefox-addons;
+      [
+        add-custom-search-engine
+        auto-tab-discard
+        behind-the-overlay-revival
+        clearurls
+        cookies-txt
+        copy-selection-as-markdown
+        decentraleyes
+        display-_anchors
+        don-t-fuck-with-paste
+        export-tabs-urls-and-titles
+        firefox-color
+        form-history-control
+        multi-account-containers
+        no-pdf-download
+        offline-qr-code-generator
+        single-file
+        stylus
+        tabliss
+        tree-style-tab
+        (ublock-origin.override {
+          version = "1.42.4";
+          url =
+            "https://github.com/gorhill/uBlock/releases/download/1.42.4/uBlock0_1.42.4.firefox.signed.xpi";
+          sha256 = "sha256-vDwzXJYSactA3RFVF4jQ2GdK78rNyPvfbBmEXq6jOc4=";
+        })
+        violentmonkey
+        wappalyzer
+      ] ++ (let
+        extra-addons = pkgs.callPackage ./extra-addons.nix {
+          buildFirefoxXpiAddon = pkgs.nur.repos.rycee.firefox-addons.buildFirefoxXpiAddon;
+        };
+      in with extra-addons; [ redirector ]);
   };
 }

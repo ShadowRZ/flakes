@@ -77,6 +77,23 @@
         ];
       };
     } // flake-utils.lib.eachDefaultSystem (system:
-      let pkgs = nixpkgs.legacyPackages.${system};
-      in { packages = (import ./pkgs pkgs); });
+      let
+        pkgs = import nixpkgs {
+          inherit system;
+          overlays = [ inputs.nur.overlay ];
+        };
+      in {
+        # Packages
+        packages = (import ./pkgs pkgs);
+        # Update my Firefox addons.
+        apps.update-firefox-addons = with pkgs;
+          let
+            update-firefox-addons =
+              writeShellScriptBin "update-firefox-addons" ''
+                ${nur.repos.rycee.firefox-addons-generator}/bin/nixpkgs-firefox-addons \
+                  nixos/futaba/profiles/firefox/extra-addons.json \
+                  nixos/futaba/profiles/firefox/extra-addons.nix
+              '';
+          in flake-utils.lib.mkApp { drv = update-firefox-addons; };
+      });
 }
