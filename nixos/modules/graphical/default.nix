@@ -101,8 +101,7 @@
     waybar
     tilix # Tilix
     gthumb # Gthumb
-    # Polkit daemon
-    polkit_gnome
+    gnome.seahorse # Seahorse
     # Wayland base toolsets
     grim
     slurp
@@ -124,6 +123,8 @@
 
   # Basic PAM for swaylock
   security.pam.services.swaylock = { };
+  # Auto unlock GNOME keyring
+  security.pam.services.gdm.enableGnomeKeyring = true;
 
   hardware.opengl.enable = true;
   hardware.opengl.driSupport = true;
@@ -133,6 +134,17 @@
   programs = {
     wayfire.enable = true;
     qt5ct.enable = true;
+  };
+
+  systemd.user.services = {
+    # Start GNOME Polkit password prompt.
+    "polkit-gnome-authentication-agent-1" = {
+      enable = true;
+      description = "GNOME PolicyKit Authentication Agent";
+      wantedBy = [ "graphical-session.target" ];
+      partOf = [ "graphical-session.target" ];
+      serviceConfig.ExecStart = "${pkgs.polkit_gnome}/libexec/polkit-gnome-authentication-agent-1";
+    };
   };
 
   nixpkgs.overlays = [ (import ./wayfire-overlay.nix) ];
