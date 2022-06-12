@@ -16,6 +16,9 @@
     nixpkgs-wayland.url = "github:nix-community/nixpkgs-wayland";
     # Flake utils
     flake-utils.url = "github:numtide/flake-utils";
+    # Fenix
+    fenix.url = "github:nix-community/fenix";
+    fenix.inputs.nixpkgs.follows = "nixpkgs";
     # NVFetcher
     nvfetcher.url = "github:berberman/nvfetcher";
     nvfetcher.inputs.nixpkgs.follows = "nixpkgs";
@@ -33,7 +36,7 @@
     {
       overlay = final: prev: (import ./pkgs prev);
       # NixOS configurations.
-      nixosConfigurations.hermitmedjed-s = nixpkgs.lib.nixosSystem {
+      nixosConfigurations.hermitmedjed-s = nixpkgs.lib.nixosSystem rec {
         system = "x86_64-linux";
         modules = [
           ./nixos/configuration.nix
@@ -54,12 +57,19 @@
               inputs.nixpkgs-wayland.overlay
               # Emacs Overlay
               inputs.emacs-overlay.overlay
+              # Fenix
+              inputs.fenix.overlay
               # Users' flake
               inputs.nickcao.overlays.default
               inputs.berberman.overlay
+              # My overlay
               self.overlay
-              inputs.nixpkgs-wayland.overlay
               (import ./override/package-overlay.nix)
+              # Rust Nightly Packages
+              (final: prev: import ./pkgs/rust-nightly-packages {
+                pkgs = prev;
+                fenix = inputs.fenix.packages.${system};
+              })
             ];
             # Configuration revision.
             system.configurationRevision =
@@ -83,8 +93,6 @@
           overlays = [ inputs.nur.overlay ];
         };
       in {
-        # Packages
-        packages = (import ./pkgs pkgs);
         # Update my Firefox addons.
         apps.update-firefox-addons = with pkgs;
           let
@@ -95,5 +103,8 @@
                   nixos/futaba/profiles/firefox/extra-addons.nix
               '';
           in flake-utils.lib.mkApp { drv = update-firefox-addons; };
+      }) // (import ./pkgs/flake-output.nix {
+        inherit flake-utils nixpkgs;
+        fenix = inputs.fenix;
       });
 }

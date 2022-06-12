@@ -6,13 +6,14 @@
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
     # Flake utils
     flake-utils.url = "github:numtide/flake-utils";
+    # Fenix (Required for taskmaid)
+    fenix.url = "github:nix-community/fenix";
+    fenix.inputs.nixpkgs.follows = "nixpkgs";
   };
 
   outputs = inputs@{ self, flake-utils, nixpkgs, ... }:
-    flake-utils.lib.eachDefaultSystem (system:
-      let pkgs = nixpkgs.legacyPackages.${system};
-      in { packages = (import ./. pkgs); }) // {
-        # Overlay
-        overlay = final: prev: (import ./. prev);
-      };
+    import ./flake-output.nix {
+      inherit flake-utils nixpkgs;
+      fenix = inputs.fenix;
+    };
 }
