@@ -98,7 +98,6 @@
     xfce.xfce4-appfinder
     gnome.nautilus
     celluloid # Celluloid
-    waybar
     tilix # Tilix
     gthumb # Gthumb
     gnome.seahorse # Seahorse
