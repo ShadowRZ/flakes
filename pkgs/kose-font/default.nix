@@ -18,7 +18,8 @@ fetchFromGitHub {
 
   meta = with lib; {
     homepage = "https://github.com/lxgw/kose-font";
-    description = "A Chinese handwriting font derived from SetoFont / Naikai Font / cjkFonts-AllSeto.";
+    description =
+      "A Chinese handwriting font derived from SetoFont / Naikai Font / cjkFonts-AllSeto.";
     license = licenses.ofl;
     platforms = platforms.all;
   };

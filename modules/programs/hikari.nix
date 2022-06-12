@@ -4,9 +4,9 @@ with lib;
 
 let
   cfg = config.programs.hikari;
-  hikariSession = pkgs.stdenvNoCC.mkDerivation { 
+  hikariSession = pkgs.stdenvNoCC.mkDerivation {
     name = "hikari-session";
-    phases = ["installPhase"];
+    phases = [ "installPhase" ];
     installPhase = ''
       mkdir -p $out/share/wayland-sessions
       cat > $out/share/wayland-sessions/hikari.desktop << EOF
@@ -17,22 +17,19 @@ let
       Type=Application
       EOF
     '';
-    passthru.providedSessions = ["hikari"];
+    passthru.providedSessions = [ "hikari" ];
   };
 in {
   options.programs.hikari = {
-    enable = mkEnableOption ''
-      Hikari Wayland compositor.'';
+    enable = mkEnableOption "Hikari Wayland compositor.";
   };
 
   config = mkIf cfg.enable {
-    environment = {
-      systemPackages = with pkgs; [ hikari ];
-    };
+    environment = { systemPackages = with pkgs; [ hikari ]; };
     security.polkit.enable = true;
     security.pam.services.hikari-unlocker = {
       # Upstream PAM rules
-      text = ''auth include login'';
+      text = "auth include login";
     };
     # SUID required
     security.wrappers.hikari-unlocker = {

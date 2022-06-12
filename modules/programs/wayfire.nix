@@ -4,9 +4,9 @@ with lib;
 
 let
   cfg = config.programs.wayfire;
-  wayfireSession = pkgs.stdenvNoCC.mkDerivation { 
+  wayfireSession = pkgs.stdenvNoCC.mkDerivation {
     name = "wayfire-session";
-    phases = ["installPhase"];
+    phases = [ "installPhase" ];
     installPhase = ''
       mkdir -p $out/share/wayland-sessions
       cat > $out/share/wayland-sessions/wayfire.desktop << EOF
@@ -18,18 +18,15 @@ let
       DesktopNames=Wayfire
       EOF
     '';
-    passthru.providedSessions = ["wayfire"];
+    passthru.providedSessions = [ "wayfire" ];
   };
 in {
   options.programs.wayfire = {
-    enable = mkEnableOption ''
-      Wayfire, the 3D Wayland compositor.'';
+    enable = mkEnableOption "Wayfire, the 3D Wayland compositor.";
   };
 
   config = mkIf cfg.enable {
-    environment = {
-      systemPackages = with pkgs; [ wayfire wcm ];
-    };
+    environment = { systemPackages = with pkgs; [ wayfire wcm ]; };
     security.polkit.enable = true;
     hardware.opengl.enable = mkDefault true;
     # To make a Wayfire session available if a display manager like SDDM is enabled:

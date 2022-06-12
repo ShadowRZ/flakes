@@ -9,11 +9,10 @@
   };
 
   outputs = inputs@{ self, flake-utils, nixpkgs, ... }:
-    flake-utils.lib.eachDefaultSystem
-      (system:
-        let pkgs = nixpkgs.legacyPackages.${system};
-        in { packages = (import ./. pkgs); }) // {
-      # Overlay
-      overlay = final: prev: (import ./. prev);
-    };
+    flake-utils.lib.eachDefaultSystem (system:
+      let pkgs = nixpkgs.legacyPackages.${system};
+      in { packages = (import ./. pkgs); }) // {
+        # Overlay
+        overlay = final: prev: (import ./. prev);
+      };
 }

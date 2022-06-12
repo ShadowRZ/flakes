@@ -5,7 +5,7 @@ final: prev: {
   shadowrz.subreaper = import ./subreaper final;
   shadowrz.wl-session = final.writeScript "wl-session" ''
     #!${final.runtimeShell}
-    
+
     # systemctl(1) path
     systemctl_path=${final.systemd}/bin/systemctl
 

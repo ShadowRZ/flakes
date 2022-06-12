@@ -26,17 +26,11 @@
       jack.enable = true;
     };
     # GVFS
-    gvfs = {
-      enable = true;
-    };
+    gvfs = { enable = true; };
     # GNOME Keyring
-    gnome.gnome-keyring = {
-      enable = true;
-    };
+    gnome.gnome-keyring = { enable = true; };
     # Tumbler
-    tumbler = {
-      enable = true;
-    };
+    tumbler = { enable = true; };
   };
   # rtkit
   security.rtkit.enable = true;
@@ -129,7 +123,7 @@
   ];
 
   # Basic PAM for swaylock
-  security.pam.services.swaylock = {};
+  security.pam.services.swaylock = { };
 
   hardware.opengl.enable = true;
   hardware.opengl.driSupport = true;
@@ -141,7 +135,5 @@
     qt5ct.enable = true;
   };
 
-  nixpkgs.overlays = [
-    (import ./wayfire-overlay.nix)
-  ];
+  nixpkgs.overlays = [ (import ./wayfire-overlay.nix) ];
 }

@@ -1,3 +1,1 @@
-{ pkgs, ... }: {
-  environment.systemPackages = [ nodejs ];
-}
+{ pkgs, ... }: { environment.systemPackages = [ nodejs ]; }
