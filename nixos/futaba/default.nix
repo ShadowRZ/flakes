@@ -39,7 +39,7 @@
     lsof
     helvum
     vscode
-    wine-staging
+    winePackages.staging
     winetricks
     asciinema
   ];
