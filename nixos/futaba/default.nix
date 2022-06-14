@@ -41,6 +41,7 @@
     vscode
     wine-staging
     winetricks
+    asciinema
   ];
 
   i18n.inputMethod = {
@@ -90,7 +91,7 @@
 
         # Enable builtin OSC
         osc = true;
-        script-opts = "osc-vidscale=no,osc-greemandgrumpy=no";
+        script-opts = "osc-vidscale=no";
 
         # Subtitles.
         sub-align-x = "right";
@@ -122,6 +123,18 @@
       enable = true;
       font = "小赖字体 SC 20";
     };
+    ### Swaylock
+    swaylock.settings = {
+      image =
+        "${config.home.homeDirectory}/Downloads/phantom_thieves_of_hearts_by_necrocainalx_ded7kks.png";
+      indicator-caps-lock = true;
+      show-keyboard-layout = true;
+      indicator-idle-visible = true;
+      font = "Iosevka Extended";
+      font-size = 24;
+      indicator-radius = 100;
+      indicator-thickness = 20;
+    };
   };
   ###### End of program configs.
   ###### Services configs start here.
@@ -138,10 +151,26 @@
     ### Emacs Daemon
     emacs = {
       enable = true;
+      client.enable = false; # Emacs now includes the client desktop file.
+      package = pkgs.emacsPgtk;
       socketActivation.enable = true;
     };
     ### EasyEffects
     easyeffects = { enable = true; };
+    ### Swayidle
+    swayidle = {
+      enable = true;
+      events = with pkgs; [
+        {
+          event = "before-sleep";
+          command = "${swaylock}/bin/swaylock";
+        }
+        {
+          event = "lock";
+          command = "${swaylock}/bin/swaylock";
+        }
+      ];
+    };
   };
   ###### End of service configs.
 
