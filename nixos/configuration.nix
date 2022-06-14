@@ -17,7 +17,7 @@
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = false;
   # Kernel.
-  boot.kernelPackages = pkgs.linuxKernel.packages.linux_5_17;
+  boot.kernelPackages = pkgs.linuxKernel.packages.linux_xanmod_latest;
   boot.extraModulePackages = with config.boot.kernelPackages; [ broadcom_sta ];
   boot.kernelParams = pkgs.lib.mkAfter [
     "quiet"
