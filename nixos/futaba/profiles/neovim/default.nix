@@ -10,13 +10,15 @@
     plugins = with pkgs.vimPlugins; [
       vim-fugitive
       lightline-vim
-      everforest
+      gruvbox
       # Tree Sitter
       (nvim-treesitter.withPlugins (plugins:
         with plugins; [
           tree-sitter-nix
           tree-sitter-lua
           tree-sitter-rust
+          tree-sitter-c
+          tree-sitter-cpp
         ]))
     ];
   };

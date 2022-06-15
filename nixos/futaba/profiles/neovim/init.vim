@@ -45,13 +45,15 @@ function! LightlineFilename()
     return filename . modified
 endfunction
 
+set background=dark
 " Under a environment where $DISPLAY is set or under Termux
 if has_key(environ(), "DISPLAY") || has_key(environ(), "TERMUX_VERSION")
     set termguicolors
-    set background=light
-    let g:everforest_background = 'soft'
-    colorscheme everforest
-    let g:lightline.colorscheme = 'everforest'
+    " Gruvbox
+    " VTE supports this.
+    let g:gruvbox_italic=1
+    colorscheme gruvbox
+    let g:lightline.colorscheme = 'gruvbox'
 endif
 
 " Tree Sitter
