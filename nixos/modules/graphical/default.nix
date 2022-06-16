@@ -65,12 +65,9 @@
     ffmpeg-full # FFmpeg
     imagemagick # ImageMagick
     papirus-icon-theme # Papirus
-    qt5.qtgraphicaleffects # Qt Graphical Effects
-    qt5.qtwayland # Qt Wayland
     gimp # GIMP
     inkscape # Inkscape
     dfeet # D-Feet
-    avidemux # Avidemux
     emacsPgtk # Emacs with Pure GTK.
     lollypop # Lollypop
     pavucontrol # PulseAudio control
@@ -99,8 +96,6 @@
     gnome.nautilus
     celluloid # Celluloid
     tilix # Tilix
-    gthumb # Gthumb
-    gnome.seahorse # Seahorse
     # Wayland base toolsets
     grim
     slurp
@@ -129,10 +124,11 @@
   hardware.opengl.driSupport = true;
   hardware.opengl.extraPackages = with pkgs; [ vaapiIntel ];
 
-  # Wayland programs.
   programs = {
+    # Wayland programs.
     wayfire.enable = true;
     qt5ct.enable = true;
+    seahorse.enable = true;
   };
 
   systemd.user.services = {

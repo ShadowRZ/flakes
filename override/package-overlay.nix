@@ -3,7 +3,7 @@ final: prev: {
   zsh = prev.zsh.overrideAttrs
     (attrs: { patches = attrs.patches ++ [ ./patches/zsh-subreap.patch ]; });
   shadowrz.subreaper = import ./subreaper final;
-  shadowrz.wl-session = final.writeScript "wl-session" ''
+  shadowrz.wl-session = prev.writeScript "wl-session" ''
     #!${final.runtimeShell}
 
     # systemctl(1) path

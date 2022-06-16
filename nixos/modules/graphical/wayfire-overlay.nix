@@ -1,6 +1,6 @@
-final: prev: {
+final: prev: rec {
   wayfireApplications-unwrapped = prev.wayfireApplications-unwrapped.extend
-    (self: super: {
+    (self: super: rec {
       wayfire = super.wayfire.overrideAttrs (old: rec {
         version = "1abd63179a5ed51d614989df7692dde3024aa866";
         src = final.fetchFromGitHub {
@@ -29,10 +29,8 @@ final: prev: {
           sha256 = "sha256-zZaona39DOZNL93A1KG3zAi8vDttJBirxacq24hWCn4=";
         };
       });
-      wcm = super.wcm.overrideAttrs (old: {
-        buildInputs = old.buildInputs
-          ++ [ final.wayfireApplications-unwrapped.wlroots ];
-      });
+      wcm = super.wcm.overrideAttrs
+        (old: { buildInputs = old.buildInputs ++ [ wlroots ]; });
     });
   wf-config = prev.wf-config.overrideAttrs (old: rec {
     version = "e42a3870fb194842a505ad5a9671be1aebda0b0b";
@@ -43,8 +41,10 @@ final: prev: {
       sha256 = "sha256-Ob8LVYKL1XiDc29JkmahEfOtkPKgpDGg7D3i9SMc0Vg=";
     };
   });
-  wayfirePlugins.wf-shell = prev.wayfirePlugins.wf-shell.overrideAttrs (old: {
-    buildInputs = old.buildInputs
-      ++ [ final.wayfireApplications-unwrapped.wlroots ];
-  });
+  wayfirePlugins = prev.wayfirePlugins // {
+    wf-shell = prev.wayfirePlugins.wf-shell.overrideAttrs (old: {
+      buildInputs = old.buildInputs
+        ++ [ wayfireApplications-unwrapped.wlroots ];
+    });
+  };
 }

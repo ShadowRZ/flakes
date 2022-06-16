@@ -39,8 +39,8 @@
       sandbox = true;
       trusted-users = [ "root" "@wheel" ];
       substituters = lib.mkForce [
-        "https://mirrors.ustc.edu.cn/nix-channels/store"
         "https://mirrors.bfsu.edu.cn/nix-channels/store"
+        "https://mirror.sjtu.edu.cn/nix-channels/store"
         "https://berberman.cachix.org"
         "https://nixpkgs-wayland.cachix.org"
         "https://nix-community.cachix.org"
