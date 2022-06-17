@@ -77,8 +77,9 @@
         wappalyzer
       ] ++ (let
         extra-addons = pkgs.callPackage ./extra-addons.nix {
-          buildFirefoxXpiAddon = pkgs.nur.repos.rycee.firefox-addons.buildFirefoxXpiAddon;
+          buildFirefoxXpiAddon =
+            pkgs.nur.repos.rycee.firefox-addons.buildFirefoxXpiAddon;
         };
-      in with extra-addons; [ redirector ]);
+      in with extra-addons; [ redirector custom-scrollbars measure-it ]);
   };
 }

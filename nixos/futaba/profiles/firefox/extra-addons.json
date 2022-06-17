@@ -1,5 +1,11 @@
 [
     {
         "slug": "redirector"
+    },
+    {
+        "slug": "custom-scrollbars"
+    },
+    {
+        "slug": "measure-it"
     }
 ]
