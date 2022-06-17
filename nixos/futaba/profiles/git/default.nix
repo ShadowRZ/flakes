@@ -21,6 +21,12 @@
         whitespace-error-style = "22 reverse";
       };
     };
-    extraConfig = { init.defaultBranch = "master"; };
+    extraConfig = {
+      init.defaultBranch = "master";
+      sendmail = with pkgs; {
+        smtpserver = "${msmtp}/bin/msmtpq";
+        smtpserveroption = [ "--account" "ShadowRZ" ];
+      };
+    };
   };
 }

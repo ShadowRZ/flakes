@@ -262,4 +262,8 @@ export LESS_TERMCAP_so=$'\E[01;44;33m'
 export LESS_TERMCAP_ue=$'\E[0m'
 export LESS_TERMCAP_us=$'\E[01;32m'
 
+if [[ $IN_NIX_SHELL ]]; then
+    export SHELL=$__USER_SHELL
+    unset __USER_SHELL
+fi
 # vim:fdm=marker

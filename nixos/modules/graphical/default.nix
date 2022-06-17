@@ -68,7 +68,6 @@
     gimp # GIMP
     inkscape # Inkscape
     dfeet # D-Feet
-    emacsPgtk # Emacs with Pure GTK.
     lollypop # Lollypop
     pavucontrol # PulseAudio control
     pulseaudio # PulseAudio tools

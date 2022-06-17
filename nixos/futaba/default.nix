@@ -1,4 +1,4 @@
-{ config, pkgs, ... }: {
+{ config, pkgs, lib, ... }: {
   imports = [
     ./profiles/git
     ./profiles/neovim
@@ -42,6 +42,7 @@
     winePackages.staging
     winetricks
     asciinema
+    nur.repos.rycee.firefox-addons-generator
   ];
 
   i18n.inputMethod = {
@@ -148,13 +149,6 @@
       '';
       pinentryFlavor = "gnome3";
     };
-    ### Emacs Daemon
-    emacs = {
-      enable = true;
-      client.enable = false; # Emacs now includes the client desktop file.
-      package = pkgs.emacsPgtk;
-      socketActivation.enable = true;
-    };
     ### EasyEffects
     easyeffects = { enable = true; };
     ### Swayidle
@@ -174,6 +168,10 @@
   };
   ###### End of service configs.
 
+  systemd.user.services.swayidle = {
+    Install.WantedBy = lib.mkForce [ "" "graphical-session.target" ];
+  };
+
   # Session variables for Systemd user units.
   systemd.user.sessionVariables = {
     LESSHISTFILE = "-";
@@ -183,7 +181,6 @@
     QT_QPA_PLATFORM = "wayland";
     CLUTTER_BACKEND = "wayland";
     SDL_VIDEODRIVER = "wayland";
-    MOZ_ENABLE_WAYLAND = "1";
     # Fcitx 5
     GTK_IM_MODULE = "fcitx";
     QT_IM_MODULE = "fcitx";
@@ -194,5 +191,4 @@
   };
 
   home.sessionVariables = { LANG = "zh_CN.UTF-8"; };
-
 }

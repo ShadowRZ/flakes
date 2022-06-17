@@ -6,11 +6,20 @@
         PasswordManagerEnabled = true;
         DisableFirefoxAccounts = true;
         DisablePocket = true;
+        ExtensionUpdate = false;
+        FirefoxHome = {
+          Pocket = false;
+          Snippets = false;
+        };
         EnableTrackingProtection = {
           Value = true;
           Locked = true;
           Cryptomining = true;
           Fingerprinting = true;
+        };
+        UserMessaging = {
+          ExtensionRecommendations = false;
+          SkipOnboarding = true;
         };
       };
       extraPrefs = ''
@@ -31,25 +40,6 @@
           "privacy.userContext.enabled" = true;
           "privacy.userContext.ui.enabled" = true;
         };
-        userChrome = ''
-          /* Hide tab bar in FF Quantum */
-          @-moz-document url("chrome://browser/content/browser.xul") {
-            #TabsToolbar {
-              visibility: collapse !important;
-              margin-bottom: 21px !important;
-            }
-
-            #sidebar-box[sidebarcommand="treestyletab_piro_sakura_ne_jp-sidebar-action"] #sidebar-header {
-              visibility: collapse !important;
-            }
-          }
-        '';
-        userContent = ''
-          /* Hide scrollbar in FF Quantum */
-          * {
-            scrollbar-width: none !important;
-          }
-        '';
       };
     };
     # Firefox extensions
@@ -62,15 +52,17 @@
         clearurls
         cookies-txt
         copy-selection-as-markdown
-        decentraleyes
         display-_anchors
         don-t-fuck-with-paste
         export-tabs-urls-and-titles
-        firefox-color
         form-history-control
+        keepassxc-browser
+        linkhints
+        localcdn
         multi-account-containers
         no-pdf-download
         offline-qr-code-generator
+        org-capture
         single-file
         stylus
         tabliss

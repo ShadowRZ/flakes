@@ -54,7 +54,8 @@
           subreap
         } >/dev/null 2>&1
         # Fake tty function
-        tty() { echo $TTY; }
+        _saved_tty=$TTY
+        tty() { echo _saved_tty; }
         # Powerlevek10k Instant prompt
         if [[ -r "${
           "\${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-\${(%):-%n}"
@@ -76,6 +77,7 @@
         [[ -z $DISPLAY && -z $WAYLAND_DISPLAY ]] && export LANG=en_US.UTF-8 
         # Unload fake tty function
         unfunction tty
+        unset _saved_tty
       '';
     };
     # Skim

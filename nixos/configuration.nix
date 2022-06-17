@@ -68,16 +68,18 @@
     description = "佐仓双叶";
     extraGroups = [ "wheel" "networkmanager" ];
     packages = with pkgs; [
-      kdenlive # Kdenlive
+      pitivi # Pitivi
+      shotcut # Shotcut
       blender # Blender
       qtcreator # Qt Creator
       graphviz # Graphviz
       hugo # Hugo
       yarn # Yarn
-      claws-mail # Claws Mail
+      balsa # Balsa
       electron # Electron
       aegisub # AegiSub
       keepassxc # KeePassXC
+      emacsPgtkNativeComp # Emacs with Pure GTK + Native Compilation.
     ];
   };
   home-manager.users.futaba = import ./futaba;

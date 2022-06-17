@@ -25,6 +25,8 @@ augroup filetypedetect
     " Mail
     autocmd BufRead,BufNewFile *mutt-* setfiletype mail
     autocmd BufRead,BufNewFile *mutt-* set tw=72
+    autocmd BufRead,BufNewFile .git/COMMIT_EDITMSG set tw=72
+    autocmd FileType nix set shiftwidth=2 softtabstop=2
 augroup END
 
 " Lightline
