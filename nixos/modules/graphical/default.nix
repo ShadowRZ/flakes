@@ -71,10 +71,8 @@
     lollypop # Lollypop
     pavucontrol # PulseAudio control
     pulseaudio # PulseAudio tools
-    # Bibata
-    bibata-cursors
-    bibata-extra-cursors
-    bibata-cursors-translucent
+    # Phinger Cursors
+    phinger-cursors
     # Qt 5 tools
     libsForQt5.full
     # Others
