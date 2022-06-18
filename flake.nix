@@ -3,7 +3,7 @@
 
   inputs = {
     # Nixpkgs
-    nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable-small";
+    nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
     # Home Manager
     home-manager.url = "github:nix-community/home-manager";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
@@ -12,16 +12,15 @@
     nur.inputs.nixpkgs.follows = "nixpkgs";
     # Emacs Overlay
     emacs-overlay.url = "github:nix-community/emacs-overlay";
+    emacs-overlay.inputs.nixpkgs.follows = "nixpkgs";
     # Wayland tools
     nixpkgs-wayland.url = "github:nix-community/nixpkgs-wayland";
+    nixpkgs-wayland.inputs.nixpkgs.follows = "nixpkgs";
     # Flake utils
     flake-utils.url = "github:numtide/flake-utils";
     # Fenix
     fenix.url = "github:nix-community/fenix";
     fenix.inputs.nixpkgs.follows = "nixpkgs";
-    # NVFetcher
-    nvfetcher.url = "github:berberman/nvfetcher";
-    nvfetcher.inputs.nixpkgs.follows = "nixpkgs";
     # Users' flake
     ## NickCao
     nickcao.url = "github:NickCao/flakes";
@@ -29,7 +28,6 @@
     ## Berberman
     berberman.url = "github:berberman/flakes";
     berberman.inputs.nixpkgs.follows = "nixpkgs";
-    berberman.inputs.nvfetcher.follows = "nvfetcher";
   };
 
   outputs = inputs@{ self, home-manager, nixpkgs, flake-utils, ... }:
