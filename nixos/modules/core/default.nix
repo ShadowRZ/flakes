@@ -79,8 +79,7 @@
   environment.variables = let
     nix-build-shell = pkgs.writeScript "nix-build-shell" ''
       #!${pkgs.bashInteractive}/bin/bash
-      # Execute Bash in pure Nix Shell (Intended shell for nix-shell)
-      if [[ $IN_NIX_SHELL == 'pure' ]]; then
+      if [[ $IN_NIX_SHELL == 'pure' ]] || [[ $# -eq 1 ]]; then
         # $BASH -> Expands to the full filename used to invoke this instance of bash.
         exec "$BASH" "$@"
       fi
