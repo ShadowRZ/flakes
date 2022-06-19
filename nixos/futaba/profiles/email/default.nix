@@ -9,6 +9,11 @@
       msmtp = {
         enable = true;
       };
+      mbsync = {
+        enable = true;
+        create = "both";
+        expunge = "both";
+      };
       imap = {
         host = "disroot.org";
         port = 993;
@@ -25,9 +30,10 @@
       userName = "shadowrz@disroot.org";
     };
   };
-  # Also globally enable Himalaya, msmtp.
+  # Also globally enable Himalaya, msmtp, mbsync
   programs = {
     himalaya.enable = true;
     msmtp.enable = true;
+    mbsync.enable = true;
   };
 }

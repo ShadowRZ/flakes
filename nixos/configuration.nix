@@ -75,7 +75,7 @@
       graphviz # Graphviz
       hugo # Hugo
       yarn # Yarn
-      balsa # Balsa
+      mu # Mu indexer
       electron # Electron
       aegisub # AegiSub
       keepassxc # KeePassXC

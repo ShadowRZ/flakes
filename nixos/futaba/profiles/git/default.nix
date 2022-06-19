@@ -23,10 +23,7 @@
     };
     extraConfig = {
       init.defaultBranch = "master";
-      sendmail = with pkgs; {
-        smtpserver = "${msmtp}/bin/msmtpq";
-        smtpserveroption = [ "--account" "ShadowRZ" ];
-      };
+      sendemail.identity = "ShadowRZ";
     };
   };
 }
