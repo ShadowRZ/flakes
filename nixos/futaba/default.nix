@@ -73,7 +73,7 @@
 
         utf8-strings = true;
         keyserver = "hkps://keyserver.ubuntu.com";
-        verbose = true;
+        verbose = false;
       };
     };
     ### Gh
