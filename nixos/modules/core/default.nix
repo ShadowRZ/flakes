@@ -7,7 +7,6 @@
     dnsutils
     dosfstools
     fd
-    git
     gptfdisk
     htop
     iputils
@@ -32,6 +31,8 @@
     mediainfo
     inxi
     lshw
+    # Clang for C/C++ code completion
+    clang
   ];
 
   nix = {

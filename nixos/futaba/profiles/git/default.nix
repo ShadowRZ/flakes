@@ -1,6 +1,7 @@
 { pkgs, ... }: {
   programs.git = {
     enable = true;
+    package = pkgs.gitAndTools.gitFull;
     # Basic
     userEmail = "23130178+ShadowRZ@users.noreply.github.com";
     userName = "夜坂雅";
