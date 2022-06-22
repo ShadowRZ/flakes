@@ -39,7 +39,7 @@
     lsof
     helvum
     vscode
-    winePackages.staging
+    wine
     winetricks
     asciinema
     nur.repos.rycee.firefox-addons-generator
