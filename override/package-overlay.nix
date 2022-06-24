@@ -18,4 +18,16 @@ final: prev: {
         exec -l "$SHELL" "$@"
     fi
   '';
+  # [PATCH] Make sure we set client_window/widget to null if app set it.
+  # github:fcitx/fcitx5-gtk/20f32a9be56e4c23a9de4bfbbc823ff05746699e
+  fcitx5-gtk = prev.fcitx5-gtk.overrideAttrs (attrs: {
+    patches = (with prev;
+      [
+        (fetchpatch {
+          url =
+            "https://github.com/fcitx/fcitx5-gtk/commit/20f32a9be56e4c23a9de4bfbbc823ff057466993.patch";
+          sha256 = "sha256-vf+/FgEnftWtP0KeiJWk3MRLPpHK03ElKosEae0oXzc=";
+        })
+      ]);
+  });
 }
