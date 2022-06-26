@@ -11,6 +11,7 @@
     ./modules/networking
     ./modules/graphical
     ./modules/environment
+    ./modules/virtualization
   ];
 
   # Use the systemd-boot EFI boot loader.
