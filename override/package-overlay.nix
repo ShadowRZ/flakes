@@ -11,11 +11,13 @@ final: prev: {
 
     # If our environment hasn't setup (/etc/profile is not sourced),
     # and we're on Wayland
-    if [[ "$XDG_SESSION_TYPE" = "wayland" ]] && 
-       [[ -n $SHELL ]] && [[ -n __ETC_PROFILE_DONE ]]; then
+    if [[ -z "$SHELL" ]]; then
+        SHELL=${final.runtimeShell}
+    fi
+    if [[ "$XDG_SESSION_TYPE" = "wayland" ]] && [[ -n __ETC_PROFILE_DONE ]]; then
         # Ensure systemd user services get NIX_PROFILES (for GTK+)
-        ${final.runtimeShell} -l -c "[[ -n $NIX_PROFILES ]] && $systemctl_path --user import-environment NIX_PROFILES"
-        exec -l "$SHELL" "$@"
+        ${final.runtimeShell} -l -c "$systemctl_path --user import-environment NIX_PROFILES"
+        exec -l "$SHELL" -c "$@"
     fi
   '';
   # [PATCH] Make sure we set client_window/widget to null if app set it.
