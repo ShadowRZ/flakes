@@ -1,7 +1,7 @@
 { pkgs, ... }: {
   programs.firefox = {
     enable = true;
-    package = pkgs.latest.firefox-nightly-bin.override {
+    package = pkgs.firefox.override {
       forceWayland = true;
       extraPolicies = {
         PasswordManagerEnabled = true;
