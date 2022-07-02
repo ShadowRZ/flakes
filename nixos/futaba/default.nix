@@ -40,6 +40,8 @@
     helvum
     vscode
     asciinema
+    wine-staging
+    winetricks
     nur.repos.rycee.firefox-addons-generator
   ];
 
