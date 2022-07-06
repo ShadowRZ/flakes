@@ -80,7 +80,6 @@
     mediainfo-gui # MediaInfo GUI
     # IM Clients
     element-desktop # Element Desktop
-    nheko # Nheko
     ### Above are Matrix clients.
     hexchat # HexChat
     dino # Dino
@@ -90,6 +89,7 @@
     # Others
     xfce.ristretto
     xfce.xfce4-appfinder
+    xfce.mousepad
     gnome.nautilus
     celluloid # Celluloid
     tilix # Tilix
@@ -102,14 +102,7 @@
     wlogout
     swaybg
     swaylock
-    (deadbeef-with-plugins.override {
-      plugins = with deadbeefPlugins; [
-        headerbar-gtk3
-        mpris2
-        statusnotifier
-        lyricbar
-      ];
-    })
+    amberol
   ];
 
   # Basic PAM for swaylock

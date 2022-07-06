@@ -32,7 +32,6 @@
     nix-prefetch-git
     fontforge-gtk
     android-tools
-    nheko
     rclone
     assimp
     gnome.dconf-editor
