@@ -1,7 +1,6 @@
 { config, lib, pkgs, ... }: {
   # System level packages.
   environment.systemPackages = with pkgs; [
-    binutils
     coreutils
     curl
     dnsutils
@@ -31,8 +30,6 @@
     mediainfo
     inxi
     lshw
-    # Clang for C/C++ code completion
-    clang
   ];
 
   nix = {
