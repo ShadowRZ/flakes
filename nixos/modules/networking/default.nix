@@ -1,4 +1,4 @@
-{ pkgs, ... }: {
+{ lib, pkgs, ... }: {
   services.smartdns = {
     enable = true;
     settings = with pkgs; {
@@ -7,7 +7,7 @@
         "${smartdns-china-list}/apple.china.smartdns.conf"
         "${smartdns-china-list}/google.china.smartdns.conf"
       ];
-      bind = [ "127.0.0.53:53" ];
+      bind = [ "127.0.53.53:53" ];
       server-tls = [
         # https://www.dnspod.cn/Products/publicdns
         "1.12.12.12:853 -group china -exclude-default-group"
@@ -28,23 +28,53 @@
   };
 
   services = {
+    # Avahi
     avahi = {
       enable = true;
-      nssmdns = true;
+      nssmdns = true; # mDNS NSS
     };
   };
 
-  networking.networkmanager = {
+  networking = {
+    # Use systemd-networkd
+    useNetworkd = true;
+    # Disable global DHCP
+    useDHCP = false;
+    # Disable firewall
+    firewall.enable = false;
+    # Predictable interfaces
+    usePredictableInterfaceNames = true;
+    # Wireless config
+    wireless = {
+      # Use iwd
+      iwd.enable = true;
+    };
+  };
+  systemd.network.links."80-iwd" = lib.mkForce {};
+
+  # Systemd-networkd confiugred interface
+  systemd.network = {
     enable = true;
-    dns = "none";
-    wifi.backend = "iwd";
-    extraConfig = ''
-      [keyfile]
-      path = /var/lib/NetworkManager/system-connections
-      [connectivity]
-      uri = http://google.cn/generate_204
-      response = 
-    '';
+    # Assume it's online when any interface is considered online.
+    wait-online.anyInterface = true;
+    # Interfaces
+    networks = {
+      # Wired network
+      "10-wired" = {
+        name = "enp4s0";
+        DHCP = "yes";
+        dns = [ "127.0.53.53" ];
+        dhcpV4Config.RouteMetric = 2048;
+        dhcpV6Config.RouteMetric = 2048;
+      };
+      "15-wireless" = {
+        name = "wlp3s0";
+        DHCP = "yes";
+        dns = [ "127.0.53.53" ];
+        dhcpV4Config.RouteMetric = 4096;
+        dhcpV6Config.RouteMetric = 4096;
+      };
+    };
   };
 
   environment.systemPackages = with pkgs; [
@@ -52,7 +82,4 @@
     v2ray-geoip
     v2ray-domain-list-community
   ];
-
-  networking.nameservers = [ "127.0.0.53" ];
-  networking.usePredictableInterfaceNames = true;
 }
