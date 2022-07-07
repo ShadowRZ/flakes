@@ -64,15 +64,27 @@
         name = "enp4s0";
         DHCP = "yes";
         dns = [ "127.0.53.53" ];
-        dhcpV4Config.RouteMetric = 2048;
-        dhcpV6Config.RouteMetric = 2048;
+        dhcpV4Config = {
+          UseDNS = false;
+          RouteMetric = 2048;
+        };
+        dhcpV6Config = {
+          UseDNS = false;
+          RouteMetric = 2048;
+        };
       };
       "15-wireless" = {
         name = "wlp3s0";
         DHCP = "yes";
         dns = [ "127.0.53.53" ];
-        dhcpV4Config.RouteMetric = 4096;
-        dhcpV6Config.RouteMetric = 4096;
+        dhcpV4Config = {
+          UseDNS = false;
+          RouteMetric = 4096;
+        };
+        dhcpV6Config = {
+          UseDNS = false;
+          RouteMetric = 4096;
+        };
       };
     };
   };
