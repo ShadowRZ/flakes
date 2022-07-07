@@ -9,11 +9,19 @@
       ];
       bind = [ "127.0.0.53:53" ];
       server-tls = [
+        # https://www.dnspod.cn/Products/publicdns
         "1.12.12.12:853 -group china -exclude-default-group"
         "120.53.53.53:853 -group china -exclude-default-group"
+        # https://quad9.net/service/service-addresses-and-features/
         "9.9.9.9:853 -tls-host-verify dns.quad9.net"
         "149.112.112.112:853 -tls-host-verify dns.quad9.net"
-        "1.0.0.1:853 -tls-host-verify cloudflare-dns.com"
+      ];
+      server-https = [
+        # https://www.dnspod.cn/Products/publicdns
+        "https://doh.pub/dns-query -group china -exclude-default-group -tls-host-verify doh.pub"
+        # https://quad9.net/service/service-addresses-and-features/
+        "https://9.9.9.9/dns-query -tls-host-verify dns.quad9.net"
+        "https://149.112.112.112/dns-query -tls-host-verify dns.quad9.net"
       ];
       speed-check-mode = "tcp:443,tcp:80";
     };
