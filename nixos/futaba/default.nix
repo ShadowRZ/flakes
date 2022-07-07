@@ -173,6 +173,7 @@
   };
 
   # Session variables for Systemd user units.
+  # Plasma (+systemd) & GDM launched session reads these too.
   systemd.user.sessionVariables = {
     LESSHISTFILE = "-";
     GST_VAAPI_ALL_DRIVERS = "1";
@@ -190,5 +191,7 @@
     GNUPGHOME = config.home.sessionVariables.GNUPGHOME;
   };
 
-  home.sessionVariables = { LANG = "zh_CN.UTF-8"; };
+  home.sessionVariables = {
+    LANG = "zh_CN.UTF-8";
+  };
 }
