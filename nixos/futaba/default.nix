@@ -37,7 +37,8 @@
     gnome.dconf-editor
     lsof
     helvum
-    vscode
+    # VS Code
+    vscode-fhs
     asciinema
     wine-staging
     winetricks
