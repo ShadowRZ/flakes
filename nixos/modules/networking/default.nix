@@ -24,6 +24,9 @@
         "https://149.112.112.112/dns-query -tls-host-verify dns.quad9.net"
       ];
       speed-check-mode = "tcp:443,tcp:80";
+      # Add log
+      log-level = "info";
+      log-file = "/var/log/smartdns.log";
     };
   };
 
