@@ -49,6 +49,8 @@
       # Use iwd
       iwd.enable = true;
     };
+    # Set smartdns server
+    nameservers = [ "127.0.53.53" ];
   };
   systemd.network.links."80-iwd" = lib.mkForce {};
 
@@ -63,7 +65,6 @@
       "10-wired" = {
         name = "enp4s0";
         DHCP = "yes";
-        dns = [ "127.0.53.53" ];
         dhcpV4Config = {
           UseDNS = false;
           RouteMetric = 2048;
@@ -76,7 +77,6 @@
       "15-wireless" = {
         name = "wlp3s0";
         DHCP = "yes";
-        dns = [ "127.0.53.53" ];
         dhcpV4Config = {
           UseDNS = false;
           RouteMetric = 4096;
@@ -87,6 +87,11 @@
         };
       };
     };
+  };
+
+  services.resolved = {
+    # https://www.dnspod.cn/Products/publicdns
+    fallbackDns = [ "119.29.29.29" ];
   };
 
   environment.systemPackages = with pkgs; [
