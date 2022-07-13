@@ -144,10 +144,6 @@
   systemd.user.sessionVariables = {
     LESSHISTFILE = "-";
     GST_VAAPI_ALL_DRIVERS = "1";
-    # Wayland
-    QT_QPA_PLATFORM = "wayland";
-    CLUTTER_BACKEND = "wayland";
-    SDL_VIDEODRIVER = "wayland";
     # Fcitx 5
     GTK_IM_MODULE = "fcitx";
     QT_IM_MODULE = "fcitx";

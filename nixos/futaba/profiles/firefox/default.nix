@@ -2,7 +2,6 @@
   programs.firefox = {
     enable = true;
     package = pkgs.firefox.override {
-      forceWayland = true;
       extraPolicies = {
         PasswordManagerEnabled = true;
         DisableFirefoxAccounts = true;
