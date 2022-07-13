@@ -52,10 +52,6 @@
     nur.repos.rycee.firefox-addons-generator
   ];
 
-  i18n.inputMethod = {
-    enabled = "fcitx5";
-  };
-
   ###### Program configs start here.
   programs = {
     ### GnuPG
