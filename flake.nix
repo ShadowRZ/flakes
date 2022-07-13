@@ -38,10 +38,6 @@
         system = "x86_64-linux";
         modules = [
           ./nixos/configuration.nix
-          # Wayland WMs
-          ./modules/programs/wayfire.nix
-          ./modules/programs/hikari.nix
-          ./modules/programs/labwc.nix
           # Home Manager Module
           home-manager.nixosModules.home-manager
           # (modulesPath + "/installer/scan/not-detected.nix")

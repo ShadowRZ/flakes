@@ -3,14 +3,17 @@
     upower.enable = true;
     dbus = {
       enable = true;
-      packages = with pkgs; [ dconf gcr gnome.nautilus polkit_gnome ];
+      packages = with pkgs; [ dconf gcr ];
     };
     xserver = {
       enable = true;
-      # GDM
-      displayManager.gdm = {
+      # SDDM
+      displayManager.sddm = {
         enable = true;
-        wayland = true;
+      };
+      desktopManager.plasma5 = {
+        enable = true;
+        runUsingSystemd = true;
       };
       # Modesettings driver
       videoDrivers = [ "modesettings" ];
@@ -27,10 +30,6 @@
     };
     # GVFS
     gvfs = { enable = true; };
-    # GNOME Keyring
-    gnome.gnome-keyring = { enable = true; };
-    # Tumbler
-    tumbler = { enable = true; };
   };
   # rtkit
   security.rtkit.enable = true;
@@ -67,7 +66,6 @@
     gimp # GIMP
     inkscape # Inkscape
     dfeet # D-Feet
-    pavucontrol # PulseAudio control
     pulseaudio # PulseAudio tools
     # Phinger Cursors
     phinger-cursors
@@ -84,29 +82,9 @@
     # GTK
     gtk3.dev
     gtk4.dev
-    # Others
-    xfce.ristretto
-    xfce.xfce4-appfinder
-    xfce.mousepad
-    gnome.nautilus
-    celluloid # Celluloid
-    tilix # Tilix
-    # Wayland base toolsets
-    grim
-    slurp
-    wlogout
-    wlr-randr
-    wl-clipboard
-    wlogout
-    swaybg
-    swaylock
-    amberol
+    vlc
+    glxinfo
   ];
-
-  # Basic PAM for swaylock
-  security.pam.services.swaylock = { };
-  # Auto unlock GNOME keyring
-  security.pam.services.gdm.enableGnomeKeyring = true;
 
   hardware.opengl.enable = true;
   hardware.opengl.driSupport = true;
@@ -116,31 +94,5 @@
     intel-ocl
   ];
 
-  programs = {
-    # Wayland programs.
-    wayfire.enable = true;
-    seahorse.enable = true;
-  };
-
-  qt5.platformTheme = "qt5ct";
-
-  xdg.portal = {
-    enable = true;
-    wlr = {
-      enable = true;
-    };
-  };
-
-  systemd.user.services = {
-    # Start GNOME Polkit password prompt.
-    "polkit-gnome-authentication-agent-1" = {
-      enable = true;
-      description = "GNOME PolicyKit Authentication Agent";
-      wantedBy = [ "graphical-session.target" ];
-      partOf = [ "graphical-session.target" ];
-      serviceConfig.ExecStart = "${pkgs.polkit_gnome}/libexec/polkit-gnome-authentication-agent-1";
-    };
-  };
-
-  nixpkgs.overlays = [ (import ./wayfire-overlay.nix) ];
+  xdg.portal.enable = true;
 }

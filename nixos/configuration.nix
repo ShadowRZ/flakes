@@ -2,7 +2,7 @@
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
-{ config, pkgs, ... }: {
+{ config, pkgs, lib, ... }: {
   imports = [
     # Include the results of the hardware scan.
     ./hardware-configuration.nix
@@ -67,10 +67,9 @@
     isNormalUser = true;
     shell = pkgs.zsh;
     description = "佐仓双叶";
-    extraGroups = [ "wheel" "networkmanager" ];
+    extraGroups = [ "wheel" ];
     packages = with pkgs; [
-      pitivi # Pitivi
-      shotcut # Shotcut
+      kdenlive # Kdenlive
       blender # Blender
       qtcreator # Qt Creator
       graphviz # Graphviz
@@ -86,7 +85,7 @@
 
   # Misc
   nixpkgs.config.allowUnfree = true;
-  powerManagement.cpuFreqGovernor = pkgs.lib.mkDefault "performance";
+  powerManagement.cpuFreqGovernor = lib.mkDefault "performance";
 
   # ZRAM
   zramSwap = {

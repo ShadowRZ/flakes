@@ -5,7 +5,6 @@
     ./profiles/shell
     ./profiles/email
     ./profiles/firefox
-    ./profiles/waybar
   ];
 
   # Home Manager needs a bit of information about you and the
@@ -42,16 +41,19 @@
     asciinema
     wine-staging
     winetricks
+    # Fcitx 5
+    (fcitx5-with-addons.override {
+      addons = [
+        fcitx5-chinese-addons
+        fcitx5-pinyin-moegirl
+        fcitx5-pinyin-zhwiki
+      ];
+    })
     nur.repos.rycee.firefox-addons-generator
   ];
 
   i18n.inputMethod = {
     enabled = "fcitx5";
-    fcitx5.addons = with pkgs; [
-      fcitx5-chinese-addons
-      fcitx5-pinyin-moegirl
-      fcitx5-pinyin-zhwiki
-    ];
   };
 
   ###### Program configs start here.
@@ -119,23 +121,6 @@
     };
     ### Password store
     password-store = { enable = true; };
-    ### Mako
-    mako = {
-      enable = true;
-      font = "小赖字体 SC 20";
-    };
-    ### Swaylock
-    swaylock.settings = {
-      image =
-        "${config.home.homeDirectory}/Downloads/phantom_thieves_of_hearts_by_necrocainalx_ded7kks.png";
-      indicator-caps-lock = true;
-      show-keyboard-layout = true;
-      indicator-idle-visible = true;
-      font = "Iosevka Extended";
-      font-size = 24;
-      indicator-radius = 100;
-      indicator-thickness = 20;
-    };
   };
   ###### End of program configs.
   ###### Services configs start here.
@@ -147,37 +132,18 @@
         allow-loopback-pinentry
         allow-emacs-pinentry
       '';
-      pinentryFlavor = "gnome3";
+      pinentryFlavor = "qt";
     };
     ### EasyEffects
     easyeffects = { enable = true; };
-    ### Swayidle
-    swayidle = {
-      enable = true;
-      events = with pkgs; [
-        {
-          event = "before-sleep";
-          command = "${swaylock}/bin/swaylock";
-        }
-        {
-          event = "lock";
-          command = "${swaylock}/bin/swaylock";
-        }
-      ];
-    };
   };
   ###### End of service configs.
-
-  systemd.user.services.swayidle = {
-    Install.WantedBy = lib.mkForce [ "" "graphical-session.target" ];
-  };
 
   # Session variables for Systemd user units.
   # Plasma (+systemd) & GDM launched session reads these too.
   systemd.user.sessionVariables = {
     LESSHISTFILE = "-";
     GST_VAAPI_ALL_DRIVERS = "1";
-    QT_QPA_PLATFORMTHEME = "qt5ct";
     # Wayland
     QT_QPA_PLATFORM = "wayland";
     CLUTTER_BACKEND = "wayland";
