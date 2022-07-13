@@ -21,8 +21,6 @@
     # Fenix
     fenix.url = "github:nix-community/fenix";
     fenix.inputs.nixpkgs.follows = "nixpkgs";
-    # Mozilla overlay (Firefox Nightly)
-    mozilla.url = "github:mozilla/nixpkgs-mozilla";
     # Users' flake
     ## NickCao
     nickcao.url = "github:NickCao/flakes";
@@ -62,8 +60,6 @@
               # Users' flake
               inputs.nickcao.overlays.default
               inputs.berberman.overlay
-              # Firefox Nightly
-              inputs.mozilla.overlays.firefox
               # My overlay
               self.overlay
               (import ./override/package-overlay.nix)
