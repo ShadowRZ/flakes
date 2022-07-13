@@ -134,8 +134,6 @@
       '';
       pinentryFlavor = "qt";
     };
-    ### EasyEffects
-    easyeffects = { enable = true; };
   };
   ###### End of service configs.
 
