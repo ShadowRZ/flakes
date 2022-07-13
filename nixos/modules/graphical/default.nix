@@ -57,7 +57,6 @@
 
   environment.systemPackages = with pkgs; [
     # VA-API.
-    vaapiIntel
     intel-gpu-tools
     libva-utils
     # Graphical packages.
@@ -68,7 +67,6 @@
     gimp # GIMP
     inkscape # Inkscape
     dfeet # D-Feet
-    lollypop # Lollypop
     pavucontrol # PulseAudio control
     pulseaudio # PulseAudio tools
     # Phinger Cursors
@@ -112,13 +110,25 @@
 
   hardware.opengl.enable = true;
   hardware.opengl.driSupport = true;
-  hardware.opengl.extraPackages = with pkgs; [ vaapiIntel ];
+  hardware.opengl.extraPackages = with pkgs; [
+    vaapiIntel
+    beignet
+    intel-ocl
+  ];
 
   programs = {
     # Wayland programs.
     wayfire.enable = true;
-    qt5ct.enable = true;
     seahorse.enable = true;
+  };
+
+  qt5.platformTheme = "qt5ct";
+
+  xdg.portal = {
+    enable = true;
+    wlr = {
+      enable = true;
+    };
   };
 
   systemd.user.services = {

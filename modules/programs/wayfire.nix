@@ -32,7 +32,5 @@ in {
     # To make a Wayfire session available if a display manager like SDDM is enabled:
     services.xserver.displayManager.sessionPackages = [ wayfireSession ];
     programs.xwayland.enable = mkDefault true;
-    # For screen sharing (this option only has an effect with xdg.portal.enable):
-    xdg.portal.extraPortals = [ pkgs.xdg-desktop-portal-wlr ];
   };
 }
