@@ -117,6 +117,12 @@
     };
     ### Password store
     password-store = { enable = true; };
+    ### Ncmpcpp
+    ncmpcpp = {
+      enable = true;
+      package = pkgs.ncmpcpp;
+      settings = { ncmpcpp_directory = "~/.local/share/ncmpcpp"; };
+    };
   };
   ###### End of program configs.
   ###### Services configs start here.
@@ -129,6 +135,11 @@
         allow-emacs-pinentry
       '';
       pinentryFlavor = "qt";
+    };
+    ### Music Player Daemon
+    mpd = {
+      enable = true;
+      musicDirectory = "${config.home.homeDirectory}/Music";
     };
   };
   ###### End of service configs.
@@ -147,7 +158,5 @@
     GNUPGHOME = config.home.sessionVariables.GNUPGHOME;
   };
 
-  home.sessionVariables = {
-    LANG = "zh_CN.UTF-8";
-  };
+  home.sessionVariables = { LANG = "zh_CN.UTF-8"; };
 }

@@ -84,6 +84,14 @@
     gtk4.dev
     vlc
     glxinfo
+    # Wayland base toolsets
+    grim
+    slurp
+    wlr-randr
+    wl-clipboard
+    renpy
+    gnome.zenity
+    kdeconnect # KDE Connect
   ];
 
   hardware.opengl.enable = true;
