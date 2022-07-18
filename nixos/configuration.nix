@@ -78,6 +78,10 @@
       electron # Electron
       aegisub # AegiSub
       keepassxc # KeePassXC
+      gocryptfs # Gocryptfs
+      kate # Kate
+      falkon # Falkon
+      krusader # Krusader
       emacsPgtkNativeComp # Emacs with Pure GTK + Native Compilation.
     ];
   };

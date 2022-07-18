@@ -34,9 +34,6 @@
   # rtkit
   security.rtkit.enable = true;
 
-  # Select internationalisation properties.
-  i18n.defaultLocale = "zh_CN.UTF-8";
-
   # Fonts.
   fonts.fonts = with pkgs; [
     roboto # Roboto
@@ -51,8 +48,6 @@
     sarasa-gothic # Sarasa Gothic
     font-awesome_6 # Font Awesome 6
   ];
-
-  systemd.services.upower.enable = true;
 
   environment.systemPackages = with pkgs; [
     # VA-API.
@@ -90,8 +85,11 @@
     wlr-randr
     wl-clipboard
     renpy
-    gnome.zenity
+    kdialog
     kdeconnect # KDE Connect
+    material-kwin-decoration # KWin material decoration
+    qtcurve
+    libsForQt5.lightly
   ];
 
   hardware.opengl.enable = true;
