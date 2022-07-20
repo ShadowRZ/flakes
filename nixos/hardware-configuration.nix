@@ -8,9 +8,14 @@
 
   boot.initrd.availableKernelModules =
     [ "xhci_pci" "ehci_pci" "ahci" "usb_storage" "sd_mod" "sr_mod" ];
-  boot.initrd.kernelModules = [ ];
-  boot.kernelModules = [ "kvm-intel" ];
-  boot.extraModulePackages = [ ];
+  boot.initrd.kernelModules = [ "i915" ];
+  # wl is in brodacom_sta.
+  boot.kernelModules = [ "wl" "kvm-intel" ];
+  boot.extraModulePackages = with config.boot.kernelPackages; [ broadcom_sta ];
+  boot.kernelParams = lib.mkAfter [ "i915.fastboot=1" ];
+
+  # Force the builder to think we can't touch EFI variables.
+  boot.loader.efi.canTouchEfiVariables = lib.mkForce false;
 
   fileSystems."/" = {
     device = "/dev/disk/by-uuid/dc3dad35-273d-4619-a694-4faf8b4debe5";

@@ -16,22 +16,14 @@
 
   # Use the systemd-boot EFI boot loader.
   boot.loader.systemd-boot.enable = true;
-  boot.loader.efi.canTouchEfiVariables = false;
   # Kernel.
   boot.kernelPackages = pkgs.linuxKernel.packages.linux_xanmod_latest;
-  boot.extraModulePackages = with config.boot.kernelPackages; [ broadcom_sta ];
-  boot.kernelParams = pkgs.lib.mkAfter [
+  boot.kernelParams = lib.mkAfter [
     "quiet"
     "udev.log_priority=3"
-    "add_efi_memmap"
-    "threadirqs"
-    "i915.fastboot=1"
     "systemd.unified_cgroup_hierarchy=1"
     "systemd.show_status=true"
   ];
-  # wl is in brodacom_sta.
-  boot.kernelModules = [ "wl" "kvm-intel" ];
-  boot.initrd.kernelModules = [ "i915" ];
   boot.tmpOnTmpfs = true;
   boot.initrd.verbose = false;
   boot.consoleLogLevel = 0;
