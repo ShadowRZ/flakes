@@ -46,7 +46,13 @@
     noto-fonts-extra # Extra Noto Fonts
     noto-fonts-emoji # Noto Color Emoji
     sarasa-gothic # Sarasa Gothic
-    font-awesome_6 # Font Awesome 6
+    # Iosevka Aile + Iosevka Etoile
+    (iosevka-bin.override { variant = "aile"; })
+    (iosevka-bin.override { variant = "etoile"; })
+    # Iosevka Comfy Duo + Wide
+    # It's shorter than Iosevka.
+    iosevka-comfy.comfy-duo
+    iosevka-comfy.comfy-wide
   ];
 
   environment.systemPackages = with pkgs; [
