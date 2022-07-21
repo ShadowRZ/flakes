@@ -92,6 +92,18 @@
   # Enable polkit
   security.polkit.enable = true;
 
+  # Build all Glibc supported locales as defined in:
+  # https://sourceware.org/git/?p=glibc.git;a=blob;f=localedata/SUPPORTED
+  # This is because Home Manager actually configures a locale archive
+  # which is built with all supported locales and exports
+  # LOCALE_ARCHIVE_2_27.
+  # Unfortunately this means other users, especially root with sudo,
+  # various applications stop supporting user's current locale as they
+  # lost LOCALE_ARCHIVE_2_27 and taken LOCALE_ARCHIVE which is not built
+  # with all locales like Home Manager.
+  # Especially Perl which gave warning if it can't use such locale.
+  i18n.supportedLocales = [ "all" ];
+
   # This value determines the NixOS release from which the default
   # settings for stateful data, like file locations and database versions
   # on your system were taken. It‘s perfectly fine and recommended to leave
