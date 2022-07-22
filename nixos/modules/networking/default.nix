@@ -55,30 +55,28 @@
     # Set smartdns server
     nameservers = [ "127.0.53.53" ];
   };
-  systemd.network.links."80-iwd" = lib.mkForce {};
+  systemd.network.links."80-iwd" = lib.mkForce { };
 
   # Systemd-networkd confiugred interface
   systemd.network = {
     enable = true;
     # Assume it's online when any interface is considered online.
     wait-online.anyInterface = true;
-    # Interfaces
-    networks = {
-      # Wired network
-      "10-wired" = {
-        name = "enp4s0";
-        DHCP = "yes";
-        dhcpV4Config = {
-          UseDNS = false;
-          RouteMetric = 2048;
-        };
-        dhcpV6Config = {
-          UseDNS = false;
-          RouteMetric = 2048;
-        };
+    # Configure systemd-networkd
+    config = {
+      networkConfig = {
+        ManageForeignRoutingPolicyRules = false;
+        SpeedMeter = true;
+        SpeedMeterIntervalSec = 1;
       };
-      "15-wireless" = {
-        name = "wlp3s0";
+    };
+    # Interfaces
+    # For interfaces on the laptop refer to nixos/hardware-configuration.nix
+    networks = {
+      # Phone
+      "20-phone" = {
+        # Match MAC instead
+        matchConfig = { MACAddress = "3A:CD:9A:E6:47:E9"; };
         DHCP = "yes";
         dhcpV4Config = {
           UseDNS = false;

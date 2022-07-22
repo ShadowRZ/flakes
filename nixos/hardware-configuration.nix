@@ -40,4 +40,47 @@
   swapDevices =
     [{ device = "/dev/disk/by-uuid/04342f1b-0f87-4a25-bc92-7a9b0268d9b1"; }];
 
+  # System networks that only avaliable to this machine.
+  systemd.network.networks = {
+    # Wired network
+    "10-wired" = {
+      name = "enp4s0";
+      address = [ "10.16.1.1/24" ];
+      DHCP = "yes";
+      networkConfig = {
+        IPForward = true;
+      };
+      dhcpV4Config = {
+        UseDNS = false;
+        RouteMetric = 2048;
+      };
+      dhcpV6Config = {
+        UseDNS = false;
+        RouteMetric = 2048;
+      };
+      dhcpServerConfig = {
+        EmitDNS = true;
+        # https://www.dnspod.cn/Products/publicdns
+        DNS = [ "119.29.29.29" ];
+      };
+      # dhcpServerConfig.ServerAddress doesn't work.
+      extraConfig = ''
+        [DHCPServer]
+        ServerAddress=10.16.1.1/24
+      '';
+    };
+    # Wireless interface
+    "15-wireless" = {
+      name = "wlp3s0";
+      DHCP = "yes";
+      dhcpV4Config = {
+        UseDNS = false;
+        RouteMetric = 1024;
+      };
+      dhcpV6Config = {
+        UseDNS = false;
+        RouteMetric = 1024;
+      };
+    };
+  };
 }
