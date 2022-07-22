@@ -74,8 +74,10 @@
       krusader # Krusader
       emacsPgtkNativeComp # Emacs with Pure GTK + Native Compilation.
     ];
+  home-manager.users = {
+    futaba = import ./futaba;
+    root = import ./root;
   };
-  home-manager.users.futaba = import ./futaba;
 
   # Misc
   nixpkgs.config.allowUnfree = true;
