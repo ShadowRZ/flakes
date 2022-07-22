@@ -55,7 +55,8 @@
         If you see this, you probably connected to a wrong host.
 
         To prove I wrote this, here are the SSH server's fingerprints:
-        (TODO)
+        Ed25519: SHA256:3yCvCK0rf/LCXybbOCyDDM7MqF7t7sc2xNEyK2CLR6M / 8a:aa:c2:37:e6:62:f4:5b:19:d5:b8:97:a6:cc:a6:70
+        RSA: SHA256:ChnL8bHTasrFd0uVaU35vpi90litj45IMHlvpjttIb0 / 2d:eb:24:09:8c:37:4a:fb:c8:27:f8:2e:82:77:55:a6
 
         -- Yorusaka Miyabi.
       '';

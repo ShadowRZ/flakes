@@ -20,7 +20,7 @@
   # You can update Home Manager without changing this value. See
   # the Home Manager release notes for a list of state version
   # changes in each release.
-  home.stateVersion = "21.05";
+  home.stateVersion = "22.11";
 
   home.packages = with pkgs; [
     bubblewrap
@@ -157,6 +157,4 @@
     PASSWORD_STORE_DIR = config.home.sessionVariables.PASSWORD_STORE_DIR;
     GNUPGHOME = config.home.sessionVariables.GNUPGHOME;
   };
-
-  home.sessionVariables = { LANG = "zh_CN.UTF-8"; };
 }

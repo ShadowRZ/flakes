@@ -49,12 +49,11 @@
         source = map (source: "source ${source}") sources;
         plugins = builtins.concatStringsSep "\n" source;
         promptInit = let
-          p10k = pkgs.writeText "pk10.zsh" (lib.fileContents ./p10k.zsh);
-          p10k-linux =
-            pkgs.writeText "pk10-linux.zsh" (lib.fileContents ./p10k-linux.zsh);
+          p10k = ./p10k.zsh;
+          p10k-linux = ./p10k-linux.zsh;
         in ''
           source ${pkgs.zsh-powerlevel10k}/share/zsh-powerlevel10k/powerlevel10k.zsh-theme
-          [[ -z $DISPLAY && -z $WAYLAND_DISPLAY ]] \
+          [[ $TERM != *-256color ]] \
             && source ${p10k-linux} \
             || source ${p10k}
         '';
