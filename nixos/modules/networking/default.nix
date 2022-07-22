@@ -43,8 +43,20 @@
     useNetworkd = true;
     # Disable global DHCP
     useDHCP = false;
-    # Disable firewall
-    firewall.enable = false;
+    # Enable firewall
+    firewall = {
+      enable = true;
+      allowedTCPPorts = [ 22 80 8000 8080 ];
+      allowedUDPPorts = [ 53 ];
+      extraCommands = ''
+        # Accept all ICMP packages.
+        iptables -A INPUT -p icmp -j ACCEPT
+      '';
+    };
+    # Enable NAT
+    nat = {
+      enable = true;
+    };
     # Predictable interfaces
     usePredictableInterfaceNames = true;
     # Wireless config

@@ -34,8 +34,6 @@
   # Link /share/zsh
   environment.pathsToLink = [ "/share/zsh" ];
 
-  # Firewall
-  networking.firewall.enable = false;
   # Hostname
   networking.hostName = "hermitmedjed-s";
 
