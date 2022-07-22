@@ -36,6 +36,30 @@
       enable = true;
       nssmdns = true; # mDNS NSS
     };
+    # OpenSSH
+    # See nixos/configurations.nix for allowed SSH public keys.
+    openssh = {
+      enable = true;
+      allowSFTP = true;
+      forwardX11 = false;
+      # Don't do password auth at all.
+      passwordAuthentication = false;
+      # Don't allow root login at all.
+      permitRootLogin = "no";
+      # Update fingerprints according to https://superuser.com/a/453022
+      # (RSA) ssh-keygen -lf /etc/ssh/ssh_host_rsa_key.pub
+      # (Ed25519) ssh-keygen -lf /etc/ssh/ssh_host_ed25519_key.pub
+      banner = ''
+        Hello !
+        Please note only Yorusaka Miyabi may connect to this machine's SSH.
+        If you see this, you probably connected to a wrong host.
+
+        To prove I wrote this, here are the SSH server's fingerprints:
+        (TODO)
+
+        -- Yorusaka Miyabi.
+      '';
+    };
   };
 
   networking = {

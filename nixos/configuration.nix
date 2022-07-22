@@ -74,6 +74,10 @@
       krusader # Krusader
       emacsPgtkNativeComp # Emacs with Pure GTK + Native Compilation.
     ];
+    openssh.authorizedKeys.keys = [
+      "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIH2Y7fSAJgH4KJZYsKJo01SVCCoV0A4wmD0etDM394PO u0_a203@localhost"
+    ];
+  };
   home-manager.users = {
     futaba = import ./futaba;
     root = import ./root;
