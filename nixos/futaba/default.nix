@@ -43,12 +43,10 @@
     winetricks
     # Fcitx 5
     (fcitx5-with-addons.override {
-      addons = [
-        fcitx5-chinese-addons
-        fcitx5-pinyin-moegirl
-        fcitx5-pinyin-zhwiki
-      ];
+      addons =
+        [ fcitx5-chinese-addons fcitx5-pinyin-moegirl fcitx5-pinyin-zhwiki ];
     })
+    clementine
     nur.repos.rycee.firefox-addons-generator
   ];
 
@@ -121,7 +119,10 @@
     ncmpcpp = {
       enable = true;
       package = pkgs.ncmpcpp;
-      settings = { ncmpcpp_directory = "~/.local/share/ncmpcpp"; };
+      settings = {
+        ncmpcpp_directory = "~/.local/share/ncmpcpp";
+        mpd_host = "${config.services.mpd.network.listenAddress}";
+      };
     };
   };
   ###### End of program configs.
@@ -140,6 +141,19 @@
     mpd = {
       enable = true;
       musicDirectory = "${config.home.homeDirectory}/Music";
+      # Use a socket
+      network = {
+        listenAddress = "/run/user/1000/mpd.socket";
+      };
+      extraConfig = ''
+        zeroconf_enabled "yes"
+        zeroconf_name "Music Player Daemon @ %h"
+        # Output to PulseAudio directly
+        audio_output {
+          type "pulseaudio"
+          name "Music Player Daemon [PulseAudio]"
+        }
+      '';
     };
   };
   ###### End of service configs.

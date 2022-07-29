@@ -39,6 +39,24 @@
         ignoreSpace = true;
         size = 50000;
       };
+      initExtraFirst = lib.mkBefore ''
+        # Subreap
+        {
+          zmodload lilydjwg/subreap
+          subreap
+        } >/dev/null 2>&1
+        # Fake tty function
+        _saved_tty=$TTY
+        tty() { echo _saved_tty; }
+        # Powerlevek10k Instant prompt
+        if [[ -r "${
+          "\${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-\${(%):-%n}"
+        }.zsh" ]]; then
+          source "${
+            "\${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-\${(%):-%n}"
+          }.zsh"
+        fi
+      '';
       initExtra = let
         zshrc = lib.fileContents ./zshrc;
         sources = with pkgs; [
@@ -57,21 +75,7 @@
             && source ${p10k-linux} \
             || source ${p10k}
         '';
-      in ''
-        # Subreap
-        {
-          zmodload lilydjwg/subreap
-          subreap
-        } >/dev/null 2>&1
-        # Powerlevek10k Instant prompt
-        if [[ -r "${
-          "\${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-\${(%):-%n}"
-        }.zsh" ]]; then
-          source "${
-            "\${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-\${(%):-%n}"
-          }.zsh"
-        fi
-
+      in lib.mkAfter ''
         ### Plugins -- 8< --
         ${plugins}
 

@@ -9,7 +9,8 @@ setopt ALWAYS_TO_END
 setopt AUTO_MENU
 setopt LIST_TYPES
 setopt LIST_PACKED
-unsetopt MENU_COMPLETE
+setopt COMPLETE_IN_WORD
+setopt MENU_COMPLETE
 # Navigation related options.
 setopt PUSHD_MINUS
 setopt PUSHD_IGNORE_DUPS
@@ -116,10 +117,11 @@ bindkey -M emacs '^Z' foreground-last-job
 bindkey -M viins '^Z' foreground-last-job
 ### }}}
 ### - 8< - Completions {{{
-# Case insens only when no case match; after all completions loaded
-zstyle ':completion:*' matcher-list \
-  "" 'm:{a-zA-Z}={A-Za-z}' 'r:|[._-]=* r:|=*' 'l:|=* r:|=*'
-
+# Select a completer
+zstyle ':completion:*' completer _complete _match _correct _approximate _expand_alias _ignored _files
+# Partial matching
+zstyle ':completion:*' matcher-list '' 'm:{a-zA-Z}={A-Za-z}' 'r:|[._-]=* r:|=*' 'l:|=* r:|=*'
+# Allow completing user Git commands
 zstyle ':completion:*:*:git:*' user-commands ${${(M)${(k)commands}:#git-*}/git-/}
 
 # Auto rehash for new binaries
@@ -130,6 +132,14 @@ zstyle ':completion:*' squeeze-slashes true
 zstyle ':completion:*' preserve-prefix '//[^/]##/'
 # Add space
 zstyle ':completion:*' add-space true
+# Tweak cd
+zstyle ':completion:*:cd:*' ignore-parents parent pwd .. directory
+# > The following example sets special-dirs to `..' when the current prefix is
+# > empty, is a single `.', or consists only of a path beginning with `../'.
+# > Otherwise the value is `false'.
+zstyle -e ':completion:*' special-dirs '[[ $PREFIX = (../)#(|.|..) ]] && reply=(..)'
+
+### Rest modified from Grml config
 # allow one error for every three characters typed in approximate completer
 zstyle ':completion:*:approximate:'    max-errors 'reply=( $((($#PREFIX+$#SUFFIX)/3 )) numeric )'
 # don't complete backup files as executables
@@ -163,7 +173,8 @@ zstyle ':completion:*:options'         auto-description '%d'
 # describe options in full
 zstyle ':completion:*:options'         description 'yes'
 # on processes completion complete all user processes
-zstyle ':completion:*:processes'       command 'ps -afu$USER'
+# [See ps(1) for help on this specification]
+zstyle ':completion:*:processes'       command 'ps -o user,pid,cmd'
 # offer indexes before parameters in subscripts
 zstyle ':completion:*:*:-subscript-:*' tag-order indexes parameters
 # provide verbose completion information
@@ -185,10 +196,6 @@ zstyle ':completion:*:processes-names' command 'ps c -u ${USER} -o command | uni
 zstyle ':completion:*:manuals'    separate-sections true
 zstyle ':completion:*:manuals.*'  insert-sections   true
 zstyle ':completion:*:man:*'      menu yes select
-zstyle ':completion:*' special-dirs ..
-zstyle ':completion:*:cd:*' ignore-parents parent pwd .. directory
-# Select a completer
-zstyle ':completion:*' completer _complete _match _correct _approximate _expand_alias _ignored _files
 ### }}}
 
 # if in tmux launch skim in tmux pane
