@@ -71,8 +71,12 @@
     # Enable firewall
     firewall = {
       enable = true;
-      allowedTCPPorts = [ 22 80 8000 8080 ];
-      allowedUDPPorts = [ 53 ];
+      # 5500 is for Clementine
+      allowedTCPPorts = [ 22 80 8000 8080 5500 ];
+      allowedUDPPorts = [ 53 5500 ];
+      # https://userbase.kde.org/KDEConnect
+      allowedTCPPortRanges = [ { from = 1714; to = 1764; } ];
+      allowedUDPPortRanges = [ { from = 1714; to = 1764; } ];
       extraCommands = ''
         # Accept all ICMP packages.
         iptables -A INPUT -p icmp -j ACCEPT
