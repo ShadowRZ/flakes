@@ -48,14 +48,12 @@ function! LightlineFilename()
 endfunction
 
 set background=dark
-" Under a environment where $DISPLAY is set or under Termux
-if has_key(environ(), "DISPLAY") || has_key(environ(), "TERMUX_VERSION")
+" Under a environment where $DISPLAY or $WAYLAND_DISPLAY is set or under Termux
+if has_key(environ(), "DISPLAY") || has_key(environ(), "WAYLAND_DISPLAY") || has_key(environ(), "TERMUX_VERSION")
     set termguicolors
-    " Gruvbox
-    " VTE supports this.
-    let g:gruvbox_italic=1
-    colorscheme gruvbox
-    let g:lightline.colorscheme = 'gruvbox'
+    " Nord
+    colorscheme nord
+    let g:lightline.colorscheme = 'nord'
 endif
 
 " Tree Sitter

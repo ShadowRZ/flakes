@@ -70,6 +70,8 @@
     pulseaudio # PulseAudio tools
     # Phinger Cursors
     phinger-cursors
+    # Nordic
+    nordic
     # Qt 5 tools
     libsForQt5.full
     # Others

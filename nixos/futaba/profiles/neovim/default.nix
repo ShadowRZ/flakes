@@ -10,7 +10,7 @@
     plugins = with pkgs.vimPlugins; [
       vim-fugitive
       lightline-vim
-      gruvbox
+      nord-vim
       # Tree Sitter
       (nvim-treesitter.withPlugins (plugins:
         with plugins; [

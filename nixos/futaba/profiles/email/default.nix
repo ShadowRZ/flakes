@@ -9,7 +9,6 @@
         create = "both";
         expunge = "both";
       };
-      astroid = { enable = true; };
       imap = {
         host = "disroot.org";
         port = 993;
@@ -31,14 +30,30 @@
   programs = {
     msmtp.enable = true;
     mbsync.enable = true;
-    astroid.enable = true;
     notmuch = {
       enable = true;
-      hooks = { preNew = "mbsync -a"; };
+      hooks = {
+        preNew = "mbsync -a"; 
+        postNew = with pkgs; ''
+          ${notmuch}/bin/notmuch tag +nixos -- tag:new and from:nixos1@discoursemail.com
+          ${afew}/bin/afew -a -t
+        '';
+      };
       new.tags = [ "new" ];
     };
     afew = { enable = true; };
-    alot.enable = true;
+    alot = {
+      enable = true;
+      settings = {
+        auto_remove_unread = true;
+        handle_mouse = true;
+        initial_command = "search tag:inbox AND NOT tag:killed";
+        prefer_plaintext = true;
+        ask_subject = false;
+        thread_indent_replies = 2;
+        theme = "tomorrow";
+      };
+    };
   };
 
   # Mu & mu4e

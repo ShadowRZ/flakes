@@ -31,7 +31,7 @@
         } >/dev/null 2>&1
         # Fake tty function
         _saved_tty=$TTY
-        tty() { echo _saved_tty; }
+        tty() { echo $_saved_tty; }
         # Powerlevek10k Instant prompt
         if [[ -r "${
           "\${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-\${(%):-%n}"

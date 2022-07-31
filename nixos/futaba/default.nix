@@ -47,7 +47,7 @@
         [ fcitx5-chinese-addons fcitx5-pinyin-moegirl fcitx5-pinyin-zhwiki ];
     })
     clementine
-    nur.repos.rycee.firefox-addons-generator
+    nur.repos.rycee.mozilla-addons-to-nix
   ];
 
   ###### Program configs start here.

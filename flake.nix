@@ -92,7 +92,7 @@
           let
             update-firefox-addons =
               writeShellScriptBin "update-firefox-addons" ''
-                ${nur.repos.rycee.firefox-addons-generator}/bin/nixpkgs-firefox-addons \
+                ${nur.repos.rycee.mozilla-addons-to-nix}/bin/mozilla-addons-to-nix \
                   nixos/futaba/profiles/firefox/extra-addons.json \
                   nixos/futaba/profiles/firefox/extra-addons.nix
               '';
