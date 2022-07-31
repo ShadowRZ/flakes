@@ -49,10 +49,10 @@
     # Iosevka Aile + Iosevka Etoile
     (iosevka-bin.override { variant = "aile"; })
     (iosevka-bin.override { variant = "etoile"; })
-    # Iosevka Comfy Duo + Wide
+    # Iosevka Comfy Normal + Duo
     # It's shorter than Iosevka.
+    iosevka-comfy.comfy
     iosevka-comfy.comfy-duo
-    iosevka-comfy.comfy-wide
   ];
 
   environment.systemPackages = with pkgs; [
@@ -85,10 +85,8 @@
     gtk4.dev
     vlc
     glxinfo
-    # Wayland base toolsets
-    grim
-    slurp
-    wlr-randr
+    vulkan-tools
+    wayland-utils
     wl-clipboard
     renpy
     kdialog
