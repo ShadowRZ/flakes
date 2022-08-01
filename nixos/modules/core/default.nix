@@ -69,7 +69,8 @@
       defaultEditor = true;
     };
     zsh = { enable = true; };
-    command-not-found = { enable = true; };
+    # Disable command-not-found as it's unavliable in Flakes build
+    command-not-found = { enable = lib.mkForce false; };
     dconf = { enable = true; };
   };
 

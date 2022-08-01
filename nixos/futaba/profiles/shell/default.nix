@@ -93,5 +93,16 @@
       fileWidgetCommand = fd;
       changeDirWidgetCommand = "${alt_c_cmd}";
     };
+    # Nix-index
+    nix-index = {
+      enable = true;
+      enableZshIntegration = true;
+    };
+    # Direnv
+    direnv = {
+      enable = true;
+      enableZshIntegration = true;
+      nix-direnv.enable = true;
+    };
   };
 }
