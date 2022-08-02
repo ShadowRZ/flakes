@@ -8,9 +8,7 @@
     xserver = {
       enable = true;
       # SDDM
-      displayManager.sddm = {
-        enable = true;
-      };
+      displayManager.sddm = { enable = true; };
       desktopManager.plasma5 = {
         enable = true;
         runUsingSystemd = true;
@@ -98,13 +96,12 @@
     libsForQt5.lightly
   ];
 
-  hardware.opengl.enable = true;
-  hardware.opengl.driSupport = true;
-  hardware.opengl.extraPackages = with pkgs; [
-    vaapiIntel
-    beignet
-    intel-ocl
-  ];
+  hardware.opengl = {
+    enable = true;
+    driSupport = true;
+    driSupport32Bit = true;
+    extraPackages = with pkgs; [ vaapiIntel beignet intel-ocl ];
+  };
 
   xdg.portal.enable = true;
 }
