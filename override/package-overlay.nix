@@ -28,4 +28,8 @@ final: prev: {
       })
     ];
   });
+  # Build Fcitx 5 GTK module with GTK 2 support
+  fcitx5-gtk = prev.fcitx5-gtk.override {
+    withGTK2 = true;
+  };
 }

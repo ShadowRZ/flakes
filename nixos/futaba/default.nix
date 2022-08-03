@@ -41,14 +41,19 @@
     asciinema
     wine-staging
     winetricks
-    # Fcitx 5
-    (fcitx5-with-addons.override {
-      addons =
-        [ fcitx5-chinese-addons fcitx5-pinyin-moegirl fcitx5-pinyin-zhwiki ];
-    })
     clementine
     nur.repos.rycee.mozilla-addons-to-nix
   ];
+
+  # Fcitx 5
+  i18n.inputMethod = {
+    enabled = "fcitx5";
+    fcitx5.addons = with pkgs; [
+      fcitx5-chinese-addons
+      fcitx5-pinyin-moegirl
+      fcitx5-pinyin-zhwiki
+    ];
+  };
 
   ###### Program configs start here.
   programs = {
@@ -142,9 +147,7 @@
       enable = true;
       musicDirectory = "${config.home.homeDirectory}/Music";
       # Use a socket
-      network = {
-        listenAddress = "/run/user/1000/mpd.socket";
-      };
+      network = { listenAddress = "/run/user/1000/mpd.socket"; };
       extraConfig = ''
         zeroconf_enabled "yes"
         zeroconf_name "Music Player Daemon @ %h"
