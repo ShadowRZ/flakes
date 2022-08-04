@@ -4,4 +4,5 @@
   sddm-lain-wired-theme = pkgs.callPackage ./sddm-lain-wired-theme { };
   sddm-sugar-candy = pkgs.callPackage ./sddm-sugar-candy { };
   mkxp-z = pkgs.callPackage ./mkxp-z {};
+  rvpacker = pkgs.callPackage ./rvpacker {};
 }
