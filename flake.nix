@@ -32,7 +32,12 @@
 
   outputs = inputs@{ self, home-manager, nixpkgs, flake-utils, ... }:
     {
-      overlay = final: prev: (import ./pkgs prev);
+      # Package metadatas.
+      # Only x86_64-linux is considered.
+      pkgs-metas = builtins.mapAttrs (key: value: {
+        version = (value.version or null);
+        meta = (value.meta or null);
+      }) self.packages.x86_64-linux;
       # NixOS configurations.
       nixosConfigurations.hermitmedjed-s = nixpkgs.lib.nixosSystem rec {
         system = "x86_64-linux";
@@ -60,10 +65,11 @@
               self.overlay
               (import ./override/package-overlay.nix)
               # Rust Nightly Packages
-              (final: prev: import ./pkgs/rust-nightly-packages {
-                pkgs = prev;
-                fenix = inputs.fenix.packages.${system};
-              })
+              (final: prev:
+                import ./pkgs/rust-nightly-packages {
+                  pkgs = prev;
+                  fenix = inputs.fenix.packages.${system};
+                })
             ];
             # Configuration revision.
             system.configurationRevision =
