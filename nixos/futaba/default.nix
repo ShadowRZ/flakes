@@ -42,7 +42,6 @@
     wine-staging
     winetricks
     clementine
-    nur.repos.rycee.mozilla-addons-to-nix
   ];
 
   # Fcitx 5
