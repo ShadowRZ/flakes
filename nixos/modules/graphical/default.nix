@@ -37,7 +37,7 @@
     roboto # Roboto
     roboto-slab # Roboto Slab
     ibm-plex # IBM Plex
-    iosevka # Iosevka
+    iosevka-bin # Iosevka
     _3270font # Fonts of IBM 3270
     noto-fonts # Base Noto Fonts
     noto-fonts-cjk # CJK Noto Fonts
@@ -47,10 +47,6 @@
     # Iosevka Aile + Iosevka Etoile
     (iosevka-bin.override { variant = "aile"; })
     (iosevka-bin.override { variant = "etoile"; })
-    # Iosevka Comfy Normal + Duo
-    # It's shorter than Iosevka.
-    iosevka-comfy.comfy
-    iosevka-comfy.comfy-duo
   ];
 
   environment.systemPackages = with pkgs; [

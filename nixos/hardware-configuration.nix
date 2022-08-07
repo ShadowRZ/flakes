@@ -32,6 +32,7 @@
     options = [ "subvolid=530" ];
     neededForBoot = true;
   };
+  fileSystems."/etc/ssh".neededForBoot = true;
 
   fileSystems."/nix" = {
     device = "/dev/disk/by-uuid/dc3dad35-273d-4619-a694-4faf8b4debe5";
