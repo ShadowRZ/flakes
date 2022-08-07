@@ -1,0 +1,6 @@
+keys:
+  - &host 3237D49E8F815A45213364EA4FF35790F40553A9
+  - &target age1y0rpt8xtgfqd0jkgfkvy0r3cst3cse583cjj6q6r7wtrp7529cqs70sy7l
+creation_rules:
+  - pgp: *host
+    age: *target

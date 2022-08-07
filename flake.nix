@@ -13,6 +13,12 @@
     # Emacs Overlay
     emacs-overlay.url = "github:nix-community/emacs-overlay";
     emacs-overlay.inputs.nixpkgs.follows = "nixpkgs";
+    # Impermanence
+    impermanence.url = "github:nix-community/impermanence";
+    impermanence.inputs.nixpkgs.follows = "nixpkgs";
+    # Sops-Nix
+    sops-nix.url = "github:Mic92/sops-nix";
+    sops-nix.inputs.nixpkgs.follows = "nixpkgs";
     # Wayland tools
     nixpkgs-wayland.url = "github:nix-community/nixpkgs-wayland";
     nixpkgs-wayland.inputs.nixpkgs.follows = "nixpkgs";
@@ -47,6 +53,10 @@
           home-manager.nixosModules.home-manager
           # (modulesPath + "/installer/scan/not-detected.nix")
           nixpkgs.nixosModules.notDetected
+          # Impermanence
+          inputs.impermanence.nixosModule
+          # Sops-Nix
+          inputs.sops-nix.nixosModules.sops
           {
             # Overlays
             nixpkgs.overlays = [
@@ -64,12 +74,6 @@
               # My overlay
               self.overlay
               (import ./override/package-overlay.nix)
-              # Rust Nightly Packages
-              (final: prev:
-                import ./pkgs/rust-nightly-packages {
-                  pkgs = prev;
-                  fenix = inputs.fenix.packages.${system};
-                })
             ];
             # Configuration revision.
             system.configurationRevision =

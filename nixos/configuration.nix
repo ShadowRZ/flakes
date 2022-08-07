@@ -51,43 +51,70 @@
     };
   };
 
+  # Sops-Nix
+  sops = {
+    defaultSopsFile = ./secrets.yaml;
+    age.sshKeyPaths = [ "/etc/ssh/ssh_host_ed25519_key" ];
+    secrets = { passwd.neededForUsers = true; };
+  };
+
   # Users
-  users.users.futaba = {
-    uid = 1000;
-    isNormalUser = true;
-    shell = pkgs.zsh;
-    description = "佐仓双叶";
-    extraGroups = [ "wheel" ];
-    packages = with pkgs; [
-      kdenlive # Kdenlive
-      blender # Blender
-      qtcreator # Qt Creator
-      graphviz # Graphviz
-      hugo # Hugo
-      yarn # Yarn
-      electron # Electron
-      aegisub # AegiSub
-      keepassxc # KeePassXC
-      gocryptfs # Gocryptfs
-      kate # Kate
-      falkon # Falkon
-      krusader # Krusader
-      emacsPgtkNativeComp # Emacs with Pure GTK + Native Compilation.
-      feeluown # FeelUOwn
-      mindustry-wayland # Mindustry (Wayland)
-      nheko # Nheko
-      qownnotes # QOwnNotes
-      mkxp-z # mkxp-z
-      rvpacker
-      nur.repos.rycee.mozilla-addons-to-nix
-    ];
-    openssh.authorizedKeys.keys = [
-      "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIH2Y7fSAJgH4KJZYsKJo01SVCCoV0A4wmD0etDM394PO u0_a203@localhost"
-    ];
+  users = {
+    mutableUsers = false;
+    users = {
+      futaba = {
+        uid = 1000;
+        isNormalUser = true;
+        passwordFile = config.sops.secrets.passwd.path;
+        shell = pkgs.zsh;
+        description = "佐仓双叶";
+        extraGroups = [ "wheel" ];
+        packages = with pkgs; [
+          kdenlive # Kdenlive
+          blender # Blender
+          qtcreator # Qt Creator
+          graphviz # Graphviz
+          hugo # Hugo
+          yarn # Yarn
+          electron # Electron
+          aegisub # AegiSub
+          keepassxc # KeePassXC
+          gocryptfs # Gocryptfs
+          kate # Kate
+          falkon # Falkon
+          krusader # Krusader
+          emacsPgtkNativeComp # Emacs with Pure GTK + Native Compilation.
+          feeluown # FeelUOwn
+          mindustry-wayland # Mindustry (Wayland)
+          nheko # Nheko
+          qownnotes # QOwnNotes
+          mkxp-z # mkxp-z
+          rvpacker
+          nur.repos.rycee.mozilla-addons-to-nix
+        ];
+        openssh.authorizedKeys.keys = [
+          "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIH2Y7fSAJgH4KJZYsKJo01SVCCoV0A4wmD0etDM394PO u0_a203@localhost"
+        ];
+      };
+    };
   };
   home-manager.users = {
     futaba = import ./futaba;
     root = import ./root;
+  };
+
+  # Persistent files
+  environment.persistence."/.persistent" = {
+    directories = [
+      "/var/log"
+      "/var/lib"
+      "/var/cache"
+      # SSH
+      "/etc/ssh"
+    ];
+    files = [
+      "/etc/machine-id"
+    ];
   };
 
   # Misc
