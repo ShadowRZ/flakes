@@ -19,14 +19,6 @@
     # Sops-Nix
     sops-nix.url = "github:Mic92/sops-nix";
     sops-nix.inputs.nixpkgs.follows = "nixpkgs";
-    # Wayland tools
-    nixpkgs-wayland.url = "github:nix-community/nixpkgs-wayland";
-    nixpkgs-wayland.inputs.nixpkgs.follows = "nixpkgs";
-    # Flake utils
-    flake-utils.url = "github:numtide/flake-utils";
-    # Fenix
-    fenix.url = "github:nix-community/fenix";
-    fenix.inputs.nixpkgs.follows = "nixpkgs";
     # Users' flake
     ## NickCao
     nickcao.url = "github:NickCao/flakes";
@@ -34,81 +26,54 @@
     ## Berberman
     berberman.url = "github:berberman/flakes";
     berberman.inputs.nixpkgs.follows = "nixpkgs";
+    ## My flake
+    shadowrz.url = "github:ShadowRZ/nur-packages";
+    shadowrz.inputs.nixpkgs.follows = "nixpkgs";
   };
 
-  outputs = inputs@{ self, home-manager, nixpkgs, flake-utils, ... }:
-    {
-      # Package metadatas.
-      # Only x86_64-linux is considered.
-      pkgs-metas = builtins.mapAttrs (key: value: {
-        version = (value.version or null);
-        meta = (value.meta or null);
-      }) self.packages.x86_64-linux;
-      # NixOS configurations.
-      nixosConfigurations.hermitmedjed-s = nixpkgs.lib.nixosSystem rec {
-        system = "x86_64-linux";
-        modules = [
-          ./nixos/configuration.nix
-          # Home Manager Module
-          home-manager.nixosModules.home-manager
-          # (modulesPath + "/installer/scan/not-detected.nix")
-          nixpkgs.nixosModules.notDetected
-          # Impermanence
-          inputs.impermanence.nixosModule
-          # Sops-Nix
-          inputs.sops-nix.nixosModules.sops
-          {
-            # Overlays
-            nixpkgs.overlays = [
-              # NUR
-              inputs.nur.overlay
-              # Wayland tools
-              inputs.nixpkgs-wayland.overlay
-              # Emacs Overlay
-              inputs.emacs-overlay.overlay
-              # Fenix
-              inputs.fenix.overlay
-              # Users' flake
-              inputs.nickcao.overlays.default
-              inputs.berberman.overlay
-              # My overlay
-              self.overlay
-              (import ./override/package-overlay.nix)
-            ];
-            # Configuration revision.
-            system.configurationRevision =
-              nixpkgs.lib.mkIf (self ? rev) self.rev;
-            # Home Manager.
-            home-manager = {
-              useUserPackages = true;
-              useGlobalPkgs = true;
-            };
-            # Pin NIX_PATH
-            nix.nixPath = [ "nixpkgs=${nixpkgs}" ];
-            nix.registry.p.flake = self;
-            nix.registry.nixpkgs.flake = nixpkgs;
-          }
-        ];
-      };
-    } // flake-utils.lib.eachDefaultSystem (system:
-      let
-        pkgs = import nixpkgs {
-          inherit system;
-          overlays = [ inputs.nur.overlay ];
-        };
-      in {
-        # Update my Firefox addons.
-        apps.update-firefox-addons = with pkgs;
-          let
-            update-firefox-addons =
-              writeShellScriptBin "update-firefox-addons" ''
-                ${nur.repos.rycee.mozilla-addons-to-nix}/bin/mozilla-addons-to-nix \
-                  nixos/futaba/profiles/firefox/extra-addons.json \
-                  nixos/futaba/profiles/firefox/extra-addons.nix
-              '';
-          in flake-utils.lib.mkApp { drv = update-firefox-addons; };
-      }) // (import ./pkgs/flake-output.nix {
-        inherit flake-utils nixpkgs;
-        fenix = inputs.fenix;
-      });
+  outputs = inputs@{ self, shadowrz, home-manager, nixpkgs, ... }: {
+    # NixOS configurations.
+    nixosConfigurations.hermitmedjed-s = nixpkgs.lib.nixosSystem rec {
+      system = "x86_64-linux";
+      modules = [
+        ./nixos/configuration.nix
+        # Home Manager Module
+        home-manager.nixosModules.home-manager
+        # (modulesPath + "/installer/scan/not-detected.nix")
+        nixpkgs.nixosModules.notDetected
+        # Impermanence
+        inputs.impermanence.nixosModule
+        # Sops-Nix
+        inputs.sops-nix.nixosModules.sops
+        {
+          # Overlays
+          nixpkgs.overlays = [
+            # NUR
+            inputs.nur.overlay
+            # Wayland tools
+            inputs.nixpkgs-wayland.overlay
+            # Emacs Overlay
+            inputs.emacs-overlay.overlay
+            # Users' flake
+            inputs.nickcao.overlays.default
+            inputs.berberman.overlay
+            # My overlay
+            shadowrz.overlay
+            (import ./override/package-overlay.nix)
+          ];
+          # Configuration revision.
+          system.configurationRevision = nixpkgs.lib.mkIf (self ? rev) self.rev;
+          # Home Manager.
+          home-manager = {
+            useUserPackages = true;
+            useGlobalPkgs = true;
+          };
+          # Pin NIX_PATH
+          nix.nixPath = [ "nixpkgs=${nixpkgs}" ];
+          nix.registry.p.flake = self;
+          nix.registry.nixpkgs.flake = nixpkgs;
+        }
+      ];
+    };
+  };
 }

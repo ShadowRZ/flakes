@@ -79,5 +79,9 @@ with class 'color and highest min-color value."
 
 (advice-add 'face-attribute :override #'my-face-attribute)
 
-(with-current-buffer (find-file-noselect "docs/index.org")
-  (org-html-export-to-html))
+(setq org-publish-project-alist
+      '(("docs"
+	 :base-directory "docs"
+	 :publishing-function org-html-publish-to-html
+	 :publishing-directory "docs/build/html")))
+(org-publish-all)

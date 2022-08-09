@@ -4,9 +4,13 @@ on:
   push:
     # Runs on pushes targeting the default branch
     branches: [$default-branch]
-    # And touched pkgs/**
+    # And touched docs/** and Actions file
     paths:
-      - 'pkgs/**'
+      - 'docs/**'
+      - '.github/workflows/**'
+  schedule:
+    # rebuild everyday at 7:22, on Tuesday.
+    - cron:  '22 7 * * 2'
 
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
@@ -45,13 +49,18 @@ jobs:
       - name: Build packages metadata
         run: |
           mkdir -p docs/build
-          nix --experimental-features 'nix-command flakes' eval --verbose '.#pkgs-metas' --json > docs/build/packages.json
+          NIXPKGS_ALLOW_UNFREE=1 nix-env -f '<shadowrz>' -qa \* --meta --json \
+            --allowed-uris https://static.rust-lang.org \
+            --option restrict-eval true \
+            --option allow-import-from-derivation true \
+            --drv-path --show-trace \
+            -I nixpkgs=$(nix-instantiate --find-file nixpkgs) \
+            -I shadowrz=https://github.com/ShadowRZ/nur-packages/archive/master.tar.gz > docs/build/packages.json
           python3 tools/convert_to_org.py docs/build/packages.json > docs/build/packages.org
       - name: Build HTML output
         run: |
           emacs --batch -l docs/make-html.el --kill
-          mkdir -p docs/build/html
-          cp docs/index.html docs/style.css docs/build/html
+          cp docs/style.css docs/build/html
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v1
         with:

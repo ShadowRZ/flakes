@@ -13,7 +13,9 @@ with open(file) as f:
     data = json.load(f)
     # Print package infomation
     for attr, value in data.items():
-        meta = value['meta']
+        if attr in ("lib", "modules", "overlays"):
+            continue
+        meta = value['meta'] or {}
         print(f'** ={attr}=\n')
         description = meta.get('description') or '(No Description)'
         print(f'{description}\n')
