@@ -50,15 +50,13 @@
           nixpkgs.overlays = [
             # NUR
             inputs.nur.overlay
-            # Wayland tools
-            inputs.nixpkgs-wayland.overlay
             # Emacs Overlay
             inputs.emacs-overlay.overlay
             # Users' flake
             inputs.nickcao.overlays.default
             inputs.berberman.overlay
             # My overlay
-            shadowrz.overlay
+            (import "${shadowrz}/overlay.nix")
             (import ./override/package-overlay.nix)
           ];
           # Configuration revision.
