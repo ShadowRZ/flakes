@@ -85,7 +85,7 @@
           krusader # Krusader
           emacsPgtkNativeComp # Emacs with Pure GTK + Native Compilation.
           feeluown # FeelUOwn
-          mindustry-wayland # Mindustry (Wayland)
+          mindustry # Mindustry
           nheko # Nheko
           qownnotes # QOwnNotes
           mkxp-z # mkxp-z
