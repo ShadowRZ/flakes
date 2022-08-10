@@ -14,19 +14,38 @@
     ./modules/virtualization
   ];
 
-  # Use the systemd-boot EFI boot loader.
-  boot.loader.systemd-boot.enable = true;
-  # Kernel.
-  boot.kernelPackages = pkgs.linuxKernel.packages.linux_xanmod_latest;
-  boot.kernelParams = lib.mkAfter [
-    "quiet"
-    "udev.log_priority=3"
-    "systemd.unified_cgroup_hierarchy=1"
-    "systemd.show_status=true"
-  ];
-  boot.tmpOnTmpfs = true;
-  boot.initrd.verbose = false;
-  boot.consoleLogLevel = 0;
+  boot = {
+    loader = {
+      timeout = 0;
+      # Use the systemd-boot EFI boot loader.
+      systemd-boot = {
+        enable = true;
+        consoleMode = "max";
+        graceful = true;
+      };
+    };
+    # Kernel.
+    kernelPackages = pkgs.linuxKernel.packages.linux_xanmod_latest;
+    kernelParams = lib.mkAfter [
+      "quiet"
+      "udev.log_priority=3"
+      "systemd.unified_cgroup_hierarchy=1"
+      "systemd.show_status=true"
+    ];
+    tmpOnTmpfs = true;
+    initrd = {
+      verbose = false;
+      systemd.enable = true;
+    };
+    consoleLogLevel = 0;
+  };
+
+  # Configure console.
+  console = {
+    packages = with pkgs; [ terminus_font ];
+    earlySetup = true;
+    font = "ter-v32b";
+  };
 
   # Set your time zone.
   time.timeZone = "Asia/Shanghai";
@@ -112,9 +131,7 @@
       # SSH
       "/etc/ssh"
     ];
-    files = [
-      "/etc/machine-id"
-    ];
+    files = [ "/etc/machine-id" ];
   };
 
   # Misc
