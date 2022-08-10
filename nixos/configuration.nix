@@ -29,8 +29,7 @@
     kernelParams = lib.mkAfter [
       "quiet"
       "udev.log_priority=3"
-      "systemd.unified_cgroup_hierarchy=1"
-      "systemd.show_status=true"
+      "vt.global_cursor_default=0"
     ];
     tmpOnTmpfs = true;
     initrd = {
@@ -44,8 +43,14 @@
   console = {
     packages = with pkgs; [ terminus_font ];
     earlySetup = true;
-    font = "ter-v32b";
+    font = "ter-132b";
   };
+
+  # Configure Systemd.
+  systemd.extraConfig = ''
+    DefaultLimitCORE=infinity
+    ShowStatus=yes
+  '';
 
   # Set your time zone.
   time.timeZone = "Asia/Shanghai";

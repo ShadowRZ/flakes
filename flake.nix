@@ -33,8 +33,10 @@
 
   outputs = inputs@{ self, shadowrz, home-manager, nixpkgs, ... }: {
     # NixOS configurations.
-    nixosConfigurations.hermitmedjed-s = nixpkgs.lib.nixosSystem rec {
+    nixosConfigurations.hermitmedjed-s = nixpkgs.lib.nixosSystem {
       system = "x86_64-linux";
+      specialArgs.configurationPath = builtins.toString self;
+      specialArgs.nixpkgsPath = builtins.toString nixpkgs;
       modules = [
         ./nixos/configuration.nix
         # Home Manager Module

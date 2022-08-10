@@ -29,6 +29,8 @@
           zmodload lilydjwg/subreap
           subreap
         } >/dev/null 2>&1
+        # Enable terminal cursor
+        ${pkgs.util-linux}/bin/setterm -cursor on
         # Fake tty function
         _saved_tty=$TTY
         tty() { echo $_saved_tty; }

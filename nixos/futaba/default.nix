@@ -152,7 +152,7 @@
         zeroconf_name "Music Player Daemon @ %h"
         # Output to PulseAudio directly
         audio_output {
-          type "pulseaudio"
+          type "pulse"
           name "Music Player Daemon [PulseAudio]"
         }
       '';

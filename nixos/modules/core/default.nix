@@ -1,4 +1,4 @@
-{ config, lib, pkgs, ... }: {
+{ config, lib, pkgs, specialArgs, ... }: {
   # System level packages.
   environment.systemPackages = with pkgs; [
     coreutils
@@ -74,6 +74,19 @@
     dconf = { enable = true; };
   };
 
+  # Getty
+  services.getty = {
+    greetingLine = with config.system.nixos; ''
+      NixOS ${label} (${codeName})
+      Revision = ${revision}
+    '';
+    helpLine = ''
+      Configuration Revision = ${config.system.configurationRevision}
+      Location               = ${specialArgs.configurationPath}
+      Nixpkgs Location       = ${specialArgs.nixpkgsPath}
+    '';
+  };
+
   environment.variables = let
     nix-build-shell = pkgs.writeScript "nix-build-shell" ''
       #!${pkgs.bashInteractive}/bin/bash
@@ -97,4 +110,6 @@
 
   # Udev
   services.udev.packages = with pkgs; [ android-udev-rules ];
+
+  documentation.doc.enable = lib.mkForce false;
 }
