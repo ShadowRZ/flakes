@@ -3,7 +3,7 @@
 
   inputs = {
     # Nixpkgs
-    nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
+    nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable-small";
     # Home Manager
     home-manager.url = "github:nix-community/home-manager";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
@@ -26,17 +26,16 @@
     ## Berberman
     berberman.url = "github:berberman/flakes";
     berberman.inputs.nixpkgs.follows = "nixpkgs";
-    ## My flake
-    shadowrz.url = "github:ShadowRZ/nur-packages";
-    shadowrz.inputs.nixpkgs.follows = "nixpkgs";
   };
 
-  outputs = inputs@{ self, shadowrz, home-manager, nixpkgs, ... }: {
+  outputs = inputs@{ self, home-manager, nixpkgs, ... }: {
     # NixOS configurations.
     nixosConfigurations.hermitmedjed-s = nixpkgs.lib.nixosSystem {
       system = "x86_64-linux";
-      specialArgs.configurationPath = builtins.toString self;
-      specialArgs.nixpkgsPath = builtins.toString nixpkgs;
+      specialArgs = {
+        configurationPath = builtins.toString self;
+        nixpkgsPath = builtins.toString nixpkgs;
+      };
       modules = [
         ./nixos/configuration.nix
         # Home Manager Module
@@ -47,18 +46,16 @@
         inputs.impermanence.nixosModule
         # Sops-Nix
         inputs.sops-nix.nixosModules.sops
+        # NUR
+        inputs.nur.nixosModules.nur
         {
           # Overlays
           nixpkgs.overlays = [
-            # NUR
-            inputs.nur.overlay
             # Emacs Overlay
             inputs.emacs-overlay.overlay
             # Users' flake
             inputs.nickcao.overlays.default
             inputs.berberman.overlay
-            # My overlay
-            (import "${shadowrz}/overlay.nix")
             (import ./override/package-overlay.nix)
           ];
           # Configuration revision.

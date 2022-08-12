@@ -28,6 +28,7 @@
     kernelPackages = pkgs.linuxKernel.packages.linux_xanmod_latest;
     kernelParams = lib.mkAfter [
       "quiet"
+      "noefi"
       "udev.log_priority=3"
       "vt.global_cursor_default=0"
     ];
@@ -112,9 +113,9 @@
           mindustry # Mindustry
           nheko # Nheko
           qownnotes # QOwnNotes
-          mkxp-z # mkxp-z
-          rvpacker
-          nur.repos.rycee.mozilla-addons-to-nix
+          config.nur.repos.shadowrz.mkxp-z # mkxp-z
+          config.nur.repos.shadowrz.rvpacker
+          config.nur.repos.rycee.mozilla-addons-to-nix
         ];
         openssh.authorizedKeys.keys = [
           "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIH2Y7fSAJgH4KJZYsKJo01SVCCoV0A4wmD0etDM394PO u0_a203@localhost"
@@ -122,9 +123,12 @@
       };
     };
   };
-  home-manager.users = {
-    futaba = import ./futaba;
-    root = import ./root;
+  home-manager = {
+    extraSpecialArgs = { nur = config.nur; };
+    users = {
+      futaba = import ./futaba;
+      root = import ./root;
+    };
   };
 
   # Persistent files

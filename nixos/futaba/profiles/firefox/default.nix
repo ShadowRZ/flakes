@@ -1,4 +1,4 @@
-{ pkgs, ... }: {
+{ pkgs, specialArgs, ... }: {
   programs.firefox = {
     enable = true;
     package = pkgs.firefox.override {
@@ -44,7 +44,7 @@
     };
     # Firefox extensions
     # TODO: Add links to https://addons.mozilla.org
-    extensions = with pkgs.nur.repos.rycee.firefox-addons;
+    extensions = with specialArgs.nur.repos.rycee.firefox-addons;
       [
         add-custom-search-engine
         auto-tab-discard
@@ -78,7 +78,7 @@
       ] ++ (let
         extra-addons = pkgs.callPackage ./extra-addons.nix {
           buildFirefoxXpiAddon =
-            pkgs.nur.repos.rycee.firefox-addons.buildFirefoxXpiAddon;
+            specialArgs.nur.repos.rycee.firefox-addons.buildFirefoxXpiAddon;
         };
       in with extra-addons; [ redirector custom-scrollbars measure-it ]);
   };

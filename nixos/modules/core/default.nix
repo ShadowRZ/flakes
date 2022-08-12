@@ -30,6 +30,7 @@
     mediainfo
     inxi
     lshw
+    screen
   ];
 
   nix = {
