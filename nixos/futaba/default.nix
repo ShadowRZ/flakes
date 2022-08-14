@@ -160,6 +160,10 @@
   };
   ###### End of service configs.
 
+  # XXX: Kill generated Systemd service for Fcitx 5
+  # Required to make sure KWin can bring a Fcitx 5 up to support Wayland IME protocol
+  systemd.user.services.fcitx5-daemon = lib.mkForce {};
+
   # Session variables for Systemd user units.
   # Plasma (+systemd) & GDM launched session reads these too.
   systemd.user.sessionVariables = {

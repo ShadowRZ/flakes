@@ -113,6 +113,7 @@
           mindustry # Mindustry
           nheko # Nheko
           qownnotes # QOwnNotes
+          alacritty # Alacritty
           config.nur.repos.shadowrz.mkxp-z # mkxp-z
           config.nur.repos.shadowrz.rvpacker
           config.nur.repos.rycee.mozilla-addons-to-nix

@@ -8,7 +8,14 @@
     xserver = {
       enable = true;
       # SDDM
-      displayManager.sddm = { enable = true; };
+      displayManager.sddm = {
+        enable = true;
+        settings = {
+          General = {
+            background = "${pkgs.nixos-artwork.wallpapers.nineish}/share/backgrounds/nixos/nix-wallpaper-nineish.png";
+          };
+        };
+      };
       desktopManager.plasma5 = {
         enable = true;
         runUsingSystemd = true;
@@ -90,6 +97,7 @@
     material-kwin-decoration # KWin material decoration
     qtcurve
     libsForQt5.lightly
+    nixos-artwork.wallpapers.nineish # NixOS wallpaper
   ];
 
   hardware.opengl = {
