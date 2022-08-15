@@ -1,4 +1,7 @@
 { pkgs, lib, ... }: {
+
+  imports = [ ./sddm-breeze-background.nix ];
+
   services = {
     upower.enable = true;
     dbus = {
@@ -8,14 +11,7 @@
     xserver = {
       enable = true;
       # SDDM
-      displayManager.sddm = {
-        enable = true;
-        settings = {
-          General = {
-            background = "${pkgs.nixos-artwork.wallpapers.nineish}/share/backgrounds/nixos/nix-wallpaper-nineish.png";
-          };
-        };
-      };
+      displayManager.sddm.enable = true;
       desktopManager.plasma5 = {
         enable = true;
         runUsingSystemd = true;
