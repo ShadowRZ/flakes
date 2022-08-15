@@ -43,11 +43,13 @@
         "https://berberman.cachix.org"
         "https://nixpkgs-wayland.cachix.org"
         "https://nix-community.cachix.org"
+        "https://shadowrz.cachix.org"
       ];
       trusted-public-keys = [
         "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs="
         "berberman.cachix.org-1:UHGhodNXVruGzWrwJ12B1grPK/6Qnrx2c3TjKueQPds="
         "nixpkgs-wayland.cachix.org-1:3lwxaILxMRkVhehr5StQprHdEo4IrE8sRho9R9HOLYA="
+        "shadowrz.cachix.org-1:I+6FCWMtdGmN8zYVncKdys/LVsLkCMWO3tfXbwQPTU0="
       ];
       auto-optimise-store = true;
       allowed-users = [ "@wheel" ];
