@@ -1,4 +1,4 @@
-{ pkgs, lib, ... }: {
+{ config, pkgs, lib, ... }: {
 
   imports = [ ./sddm-breeze-background.nix ];
 
@@ -93,6 +93,7 @@
     material-kwin-decoration # KWin material decoration
     qtcurve
     libsForQt5.lightly
+    config.nur.repos.shadowrz.klassy # Klassy
     nixos-artwork.wallpapers.nineish # NixOS wallpaper
   ];
 
