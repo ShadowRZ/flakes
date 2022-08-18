@@ -41,7 +41,7 @@
     asciinema
     wine-staging
     winetricks
-    clementine
+    strawberry
   ];
 
   # Fcitx 5

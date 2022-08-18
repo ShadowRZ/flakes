@@ -86,6 +86,7 @@
     glxinfo
     vulkan-tools
     wayland-utils
+    xorg.xdpyinfo
     wl-clipboard
     renpy
     kdialog
@@ -93,6 +94,7 @@
     material-kwin-decoration # KWin material decoration
     qtcurve
     libsForQt5.lightly
+    smplayer
     config.nur.repos.shadowrz.klassy # Klassy
     nixos-artwork.wallpapers.nineish # NixOS wallpaper
   ];

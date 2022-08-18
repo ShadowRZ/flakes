@@ -114,7 +114,6 @@
           nheko # Nheko
           qownnotes # QOwnNotes
           alacritty # Alacritty
-          latte-dock # Latte Dock
           config.nur.repos.shadowrz.mkxp-z # mkxp-z
           config.nur.repos.shadowrz.rvpacker
           config.nur.repos.rycee.mozilla-addons-to-nix

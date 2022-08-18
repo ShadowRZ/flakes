@@ -14,12 +14,11 @@
     utillinux
     file
     less
-    ncdu
+    ncdu_1
     wget
     htop
     tree
     shellcheck
-    editorconfig-core-c
     nixfmt
     nixpkgs-fmt
     man-pages
@@ -31,6 +30,8 @@
     inxi
     lshw
     screen
+    pciutils
+    aha
   ];
 
   nix = {
