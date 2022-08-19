@@ -1,10 +1,11 @@
 { config, pkgs, lib, ... }: {
   imports = [
-    ./profiles/git
-    ./profiles/neovim
-    ./profiles/shell
-    ./profiles/email
-    ./profiles/firefox
+    ./modules/git
+    ./modules/neovim
+    ./modules/shell
+    ./modules/email
+    ./modules/firefox
+    ./modules/terminal
   ];
 
   # Home Manager needs a bit of information about you and the
