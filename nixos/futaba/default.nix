@@ -28,21 +28,12 @@
     w3m
     nwjs
     optipng
-    nix-prefetch-github
-    nix-prefetch-git
-    fontforge-gtk
-    android-tools
     rclone
     assimp
-    gnome.dconf-editor
     lsof
-    helvum
     # VS Code
     vscode-fhs
     asciinema
-    wine-staging
-    winetricks
-    strawberry
   ];
 
   # Fcitx 5

@@ -30,7 +30,7 @@
 
   outputs = inputs@{ self, home-manager, nixpkgs, ... }: {
     # NixOS configurations.
-    nixosConfigurations.hermitmedjed-s = nixpkgs.lib.nixosSystem {
+    nixosConfigurations.medjedmonogatari = nixpkgs.lib.nixosSystem {
       system = "x86_64-linux";
       specialArgs = {
         configurationPath = builtins.toString self;

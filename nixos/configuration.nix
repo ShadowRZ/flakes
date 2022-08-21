@@ -60,7 +60,7 @@
   environment.pathsToLink = [ "/share/zsh" ];
 
   # Hostname
-  networking.hostName = "hermitmedjed-s";
+  networking.hostName = "medjedmonogatari";
 
   # libinput Touchpad.
   services.xserver.libinput = {
@@ -109,11 +109,19 @@
           falkon # Falkon
           krusader # Krusader
           emacsPgtkNativeComp # Emacs with Pure GTK + Native Compilation.
-          feeluown # FeelUOwn
           mindustry # Mindustry
           nheko # Nheko
-          qownnotes # QOwnNotes
           alacritty # Alacritty
+          latte-dock # Latte Dock
+          nix-prefetch-github
+          nix-prefetch-git
+          fontforge-gtk
+          android-tools
+          gnome.dconf-editor
+          helvum
+          wine-staging
+          winetricks
+          strawberry
           config.nur.repos.shadowrz.mkxp-z # mkxp-z
           config.nur.repos.shadowrz.rvpacker
           config.nur.repos.rycee.mozilla-addons-to-nix
@@ -124,8 +132,10 @@
       };
     };
   };
+
+  # Home Manager
   home-manager = {
-    extraSpecialArgs = { nur = config.nur; };
+    extraSpecialArgs = { inherit (config) nur; };
     users = {
       futaba = import ./futaba;
       root = import ./root;
@@ -169,11 +179,13 @@
   # Especially Perl which gave warning if it can't use such locale.
   i18n.supportedLocales = [ "all" ];
 
+  # DO NOT FIDDLE WITH THIS VALUE !!!
   # This value determines the NixOS release from which the default
   # settings for stateful data, like file locations and database versions
-  # on your system were taken. It‘s perfectly fine and recommended to leave
-  # this value at the release version of the first install of this system.
-  # Before changing this value read the documentation for this option
-  # (e.g. man configuration.nix or on https://nixos.org/nixos/options.html).
+  # on your system were taken.
+  # Before changing this value (which you shouldn't do unless you have
+  # REALLY NECESSARY reason to do this) read the documentation for this option
+  # (e.g. man configuration.nix or on https://nixos.org/nixos/options.html)
+  # and release notes, SERIOUSLY.
   system.stateVersion = "22.11"; # Did you read the comment?
 }

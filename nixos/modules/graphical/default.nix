@@ -40,7 +40,7 @@
     roboto # Roboto
     roboto-slab # Roboto Slab
     ibm-plex # IBM Plex
-    iosevka-bin # Iosevka
+    iosevka # Iosevka (Source Build)
     _3270font # Fonts of IBM 3270
     noto-fonts # Base Noto Fonts
     noto-fonts-cjk # CJK Noto Fonts
@@ -50,6 +50,9 @@
     # Iosevka Aile + Iosevka Etoile
     (iosevka-bin.override { variant = "aile"; })
     (iosevka-bin.override { variant = "etoile"; })
+    jost # Jost
+    material-icons # Material Icons
+    material-design-icons
   ];
 
   environment.systemPackages = with pkgs; [
@@ -72,7 +75,7 @@
     # Qt 5 tools
     libsForQt5.full
     # Others
-    libreoffice # LibreOffice
+    libreoffice-fresh # LibreOffice Fresh (Newer)
     mediainfo-gui # MediaInfo GUI
     # IM Clients
     element-desktop # Element Desktop
