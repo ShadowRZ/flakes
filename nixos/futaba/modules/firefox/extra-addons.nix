@@ -2,10 +2,10 @@
   {
     "custom-scrollbars" = buildFirefoxXpiAddon {
       pname = "custom-scrollbars";
-      version = "4.0.2";
+      version = "4.1";
       addonId = "customscrollbars@computerwhiz";
-      url = "https://addons.mozilla.org/firefox/downloads/file/3933925/custom_scrollbars-4.0.2.xpi";
-      sha256 = "24b2b844163ed7b7f69185f3a1af54dff78959f0aab6f6d96a97771a61872004";
+      url = "https://addons.mozilla.org/firefox/downloads/file/3982318/custom_scrollbars-4.1.xpi";
+      sha256 = "dda1cdf13996bce0a93ea5882a8e37a0eee7326d59819e1b8230c02c8157ec6d";
       meta = with lib;
       {
         homepage = "https://addons.wesleybranton.com/addon/custom-scrollbars/";

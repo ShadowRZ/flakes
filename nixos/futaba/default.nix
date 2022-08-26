@@ -111,8 +111,6 @@
         #wlrobs
       ];
     };
-    ### Password store
-    password-store = { enable = true; };
     ### Ncmpcpp
     ncmpcpp = {
       enable = true;
@@ -168,7 +166,6 @@
     QT_IM_MODULE = "fcitx";
     XMODIFIERS = "@im=fcitx";
     # Inherits from home.sessionVariables
-    PASSWORD_STORE_DIR = config.home.sessionVariables.PASSWORD_STORE_DIR;
     GNUPGHOME = config.home.sessionVariables.GNUPGHOME;
   };
 }

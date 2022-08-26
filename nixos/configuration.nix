@@ -105,14 +105,15 @@
           aegisub # AegiSub
           keepassxc # KeePassXC
           gocryptfs # Gocryptfs
+          plasma-vault # Plasma Vault
           kate # Kate
-          falkon # Falkon
           krusader # Krusader
           emacsPgtkNativeComp # Emacs with Pure GTK + Native Compilation.
           mindustry # Mindustry
           nheko # Nheko
           alacritty # Alacritty
           latte-dock # Latte Dock
+          libsForQt5.plasma-sdk # Plasma SDK
           nix-prefetch-github
           nix-prefetch-git
           fontforge-gtk
@@ -153,6 +154,9 @@
     ];
     files = [ "/etc/machine-id" ];
   };
+  # As SSH keys takes part in Sops-Nix provisioning,
+  # mark them as required for boot.
+  fileSystems."/etc/ssh".neededForBoot = true;
 
   # Misc
   nixpkgs.config.allowUnfree = true;
