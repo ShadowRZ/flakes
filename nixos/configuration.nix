@@ -96,7 +96,7 @@
         extraGroups = [ "wheel" ];
         packages = with pkgs; [
           kdenlive # Kdenlive
-          blender # Blender
+          blender_3_2 # Blender 3.2.* (Binary)
           qtcreator # Qt Creator
           graphviz # Graphviz
           hugo # Hugo

@@ -21,6 +21,28 @@
         "type": "github"
       }
     },
+    "blender": {
+      "inputs": {
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "dir": "blender",
+        "lastModified": 1659558036,
+        "narHash": "sha256-+Y+SXjUztrNKmkCuatvXNYymwHtx3+eyKq6mxOWpNPE=",
+        "owner": "edolstra",
+        "repo": "nix-warez",
+        "rev": "a793946aa8b994e25cfe232593eb3a7c3207821d",
+        "type": "github"
+      },
+      "original": {
+        "dir": "blender",
+        "owner": "edolstra",
+        "repo": "nix-warez",
+        "type": "github"
+      }
+    },
     "canopus": {
       "inputs": {
         "flake-utils": [
@@ -492,6 +514,7 @@
     "root": {
       "inputs": {
         "berberman": "berberman",
+        "blender": "blender",
         "emacs-overlay": "emacs-overlay",
         "home-manager": "home-manager",
         "impermanence": "impermanence",
