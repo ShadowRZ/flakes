@@ -79,7 +79,7 @@
   # Sops-Nix
   sops = {
     defaultSopsFile = ./secrets.yaml;
-    age.sshKeyPaths = [ "/etc/ssh/ssh_host_ed25519_key" ];
+    age.keyFile = "/var/lib/sops.key";
     secrets = { passwd.neededForUsers = true; };
   };
 
@@ -127,9 +127,6 @@
           config.nur.repos.shadowrz.rvpacker
           config.nur.repos.rycee.mozilla-addons-to-nix
         ];
-        openssh.authorizedKeys.keys = [
-          "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIH2Y7fSAJgH4KJZYsKJo01SVCCoV0A4wmD0etDM394PO u0_a203@localhost"
-        ];
       };
     };
   };
@@ -149,18 +146,16 @@
       "/var/log"
       "/var/lib"
       "/var/cache"
-      # SSH
-      "/etc/ssh"
     ];
     files = [ "/etc/machine-id" ];
   };
-  # As SSH keys takes part in Sops-Nix provisioning,
-  # mark them as required for boot.
-  fileSystems."/etc/ssh".neededForBoot = true;
+  # As Age keys takes part in Sops-Nix early user password provisioning,
+  # mark containing folders as required for boot.
+  fileSystems."/var/lib".neededForBoot = true;
 
   # Misc
   nixpkgs.config.allowUnfree = true;
-  powerManagement.cpuFreqGovernor = lib.mkDefault "performance";
+  powerManagement.cpuFreqGovernor = lib.mkForce "performance";
 
   # ZRAM
   zramSwap = {
