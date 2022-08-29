@@ -20,7 +20,7 @@
         port = 465;
         tls.enable = true;
       };
-      passwordCommand = "pass show ShadowRZ/Email";
+      passwordCommand = "${pkgs.libsecret}/bin/secret-tool lookup email shadowrz@disroot.org";
       primary = true;
       realName = "夜坂雅";
       userName = "shadowrz@disroot.org";
@@ -56,7 +56,8 @@
     };
   };
 
-  # Mu & mu4e
-  home.packages = with pkgs; [ mu ];
+  # Emacs Notmuch
+  home.packages = with pkgs; [ notmuch.emacs ];
+  # Index with CJK N-Gram
   home.sessionVariables = { XAPIAN_CJK_NGRAM = "1"; };
 }
