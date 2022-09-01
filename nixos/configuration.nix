@@ -125,6 +125,7 @@
           strawberry
           config.nur.repos.shadowrz.mkxp-z # mkxp-z
           config.nur.repos.shadowrz.rvpacker
+          config.nur.repos.shadowrz._86box
           config.nur.repos.rycee.mozilla-addons-to-nix
         ];
       };
