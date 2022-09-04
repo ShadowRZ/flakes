@@ -35,13 +35,36 @@
       hooks = {
         preNew = "mbsync -a"; 
         postNew = with pkgs; ''
-          ${notmuch}/bin/notmuch tag +nixos -- tag:new and from:nixos1@discoursemail.com
           ${afew}/bin/afew -a -t
         '';
       };
       new.tags = [ "new" ];
     };
-    afew = { enable = true; };
+    afew = {
+      enable = true;
+      extraConfig = ''
+        [SpamFilter]
+        [KillThreadsFilter]
+        [ArchiveSentMailsFilter]
+        [InboxFilter]
+        [Filter.0]
+        query = from:discourse@discourse.nixos.org
+        tags = +discourse;+discourse/nixos
+        message = Discourse :: NixOS
+        [Filter.1]
+        query = from:meta@discoursemail.com
+        tags = +discourse;+discourse/meta
+        message = Discourse :: Discourse Meta
+        [Filter.2]
+        query = from:github.com
+        tags = +github
+        message = GitHub
+        [Filter.3]
+        query = to:nixpkgs@noreply.github.com
+        tags = +nixpkgs
+        message = Nixpkgs
+      '';
+    };
     alot = {
       enable = true;
       settings = {
