@@ -116,4 +116,6 @@
   services.udev.packages = with pkgs; [ android-udev-rules ];
 
   documentation.doc.enable = lib.mkForce false;
+
+  nixpkgs.overlays = [ (import ./override/package-overlay.nix) ];
 }

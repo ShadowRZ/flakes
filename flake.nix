@@ -59,7 +59,6 @@
             # Users' flake
             inputs.nickcao.overlays.default
             inputs.berberman.overlay
-            (import ./override/package-overlay.nix)
           ];
           # Configuration revision.
           system.configurationRevision = nixpkgs.lib.mkIf (self ? rev) self.rev;

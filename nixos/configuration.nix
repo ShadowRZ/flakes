@@ -112,7 +112,6 @@
           mindustry # Mindustry
           nheko # Nheko
           alacritty # Alacritty
-          latte-dock # Latte Dock
           libsForQt5.plasma-sdk # Plasma SDK
           nix-prefetch-github
           nix-prefetch-git
