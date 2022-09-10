@@ -11,13 +11,19 @@
           beautifulsoup4
           numpy
           flake8
-          pyflakes
+          isort
           pytest
           jedi-language-server
           pynvim
+          black
           sphinx
           sphinx_rtd_theme
+          furo
           pygments
+          jupyter
+          jupyter_console
+          jupyterlab
+          qtconsole
         ]);
     in with pkgs; [
       python3-env
