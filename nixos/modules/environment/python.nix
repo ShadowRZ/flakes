@@ -22,7 +22,6 @@
           pygments
           jupyter
           jupyter_console
-          jupyterlab
           qtconsole
         ]);
     in with pkgs; [

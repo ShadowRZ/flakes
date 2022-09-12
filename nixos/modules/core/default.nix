@@ -56,10 +56,11 @@
       allowed-users = [ "@wheel" ];
     };
     optimise.automatic = true;
+    # Drop derivations to kill build time closures
     extraOptions = ''
       min-free = 536870912
       keep-outputs = true
-      keep-derivations = true
+      keep-derivations = false
       fallback = true
       experimental-features = nix-command flakes
       flake-registry = /etc/nix/registry.json

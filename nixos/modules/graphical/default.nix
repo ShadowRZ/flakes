@@ -64,7 +64,9 @@
     ffmpeg-full # FFmpeg
     imagemagick # ImageMagick
     papirus-icon-theme # Papirus
-    gimp # GIMP
+    # gimp # GIMP (TODO)
+    kolourpaint # KolourPaint
+    photoflare # PhotoFlare
     inkscape # Inkscape
     dfeet # D-Feet
     pulseaudio # PulseAudio tools
@@ -79,8 +81,6 @@
     mediainfo-gui # MediaInfo GUI
     # IM Clients
     element-desktop # Element Desktop
-    ### Above are Matrix clients.
-    hexchat # HexChat
     dino # Dino
     # GTK
     gtk3.dev
@@ -95,8 +95,6 @@
     kdialog
     kdeconnect # KDE Connect
     material-kwin-decoration # KWin material decoration
-    qtcurve
-    libsForQt5.lightly
     smplayer
     config.nur.repos.shadowrz.klassy # Klassy
     nixos-artwork.wallpapers.nineish # NixOS wallpaper

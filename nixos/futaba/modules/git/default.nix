@@ -1,7 +1,7 @@
 { pkgs, ... }: {
   programs.git = {
     enable = true;
-    package = pkgs.gitAndTools.gitFull;
+    package = pkgs.git; # git-send-email TBD
     # Basic
     userEmail = "23130178+ShadowRZ@users.noreply.github.com";
     userName = "夜坂雅";

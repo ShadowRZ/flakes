@@ -102,7 +102,6 @@
           hugo # Hugo
           yarn # Yarn
           electron # Electron
-          aegisub # AegiSub
           keepassxc # KeePassXC
           gocryptfs # Gocryptfs
           plasma-vault # Plasma Vault

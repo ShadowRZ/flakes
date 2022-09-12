@@ -23,6 +23,13 @@
         "https://9.9.9.9/dns-query -tls-host-verify dns.quad9.net"
         "https://149.112.112.112/dns-query -tls-host-verify dns.quad9.net"
       ];
+      # (XXX)
+      nameserver = [
+        "/github.com/china"
+        "/codeload.github.com/china"
+        "/ssh.github.com/china"
+        "/api.github.com/china"
+      ];
       speed-check-mode = "tcp:443,tcp:80";
       # Add log
       log-level = "info";
