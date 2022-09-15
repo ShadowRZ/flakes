@@ -104,7 +104,7 @@
     enable = true;
     driSupport = true;
     driSupport32Bit = true;
-    extraPackages = with pkgs; [ vaapiIntel beignet intel-ocl ];
+    extraPackages = with pkgs; [ vaapiIntel beignet ];
   };
 
   xdg.portal.enable = true;

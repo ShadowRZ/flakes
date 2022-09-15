@@ -66,7 +66,7 @@
         single-file
         stylus
         tabliss
-        tree-style-tab
+        # tree-style-tab TODO
         (ublock-origin.override {
           version = "1.42.4";
           url =

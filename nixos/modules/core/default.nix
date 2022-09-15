@@ -60,7 +60,7 @@
     optimise.automatic = true;
     extraOptions = ''
       keep-outputs = true
-      keep-derivations = true
+      keep-derivations = false
       fallback = true
       experimental-features = nix-command flakes
       flake-registry = /etc/nix/registry.json
