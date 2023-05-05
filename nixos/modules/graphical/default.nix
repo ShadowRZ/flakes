@@ -18,16 +18,6 @@
       };
       videoDrivers = [ "vmware" "modesettings" ];
     };
-    # PipeWire
-    pipewire = {
-      enable = true;
-      # ALSA
-      alsa.enable = true;
-      # PulseAudio
-      pulse.enable = true;
-      # JACK
-      jack.enable = true;
-    };
     # GVFS
     gvfs = { enable = true; };
   };
@@ -100,6 +90,9 @@
     driSupport = true;
     driSupport32Bit = true;
   };
+
+  # PulseAudio
+  hardware.pulseaudio.enable = true;
 
   xdg.portal.enable = true;
 }
