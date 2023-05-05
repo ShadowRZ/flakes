@@ -16,8 +16,7 @@
         enable = true;
         runUsingSystemd = true;
       };
-      # Modesettings driver
-      videoDrivers = [ "modesettings" ];
+      videoDrivers = [ "vmware" "modesettings" ];
     };
     # PipeWire
     pipewire = {
@@ -56,8 +55,6 @@
   ];
 
   environment.systemPackages = with pkgs; [
-    # VA-API.
-    intel-gpu-tools
     libva-utils
     # Graphical packages.
     arc-theme # Arc theme
@@ -81,18 +78,17 @@
     mediainfo-gui # MediaInfo GUI
     # IM Clients
     element-desktop # Element Desktop
-    dino # Dino
     # GTK
     gtk3.dev
     gtk4.dev
     vlc
     glxinfo
+    clinfo
     vulkan-tools
     wayland-utils
     xorg.xdpyinfo
     wl-clipboard
     kdialog
-    kdeconnect # KDE Connect
     material-kwin-decoration # KWin material decoration
     smplayer
     config.nur.repos.shadowrz.klassy # Klassy
@@ -103,7 +99,6 @@
     enable = true;
     driSupport = true;
     driSupport32Bit = true;
-    extraPackages = with pkgs; [ vaapiIntel beignet ];
   };
 
   xdg.portal.enable = true;

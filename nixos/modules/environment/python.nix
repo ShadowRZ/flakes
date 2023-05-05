@@ -20,8 +20,6 @@
           sphinx_rtd_theme
           furo
           pygments
-          jupyter
-          jupyter_console
           qtconsole
         ]);
     in with pkgs; [

@@ -97,14 +97,6 @@
       };
       scripts = with pkgs.mpvScripts; [ mpris ];
     };
-    ### OBS
-    obs-studio = {
-      enable = true;
-      plugins = with pkgs.obs-studio-plugins;
-        [
-          #wlrobs
-        ];
-    };
     ### Ncmpcpp
     ncmpcpp = {
       enable = true;

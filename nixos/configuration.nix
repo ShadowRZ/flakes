@@ -31,7 +31,7 @@
       "udev.log_priority=3"
       "vt.global_cursor_default=0"
     ];
-    tmpOnTmpfs = true;
+    tmp.useTmpfs = true;
     initrd = {
       verbose = false;
       systemd.enable = true;
@@ -61,20 +61,6 @@
   # Hostname
   networking.hostName = "medjedmonogatari";
 
-  # libinput Touchpad.
-  services.xserver.libinput = {
-    touchpad = {
-      disableWhileTyping = true;
-      horizontalScrolling = false;
-      scrollMethod = "edge";
-    };
-    mouse = {
-      disableWhileTyping = true;
-      horizontalScrolling = false;
-      scrollMethod = "edge";
-    };
-  };
-
   # Users
   users = {
     mutableUsers = true;
@@ -87,18 +73,15 @@
         description = "佐仓双叶";
         extraGroups = [ "wheel" ];
         packages = with pkgs; [
-          kdenlive # Kdenlive
           qtcreator # Qt Creator
           graphviz # Graphviz
           hugo # Hugo
           yarn # Yarn
-          electron # Electron
-          keepassxc # KeePassXC
           gocryptfs # Gocryptfs
           plasma-vault # Plasma Vault
           kate # Kate
           krusader # Krusader
-          emacsPgtkNativeComp # Emacs with Pure GTK + Native Compilation.
+          emacsPgtk # Emacs with Pure GTK + Native Compilation.
           mindustry # Mindustry
           nheko # Nheko
           alacritty # Alacritty
