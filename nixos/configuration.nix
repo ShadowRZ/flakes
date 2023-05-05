@@ -28,7 +28,6 @@
     kernelPackages = pkgs.linuxKernel.packages.linux_xanmod_latest;
     kernelParams = lib.mkAfter [
       "quiet"
-      "noefi"
       "udev.log_priority=3"
       "vt.global_cursor_default=0"
     ];
@@ -76,27 +75,19 @@
     };
   };
 
-  # Sops-Nix
-  sops = {
-    defaultSopsFile = ./secrets.yaml;
-    age.keyFile = "/var/lib/sops.key";
-    secrets = { passwd.neededForUsers = true; };
-  };
-
   # Users
   users = {
-    mutableUsers = false;
+    mutableUsers = true;
     users = {
       futaba = {
         uid = 1000;
         isNormalUser = true;
-        passwordFile = config.sops.secrets.passwd.path;
+        initialPassword = "";
         shell = pkgs.zsh;
         description = "佐仓双叶";
         extraGroups = [ "wheel" ];
         packages = with pkgs; [
           kdenlive # Kdenlive
-          blender_3_2 # Blender 3.2.* (Binary)
           qtcreator # Qt Creator
           graphviz # Graphviz
           hugo # Hugo
@@ -141,16 +132,9 @@
 
   # Persistent files
   environment.persistence."/.persistent" = {
-    directories = [
-      "/var/log"
-      "/var/lib"
-      "/var/cache"
-    ];
+    directories = [ "/var/log" "/var/lib" "/var/cache" ];
     files = [ "/etc/machine-id" ];
   };
-  # As Age keys takes part in Sops-Nix early user password provisioning,
-  # mark containing folders as required for boot.
-  fileSystems."/var/lib".neededForBoot = true;
 
   # Misc
   nixpkgs.config.allowUnfree = true;

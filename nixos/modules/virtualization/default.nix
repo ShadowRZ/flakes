@@ -1,6 +1,4 @@
 { pkgs, ... }: {
   # QEMU
-  environment.systemPackages = with pkgs; [
-    qemu
-  ];
+  environment.systemPackages = with pkgs; [ qemu ];
 }

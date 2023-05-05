@@ -31,8 +31,6 @@
     rclone
     assimp
     lsof
-    # VS Code
-    vscode-fhs
     asciinema
   ];
 
@@ -99,17 +97,13 @@
       };
       scripts = with pkgs.mpvScripts; [ mpris ];
     };
-    ### Qutebrowser
-    qutebrowser = {
-      enable = true;
-      loadAutoconfig = true;
-    };
     ### OBS
     obs-studio = {
       enable = true;
-      plugins = with pkgs.obs-studio-plugins; [
-        #wlrobs
-      ];
+      plugins = with pkgs.obs-studio-plugins;
+        [
+          #wlrobs
+        ];
     };
     ### Ncmpcpp
     ncmpcpp = {
@@ -154,7 +148,7 @@
 
   # XXX: Kill generated Systemd service for Fcitx 5
   # Required to make sure KWin can bring a Fcitx 5 up to support Wayland IME protocol
-  systemd.user.services.fcitx5-daemon = lib.mkForce {};
+  systemd.user.services.fcitx5-daemon = lib.mkForce { };
 
   # Session variables for Systemd user units.
   # Plasma (+systemd) & GDM launched session reads these too.

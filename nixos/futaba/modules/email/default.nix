@@ -20,7 +20,8 @@
         port = 465;
         tls.enable = true;
       };
-      passwordCommand = "${pkgs.libsecret}/bin/secret-tool lookup email shadowrz@disroot.org";
+      passwordCommand =
+        "${pkgs.libsecret}/bin/secret-tool lookup email shadowrz@disroot.org";
       primary = true;
       realName = "夜坂雅";
       userName = "shadowrz@disroot.org";
@@ -33,7 +34,7 @@
     notmuch = {
       enable = true;
       hooks = {
-        preNew = "mbsync -a"; 
+        preNew = "mbsync -a";
         postNew = with pkgs; ''
           ${afew}/bin/afew -a -t
         '';

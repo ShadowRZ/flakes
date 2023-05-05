@@ -75,7 +75,7 @@
     # Nordic
     nordic
     # Qt 5 tools
-    libsForQt5.full
+    libsForQt5.qttools
     # Others
     libreoffice-fresh # LibreOffice Fresh (Newer)
     mediainfo-gui # MediaInfo GUI
@@ -91,7 +91,6 @@
     wayland-utils
     xorg.xdpyinfo
     wl-clipboard
-    renpy
     kdialog
     kdeconnect # KDE Connect
     material-kwin-decoration # KWin material decoration

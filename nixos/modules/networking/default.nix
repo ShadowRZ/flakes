@@ -2,11 +2,11 @@
   services.smartdns = {
     enable = true;
     settings = with pkgs; {
-      conf-file = [
-        "${smartdns-china-list}/accelerated-domains.china.smartdns.conf"
-        "${smartdns-china-list}/apple.china.smartdns.conf"
-        "${smartdns-china-list}/google.china.smartdns.conf"
-      ];
+      #      conf-file = [
+      #        "${smartdns-china-list}/accelerated-domains.china.smartdns.conf"
+      #        "${smartdns-china-list}/apple.china.smartdns.conf"
+      #        "${smartdns-china-list}/google.china.smartdns.conf"
+      #      ];
       bind = [ "127.0.53.53:53" ];
       server-tls = [
         # https://www.dnspod.cn/Products/publicdns

@@ -100,11 +100,5 @@
       enable = true;
       enableZshIntegration = true;
     };
-    # Direnv
-    direnv = {
-      enable = true;
-      enableZshIntegration = true;
-      nix-direnv.enable = true;
-    };
   };
 }
