@@ -68,7 +68,7 @@
       futaba = {
         uid = 1000;
         isNormalUser = true;
-        initialPassword = "";
+        hashedPassword = "";
         shell = pkgs.zsh;
         description = "佐仓双叶";
         extraGroups = [ "wheel" ];
