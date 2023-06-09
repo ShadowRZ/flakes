@@ -12,31 +12,31 @@
   };
 
   fileSystems."/boot" = {
-    device = "/dev/disk/by-uuid/8335-2589";
+    device = "/dev/disk/by-uuid/D298-CE38";
     fsType = "vfat";
   };
 
   fileSystems."/.persistent" = {
-    device = "/dev/disk/by-uuid/d41ca4e0-9548-45c4-a276-f02cbac446f7";
+    device = "/dev/disk/by-uuid/0f9eb06e-653d-47a9-94ae-cde838ec3581";
     fsType = "btrfs";
     options = [ "subvolid=258" "compress-force=zstd" ];
     neededForBoot = true;
   };
 
   fileSystems."/nix" = {
-    device = "/dev/disk/by-uuid/d41ca4e0-9548-45c4-a276-f02cbac446f7";
+    device = "/dev/disk/by-uuid/0f9eb06e-653d-47a9-94ae-cde838ec3581";
     fsType = "btrfs";
     options = [ "subvolid=256" "compress-force=zstd" ];
   };
 
   fileSystems."/home" = {
-    device = "/dev/disk/by-uuid/d41ca4e0-9548-45c4-a276-f02cbac446f7";
+    device = "/dev/disk/by-uuid/0f9eb06e-653d-47a9-94ae-cde838ec3581";
     fsType = "btrfs";
     options = [ "subvolid=257" "compress-force=zstd" ];
   };
 
   swapDevices =
-    [{ device = "/dev/disk/by-uuid/b232112e-d34a-4460-9fd1-993f584a2bb9"; }];
+    [{ device = "/dev/disk/by-uuid/d0ec60bc-09f3-4dc3-8911-067e00962e8e"; }];
 
   systemd.network.networks = {
     "10-wired" = {
