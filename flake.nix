@@ -14,9 +14,6 @@
     emacs-overlay.inputs.nixpkgs.follows = "nixpkgs";
     # Impermanence
     impermanence.url = "github:nix-community/impermanence";
-    # Blender (Binary)
-    blender.url = "github:edolstra/nix-warez?dir=blender";
-    blender.inputs.nixpkgs.follows = "nixpkgs";
     # Users' flake
     ## NickCao
     nickcao.url = "github:NickCao/flakes";
@@ -49,8 +46,6 @@
           nixpkgs.overlays = [
             # Emacs Overlay
             inputs.emacs-overlay.overlay
-            # Blender (Binary)
-            inputs.blender.overlays.default
             # Users' flake
             inputs.nickcao.overlays.default
             inputs.berberman.overlays.default
