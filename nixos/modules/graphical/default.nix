@@ -28,7 +28,6 @@
   fonts.fonts = with pkgs; [
     roboto # Roboto
     roboto-slab # Roboto Slab
-    ibm-plex # IBM Plex
     iosevka # Iosevka (Source Build)
     _3270font # Fonts of IBM 3270
     noto-fonts # Base Noto Fonts
