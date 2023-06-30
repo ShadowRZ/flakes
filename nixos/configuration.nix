@@ -83,7 +83,7 @@
           krusader # Krusader
           emacsPgtk # Emacs with Pure GTK + Native Compilation.
           mindustry # Mindustry
-          nheko # Nheko
+          # nheko # Nheko # TODO
           alacritty # Alacritty
           libsForQt5.plasma-sdk # Plasma SDK
           nix-prefetch-github
