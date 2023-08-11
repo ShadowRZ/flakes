@@ -49,7 +49,7 @@
     ffmpeg-full # FFmpeg
     imagemagick # ImageMagick
     papirus-icon-theme # Papirus
-    # gimp # GIMP (TODO)
+    gimp # GIMP
     kolourpaint # KolourPaint
     photoflare # PhotoFlare
     inkscape # Inkscape
@@ -100,6 +100,11 @@
     # If you want to use JACK applications, uncomment this
     jack.enable = true;
   };
+
+  # Bluetooth
+  hardware.bluetooth.enable = true;
+  # Printing
+  services.printing.enable = true;
 
   xdg.portal.enable = true;
 }

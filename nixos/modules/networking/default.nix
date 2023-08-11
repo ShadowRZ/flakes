@@ -2,11 +2,12 @@
   services.smartdns = {
     enable = true;
     settings = with pkgs; {
-      #      conf-file = [
-      #        "${smartdns-china-list}/accelerated-domains.china.smartdns.conf"
-      #        "${smartdns-china-list}/apple.china.smartdns.conf"
-      #        "${smartdns-china-list}/google.china.smartdns.conf"
-      #      ];
+      conf-file = [
+        "${./configs/accelerated-domains.china.smartdns.conf}"
+        "${./configs/apple.china.smartdns.conf}"
+        "${./configs/google.china.smartdns.conf}"
+        "${./configs/bogus-nxdomain.china.smartdns.conf}"
+      ];
       bind = [ "127.0.53.53:53" ];
       server-tls = [
         # https://www.dnspod.cn/Products/publicdns
@@ -46,8 +47,8 @@
   };
 
   networking = {
-    # Use systemd-networkd
-    useNetworkd = true;
+    # Use NetworkManager
+    networkmanager = { enable = true; dns = "systemd-resolved"; };
     # Disable global DHCP
     useDHCP = false;
     # Enable firewall
@@ -74,50 +75,13 @@
     nat = { enable = true; };
     # Predictable interfaces
     usePredictableInterfaceNames = true;
-    # Wireless config
-    wireless = {
-      # Use iwd
-      iwd.enable = true;
-    };
     # Set smartdns server
     nameservers = [ "127.0.53.53" ];
   };
 
-  # Systemd-networkd confiugred interface
-  systemd.network = {
-    enable = true;
-    # Assume it's online when any interface is considered online.
-    wait-online.anyInterface = true;
-    # Configure systemd-networkd
-    config = {
-      networkConfig = {
-        ManageForeignRoutingPolicyRules = false;
-        SpeedMeter = true;
-        SpeedMeterIntervalSec = 1;
-      };
-    };
-    # Interfaces
-    # For interfaces on the laptop refer to nixos/hardware-configuration.nix
-    networks = {
-      # Phone
-      "20-phone" = {
-        # Match RNDIS driver instead
-        matchConfig = { Driver = "rndis_host"; };
-        DHCP = "yes";
-        dhcpV4Config = {
-          UseDNS = false;
-          RouteMetric = 4096;
-        };
-        dhcpV6Config = {
-          UseDNS = false;
-          RouteMetric = 4096;
-        };
-      };
-    };
-  };
-
   services = {
     resolved = {
+      enable = true;
       # https://www.dnspod.cn/Products/publicdns
       fallbackDns = [ "119.29.29.29" ];
     };

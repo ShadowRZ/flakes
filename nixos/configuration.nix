@@ -70,7 +70,7 @@
         hashedPassword = "";
         shell = pkgs.zsh;
         description = "羽心印音";
-        extraGroups = [ "wheel" ];
+        extraGroups = [ "wheel" "networkmanager" ];
         packages = with pkgs; [
           qtcreator # Qt Creator
           graphviz # Graphviz
@@ -82,7 +82,7 @@
           krusader # Krusader
           emacsPgtk # Emacs with Pure GTK + Native Compilation.
           mindustry # Mindustry
-          # nheko # Nheko # TODO
+          fluffychat
           alacritty # Alacritty
           libsForQt5.plasma-sdk # Plasma SDK
           nix-prefetch-github
