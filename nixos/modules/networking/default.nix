@@ -74,6 +74,11 @@
     nat = { enable = true; };
     # Predictable interfaces
     usePredictableInterfaceNames = true;
+    # Wireless config
+    wireless = {
+      # Use iwd
+      iwd.enable = true;
+    };
     # Set smartdns server
     nameservers = [ "127.0.53.53" ];
   };
