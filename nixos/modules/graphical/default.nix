@@ -16,7 +16,6 @@
         enable = true;
         runUsingSystemd = true;
       };
-      videoDrivers = [ "vmware" "modesettings" ];
     };
     # GVFS
     gvfs = { enable = true; };

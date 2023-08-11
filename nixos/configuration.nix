@@ -20,7 +20,6 @@
       # Use the systemd-boot EFI boot loader.
       systemd-boot = {
         enable = true;
-        consoleMode = "max";
         graceful = true;
       };
     };
