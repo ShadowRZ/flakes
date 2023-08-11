@@ -10,8 +10,8 @@
 
   # Home Manager needs a bit of information about you and the
   # paths it should manage.
-  home.username = "futaba";
-  home.homeDirectory = "/home/futaba";
+  home.username = "shadowrz";
+  home.homeDirectory = "/home/shadowrz";
 
   # This value determines the Home Manager release that your
   # configuration is compatible with. This helps avoid breakage

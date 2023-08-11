@@ -65,12 +65,12 @@
   users = {
     mutableUsers = true;
     users = {
-      futaba = {
+      shadowrz = {
         uid = 1000;
         isNormalUser = true;
         hashedPassword = "";
         shell = pkgs.zsh;
-        description = "佐仓双叶";
+        description = "羽心印音";
         extraGroups = [ "wheel" ];
         packages = with pkgs; [
           qtcreator # Qt Creator
@@ -108,7 +108,7 @@
   home-manager = {
     extraSpecialArgs = { inherit (config) nur; };
     users = {
-      futaba = import ./futaba;
+      shadowrz = import ./shadowrz;
       root = import ./root;
     };
   };
