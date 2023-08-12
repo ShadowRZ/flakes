@@ -45,9 +45,7 @@
       nssmdns = true; # mDNS NSS
     };
     # pykms
-    pykms = {
-      enable = true;
-    };
+    pykms = { enable = true; };
   };
 
   networking = {
@@ -98,9 +96,7 @@
     # Set smartdns server
     nameservers = [ "127.0.53.53" ];
     # Use nftables
-    nftables = {
-      enable = true;
-    };
+    nftables = { enable = true; };
   };
 
   services = {

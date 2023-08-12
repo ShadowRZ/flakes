@@ -35,7 +35,9 @@
     options = [ "subvolid=257" "compress-force=zstd" ];
   };
 
-  boot.initrd.luks.devices."luks-e9804028-c8df-4b5b-8557-9aaac7e363d9".device = "/dev/disk/by-uuid/e9804028-c8df-4b5b-8557-9aaac7e363d9";
+  boot.initrd.luks.devices."luks-e9804028-c8df-4b5b-8557-9aaac7e363d9".device =
+    "/dev/disk/by-uuid/e9804028-c8df-4b5b-8557-9aaac7e363d9";
 
-  hardware.cpu.intel.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
+  hardware.cpu.intel.updateMicrocode =
+    lib.mkDefault config.hardware.enableRedistributableFirmware;
 }

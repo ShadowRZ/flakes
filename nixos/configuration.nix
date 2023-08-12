@@ -102,7 +102,7 @@
           wine-staging
           winetricks
           strawberry
-          _86Box 
+          _86Box
           config.nur.repos.shadowrz.mkxp-z # mkxp-z
           config.nur.repos.shadowrz.rvpacker
           config.nur.repos.rycee.mozilla-addons-to-nix
