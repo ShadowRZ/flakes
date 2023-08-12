@@ -103,6 +103,7 @@
           winetricks
           strawberry
           _86Box
+          keepassxc
           config.nur.repos.shadowrz.mkxp-z # mkxp-z
           config.nur.repos.shadowrz.rvpacker
           config.nur.repos.rycee.mozilla-addons-to-nix

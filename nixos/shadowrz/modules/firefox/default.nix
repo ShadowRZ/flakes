@@ -3,7 +3,7 @@
     enable = true;
     package = pkgs.firefox.override {
       extraPolicies = {
-        PasswordManagerEnabled = true;
+        PasswordManagerEnabled = false;
         DisableFirefoxAccounts = true;
         DisablePocket = true;
         ExtensionUpdate = false;
@@ -39,6 +39,14 @@
           # Force enable account containers
           "privacy.userContext.enabled" = true;
           "privacy.userContext.ui.enabled" = true;
+          # Enable customChrome.css
+          "toolkit.legacyUserProfileCustomizations.stylesheets" = true;
+          # Set UI density to normal
+          "browser.uidensity" = 0;
+          # Enable SVG context-propertes
+          "svg.context-properties.content.enabled" = true;
+          # Disable private window dark theme
+          "browser.theme.dark-private-windows" = false;
         };
         # Firefox extensions
         # TODO: Add links to https://addons.mozilla.org
@@ -64,7 +72,7 @@
             single-file
             stylus
             tabliss
-            # tree-style-tab TODO
+            tree-style-tab
             (ublock-origin.override {
               version = "1.42.4";
               url =
