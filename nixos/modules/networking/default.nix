@@ -1,4 +1,4 @@
-{ lib, pkgs, ... }: {
+{ lib, pkgs, config, ... }: {
   services.smartdns = {
     enable = true;
     settings = with pkgs; {
@@ -63,6 +63,7 @@
         response =
       '';
       unmanaged = [ "interface-name:virbr*" "lo" ];
+      firewallBackend = "nftables";
     };
     # Disable global DHCP
     useDHCP = false;
@@ -81,10 +82,14 @@
         from = 1714;
         to = 1764;
       }];
-      extraCommands = ''
-        # Accept all ICMP packages.
-        iptables -A INPUT -p icmp -j ACCEPT
-      '';
+      allowPing = true;
+      interfaces = {
+        # virbr0: Allow passthrough of KMS packets
+        "virbr0" = {
+          allowedTCPPorts = [ config.services.pykms.port ];
+          allowedUDPPorts = [ config.services.pykms.port ];
+        };
+      };
     };
     # Enable NAT
     nat = { enable = true; };
@@ -92,6 +97,10 @@
     usePredictableInterfaceNames = true;
     # Set smartdns server
     nameservers = [ "127.0.53.53" ];
+    # Use nftables
+    nftables = {
+      enable = true;
+    };
   };
 
   services = {
