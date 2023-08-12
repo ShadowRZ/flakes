@@ -44,11 +44,26 @@
       enable = true;
       nssmdns = true; # mDNS NSS
     };
+    # pykms
+    pykms = {
+      enable = true;
+    };
   };
 
   networking = {
     # Use NetworkManager
-    networkmanager = { enable = true; dns = "systemd-resolved"; };
+    networkmanager = {
+      enable = true;
+      dns = "systemd-resolved";
+      extraConfig = ''
+        [keyfile]
+        path = /var/lib/NetworkManager/system-connections
+        [connectivity]
+        uri = http://google.cn/generate_204
+        response =
+      '';
+      unmanaged = [ "interface-name:virbr*" "lo" ];
+    };
     # Disable global DHCP
     useDHCP = false;
     # Enable firewall
