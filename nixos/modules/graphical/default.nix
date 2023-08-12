@@ -1,6 +1,6 @@
 { config, pkgs, lib, ... }: {
 
-  imports = [ ./sddm-breeze-background.nix ];
+  imports = [ ./sddm-breeze-background.nix ./nvidia.nix ];
 
   services = {
     upower.enable = true;
