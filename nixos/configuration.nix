@@ -60,6 +60,13 @@
   # Hostname
   networking.hostName = "medjedmonogatari";
 
+  # Sops-Nix
+  sops = {
+    defaultSopsFile = ./secrets.yaml;
+    age.keyFile = "/var/lib/sops.key";
+    secrets = { passwd.neededForUsers = true; };
+  };
+
   # Users
   users = {
     mutableUsers = true;
@@ -67,11 +74,12 @@
       shadowrz = {
         uid = 1000;
         isNormalUser = true;
-        hashedPassword = "";
+        passwordFile = config.sops.secrets.passwd.path;
         shell = pkgs.zsh;
         description = "羽心印音";
         extraGroups = [ "wheel" "networkmanager" ];
         packages = with pkgs; [
+          blender_3_6 # Blender 3.6.* (Binary)
           qtcreator # Qt Creator
           graphviz # Graphviz
           hugo # Hugo
@@ -117,6 +125,9 @@
     directories = [ "/var/log" "/var/lib" "/var/cache" ];
     files = [ "/etc/machine-id" ];
   };
+  # As Age keys takes part in Sops-Nix early user password provisioning,
+  # mark containing folders as required for boot.
+  fileSystems."/var/lib".neededForBoot = true;
 
   # Misc
   nixpkgs.config.allowUnfree = true;

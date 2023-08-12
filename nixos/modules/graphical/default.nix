@@ -64,8 +64,7 @@
     # Others
     libreoffice-fresh # LibreOffice Fresh (Newer)
     mediainfo-gui # MediaInfo GUI
-    # IM Clients
-    element-desktop # Element Desktop
+    kdeconnect # KDE Connect
     # GTK
     gtk3.dev
     gtk4.dev
