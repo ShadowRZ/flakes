@@ -77,7 +77,7 @@
         passwordFile = config.sops.secrets.passwd.path;
         shell = pkgs.zsh;
         description = "羽心印音";
-        extraGroups = [ "wheel" "networkmanager" ];
+        extraGroups = [ "wheel" "networkmanager" "libvirtd" ];
         packages = with pkgs; [
           blender_3_6 # Blender 3.6.* (Binary)
           qtcreator # Qt Creator
