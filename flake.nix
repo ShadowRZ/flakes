@@ -45,6 +45,8 @@
         nixpkgs.nixosModules.notDetected
         # Impermanence
         inputs.impermanence.nixosModule
+        # Sops-Nix
+        inputs.sops-nix.nixosModules.sops
         # NUR
         inputs.nur.nixosModules.nur
         {
