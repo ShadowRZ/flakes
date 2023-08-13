@@ -36,6 +36,9 @@
       systemd.enable = true;
     };
     consoleLogLevel = 0;
+    plymouth = {
+      enable = true;
+    };
   };
 
   # Configure console.
