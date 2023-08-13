@@ -88,9 +88,8 @@
           plasma-vault # Plasma Vault
           kate # Kate
           krusader # Krusader
-          emacsPgtk # Emacs with Pure GTK + Native Compilation.
+          emacs-pgtk # Emacs with Pure GTK + Native Compilation.
           mindustry # Mindustry
-          fluffychat
           alacritty # Alacritty
           libsForQt5.plasma-sdk # Plasma SDK
           nix-prefetch-github
@@ -104,8 +103,7 @@
           strawberry
           _86Box
           keepassxc
-          config.nur.repos.shadowrz.mkxp-z # mkxp-z
-          config.nur.repos.shadowrz.rvpacker
+          yt-dlp
           config.nur.repos.rycee.mozilla-addons-to-nix
         ];
       };
@@ -123,7 +121,7 @@
 
   # Persistent files
   environment.persistence."/.persistent" = {
-    directories = [ "/var/log" "/var/lib" "/var/cache" ];
+    directories = [ "/var/log" "/var/lib" "/var/cache" "/root" ];
     files = [ "/etc/machine-id" ];
   };
   # As Age keys takes part in Sops-Nix early user password provisioning,
