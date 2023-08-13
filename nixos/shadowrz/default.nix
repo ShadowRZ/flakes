@@ -31,6 +31,8 @@
     rclone
     assimp
     lsof
+    # VS Code
+    vscode-fhs
     asciinema
   ];
 
@@ -126,12 +128,10 @@
       # Use a socket
       network = { listenAddress = "/run/user/1000/mpd.socket"; };
       extraConfig = ''
-        zeroconf_enabled "yes"
-        zeroconf_name "Music Player Daemon @ %h"
-        # Output to PulseAudio directly
+        # Output to PipeWire directly
         audio_output {
-          type "pulse"
-          name "Music Player Daemon [PulseAudio]"
+          type "pipewire"
+          name "Music Player Daemon [PipeWire]"
         }
       '';
     };

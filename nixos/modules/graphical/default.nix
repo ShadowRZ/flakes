@@ -43,6 +43,7 @@
   ];
 
   environment.systemPackages = with pkgs; [
+    intel-gpu-tools
     libva-utils
     # Graphical packages.
     arc-theme # Arc theme
@@ -68,7 +69,6 @@
     # GTK
     gtk3.dev
     gtk4.dev
-    vlc
     glxinfo
     clinfo
     vulkan-tools
@@ -77,15 +77,15 @@
     wl-clipboard
     kdialog
     material-kwin-decoration # KWin material decoration
-    smplayer
+    celluloid
     config.nur.repos.shadowrz.klassy # Klassy
-    nixos-artwork.wallpapers.nineish # NixOS wallpaper
   ];
 
   hardware.opengl = {
     enable = true;
     driSupport = true;
     driSupport32Bit = true;
+    extraPackages = with pkgs; [ intel-media-driver intel-vaapi-driver intel-compute-runtime ];
   };
 
   # PipeWire

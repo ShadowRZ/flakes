@@ -107,6 +107,7 @@
           _86Box
           keepassxc
           yt-dlp
+          kdenlive
           config.nur.repos.rycee.mozilla-addons-to-nix
         ];
       };
