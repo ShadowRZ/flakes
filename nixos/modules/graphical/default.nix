@@ -24,7 +24,7 @@
   security.rtkit.enable = true;
 
   # Fonts.
-  fonts.fonts = with pkgs; [
+  fonts.packages = with pkgs; [
     roboto # Roboto
     roboto-slab # Roboto Slab
     iosevka # Iosevka (Source Build)
