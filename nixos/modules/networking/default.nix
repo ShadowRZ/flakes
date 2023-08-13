@@ -95,8 +95,6 @@
     usePredictableInterfaceNames = true;
     # Set smartdns server
     nameservers = [ "127.0.53.53" ];
-    # Use nftables
-    nftables = { enable = true; };
   };
 
   services = {
