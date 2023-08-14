@@ -19,6 +19,17 @@
     };
     # GVFS
     gvfs = { enable = true; };
+    # Pipewire
+    pipewire = {
+      enable = true;
+      alsa.enable = true;
+      alsa.support32Bit = true;
+      pulse.enable = true;
+      # If you want to use JACK applications, uncomment this
+      jack.enable = true;
+    };
+    # Printing
+    printing.enable = true;
   };
   # rtkit
   security.rtkit.enable = true;
@@ -88,22 +99,11 @@
     extraPackages = with pkgs; [ intel-media-driver intel-vaapi-driver intel-compute-runtime ];
   };
 
-  # PipeWire
   sound.enable = true;
   hardware.pulseaudio.enable = false;
-  services.pipewire = {
-    enable = true;
-    alsa.enable = true;
-    alsa.support32Bit = true;
-    pulse.enable = true;
-    # If you want to use JACK applications, uncomment this
-    jack.enable = true;
-  };
 
   # Bluetooth
   hardware.bluetooth.enable = true;
-  # Printing
-  services.printing.enable = true;
 
   xdg.portal.enable = true;
 }
