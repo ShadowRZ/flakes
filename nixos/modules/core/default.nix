@@ -118,7 +118,8 @@
   # Udev
   services.udev.packages = with pkgs; [ android-udev-rules ];
 
-  documentation.doc.enable = lib.mkForce false;
+  # Enable Comma
+  programs.nix-index-database.comma.enable = true;
 
   nixpkgs.overlays = [ (import ./override/package-overlay.nix) ];
 }

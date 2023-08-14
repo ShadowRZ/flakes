@@ -20,6 +20,8 @@
     # Blender (Binary)
     blender.url = "github:edolstra/nix-warez?dir=blender";
     blender.inputs.nixpkgs.follows = "nixpkgs";
+    nix-indexdb.url = "github:nix-community/nix-index-database";
+    nix-indexdb.inputs.nixpkgs.follows = "nixpkgs";
     # Users' flake
     ## NickCao
     nickcao.url = "github:NickCao/flakes";
@@ -49,6 +51,8 @@
         inputs.sops-nix.nixosModules.sops
         # NUR
         inputs.nur.nixosModules.nur
+        # Nix Index database
+        inputs.nix-indexdb.nixosModules.nix-index
         {
           # Overlays
           nixpkgs.overlays = [
