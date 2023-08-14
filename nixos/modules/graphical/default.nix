@@ -96,7 +96,11 @@
     enable = true;
     driSupport = true;
     driSupport32Bit = true;
-    extraPackages = with pkgs; [ intel-media-driver intel-vaapi-driver intel-compute-runtime ];
+    extraPackages = with pkgs; [
+      intel-media-driver
+      intel-vaapi-driver
+      intel-compute-runtime
+    ];
   };
 
   sound.enable = true;

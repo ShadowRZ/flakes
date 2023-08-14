@@ -1,1 +1,1 @@
-{ imports = [ ./python.nix ./gstreamer.nix ]; }
+{ imports = [ ./python.nix ./gstreamer.nix ./nodejs.nix ]; }

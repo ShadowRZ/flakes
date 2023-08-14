@@ -14,7 +14,7 @@
     utillinux
     file
     less
-    ncdu_1
+    ncdu
     wget
     htop
     tree

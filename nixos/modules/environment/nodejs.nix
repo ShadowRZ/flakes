@@ -1,1 +1,3 @@
-{ pkgs, ... }: { environment.systemPackages = [ nodejs ]; }
+{ pkgs, ... }: {
+  environment.systemPackages = with pkgs; [ nodejs yarn-berry ];
+}
