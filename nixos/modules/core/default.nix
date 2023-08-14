@@ -79,6 +79,11 @@
     # Disable command-not-found as it's unavliable in Flakes build
     command-not-found = { enable = lib.mkForce false; };
     dconf = { enable = true; };
+    # Nix-Index
+    nix-index = {
+      enable = true;
+      enableZshIntegration = true;
+    };
   };
 
   # Getty

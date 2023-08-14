@@ -95,10 +95,5 @@
       fileWidgetCommand = fd;
       changeDirWidgetCommand = "${alt_c_cmd}";
     };
-    # Nix-index
-    nix-index = {
-      enable = true;
-      enableZshIntegration = true;
-    };
   };
 }
