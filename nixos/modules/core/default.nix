@@ -46,6 +46,7 @@
         "https://nixpkgs-wayland.cachix.org"
         "https://nix-community.cachix.org"
         "https://shadowrz.cachix.org"
+        "https://cache.garnix.io"
         "https://cache.nixos.org"
       ];
       trusted-public-keys = [
@@ -53,6 +54,7 @@
         "berberman.cachix.org-1:UHGhodNXVruGzWrwJ12B1grPK/6Qnrx2c3TjKueQPds="
         "nixpkgs-wayland.cachix.org-1:3lwxaILxMRkVhehr5StQprHdEo4IrE8sRho9R9HOLYA="
         "shadowrz.cachix.org-1:I+6FCWMtdGmN8zYVncKdys/LVsLkCMWO3tfXbwQPTU0="
+        "cache.garnix.io:CTFPyKSLcx5RMJKfLo5EEPUObbA78b0YQ2DTCJXqr9g="
       ];
       auto-optimise-store = true;
       allowed-users = [ "@wheel" ];
