@@ -154,4 +154,10 @@
     # Inherits from home.sessionVariables
     GNUPGHOME = config.home.sessionVariables.GNUPGHOME;
   };
+
+  # Fontconfig.
+  fonts.fontconfig.enable = true;
+  xdg.configFile = {
+    "fontconfig/conf.d/99-fontconfig.conf".source = ./fontconfig.conf;
+  };
 }
