@@ -12,8 +12,30 @@
       enable = true;
       # SDDM
       displayManager = {
-        xserverArgs = [ "-dpi 144" ];
-        sddm.enable = true;
+        sddm = {
+          enable = true;
+          settings = {
+            General = {
+              DisplayServer = "wayland";
+              InputMethod = "";
+            };
+            Wayland.CompositorCommand = let
+              xcfg = config.services.xserver;
+              westonIni = (pkgs.formats.ini { }).generate "weston.ini" {
+                libinput = {
+                  enable-tap = xcfg.libinput.mouse.tapping;
+                  left-handed = xcfg.libinput.mouse.leftHanded;
+                };
+                keyboard = {
+                  keymap_model = xcfg.xkbModel;
+                  keymap_layout = xcfg.layout;
+                  keymap_variant = xcfg.xkbVariant;
+                  keymap_options = xcfg.xkbOptions;
+                };
+              };
+            in "${pkgs.weston}/bin/weston --shell=fullscreen-shell.so -c ${westonIni}";
+          };
+        };
       };
       desktopManager.plasma5 = {
         enable = true;
