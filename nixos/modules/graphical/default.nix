@@ -11,7 +11,10 @@
     xserver = {
       enable = true;
       # SDDM
-      displayManager.sddm.enable = true;
+      displayManager = {
+        xserverArgs = [ "-dpi 144" ];
+        sddm.enable = true;
+      };
       desktopManager.plasma5 = {
         enable = true;
         runUsingSystemd = true;
