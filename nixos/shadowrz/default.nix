@@ -31,6 +31,7 @@
     rclone
     assimp
     lsof
+    renpy
     # VS Code
     vscode-fhs
     asciinema
