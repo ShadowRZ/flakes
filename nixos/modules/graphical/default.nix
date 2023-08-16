@@ -114,6 +114,7 @@
     kdialog
     material-kwin-decoration # KWin material decoration
     celluloid
+    adw-gtk3
     config.nur.repos.shadowrz.klassy # Klassy
   ];
 
