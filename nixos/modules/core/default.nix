@@ -33,6 +33,7 @@
     pciutils
     aha
     stdenv # Stdenv
+    fwupd
   ];
 
   nix = {

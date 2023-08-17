@@ -90,7 +90,7 @@
     kolourpaint # KolourPaint
     photoflare # PhotoFlare
     inkscape # Inkscape
-    dfeet # D-Feet
+    d-spy # D-Spy
     pulseaudio # PulseAudio tools
     # Phinger Cursors
     phinger-cursors
@@ -116,6 +116,14 @@
     celluloid
     adw-gtk3
     tuba
+    foliate
+    gnome-builder
+    gnome.geary
+    geany
+    amberol
+    gitg
+    shortwave
+    gnome.gnome-sound-recorder
     config.nur.repos.shadowrz.klassy # Klassy
   ];
 

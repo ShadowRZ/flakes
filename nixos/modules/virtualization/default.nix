@@ -17,6 +17,5 @@
   environment.systemPackages = with pkgs; [
     virt-viewer
     virt-manager
-    gnome.gnome-boxes
   ];
 }
