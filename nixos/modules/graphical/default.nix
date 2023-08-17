@@ -118,13 +118,18 @@
     tuba
     foliate
     gnome-builder
-    gnome.geary
     geany
     amberol
     gitg
     shortwave
     gnome.gnome-sound-recorder
     config.nur.repos.shadowrz.klassy # Klassy
+    # KDE PIM
+    kontact
+    kmail
+    kaddressbook
+    korganizer
+    akregator
   ];
 
   hardware.opengl = {
