@@ -63,8 +63,7 @@ require('nvim-treesitter.configs').setup {
 
 require("catppuccin").setup({
     integrations = {
-        treesitter = true,
-        lightline = true
+        treesitter = true
     }
 })
 EOF
