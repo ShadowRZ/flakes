@@ -34,6 +34,7 @@
     aha
     stdenv # Stdenv
     fwupd
+    aria2
   ];
 
   nix = {

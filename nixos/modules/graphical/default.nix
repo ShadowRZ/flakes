@@ -101,7 +101,6 @@
     # Others
     libreoffice-fresh # LibreOffice Fresh (Newer)
     mediainfo-gui # MediaInfo GUI
-    kdeconnect # KDE Connect
     # GTK
     gtk3.dev
     gtk4.dev
@@ -142,6 +141,9 @@
       intel-compute-runtime
     ];
   };
+
+  # KDE Connect
+  programs.kdeconnect.enable = true;
 
   sound.enable = true;
   hardware.pulseaudio.enable = false;

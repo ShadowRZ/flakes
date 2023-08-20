@@ -47,15 +47,6 @@ function! LightlineFilename()
     return filename . modified
 endfunction
 
-set background=dark
-" Under a environment where $DISPLAY or $WAYLAND_DISPLAY is set or under Termux
-if has_key(environ(), "DISPLAY") || has_key(environ(), "WAYLAND_DISPLAY") || has_key(environ(), "TERMUX_VERSION")
-    set termguicolors
-    " Nord
-    colorscheme nord
-    let g:lightline.colorscheme = 'nord'
-endif
-
 " Tree Sitter
 lua << EOF
 require('nvim-treesitter.configs').setup {
@@ -69,4 +60,20 @@ require('nvim-treesitter.configs').setup {
         enable = true,
         }
     }
+
+require("catppuccin").setup({
+    integrations = {
+        treesitter = true,
+        lightline = true
+    }
+})
 EOF
+
+set background=dark
+" Under a environment where $DISPLAY or $WAYLAND_DISPLAY is set or under Termux
+if has_key(environ(), "DISPLAY") || has_key(environ(), "WAYLAND_DISPLAY") || has_key(environ(), "TERMUX_VERSION")
+    set termguicolors
+    colorscheme catppuccin-mocha
+    let g:lightline = {'colorscheme': 'catppuccin'}
+endif
+
