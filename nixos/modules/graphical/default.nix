@@ -129,6 +129,8 @@
     kaddressbook
     korganizer
     akregator
+    gradience
+    srain
   ];
 
   hardware.opengl = {
