@@ -131,6 +131,12 @@
     akregator
     gradience
     srain
+    # Plasma themes
+    plasma-overdose-kde-theme
+    materia-kde-theme
+    catppuccin-kde
+    graphite-kde-theme
+    colloid-kde
   ];
 
   hardware.opengl = {
