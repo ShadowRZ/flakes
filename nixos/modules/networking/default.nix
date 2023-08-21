@@ -10,17 +10,16 @@
           "${./configs/bogus-nxdomain.china.smartdns.conf}"
         ];
         bind = [ "127.0.53.53:53" ];
+        server = [
+          # Local Dnsmasq pushed by NetworkManager
+          "127.0.0.1 -group china -exclude-default-group"
+        ];
         server-tls = [
-          # https://www.dnspod.cn/Products/publicdns
-          "1.12.12.12:853 -group china -exclude-default-group"
-          "120.53.53.53:853 -group china -exclude-default-group"
           # https://quad9.net/service/service-addresses-and-features/
           "9.9.9.9:853 -tls-host-verify dns.quad9.net"
           "149.112.112.112:853 -tls-host-verify dns.quad9.net"
         ];
         server-https = [
-          # https://www.dnspod.cn/Products/publicdns
-          "https://doh.pub/dns-query -group china -exclude-default-group -tls-host-verify doh.pub"
           # https://quad9.net/service/service-addresses-and-features/
           "https://9.9.9.9/dns-query -tls-host-verify dns.quad9.net"
           "https://149.112.112.112/dns-query -tls-host-verify dns.quad9.net"
@@ -45,19 +44,13 @@
     };
     # pykms
     pykms = { enable = true; };
-    # Systemd-resolved
-    resolved = {
-      enable = true;
-      # https://www.dnspod.cn/Products/publicdns
-      fallbackDns = [ "119.29.29.29" ];
-    };
   };
 
   networking = {
     # Use NetworkManager
     networkmanager = {
       enable = true;
-      dns = "systemd-resolved";
+      dns = "dnsmasq";
       extraConfig = ''
         [keyfile]
         path = /var/lib/NetworkManager/system-connections
@@ -93,5 +86,16 @@
     usePredictableInterfaceNames = true;
     # Set smartdns server
     nameservers = [ "127.0.53.53" ];
+    # Disable resolvconf
+    # Otherwise NetworkManager would use resolvconf to update /etc/resolv.conf
+    resolvconf.enable = false;
+  };
+
+  # Manually configures a working /etc/resolv.conf
+  # since we don't have anyone to update it
+  environment.etc = {
+    "resolv.conf".text = ''
+      nameserver 127.0.53.53
+    '';
   };
 }
