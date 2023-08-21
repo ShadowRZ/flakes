@@ -137,6 +137,10 @@
     catppuccin-kde
     graphite-kde-theme
     colloid-kde
+    # Qt Styles
+    libsForQt5.qtstyleplugins
+    libsForQt5.qtstyleplugin-kvantum # kvantummanager
+    qt6Packages.qtstyleplugin-kvantum
   ];
 
   hardware.opengl = {
