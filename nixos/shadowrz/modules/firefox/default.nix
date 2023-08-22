@@ -1,4 +1,4 @@
-{ pkgs, specialArgs, ... }: {
+{ pkgs, lib, specialArgs, ... }: {
   programs.firefox = {
     enable = true;
     package = pkgs.firefox.override {
@@ -31,7 +31,7 @@
     # Profiles
     profiles = {
       default = {
-        name = "Minoko";
+        name = "羽心印音";
         settings = {
           "fission.autostart" = true;
           "media.ffmpeg.vaapi.enabled" = true;
@@ -47,6 +47,11 @@
           "svg.context-properties.content.enabled" = true;
           # Disable private window dark theme
           "browser.theme.dark-private-windows" = false;
+          ## Optional options provided by firefox-gnome-theme
+          ## See https://github.com/rafaelmardojai/firefox-gnome-theme
+          "gnomeTheme.hideSingleTab" = true;
+          "gnomeTheme.activeTabContrast" = true;
+          "gnomeTheme.symbolicTabIcons" = true;
         };
         # Firefox extensions
         # TODO: Add links to https://addons.mozilla.org
@@ -56,7 +61,6 @@
             auto-tab-discard
             behind-the-overlay-revival
             clearurls
-            cookies-txt
             copy-selection-as-markdown
             display-_anchors
             don-t-fuck-with-paste
@@ -69,6 +73,7 @@
             no-pdf-download
             offline-qr-code-generator
             org-capture
+            plasma-integration
             single-file
             stylus
             tabliss
@@ -87,7 +92,26 @@
                 specialArgs.nur.repos.rycee.firefox-addons.buildFirefoxXpiAddon;
             };
           in with extra-addons; [ redirector custom-scrollbars measure-it ]);
-      };
+      } // (let theme = pkgs.callPackage ./firefox-gnome-theme.nix { };
+      in {
+        userChrome = ''
+          @import "${theme}/lib/firefox-gnome-theme/userChrome.css";
+          @import "firefox-gnome-theme/customChrome.css";
+        '';
+        userContent = ''
+          @import "${theme}/lib/firefox-gnome-theme/userContent.css";
+        '';
+      });
     };
+  };
+
+  # Populate a usable ~/.mozilla/firefox/*/chrome/firefox-gnome-theme
+  # Used for Gradience
+  home.activation = {
+    ensureFirefoxGnomePath = lib.hm.dag.entryAfter [ "writeBoundary" ] ''
+      for i in "$HOME/.mozilla/firefox"/*/chrome; do
+        [[ -d $i/firefox-gnome-theme ]] || $DRY_RUN_CMD mkdir -p $VERBOSE_ARG $i/firefox-gnome-theme
+      done
+    '';
   };
 }
