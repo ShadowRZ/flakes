@@ -97,7 +97,7 @@
     # Nordic
     nordic
     # Qt 5 tools
-    libsForQt5.qttools
+    libsForQt5.qttools.dev
     # Others
     libreoffice-fresh # LibreOffice Fresh (Newer)
     mediainfo-gui # MediaInfo GUI
@@ -114,14 +114,17 @@
     material-kwin-decoration # KWin material decoration
     celluloid
     adw-gtk3
-    tuba
+    tokodon
     foliate
     gnome-builder
     geany
-    amberol
+    vvave
     gitg
-    shortwave
-    gnome.gnome-sound-recorder
+    libsForQt5.krecorder
+    kcalc
+    kgpg
+    kleopatra
+    libsForQt5.kamoso
     config.nur.repos.shadowrz.klassy # Klassy
     # KDE PIM
     kontact
@@ -130,7 +133,7 @@
     korganizer
     akregator
     gradience
-    srain
+    konversation
     # Plasma themes
     plasma-overdose-kde-theme
     materia-kde-theme
