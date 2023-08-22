@@ -40,6 +40,7 @@
   nix = {
     settings = {
       sandbox = true;
+      nix-path = lib.mkForce null;
       trusted-users = [ "root" "@wheel" ];
       substituters = lib.mkForce [
         "https://mirror.sjtu.edu.cn/nix-channels/store"
@@ -104,7 +105,7 @@
 
   environment.variables = let
     nix-build-shell = pkgs.writeScript "nix-build-shell" ''
-      #!${pkgs.bashInteractive}/bin/bash
+      #!${pkgs.runtimeShell}
       if [[ $IN_NIX_SHELL == 'pure' ]] || [[ $# -eq 1 ]]; then
         # $BASH -> Expands to the full filename used to invoke this instance of bash.
         exec "$BASH" "$@"
