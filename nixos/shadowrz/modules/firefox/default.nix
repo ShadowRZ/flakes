@@ -51,7 +51,6 @@
           ## See https://github.com/rafaelmardojai/firefox-gnome-theme
           "gnomeTheme.hideSingleTab" = true;
           "gnomeTheme.activeTabContrast" = true;
-          "gnomeTheme.symbolicTabIcons" = true;
         };
         # Firefox extensions
         # TODO: Add links to https://addons.mozilla.org

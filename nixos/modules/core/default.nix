@@ -40,7 +40,6 @@
   nix = {
     settings = {
       sandbox = true;
-      nix-path = lib.mkForce null;
       trusted-users = [ "root" "@wheel" ];
       substituters = lib.mkForce [
         "https://mirror.sjtu.edu.cn/nix-channels/store"
@@ -70,7 +69,6 @@
       experimental-features = nix-command flakes
       flake-registry = /etc/nix/registry.json
     '';
-    channel.enable = false;
   };
 
   # System programs
