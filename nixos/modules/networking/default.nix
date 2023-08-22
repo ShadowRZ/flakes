@@ -35,6 +35,7 @@
           "/codeload.github.com/china"
           "/ssh.github.com/china"
           "/api.github.com/china"
+          "/cache.nixos.org/china"
         ];
         speed-check-mode = "tcp:443,tcp:80";
         # Add log
