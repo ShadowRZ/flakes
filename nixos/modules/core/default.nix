@@ -25,7 +25,7 @@
     unzip
     p7zip
     unar
-    neofetch
+    fastfetch
     mediainfo
     inxi
     lshw
@@ -33,7 +33,6 @@
     pciutils
     aha
     stdenv # Stdenv
-    fwupd
     aria2
   ];
 
@@ -100,6 +99,8 @@
       Nixpkgs Location       = ${specialArgs.nixpkgsPath}
     '';
   };
+
+  services.fwupd.enable = true;
 
   environment.variables = let
     nix-build-shell = pkgs.writeScript "nix-build-shell" ''
