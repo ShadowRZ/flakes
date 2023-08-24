@@ -103,14 +103,4 @@
       });
     };
   };
-
-  # Populate a usable ~/.mozilla/firefox/*/chrome/firefox-gnome-theme
-  # Used for Gradience
-  home.activation = {
-    ensureFirefoxGnomePath = lib.hm.dag.entryAfter [ "writeBoundary" ] ''
-      for i in "$HOME/.mozilla/firefox"/*/chrome; do
-        [[ -d $i/firefox-gnome-theme ]] || $DRY_RUN_CMD mkdir -p $VERBOSE_ARG $i/firefox-gnome-theme
-      done
-    '';
-  };
 }

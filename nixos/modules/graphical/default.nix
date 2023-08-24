@@ -146,6 +146,9 @@
     qt6Packages.qtstyleplugin-kvantum
   ];
 
+  environment.variables.VK_ICD_FILENAMES =
+    "${pkgs.mesa.drivers}/share/vulkan/icd.d/intel_icd.x86_64.json";
+
   hardware.opengl = {
     enable = true;
     driSupport = true;
@@ -166,5 +169,9 @@
   # Bluetooth
   hardware.bluetooth.enable = true;
 
-  xdg.portal.enable = true;
+  xdg.portal = {
+    enable = true;
+    # Enable GTK portal
+    extraPortals = [ pkgs.xdg-desktop-portal-gtk ];
+  };
 }
