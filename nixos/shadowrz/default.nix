@@ -143,6 +143,8 @@
   # Required to make sure KWin can bring a Fcitx 5 up to support Wayland IME protocol
   systemd.user.services.fcitx5-daemon = lib.mkForce { };
 
+  home.sessionVariables.GTK_CSD = "0";
+
   # Session variables for Systemd user units.
   # Plasma (+systemd) & GDM launched session reads these too.
   systemd.user.sessionVariables = {
@@ -154,6 +156,7 @@
     XMODIFIERS = "@im=fcitx";
     # Inherits from home.sessionVariables
     GNUPGHOME = config.home.sessionVariables.GNUPGHOME;
+    GTK_CSD = config.home.sessionVariables.GTK_CSD;
   };
 
   # Fontconfig.

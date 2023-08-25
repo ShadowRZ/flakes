@@ -106,6 +106,7 @@
           keepassxc
           yt-dlp
           kdenlive
+          fluffychat # FluffyChat
           config.nur.repos.rycee.mozilla-addons-to-nix
         ];
       };
