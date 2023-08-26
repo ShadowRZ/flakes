@@ -33,7 +33,7 @@
 
   outputs = inputs@{ self, home-manager, nixpkgs, ... }: {
     # NixOS configurations.
-    nixosConfigurations.medjedmonogatari = nixpkgs.lib.nixosSystem {
+    nixosConfigurations.hanekokoroos = nixpkgs.lib.nixosSystem {
       system = "x86_64-linux";
       specialArgs = {
         configurationPath = builtins.toString self;

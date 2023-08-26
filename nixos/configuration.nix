@@ -59,7 +59,7 @@
   environment.pathsToLink = [ "/share/zsh" ];
 
   # Hostname
-  networking.hostName = "medjedmonogatari";
+  networking.hostName = "hanekokoroos";
 
   # Sops-Nix
   sops = {
