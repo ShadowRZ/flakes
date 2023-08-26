@@ -109,6 +109,11 @@
         mpd_host = "${config.services.mpd.network.listenAddress}";
       };
     };
+    ### OBS
+    obs-studio = {
+      enable = true;
+      plugins = with pkgs.obs-studio-plugins; [ wlrobs ];
+    };
   };
   ###### End of program configs.
   ###### Services configs start here.

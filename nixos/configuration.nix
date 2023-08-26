@@ -108,7 +108,6 @@
           kdenlive
           fluffychat # FluffyChat
           logseq
-          obsidian
           config.nur.repos.rycee.mozilla-addons-to-nix
         ];
       };
