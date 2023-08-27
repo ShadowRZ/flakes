@@ -29,24 +29,6 @@ augroup filetypedetect
     autocmd FileType nix set shiftwidth=2 softtabstop=2
 augroup END
 
-" Lightline
-let g:lightline = {
-      \ 'active': {
-      \   'left': [ [ 'mode', 'paste' ],
-      \             [ 'readonly', 'filename' ] ],
-      \   'right': [],
-      \ },
-      \ 'component_function': {
-      \   'filename': 'LightlineFilename',
-      \ },
-      \ }
-
-function! LightlineFilename()
-    let filename = expand('%:t') !=# '' ? expand('%:t') : '[No Name]'
-    let modified = &modified ? ' +' : ''
-    return filename . modified
-endfunction
-
 " Tree Sitter
 lua << EOF
 require('nvim-treesitter.configs').setup {
@@ -76,3 +58,20 @@ if has_key(environ(), "DISPLAY") || has_key(environ(), "WAYLAND_DISPLAY") || has
     let g:lightline = {'colorscheme': 'catppuccin'}
 endif
 
+" Lightline
+let g:lightline = {
+      \ 'active': {
+      \   'left': [ [ 'mode', 'paste' ],
+      \             [ 'readonly', 'filename' ] ],
+      \   'right': [],
+      \ },
+      \ 'component_function': {
+      \   'filename': 'LightlineFilename',
+      \ },
+      \ }
+
+function! LightlineFilename()
+    let filename = expand('%:t') !=# '' ? expand('%:t') : '[No Name]'
+    let modified = &modified ? ' +' : ''
+    return filename . modified
+endfunction

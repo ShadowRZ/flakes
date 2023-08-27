@@ -134,7 +134,6 @@
 
   # Misc
   nixpkgs.config.allowUnfree = true;
-  powerManagement.cpuFreqGovernor = lib.mkForce "performance";
 
   # ZRAM
   zramSwap = {

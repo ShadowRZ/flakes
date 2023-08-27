@@ -37,8 +37,8 @@
   ];
 
   nix = {
+    channel.enable = false;
     settings = {
-      sandbox = true;
       trusted-users = [ "root" "@wheel" ];
       substituters = lib.mkForce [
         "https://mirror.sjtu.edu.cn/nix-channels/store"
@@ -57,17 +57,22 @@
         "shadowrz.cachix.org-1:I+6FCWMtdGmN8zYVncKdys/LVsLkCMWO3tfXbwQPTU0="
         "cache.garnix.io:CTFPyKSLcx5RMJKfLo5EEPUObbA78b0YQ2DTCJXqr9g="
       ];
+      builders-use-substitutes = true;
+      flake-registry = "/etc/nix/registry.json";
       auto-optimise-store = true;
       allowed-users = [ "@wheel" ];
+      keep-derivations = true;
+      experimental-features = [
+        "nix-command"
+        "flakes"
+        "ca-derivations"
+        "auto-allocate-uids"
+        "cgroups"
+      ];
+      auto-allocate-uids = true;
+      use-cgroups = true;
+      use-xdg-base-directories = true;
     };
-    optimise.automatic = true;
-    extraOptions = ''
-      keep-outputs = true
-      keep-derivations = false
-      fallback = true
-      experimental-features = nix-command flakes
-      flake-registry = /etc/nix/registry.json
-    '';
   };
 
   # System programs
@@ -85,19 +90,23 @@
       enable = true;
       enableZshIntegration = true;
     };
+    # Enable Comma
+    nix-index-database.comma.enable = true;
   };
 
   # Getty
-  services.getty = {
-    greetingLine = with config.system.nixos; ''
-      NixOS ${label} (${codeName})
-      Revision = ${revision}
-    '';
-    helpLine = ''
-      Configuration Revision = ${config.system.configurationRevision}
-      Location               = ${specialArgs.configurationPath}
-      Nixpkgs Location       = ${specialArgs.nixpkgsPath}
-    '';
+  services = {
+    getty = {
+      greetingLine = with config.system.nixos; ''
+        Hanekokoro OS
+        Configuration Revision = ${config.system.configurationRevision}
+
+        Based on NixOS ${release} (${codeName})
+        Revision = ${revision}
+      '';
+    };
+    # Udev
+    udev.packages = with pkgs; [ android-udev-rules ];
   };
 
   services.fwupd.enable = true;
@@ -123,11 +132,7 @@
     '';
   in { NIX_BUILD_SHELL = "${nix-build-shell}"; };
 
-  # Udev
-  services.udev.packages = with pkgs; [ android-udev-rules ];
-
-  # Enable Comma
-  programs.nix-index-database.comma.enable = true;
-
   nixpkgs.overlays = [ (import ./override/package-overlay.nix) ];
+
+  documentation.doc.enable = lib.mkForce false;
 }

@@ -1,5 +1,5 @@
 {
-  description = "@ShadowRZ's flake.";
+  description = "Hanekokoro OS";
 
   inputs = {
     # Nixpkgs
@@ -38,10 +38,6 @@
     # NixOS configurations.
     nixosConfigurations.hanekokoroos = nixpkgs.lib.nixosSystem {
       system = "x86_64-linux";
-      specialArgs = {
-        configurationPath = builtins.toString self;
-        nixpkgsPath = builtins.toString nixpkgs;
-      };
       modules = [
         ./nixos/configuration.nix
         # Home Manager Module
@@ -77,9 +73,11 @@
             useGlobalPkgs = true;
           };
           # Pin NIX_PATH
-          nix.nixPath = [ "nixpkgs=${nixpkgs}" ];
-          nix.registry.p.flake = self;
-          nix.registry.nixpkgs.flake = nixpkgs;
+          nix.settings.nix-path = [ "nixpkgs=${nixpkgs}" ];
+          nix.registry = {
+            p.flake = self;
+            nixpkgs.flake = nixpkgs;
+          };
         }
       ];
     };

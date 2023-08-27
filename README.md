@@ -1,7 +1,6 @@
-# @ShadowRZ's flake
+# Hanekokoro OS
 
-* `nixos`: System configurations.
-* `pkgs`: Personal packages.
+My personal NixOS configuration. for packages see [`ShadowRZ/nur-packages`](https://github.com/ShadowRZ/nur-packages)
 
 ## Inputs
 

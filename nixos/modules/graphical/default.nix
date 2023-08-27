@@ -132,6 +132,8 @@
     kaddressbook
     korganizer
     akregator
+    merkuro
+    # End KDE PIM
     gradience
     konversation
     # Plasma themes
