@@ -84,30 +84,22 @@
           qtcreator # Qt Creator
           graphviz # Graphviz
           hugo # Hugo
-          yarn # Yarn
           gocryptfs # Gocryptfs
           plasma-vault # Plasma Vault
-          kate # Kate
           krusader # Krusader
           emacs-pgtk # Emacs with Pure GTK + Native Compilation.
           mindustry # Mindustry
-          alacritty # Alacritty
           libsForQt5.plasma-sdk # Plasma SDK
-          nix-prefetch-github
-          nix-prefetch-git
           fontforge-gtk
           android-tools
-          gnome.dconf-editor
           helvum
-          wine-staging
-          winetricks
-          strawberry
-          _86Box
           keepassxc
           yt-dlp
           kdenlive
           fluffychat # FluffyChat
           logseq
+          jetbrains.idea-community
+          visualvm
           config.nur.repos.rycee.mozilla-addons-to-nix
         ];
       };

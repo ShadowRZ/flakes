@@ -31,9 +31,8 @@
     lshw
     screen
     pciutils
-    aha
-    stdenv # Stdenv
     aria2
+    stdenv # Stdenv
   ];
 
   nix = {

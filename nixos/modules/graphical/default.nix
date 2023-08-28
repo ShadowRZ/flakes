@@ -12,6 +12,8 @@
       enable = true;
       # SDDM
       displayManager = {
+        # Plasma Wayland session works for me.
+        defaultSession = "plasmawayland";
         sddm = {
           enable = true;
           settings = {
@@ -19,6 +21,7 @@
               DisplayServer = "wayland";
               InputMethod = "";
             };
+            # XXX: Using Weston for now till https://github.com/NixOS/nixpkgs/pull/242009
             Wayland.CompositorCommand = let
               xcfg = config.services.xserver;
               westonIni = (pkgs.formats.ini { }).generate "weston.ini" {
@@ -61,8 +64,7 @@
 
   # Fonts.
   fonts.packages = with pkgs; [
-    roboto # Roboto
-    roboto-slab # Roboto Slab
+    liberation_ttf # Liberation Fonts
     iosevka # Iosevka (Source Build)
     _3270font # Fonts of IBM 3270
     noto-fonts # Base Noto Fonts
@@ -74,15 +76,12 @@
     (iosevka-bin.override { variant = "aile"; })
     (iosevka-bin.override { variant = "etoile"; })
     jost # Jost
-    material-icons # Material Icons
-    material-design-icons
   ];
 
   environment.systemPackages = with pkgs; [
     intel-gpu-tools
     libva-utils
     # Graphical packages.
-    arc-theme # Arc theme
     ffmpeg-full # FFmpeg
     imagemagick # ImageMagick
     papirus-icon-theme # Papirus
@@ -94,16 +93,13 @@
     pulseaudio # PulseAudio tools
     # Phinger Cursors
     phinger-cursors
-    # Nordic
-    nordic
     # Qt 5 tools
     libsForQt5.qttools.dev
     # Others
     libreoffice-fresh # LibreOffice Fresh (Newer)
     mediainfo-gui # MediaInfo GUI
+    gnome.dconf-editor
     # GTK
-    gtk3.dev
-    gtk4.dev
     glxinfo
     clinfo
     vulkan-tools
@@ -122,8 +118,6 @@
     gitg
     libsForQt5.krecorder
     kcalc
-    kgpg
-    kleopatra
     libsForQt5.kamoso
     config.nur.repos.shadowrz.klassy # Klassy
     # KDE PIM
@@ -134,7 +128,6 @@
     akregator
     merkuro
     # End KDE PIM
-    gradience
     konversation
     # Plasma themes
     plasma-overdose-kde-theme

@@ -34,7 +34,6 @@
     renpy
     # VS Code
     vscode-fhs
-    asciinema
   ];
 
   # Fcitx 5
