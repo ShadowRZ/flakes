@@ -46,12 +46,6 @@
     font = "ter-132b";
   };
 
-  # Configure Systemd.
-  systemd.extraConfig = ''
-    DefaultLimitCORE=infinity
-    ShowStatus=yes
-  '';
-
   # Set your time zone.
   time.timeZone = "Asia/Shanghai";
 
