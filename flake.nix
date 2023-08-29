@@ -12,9 +12,6 @@
     # Emacs Overlay
     emacs-overlay.url = "github:nix-community/emacs-overlay";
     emacs-overlay.inputs.nixpkgs.follows = "nixpkgs";
-    # Neovim Nightly
-    neovim-nightly.url = "github:nix-community/neovim-nightly-overlay";
-    neovim-nightly.inputs.nixpkgs.follows = "nixpkgs";
     # Sops-Nix
     sops-nix.url = "github:Mic92/sops-nix";
     sops-nix.inputs.nixpkgs.follows = "nixpkgs";
@@ -57,8 +54,6 @@
           nixpkgs.overlays = [
             # Emacs Overlay
             inputs.emacs-overlay.overlay
-            # Neovim Nightly
-            inputs.neovim-nightly.overlay
             # Blender (Binary)
             inputs.blender.overlays.default
             # Users' flake
