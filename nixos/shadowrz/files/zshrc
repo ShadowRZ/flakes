@@ -27,7 +27,7 @@ setopt NO_CLOBBER
 setopt INTERACTIVE_COMMENTS
 setopt RC_QUOTES
 setopt CORRECT
-unsetopt FLOW_CONTROL; stty -ixon
+unsetopt FLOW_CONTROL
 # Jobs.
 setopt LONG_LIST_JOBS
 setopt NO_BG_NICE

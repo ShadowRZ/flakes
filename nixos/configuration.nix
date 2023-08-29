@@ -6,12 +6,10 @@
   imports = [
     # Include the results of the hardware scan.
     ./hardware-configuration.nix
-    # Profiles.
-    ./modules/core
-    ./modules/networking
-    ./modules/graphical
-    ./modules/environment
-    ./modules/virtualization
+    # Modules.
+    ./modules/environment.nix
+    ./modules/graphical-environment.nix
+    ./modules/networking.nix
   ];
 
   boot = {
@@ -39,6 +37,46 @@
     plymouth = { enable = true; };
   };
 
+  # Configure Nix.
+  nix = {
+    channel.enable = false;
+    settings = {
+      trusted-users = [ "root" "@wheel" ];
+      substituters = lib.mkForce [
+        "https://mirror.sjtu.edu.cn/nix-channels/store"
+        "https://mirrors.bfsu.edu.cn/nix-channels/store"
+        "https://berberman.cachix.org"
+        "https://nixpkgs-wayland.cachix.org"
+        "https://nix-community.cachix.org"
+        "https://shadowrz.cachix.org"
+        "https://cache.garnix.io"
+        "https://cache.nixos.org"
+      ];
+      trusted-public-keys = [
+        "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs="
+        "berberman.cachix.org-1:UHGhodNXVruGzWrwJ12B1grPK/6Qnrx2c3TjKueQPds="
+        "nixpkgs-wayland.cachix.org-1:3lwxaILxMRkVhehr5StQprHdEo4IrE8sRho9R9HOLYA="
+        "shadowrz.cachix.org-1:I+6FCWMtdGmN8zYVncKdys/LVsLkCMWO3tfXbwQPTU0="
+        "cache.garnix.io:CTFPyKSLcx5RMJKfLo5EEPUObbA78b0YQ2DTCJXqr9g="
+      ];
+      builders-use-substitutes = true;
+      flake-registry = "/etc/nix/registry.json";
+      auto-optimise-store = true;
+      allowed-users = [ "@wheel" ];
+      keep-derivations = true;
+      experimental-features = [
+        "nix-command"
+        "flakes"
+        "ca-derivations"
+        "auto-allocate-uids"
+        "cgroups"
+      ];
+      auto-allocate-uids = true;
+      use-cgroups = true;
+      use-xdg-base-directories = true;
+    };
+  };
+
   # Configure console.
   console = {
     packages = with pkgs; [ terminus_font ];
@@ -48,9 +86,6 @@
 
   # Set your time zone.
   time.timeZone = "Asia/Shanghai";
-
-  # Link /share/zsh
-  environment.pathsToLink = [ "/share/zsh" ];
 
   # Hostname
   networking.hostName = "hanekokoroos";
@@ -75,17 +110,22 @@
         extraGroups = [ "wheel" "networkmanager" "libvirtd" ];
         packages = with pkgs; [
           blender_3_6 # Blender 3.6.* (Binary)
-          qtcreator # Qt Creator
           graphviz # Graphviz
           hugo # Hugo
-          gocryptfs # Gocryptfs
-          plasma-vault # Plasma Vault
           krusader # Krusader
           emacs-pgtk # Emacs with Pure GTK + Native Compilation.
           mindustry # Mindustry
           libsForQt5.plasma-sdk # Plasma SDK
-          fontforge-gtk
-          android-tools
+          konversation
+          geany
+          libreoffice-fresh # LibreOffice Fresh (Newer)
+          kdialog
+          pipenv # Pipenv
+          yarn-berry # Yarn Berry
+          virt-viewer # Virt Viewer
+          ffmpeg-full # FFmpeg
+          imagemagick # ImageMagick
+          aria2
           helvum
           keepassxc
           yt-dlp
@@ -93,9 +133,30 @@
           fluffychat # FluffyChat
           logseq
           jetbrains.idea-community
-          visualvm
-          config.nur.repos.rycee.mozilla-addons-to-nix
         ];
+      };
+    };
+  };
+
+  # Getty
+  services = {
+    getty = {
+      greetingLine = with config.system.nixos; ''
+        Hanekokoro OS
+        Configuration Revision = ${config.system.configurationRevision}
+
+        Based on NixOS ${release} (${codeName})
+        Revision = ${revision}
+      '';
+    };
+    # Udev
+    udev.packages = with pkgs; [ android-udev-rules ];
+    fwupd.enable = true;
+    zram-generator = {
+      enable = true;
+      settings.zram0 = {
+        compression-algorithm = "zstd";
+        zram-size = "ram";
       };
     };
   };
@@ -103,10 +164,7 @@
   # Home Manager
   home-manager = {
     extraSpecialArgs = { inherit (config) nur; };
-    users = {
-      shadowrz = import ./shadowrz;
-      root = import ./root;
-    };
+    users = { shadowrz = import ./shadowrz/home-environment.nix; };
   };
 
   # Persistent files
@@ -119,28 +177,58 @@
   fileSystems."/var/lib".neededForBoot = true;
 
   # Misc
-  nixpkgs.config.allowUnfree = true;
-
-  # ZRAM
-  zramSwap = {
-    enable = true;
-    algorithm = "zstd";
+  nixpkgs = {
+    config.allowUnfree = true;
+    overlays = [ (import ./modules/overrides/package-overlay.nix) ];
   };
 
-  # Enable polkit
-  security.polkit.enable = true;
+  # Libvirtd
+  virtualisation = {
+    waydroid.enable = true;
+    libvirtd = {
+      enable = true;
+      qemu = {
+        package = pkgs.qemu_kvm;
+        # Enable UEFI
+        ovmf = {
+          enable = true;
+          packages = [ pkgs.OVMFFull.fd ];
+        };
+        # Enable virtual TPM support
+        swtpm.enable = true;
+      };
+    };
+  };
 
-  # Build all Glibc supported locales as defined in:
-  # https://sourceware.org/git/?p=glibc.git;a=blob;f=localedata/SUPPORTED
-  # This is because Home Manager actually configures a locale archive
-  # which is built with all supported locales and exports
-  # LOCALE_ARCHIVE_2_27.
-  # Unfortunately this means other users, especially root with sudo,
-  # various applications stop supporting user's current locale as they
-  # lost LOCALE_ARCHIVE_2_27 and taken LOCALE_ARCHIVE which is not built
-  # with all locales like Home Manager.
-  # Especially Perl which gave warning if it can't use such locale.
-  i18n.supportedLocales = [ "all" ];
+  # Disable all HTML documentations.
+  documentation.doc.enable = lib.mkForce false;
+
+  i18n = {
+    # Build all Glibc supported locales as defined in:
+    # https://sourceware.org/git/?p=glibc.git;a=blob;f=localedata/SUPPORTED
+    # This is because Home Manager actually configures a locale archive
+    # which is built with all supported locales and exports
+    # LOCALE_ARCHIVE_2_27.
+    # Unfortunately this means other users, especially root with sudo,
+    # various applications stop supporting user's current locale as they
+    # lost LOCALE_ARCHIVE_2_27 and taken LOCALE_ARCHIVE which is not built
+    # with all locales like Home Manager.
+    # Especially Perl which gave warning if it can't use such locale.
+    supportedLocales = [ "all" ];
+    # Fcitx 5
+    inputMethod = {
+      enabled = "fcitx5";
+      fcitx5.addons = with pkgs; [
+        fcitx5-chinese-addons
+        fcitx5-pinyin-moegirl
+        fcitx5-pinyin-zhwiki
+      ];
+    };
+  };
+
+  # XXX: Kill generated Systemd service for Fcitx 5
+  # Required to make sure KWin can bring a Fcitx 5 up to support Wayland IME protocol
+  systemd.user.services.fcitx5-daemon = lib.mkForce { };
 
   # DO NOT FIDDLE WITH THIS VALUE !!!
   # This value determines the NixOS release from which the default

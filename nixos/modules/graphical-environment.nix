@@ -1,6 +1,6 @@
 { config, pkgs, lib, ... }: {
 
-  imports = [ ./sddm-breeze-background.nix ./nvidia.nix ];
+  imports = [ ./overrides/sddm-breeze-background.nix ];
 
   services = {
     upower.enable = true;
@@ -10,6 +10,7 @@
     };
     xserver = {
       enable = true;
+      videoDrivers = [ "nvidia" ];
       # SDDM
       displayManager = {
         # Plasma Wayland session works for me.
@@ -59,86 +60,51 @@
     # Printing
     printing.enable = true;
   };
-  # rtkit
-  security.rtkit.enable = true;
 
   # Fonts.
-  fonts.packages = with pkgs; [
-    liberation_ttf # Liberation Fonts
-    iosevka # Iosevka (Source Build)
-    _3270font # Fonts of IBM 3270
-    noto-fonts # Base Noto Fonts
-    noto-fonts-cjk # CJK Noto Fonts
-    noto-fonts-extra # Extra Noto Fonts
-    noto-fonts-emoji # Noto Color Emoji
-    sarasa-gothic # Sarasa Gothic
-    # Iosevka Aile + Iosevka Etoile
-    (iosevka-bin.override { variant = "aile"; })
-    (iosevka-bin.override { variant = "etoile"; })
-    jost # Jost
-  ];
+  fonts = {
+    enableDefaultPackages = false;
+    packages = with pkgs; [
+      liberation_ttf # Liberation Fonts
+      iosevka # Iosevka (Source Build)
+      noto-fonts # Base Noto Fonts
+      noto-fonts-cjk # CJK Noto Fonts
+      noto-fonts-cjk-serif # Noto Serif CJK
+      noto-fonts-extra # Extra Noto Fonts
+      noto-fonts-emoji # Noto Color Emoji
+      sarasa-gothic # Sarasa Gothic
+      # Iosevka Aile + Iosevka Etoile
+      (iosevka-bin.override { variant = "aile"; })
+      (iosevka-bin.override { variant = "etoile"; })
+      jost # Jost
+    ];
+    fontconfig.defaultFonts = lib.mkForce {
+      serif = [ "Noto Serif" "Noto Serif CJK SC" ];
+      sansSerif = [ "Noto Sans" "Noto Sans CJK SC" ];
+      monospace = [ "Iosevka Extended" ];
+      emoji = [ "Noto Color Emoji" ];
+    };
+  };
 
   environment.systemPackages = with pkgs; [
-    intel-gpu-tools
-    libva-utils
     # Graphical packages.
-    ffmpeg-full # FFmpeg
-    imagemagick # ImageMagick
     papirus-icon-theme # Papirus
     gimp # GIMP
-    kolourpaint # KolourPaint
-    photoflare # PhotoFlare
     inkscape # Inkscape
     d-spy # D-Spy
-    pulseaudio # PulseAudio tools
     # Phinger Cursors
     phinger-cursors
     # Qt 5 tools
     libsForQt5.qttools.dev
     # Others
-    libreoffice-fresh # LibreOffice Fresh (Newer)
-    mediainfo-gui # MediaInfo GUI
-    gnome.dconf-editor
-    # GTK
-    glxinfo
-    clinfo
-    vulkan-tools
-    wayland-utils
-    xorg.xdpyinfo
-    wl-clipboard
-    kdialog
     material-kwin-decoration # KWin material decoration
     celluloid
     adw-gtk3
-    tokodon
-    foliate
-    gnome-builder
-    geany
-    vvave
-    gitg
     libsForQt5.krecorder
     kcalc
-    libsForQt5.kamoso
-    config.nur.repos.shadowrz.klassy # Klassy
-    # KDE PIM
-    kontact
-    kmail
-    kaddressbook
-    korganizer
-    akregator
-    merkuro
-    # End KDE PIM
-    konversation
     # Plasma themes
     plasma-overdose-kde-theme
-    materia-kde-theme
-    catppuccin-kde
     graphite-kde-theme
-    colloid-kde
-    # Qt Styles
-    libsForQt5.qtstyleplugins
-    libsForQt5.qtstyleplugin-kvantum # kvantummanager
-    qt6Packages.qtstyleplugin-kvantum
   ];
 
   environment.variables.VK_ICD_FILENAMES =
