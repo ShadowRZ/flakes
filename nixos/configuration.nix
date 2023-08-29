@@ -163,6 +163,8 @@
 
   # Home Manager
   home-manager = {
+    useUserPackages = true;
+    useGlobalPkgs = true;
     extraSpecialArgs = { inherit (config) nur; };
     users = { shadowrz = import ./shadowrz/home-environment.nix; };
   };
@@ -199,6 +201,9 @@
       };
     };
   };
+
+  # Rtkit
+  security.rtkit.enable = true;
 
   # Disable all HTML documentations.
   documentation.doc.enable = lib.mkForce false;

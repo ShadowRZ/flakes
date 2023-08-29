@@ -1,19 +1,24 @@
 { config, pkgs, lib, nur, ... }: {
 
-  home.stateVersion = "22.11";
-
-  home.packages = with pkgs; [
-    w3m
-    nwjs
-    rclone
-    assimp
-    lsof
-    renpy
-    # VS Code
-    vscode-fhs
-    # For using Notmuch in Emacs
-    notmuch.emacs
-  ];
+  home = {
+    stateVersion = "22.11";
+    sessionVariables = {
+      GTK_CSD = "0";
+      XAPIAN_CJK_NGRAM = "1";
+    };
+    packages = with pkgs; [
+      w3m
+      nwjs
+      rclone
+      assimp
+      lsof
+      renpy
+      # VS Code
+      vscode-fhs
+      # For using Notmuch in Emacs
+      notmuch.emacs
+    ];
+  };
 
   ###### Program configs start here.
   programs = {
@@ -30,7 +35,7 @@
         with-fingerprint = true;
         trust-model = "tofu";
         utf8-strings = true;
-        keyserver = "hkps://keys.openpgp.org ";
+        keyserver = "hkps://keys.openpgp.org";
         verbose = false;
       };
     };
@@ -137,10 +142,8 @@
       '';
       initExtra = with pkgs; ''
         export GPG_TTY=$TTY
-        . ${skim}/share/skim/completion.zsh
         . ${oh-my-zsh}/share/oh-my-zsh/plugins/git/git.plugin.zsh
         . ${oh-my-zsh}/share/oh-my-zsh/plugins/sudo/sudo.plugin.zsh
-        . ${oh-my-zsh}/share/oh-my-zsh/plugins/extract/extract.plugin.zsh
         . ${zsh-you-should-use}/share/zsh/plugins/you-should-use/you-should-use.plugin.zsh
         . ${zsh-history-substring-search}/share/zsh-history-substring-search/zsh-history-substring-search.zsh
         . ${pkgs.zsh-powerlevel10k}/share/zsh-powerlevel10k/powerlevel10k.zsh-theme
@@ -357,12 +360,7 @@
       userName = "shadowrz@disroot.org";
     };
   };
-  ### End of Account configs.
-
-  home.sessionVariables = {
-    GTK_CSD = "0";
-    XAPIAN_CJK_NGRAM = "1";
-  };
+  ###### End of Account configs.
 
   # Session variables for Systemd user units.
   # Plasma (+systemd) & GDM launched session reads these too.

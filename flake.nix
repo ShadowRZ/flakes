@@ -20,6 +20,7 @@
     # Blender (Binary)
     blender.url = "github:edolstra/nix-warez?dir=blender";
     blender.inputs.nixpkgs.follows = "nixpkgs";
+    # Prebuilt Nix Index DB
     nix-indexdb.url = "github:nix-community/nix-index-database";
     nix-indexdb.inputs.nixpkgs.follows = "nixpkgs";
     # Users' flake
@@ -37,10 +38,10 @@
       system = "x86_64-linux";
       modules = [
         ./nixos/configuration.nix
-        # Home Manager Module
-        home-manager.nixosModules.home-manager
         # (modulesPath + "/installer/scan/not-detected.nix")
         nixpkgs.nixosModules.notDetected
+        # Home Manager Module
+        home-manager.nixosModules.home-manager
         # Impermanence
         inputs.impermanence.nixosModule
         # Sops-Nix
@@ -62,11 +63,6 @@
           ];
           # Configuration revision.
           system.configurationRevision = nixpkgs.lib.mkIf (self ? rev) self.rev;
-          # Home Manager.
-          home-manager = {
-            useUserPackages = true;
-            useGlobalPkgs = true;
-          };
           # Pin NIX_PATH
           nix.settings.nix-path = [ "nixpkgs=${nixpkgs}" ];
           nix.registry = {
