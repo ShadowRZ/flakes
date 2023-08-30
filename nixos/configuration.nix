@@ -132,6 +132,7 @@
           kdenlive
           fluffychat # FluffyChat
           logseq
+          calibre
           jetbrains.idea-community
         ];
       };
