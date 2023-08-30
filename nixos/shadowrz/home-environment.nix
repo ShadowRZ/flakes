@@ -157,10 +157,9 @@
       vimAlias = true;
       viAlias = true;
       vimdiffAlias = true;
-      extraConfig = builtins.readFile ./files/init.vim;
+      extraLuaConfig = builtins.readFile ./files/nvim.lua;
       plugins = with pkgs.vimPlugins; [
-        vim-fugitive
-        lightline-vim
+        lualine-nvim
         catppuccin-nvim
         # Tree Sitter
         (nvim-treesitter.withPlugins (plugins:
