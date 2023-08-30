@@ -22,27 +22,27 @@ vim.opt.expandtab = true
 vim.keymap.set('n', '<Space>', 'za')
 
 vim.api.nvim_create_autocmd({"BufEnter", "BufWinEnter"}, {
-  pattern = {".git/COMMIT_EDITMSG"},
-  callback = function(ev) vim.b.textwidth = 72 end
+    pattern = {".git/COMMIT_EDITMSG"},
+    callback = function(ev) vim.b.textwidth = 72 end
 })
 vim.api.nvim_create_autocmd({"FileType"}, {
-  pattern = {"nix"},
-  callback = function(ev)
-    vim.b.shiftwidth = 2
-    vim.b.softtabstop = 2
-  end
+    pattern = {"nix"},
+    callback = function(ev)
+        vim.b.shiftwidth = 2
+        vim.b.softtabstop = 2
+    end
 })
 
 -- Tree Sitter
 require('nvim-treesitter.configs').setup({
-highlight = {
-    enable = true,
+    highlight = {
+        enable = true,
     },
-incremental_selection = {
-    enable = true,
+    incremental_selection = {
+        enable = true,
     },
-indent = {
-    enable = true,
+    indent = {
+        enable = true,
     }
 })
 
@@ -58,5 +58,12 @@ vim.cmd.colorscheme('catppuccin-mocha')
 require('lualine').setup {
     options = {
         theme = "catppuccin",
-    }
+    },
+    sections = {
+        lualine_x = {},
+        lualine_y = {}
+    },
+    inactive_sections = {
+        lualine_x = {}
+    },
 }
