@@ -117,13 +117,15 @@
           libsForQt5.plasma-sdk # Plasma SDK
           konversation
           geany
-          libreoffice-qt # LibreOffice Fresh (Qt)
+          libreoffice-fresh # LibreOffice Fresh
           kdialog
           pipenv # Pipenv
           yarn-berry # Yarn Berry
           virt-viewer # Virt Viewer
           ffmpeg-full # FFmpeg
           imagemagick # ImageMagick
+          featherpad
+          kate
           aria2
           helvum
           keepassxc
