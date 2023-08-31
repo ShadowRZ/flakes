@@ -117,7 +117,7 @@
           libsForQt5.plasma-sdk # Plasma SDK
           konversation
           geany
-          libreoffice-fresh # LibreOffice Fresh (Newer)
+          libreoffice-qt # LibreOffice Fresh (Qt)
           kdialog
           pipenv # Pipenv
           yarn-berry # Yarn Berry
