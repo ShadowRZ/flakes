@@ -15,8 +15,6 @@
       renpy
       # VS Code
       vscode-fhs
-      # For using Notmuch in Emacs
-      notmuch.emacs
     ];
   };
 
@@ -312,6 +310,18 @@
       enable = true;
       extraConfig = builtins.readFile ./files/afew.config;
     };
+    ### Astroid
+    astroid = {
+      enable = true;
+      externalEditor =
+        "${config.programs.alacritty.package}/bin/alacritty -e ${config.programs.neovim.finalPackage}/bin/nvim '+set ft=mail' '+set fileencoding=utf-8' '+set ff=unix' '+set enc=utf-8' '+set fo+=w' '+set tw=72' %1";
+      extraConfig = {
+        # https://docs.gtk.org/Pango/type_func.FontDescription.from_string.html
+        terminal.font_description = "Sarasa Term SC 16";
+        thread_index.cell.font_description = "Iosevka, Sarasa Mono SC, Light Expanded 16";
+        poll.interval = 0;
+      };
+    };
   };
   ###### End of program configs.
   ###### Services configs start here.
@@ -335,6 +345,7 @@
     "ShadowRZ" = {
       address = "shadowrz@disroot.org";
       gpg.key = "3237D49E8F815A45213364EA4FF35790F40553A9";
+      astroid = { enable = true; };
       msmtp = { enable = true; };
       mbsync = {
         enable = true;

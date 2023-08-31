@@ -113,7 +113,6 @@
           graphviz # Graphviz
           hugo # Hugo
           krusader # Krusader
-          emacs-pgtk # Emacs with Pure GTK + Native Compilation.
           mindustry # Mindustry
           libsForQt5.plasma-sdk # Plasma SDK
           konversation
@@ -131,6 +130,8 @@
           yt-dlp
           kdenlive
           fluffychat # FluffyChat
+          nheko
+          gnome.geary
           logseq
           calibre
           jetbrains.idea-community
