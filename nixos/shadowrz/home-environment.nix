@@ -1,7 +1,7 @@
 { config, pkgs, lib, nur, ... }: {
 
   home = {
-    stateVersion = "22.11";
+    stateVersion = "23.05";
     sessionVariables = {
       GTK_CSD = "0";
       XAPIAN_CJK_NGRAM = "1";
