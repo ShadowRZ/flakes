@@ -105,7 +105,7 @@
         uid = 1000;
         isNormalUser = true;
         passwordFile = config.sops.secrets.passwd.path;
-        shell = pkgs.zsh;
+        shell = config.programs.xonsh.package;
         description = "羽心印音";
         extraGroups = [ "wheel" "networkmanager" "libvirtd" ];
         packages = with pkgs; [
@@ -184,10 +184,7 @@
   fileSystems."/var/lib".neededForBoot = true;
 
   # Misc
-  nixpkgs = {
-    config.allowUnfree = true;
-    overlays = [ (import ./modules/overrides/package-overlay.nix) ];
-  };
+  nixpkgs.config.allowUnfree = true;
 
   # Libvirtd
   virtualisation = {
