@@ -110,6 +110,7 @@
         extraGroups = [ "wheel" "networkmanager" "libvirtd" ];
         packages = with pkgs; [
           blender_3_6 # Blender 3.6.* (Binary)
+          godot_4 # Godot 4
           graphviz # Graphviz
           hugo # Hugo
           krusader # Krusader
