@@ -275,6 +275,11 @@
         poll.interval = 0;
       };
     };
+    ### Qutebrowser
+    qutebrowser = {
+      enable = true;
+      loadAutoconfig = true;
+    };
   };
   ###### End of program configs.
   ###### Services configs start here.
