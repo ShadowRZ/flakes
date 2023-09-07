@@ -134,7 +134,6 @@
           kdenlive
           fluffychat # FluffyChat
           nheko
-          gnome.geary
           logseq
           calibre
           blanket

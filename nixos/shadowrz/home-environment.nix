@@ -284,7 +284,12 @@
     ### Thunderbird
     thunderbird = {
       enable = true;
-      profiles = { default = { name = "羽心印音"; }; };
+      profiles = {
+        default = {
+          isDefault = true;
+          withExternalGnupg = true;
+        };
+      };
     };
   };
   ###### End of program configs.
