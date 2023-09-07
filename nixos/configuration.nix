@@ -137,6 +137,7 @@
           gnome.geary
           logseq
           calibre
+          blanket
           jetbrains.idea-community
         ];
       };
