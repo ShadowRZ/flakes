@@ -271,7 +271,8 @@
       extraConfig = {
         # https://docs.gtk.org/Pango/type_func.FontDescription.from_string.html
         terminal.font_description = "Sarasa Term SC 16";
-        thread_index.cell.font_description = "Iosevka, Sarasa Mono SC, Light Expanded 16";
+        thread_index.cell.font_description =
+          "Iosevka, Sarasa Mono SC, Light Expanded 16";
         poll.interval = 0;
       };
     };
@@ -279,6 +280,11 @@
     qutebrowser = {
       enable = true;
       loadAutoconfig = true;
+    };
+    ### Thunderbird
+    thunderbird = {
+      enable = true;
+      profiles = { default = { name = "羽心印音"; }; };
     };
   };
   ###### End of program configs.
