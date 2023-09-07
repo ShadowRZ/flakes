@@ -271,6 +271,7 @@
             ".mozilla"
             ".renpy"
             ".ssh"
+            ".thunderbird"
             ".var"
             ".vscode"
           ];

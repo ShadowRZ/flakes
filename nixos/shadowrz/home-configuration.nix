@@ -337,6 +337,31 @@
     aria2 = { enable = true; };
     ### Zathura
     zathura = { enable = true; };
+    ### Thunderbird
+    thunderbird = {
+      enable = true;
+      profiles = {
+        default = {
+          isDefault = true;
+          settings = {
+            "toolkit.legacyUserProfileCustomizations.stylesheets" = true;
+            "svg.context-properties.content.enabled" = true;
+            "gnomeTheme.hideTabbar" = true;
+            "gnomeTheme.activeTabContrast" = true;
+          };
+          withExternalGnupg = true;
+        } // (let
+          theme = pkgs.callPackage ./files/thunderbird-gnome-theme.nix { };
+        in {
+          userChrome = ''
+            @import "${theme}/lib/thunderbird-gnome-theme/userChrome.css";
+          '';
+          userContent = ''
+            @import "${theme}/lib/thunderbird-gnome-theme/userContent.css";
+          '';
+        });
+      };
+    };
   };
   ###### End of program configs.
   ###### Services configs start here.
