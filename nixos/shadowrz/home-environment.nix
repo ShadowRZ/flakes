@@ -123,29 +123,18 @@
         ignoreSpace = true;
         size = 50000;
       };
+      historySubstringSearch = { enable = true; };
       initExtraFirst = lib.mkBefore ''
         # Subreap
         { zmodload lilydjwg/subreap && subreap; } >/dev/null 2>&1
         # Enable terminal cursor
         ${pkgs.util-linux}/bin/setterm -cursor on
-        ${pkgs.coreutils}/bin/stty -ixon
-        # Powerlevek10k Instant prompt
-        if [[ -r "${
-          "\${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-\${(%):-%n}"
-        }.zsh" ]]; then
-          source "${
-            "\${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-\${(%):-%n}"
-          }.zsh"
-        fi
+        ${pkgs.coreutils}/bin/stty -ixon # Disable flow control
       '';
       initExtra = with pkgs; ''
         export GPG_TTY=$TTY
         . ${oh-my-zsh}/share/oh-my-zsh/plugins/git/git.plugin.zsh
-        . ${oh-my-zsh}/share/oh-my-zsh/plugins/sudo/sudo.plugin.zsh
         . ${zsh-you-should-use}/share/zsh/plugins/you-should-use/you-should-use.plugin.zsh
-        . ${zsh-history-substring-search}/share/zsh-history-substring-search/zsh-history-substring-search.zsh
-        . ${pkgs.zsh-powerlevel10k}/share/zsh-powerlevel10k/powerlevel10k.zsh-theme
-        . ${./files/p10k.zsh}
         ${builtins.readFile ./files/zshrc}
       '';
     };

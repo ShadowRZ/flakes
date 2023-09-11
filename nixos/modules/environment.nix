@@ -78,5 +78,10 @@
     };
     # Enable Comma
     nix-index-database.comma.enable = true;
+    # Starship (Global)
+    starship = {
+      enable = true;
+      settings = builtins.fromTOML (builtins.readFile ./configs/starship.toml);
+    };
   };
 }
