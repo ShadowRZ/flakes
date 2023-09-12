@@ -105,10 +105,7 @@
     # Zsh
     zsh = {
       enable = true;
-      enableAutosuggestions = true;
-      syntaxHighlighting.enable = true;
       autocd = true;
-      defaultKeymap = "emacs";
       shellGlobalAliases = {
         "..." = "../..";
         "...." = "../../..";
