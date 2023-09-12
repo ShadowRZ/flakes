@@ -23,13 +23,13 @@ vim.keymap.set('n', '<Space>', 'za')
 
 vim.api.nvim_create_autocmd({"BufEnter", "BufWinEnter"}, {
     pattern = {".git/COMMIT_EDITMSG"},
-    callback = function(ev) vim.b.textwidth = 72 end
+    callback = function(ev) vim.bo.textwidth = 72 end
 })
 vim.api.nvim_create_autocmd({"FileType"}, {
     pattern = {"nix"},
     callback = function(ev)
-        vim.b.shiftwidth = 2
-        vim.b.softtabstop = 2
+        vim.bo.shiftwidth = 2
+        vim.bo.softtabstop = 2
     end
 })
 
