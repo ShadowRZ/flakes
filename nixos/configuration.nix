@@ -137,6 +137,7 @@
           logseq
           calibre
           blanket
+          manuskript # Manuskript
           jetbrains.idea-community
         ];
       };
