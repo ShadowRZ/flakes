@@ -138,6 +138,8 @@
           calibre
           blanket
           manuskript # Manuskript
+          wineWowPackages.stable
+          winetricks
           jetbrains.idea-community
         ];
       };
