@@ -157,6 +157,41 @@
           ]))
       ];
     };
+    helix = {
+      enable = true;
+      settings = {
+        theme = "catppuccin-mocha";
+        editor = {
+          line-number = "relative";
+          lsp.display-messages = true;
+          cursorline = true;
+          color-modes = true;
+          cursor-shape = {
+            insert = "bar";
+            normal = "block";
+            select = "underline";
+          };
+          indent-guides.render = true;
+          statusline = {
+            left = [ "mode" "spacer" "version-control" "spacer" "separator" "file-name" "file-modification-indicator" ];
+            right = [ "diagnostics" "workspace-diagnostics" "spinner" ];
+            mode = {
+              normal = "NORMAL";
+              insert = "INSERT";
+              select = "SELECT";
+            };
+          };
+        };
+        keys.normal = {
+          space.space = "file_picker";
+          space.w = ":w";
+          space.q = ":q";
+          esc = [ "collapse_selection" "keep_primary_selection" ];
+        };
+      };
+      themes.catppuccin-mocha =
+        builtins.fromTOML (builtins.readFile ./files/helix-catppuccin.toml);
+    };
     ### Firefox
     firefox = {
       enable = true;
