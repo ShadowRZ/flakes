@@ -21,9 +21,6 @@
     nix-indexdb.url = "github:nix-community/nix-index-database";
     nix-indexdb.inputs.nixpkgs.follows = "nixpkgs";
     # Users' flake
-    ## NickCao
-    nickcao.url = "github:NickCao/flakes";
-    nickcao.inputs.nixpkgs.follows = "nixpkgs";
     ## Berberman
     berberman.url = "github:berberman/flakes";
     berberman.inputs.nixpkgs.follows = "nixpkgs";
@@ -53,7 +50,6 @@
             # Blender (Binary)
             inputs.blender.overlays.default
             # Users' flake
-            inputs.nickcao.overlays.default
             inputs.berberman.overlays.default
           ];
           # Configuration revision.
