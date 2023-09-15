@@ -51,10 +51,6 @@
 
   # System programs
   programs = {
-    java = {
-      enable = true;
-      package = pkgs.temurin-bin-8;
-    };
     less = { enable = true; };
     htop = {
       enable = true;

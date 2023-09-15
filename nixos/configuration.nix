@@ -46,7 +46,6 @@
         "https://mirror.sjtu.edu.cn/nix-channels/store"
         "https://mirrors.bfsu.edu.cn/nix-channels/store"
         "https://berberman.cachix.org"
-        "https://nixpkgs-wayland.cachix.org"
         "https://nix-community.cachix.org"
         "https://shadowrz.cachix.org"
         "https://cache.garnix.io"
@@ -55,7 +54,6 @@
       trusted-public-keys = [
         "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs="
         "berberman.cachix.org-1:UHGhodNXVruGzWrwJ12B1grPK/6Qnrx2c3TjKueQPds="
-        "nixpkgs-wayland.cachix.org-1:3lwxaILxMRkVhehr5StQprHdEo4IrE8sRho9R9HOLYA="
         "shadowrz.cachix.org-1:I+6FCWMtdGmN8zYVncKdys/LVsLkCMWO3tfXbwQPTU0="
         "cache.garnix.io:CTFPyKSLcx5RMJKfLo5EEPUObbA78b0YQ2DTCJXqr9g="
       ];
@@ -110,8 +108,6 @@
         extraGroups = [ "wheel" "networkmanager" "libvirtd" ];
         packages = with pkgs; [
           blender_3_6 # Blender 3.6.* (Binary)
-          godot_4 # Godot 4
-          graphviz # Graphviz
           hugo # Hugo
           krusader # Krusader
           mindustry # Mindustry
@@ -119,15 +115,12 @@
           konversation
           geany
           libreoffice-fresh # LibreOffice Fresh
-          kdialog
-          pipenv # Pipenv
           yarn-berry # Yarn Berry
           virt-viewer # Virt Viewer
           ffmpeg-full # FFmpeg
           imagemagick # ImageMagick
           featherpad
           kate
-          aria2
           helvum
           keepassxc
           yt-dlp
@@ -135,12 +128,9 @@
           fluffychat # FluffyChat
           nheko
           logseq
-          calibre
           blanket
-          manuskript # Manuskript
-          wineWowPackages.stable
-          winetricks
-          jetbrains.idea-community
+          vscode-fhs # VS Code
+          renpy
         ];
       };
     };

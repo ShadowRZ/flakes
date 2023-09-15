@@ -6,16 +6,6 @@
       GTK_CSD = "0";
       XAPIAN_CJK_NGRAM = "1";
     };
-    packages = with pkgs; [
-      w3m
-      nwjs
-      rclone
-      assimp
-      lsof
-      renpy
-      # VS Code
-      vscode-fhs
-    ];
   };
 
   ###### Program configs start here.
@@ -68,15 +58,10 @@
       };
       scripts = with pkgs.mpvScripts; [ mpris ];
     };
-    ### OBS
-    obs-studio = {
-      enable = true;
-      plugins = with pkgs.obs-studio-plugins; [ wlrobs ];
-    };
     ### Git
     git = {
       enable = true;
-      package = pkgs.gitFull; # git-send-email TBD
+      package = pkgs.gitFull;
       # Basic
       userEmail = "23130178+ShadowRZ@users.noreply.github.com";
       userName = "夜坂雅";
@@ -132,6 +117,7 @@
         export GPG_TTY=$TTY
         . ${oh-my-zsh}/share/oh-my-zsh/plugins/git/git.plugin.zsh
         . ${zsh-you-should-use}/share/zsh/plugins/you-should-use/you-should-use.plugin.zsh
+
         ${builtins.readFile ./files/zshrc}
       '';
     };
@@ -173,7 +159,15 @@
           };
           indent-guides.render = true;
           statusline = {
-            left = [ "mode" "spacer" "version-control" "spacer" "separator" "file-name" "file-modification-indicator" ];
+            left = [
+              "mode"
+              "spacer"
+              "version-control"
+              "spacer"
+              "separator"
+              "file-name"
+              "file-modification-indicator"
+            ];
             right = [ "diagnostics" "workspace-diagnostics" "spinner" ];
             mode = {
               normal = "NORMAL";
@@ -331,49 +325,10 @@
       enable = true;
       extraConfig = builtins.readFile ./files/afew.config;
     };
-    ### Astroid
-    astroid = {
-      enable = true;
-      externalEditor =
-        "${config.programs.alacritty.package}/bin/alacritty -e ${config.programs.neovim.finalPackage}/bin/nvim '+set ft=mail' '+set fileencoding=utf-8' '+set ff=unix' '+set enc=utf-8' '+set fo+=w' '+set tw=72' %1";
-      extraConfig = {
-        # https://docs.gtk.org/Pango/type_func.FontDescription.from_string.html
-        terminal.font_description = "Sarasa Term SC 16";
-        thread_index.cell.font_description =
-          "Iosevka, Sarasa Mono SC, Light Expanded 16";
-        poll.interval = 0;
-      };
-    };
-    ### Qutebrowser
-    qutebrowser = {
-      enable = true;
-      loadAutoconfig = true;
-    };
-    ### Thunderbird
-    thunderbird = {
-      enable = true;
-      profiles = {
-        default = {
-          isDefault = true;
-          settings = {
-            "toolkit.legacyUserProfileCustomizations.stylesheets" = true;
-            "svg.context-properties.content.enabled" = true;
-            "gnomeTheme.hideTabbar" = true;
-            "gnomeTheme.activeTabContrast" = true;
-          };
-          withExternalGnupg = true;
-        } // (let
-          theme = pkgs.callPackage ./files/thunderbird-gnome-theme.nix { };
-        in {
-          userChrome = ''
-            @import "${theme}/lib/thunderbird-gnome-theme/userChrome.css";
-          '';
-          userContent = ''
-            @import "${theme}/lib/thunderbird-gnome-theme/userContent.css";
-          '';
-        });
-      };
-    };
+    ### Alot
+    alot = { enable = true; };
+    ### Aria2
+    aria2 = { enable = true; };
   };
   ###### End of program configs.
   ###### Services configs start here.
@@ -397,7 +352,6 @@
     "ShadowRZ" = {
       address = "shadowrz@disroot.org";
       gpg.key = "3237D49E8F815A45213364EA4FF35790F40553A9";
-      astroid = { enable = true; };
       msmtp = { enable = true; };
       mbsync = {
         enable = true;

@@ -61,6 +61,14 @@
     printing.enable = true;
   };
 
+  environment.plasma5.excludePackages = with pkgs; [
+    okular
+    elisa
+    khelpcenter
+    konsole
+    oxygen
+  ];
+
   # Fonts.
   fonts = {
     enableDefaultPackages = false;
@@ -113,7 +121,6 @@
   hardware.opengl = {
     enable = true;
     driSupport = true;
-    driSupport32Bit = true;
     extraPackages = with pkgs; [
       intel-media-driver
       intel-vaapi-driver
