@@ -137,7 +137,7 @@
           ffmpeg-full # FFmpeg
           keepassxc
           kdenlive
-          fluffychat # FluffyChat
+          libsForQt5.neochat
           nheko
           logseq
           blanket
