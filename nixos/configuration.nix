@@ -1,16 +1,5 @@
-# Edit this configuration file to define what should be installed on
-# your system.  Help is available in the configuration.nix(5) man page
-# and in the NixOS manual (accessible by running ‘nixos-help’).
-
 { config, pkgs, lib, ... }: {
-  imports = [
-    # Include the results of the hardware scan.
-    ./hardware-configuration.nix
-    # Modules.
-    ./modules/environment.nix
-    ./modules/graphical-environment.nix
-    ./modules/networking.nix
-  ];
+  imports = [ ./hardware-configuration.nix ];
 
   boot = {
     loader = {
@@ -34,7 +23,7 @@
       systemd.enable = true;
     };
     consoleLogLevel = 0;
-    plymouth = { enable = true; };
+    plymouth.enable = true;
   };
 
   # Configure Nix.
@@ -42,19 +31,16 @@
     channel.enable = false;
     settings = {
       trusted-users = [ "root" "@wheel" ];
-      substituters = lib.mkForce [
+      substituters = lib.mkBefore [
         "https://mirror.sjtu.edu.cn/nix-channels/store"
         "https://mirrors.bfsu.edu.cn/nix-channels/store"
         "https://berberman.cachix.org"
         "https://nix-community.cachix.org"
-        "https://shadowrz.cachix.org"
         "https://cache.garnix.io"
-        "https://cache.nixos.org"
       ];
       trusted-public-keys = [
         "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs="
         "berberman.cachix.org-1:UHGhodNXVruGzWrwJ12B1grPK/6Qnrx2c3TjKueQPds="
-        "shadowrz.cachix.org-1:I+6FCWMtdGmN8zYVncKdys/LVsLkCMWO3tfXbwQPTU0="
         "cache.garnix.io:CTFPyKSLcx5RMJKfLo5EEPUObbA78b0YQ2DTCJXqr9g="
       ];
       builders-use-substitutes = true;
@@ -85,8 +71,42 @@
   # Set your time zone.
   time.timeZone = "Asia/Shanghai";
 
-  # Hostname
-  networking.hostName = "hanekokoroos";
+  networking = {
+    # Hostname
+    hostName = "hanekokoroos";
+    # Use NetworkManager
+    networkmanager = {
+      enable = true;
+      dns = "dnsmasq";
+      extraConfig = ''
+        [keyfile]
+        path = /var/lib/NetworkManager/system-connections
+        [connectivity]
+        uri = http://google.cn/generate_204
+        response =
+      '';
+      unmanaged = [ "interface-name:virbr*" "lo" ];
+    };
+    # Disable global DHCP
+    useDHCP = false;
+    # Enable firewall
+    firewall = {
+      enable = true;
+      allowedTCPPorts = [ 22 80 8000 8080 ];
+      allowedUDPPorts = [ 53 ];
+      allowPing = true;
+      trustedInterfaces = [ "virbr0" ];
+    };
+    # Enable NAT
+    nat.enable = true;
+    # Predictable interfaces
+    usePredictableInterfaceNames = true;
+    # Set smartdns server
+    nameservers = [ "127.0.53.53" ];
+    # Disable resolvconf
+    # Otherwise NetworkManager would use resolvconf to update /etc/resolv.conf
+    resolvconf.enable = false;
+  };
 
   # Sops-Nix
   sops = {
@@ -109,21 +129,13 @@
         packages = with pkgs; [
           blender_3_6 # Blender 3.6.* (Binary)
           hugo # Hugo
-          krusader # Krusader
           mindustry # Mindustry
           libsForQt5.plasma-sdk # Plasma SDK
           konversation
-          geany
           libreoffice-fresh # LibreOffice Fresh
-          yarn-berry # Yarn Berry
           virt-viewer # Virt Viewer
           ffmpeg-full # FFmpeg
-          imagemagick # ImageMagick
-          featherpad
-          kate
-          helvum
           keepassxc
-          yt-dlp
           kdenlive
           fluffychat # FluffyChat
           nheko
@@ -131,47 +143,24 @@
           blanket
           vscode-fhs # VS Code
           renpy
+          gimp # GIMP
+          inkscape # Inkscape
+          d-spy # D-Spy
         ];
       };
     };
   };
 
-  # Getty
-  services = {
-    getty = {
-      greetingLine = with config.system.nixos; ''
-        Hanekokoro OS
-        Configuration Revision = ${config.system.configurationRevision}
-
-        Based on NixOS ${release} (${codeName})
-        Revision = ${revision}
-      '';
-    };
-    # Udev
-    udev.packages = with pkgs; [ android-udev-rules ];
-    fwupd.enable = true;
-    zram-generator = {
-      enable = true;
-      settings.zram0 = {
-        compression-algorithm = "zstd";
-        zram-size = "ram";
-      };
-    };
-  };
+  services = { };
 
   # Home Manager
   home-manager = {
     useUserPackages = true;
     useGlobalPkgs = true;
     extraSpecialArgs = { inherit (config) nur; };
-    users = { shadowrz = import ./shadowrz/home-environment.nix; };
+    users.shadowrz = import ./shadowrz/home-configuration.nix;
   };
 
-  # Persistent files
-  environment.persistence."/.persistent" = {
-    directories = [ "/var/log" "/var/lib" "/var/cache" "/root" ];
-    files = [ "/etc/machine-id" ];
-  };
   # As Age keys takes part in Sops-Nix early user password provisioning,
   # mark containing folders as required for boot.
   fileSystems."/var/lib".neededForBoot = true;
@@ -179,7 +168,7 @@
   # Misc
   nixpkgs = {
     config.allowUnfree = true;
-    overlays = [ (import ./modules/overrides/package-overlay.nix) ];
+    overlays = [ (import ./overrides/package-overlay.nix) ];
   };
 
   # Libvirtd
@@ -198,6 +187,277 @@
         swtpm.enable = true;
       };
     };
+  };
+
+  environment = {
+    # System level packages.
+    systemPackages = with pkgs; [
+      dnsutils
+      fd
+      iputils
+      ripgrep
+      file
+      ncdu
+      wget
+      tree
+      man-pages
+      unzip
+      p7zip
+      unar
+      fastfetch
+      # Graphical packages.
+      papirus-icon-theme # Papirus
+      phinger-cursors
+      # Qt 5 tools
+      libsForQt5.qttools.dev
+      material-kwin-decoration # KWin material decoration
+      celluloid
+      adw-gtk3
+      libsForQt5.krecorder
+      # Plasma themes
+      graphite-kde-theme
+    ];
+    # Link /share/zsh
+    pathsToLink = [ "/share/zsh" ];
+    # Set a NIX_BUILD_SHELL
+    variables = let
+      nix-build-shell = pkgs.writeScript "nix-build-shell" ''
+        #!${pkgs.runtimeShell}
+        # Remember the user shell.
+        shell=$SHELL
+
+        # nix-shell run this script as (shell) --rcfile $2
+        rcfile="$2"
+        source "$rcfile"
+
+        # Run user shell.
+        SHELL=$shell exec -a "$shell" "$shell"
+      '';
+    in {
+      NIX_BUILD_SHELL = "${nix-build-shell}";
+      VK_ICD_FILENAMES =
+        "${pkgs.mesa.drivers}/share/vulkan/icd.d/intel_icd.x86_64.json";
+    };
+    plasma5.excludePackages = with pkgs; [
+      okular
+      elisa
+      khelpcenter
+      konsole
+      oxygen
+      libsForQt5.print-manager
+    ];
+    # Manually configures a working /etc/resolv.conf
+    # since we don't have anyone to update it
+    etc."resolv.conf".text = ''
+      nameserver 127.0.53.53
+    '';
+    # Persistent files
+    persistence."/.persistent" = {
+      directories = [ "/var/log" "/var/lib" "/var/cache" "/root" ];
+      files = [ "/etc/machine-id" ];
+    };
+  };
+
+  # Fonts.
+  fonts = {
+    enableDefaultPackages = false;
+    packages = with pkgs; [
+      liberation_ttf # Liberation Fonts
+      iosevka # Iosevka (Source Build)
+      noto-fonts # Base Noto Fonts
+      noto-fonts-cjk # CJK Noto Fonts
+      noto-fonts-cjk-serif # Noto Serif CJK
+      noto-fonts-extra # Extra Noto Fonts
+      noto-fonts-emoji # Noto Color Emoji
+      sarasa-gothic # Sarasa Gothic
+      jost # Jost
+    ];
+    fontconfig = {
+      defaultFonts = lib.mkForce {
+        serif = [ "Noto Serif" "Noto Serif CJK SC" ];
+        sansSerif = [ "Noto Sans" "Noto Sans CJK SC" ];
+        monospace = [ "Iosevka Extended" ];
+        emoji = [ "Noto Color Emoji" ];
+      };
+      subpixel.rgba = "rgb";
+      localConf = builtins.readFile ./files/52-sarasa-fonts-after-iosevka.conf;
+    };
+  };
+
+  services = {
+    # Getty
+    getty = {
+      greetingLine = with config.system.nixos; ''
+        Hanekokoro OS
+        Configuration Revision = ${config.system.configurationRevision}
+
+        Based on NixOS ${release} (${codeName})
+        Revision = ${revision}
+      '';
+    };
+    # Udev
+    udev.packages = with pkgs; [ android-udev-rules ];
+    # Generate ZRAM
+    zram-generator = {
+      enable = true;
+      settings.zram0 = {
+        compression-algorithm = "zstd";
+        zram-size = "ram";
+      };
+    };
+    xserver = {
+      enable = true;
+      videoDrivers = [ "nvidia" ];
+      # SDDM
+      displayManager = {
+        # Plasma Wayland session works for me.
+        defaultSession = "plasmawayland";
+        sddm.enable = true;
+      };
+      desktopManager.plasma5 = {
+        enable = true;
+        runUsingSystemd = true;
+      };
+    };
+    # Pipewire
+    pipewire = {
+      enable = true;
+      alsa.enable = true;
+      pulse.enable = true;
+      # If you want to use JACK applications, uncomment this
+      jack.enable = true;
+    };
+    # Smartdns
+    smartdns = {
+      enable = true;
+      settings = with pkgs; {
+        conf-file = [
+          "${./files/accelerated-domains.china.smartdns.conf}"
+          "${./files/apple.china.smartdns.conf}"
+          "${./files/google.china.smartdns.conf}"
+          "${./files/bogus-nxdomain.china.smartdns.conf}"
+        ];
+        bind = [ "127.0.53.53:53" ];
+        server = [
+          # Local Dnsmasq pushed by NetworkManager
+          "127.0.0.1 -group china -exclude-default-group"
+        ];
+        server-https = [
+          # https://www.dnspod.cn/Products/publicdns
+          "https://doh.pub/dns-query -group china -exclude-default-group -tls-host-verify doh.pub"
+          # https://quad9.net/service/service-addresses-and-features/
+          "https://9.9.9.9/dns-query -tls-host-verify dns.quad9.net"
+          "https://149.112.112.112/dns-query -tls-host-verify dns.quad9.net"
+        ];
+        # (XXX)
+        nameserver = [
+          "/github.com/china"
+          "/codeload.github.com/china"
+          "/ssh.github.com/china"
+          "/api.github.com/china"
+          "/cache.nixos.org/china"
+        ];
+        speed-check-mode = "tcp:443,tcp:80";
+        # Add log
+        log-level = "info";
+        log-file = "/var/log/smartdns.log";
+      };
+    };
+    # pykms
+    pykms.enable = true;
+  };
+
+  # System programs
+  programs = {
+    less = { enable = true; };
+    htop = {
+      enable = true;
+      settings = {
+        hide_kernel_threads = true;
+        hide_userland_threads = true;
+      };
+    };
+    # Dconf
+    dconf.enable = true;
+    neovim = {
+      enable = true;
+      defaultEditor = true;
+    };
+    zsh = {
+      enable = true;
+      autosuggestions = { enable = true; };
+      syntaxHighlighting = { enable = true; };
+      histSize = 50000;
+      setOptions = [
+        # History related options.
+        "HIST_VERIFY"
+        "HIST_FIND_NO_DUPS"
+        "HIST_SAVE_NO_DUPS"
+        "HIST_REDUCE_BLANKS"
+        # Completion related options.
+        "ALWAYS_TO_END"
+        "LIST_PACKED"
+        "COMPLETE_IN_WORD"
+        "MENU_COMPLETE"
+        # Navigation related options.
+        "PUSHD_IGNORE_DUPS"
+        "PUSHD_SILENT"
+        "PUSHD_TO_HOME"
+        "AUTO_PUSHD"
+        # Globbing related options.
+        "EXTENDED_GLOB"
+        "MAGIC_EQUAL_SUBST"
+        # I/O related options.
+        "NO_CLOBBER"
+        "INTERACTIVE_COMMENTS"
+        "RC_QUOTES"
+        "CORRECT"
+        "NO_FLOW_CONTROL"
+        # Remove any RPROMPT after executing command.
+        "TRANSIENT_RPROMPT"
+        # Don't beep at all.
+        "NO_BEEP"
+      ];
+    };
+    # Disable command-not-found as it's unavliable in Flakes build
+    command-not-found.enable = lib.mkForce false;
+    # Nix-Index
+    nix-index = {
+      enable = true;
+      enableZshIntegration = true;
+    };
+    # Enable Comma
+    nix-index-database.comma.enable = true;
+    # Starship (Global)
+    starship = {
+      enable = true;
+      settings = builtins.fromTOML (builtins.readFile ./files/starship.toml);
+    };
+    kdeconnect.enable = true;
+  };
+
+  hardware = {
+    pulseaudio.enable = false;
+    # Bluetooth
+    bluetooth.enable = true;
+    opengl = {
+      enable = true;
+      driSupport = true;
+      extraPackages = with pkgs; [
+        intel-media-driver
+        intel-vaapi-driver
+        intel-compute-runtime
+      ];
+    };
+  };
+
+  # Enable sounds
+  sound.enable = true;
+
+  xdg.portal = {
+    enable = true;
+    # Enable GTK portal
+    extraPortals = [ pkgs.xdg-desktop-portal-gtk ];
   };
 
   # Rtkit
@@ -229,7 +489,7 @@
     };
   };
 
-  # XXX: Kill generated Systemd service for Fcitx 5
+  # Kill generated Systemd service for Fcitx 5
   # Required to make sure KWin can bring a Fcitx 5 up to support Wayland IME protocol
   systemd.user.services.fcitx5-daemon = lib.mkForce { };
 

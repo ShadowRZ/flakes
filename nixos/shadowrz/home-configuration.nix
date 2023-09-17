@@ -105,7 +105,7 @@
         ignoreSpace = true;
         size = 50000;
       };
-      historySubstringSearch = { enable = true; };
+      historySubstringSearch.enable = true;
       initExtraFirst = lib.mkBefore ''
         # Subreap
         { zmodload lilydjwg/subreap && subreap; } >/dev/null 2>&1
@@ -114,7 +114,6 @@
         ${pkgs.coreutils}/bin/stty -ixon # Disable flow control
       '';
       initExtra = with pkgs; ''
-        export GPG_TTY=$TTY
         . ${oh-my-zsh}/share/oh-my-zsh/plugins/git/git.plugin.zsh
         . ${zsh-you-should-use}/share/zsh/plugins/you-should-use/you-should-use.plugin.zsh
 
@@ -336,8 +335,6 @@
     ### GnuPG Agent
     gpg-agent = {
       enable = true;
-      # Zsh has $TTY
-      enableZshIntegration = false;
       extraConfig = ''
         allow-loopback-pinentry
         allow-emacs-pinentry
@@ -352,7 +349,7 @@
     "ShadowRZ" = {
       address = "shadowrz@disroot.org";
       gpg.key = "3237D49E8F815A45213364EA4FF35790F40553A9";
-      msmtp = { enable = true; };
+      msmtp.enable = true;
       mbsync = {
         enable = true;
         create = "both";
@@ -363,7 +360,7 @@
         port = 993;
         tls.enable = true;
       };
-      notmuch = { enable = true; };
+      notmuch.enable = true;
       smtp = {
         host = "disroot.org";
         port = 465;
@@ -378,18 +375,33 @@
   };
   ###### End of Account configs.
 
-  # Session variables for Systemd user units.
-  # Plasma (+systemd) & GDM launched session reads these too.
-  systemd.user.sessionVariables = {
-    LESSHISTFILE = "-";
-    GST_VAAPI_ALL_DRIVERS = "1";
-    # Fcitx 5
-    GTK_IM_MODULE = "fcitx";
-    QT_IM_MODULE = "fcitx";
-    XMODIFIERS = "@im=fcitx";
-    # Inherits from home.sessionVariables
-    GNUPGHOME = config.home.sessionVariables.GNUPGHOME;
-    GTK_CSD = config.home.sessionVariables.GTK_CSD;
+  systemd.user = {
+    # Kill generated Systemd service for Fcitx 5
+    # Required to make sure KWin can bring a Fcitx 5 up to support Wayland IME protocol
+    services."app-org.fcitx.Fcitx5@autostart" = lib.mkForce { };
+    # Session variables for Systemd user units.
+    # Plasma (+systemd) & GDM launched session reads these too.
+    sessionVariables = {
+      LESSHISTFILE = "-";
+      GST_VAAPI_ALL_DRIVERS = "1";
+      # Fcitx 5
+      GTK_IM_MODULE = "fcitx";
+      QT_IM_MODULE = "fcitx";
+      XMODIFIERS = "@im=fcitx";
+      # Inherits from home.sessionVariables
+      GNUPGHOME = config.home.sessionVariables.GNUPGHOME;
+      GTK_CSD = config.home.sessionVariables.GTK_CSD;
+    };
+  };
+
+  dconf.settings = {
+    "io/github/celluloid-player/celluloid" = {
+      always-show-title-buttons = false;
+      csd-enable = false;
+      dark-theme-enable = false;
+      mpv-config-enable = true;
+      mpv-config-file = "file:///${./files/celluloid.options}";
+    };
   };
 
   # Fontconfig.
