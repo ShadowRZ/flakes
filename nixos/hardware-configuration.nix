@@ -15,7 +15,7 @@
     "/" = {
       device = "none";
       fsType = "tmpfs";
-      options = [ "defaults" "size=128M" "mode=0755" ];
+      options = [ "defaults" "size=2G" "mode=0755" ];
     };
 
     "/boot" = {
@@ -34,12 +34,6 @@
       device = "/dev/disk/by-uuid/4df96150-4528-4ad3-a82e-c9612e0525ec";
       fsType = "btrfs";
       options = [ "subvolid=262" "compress-force=zstd" ];
-    };
-
-    "/home" = {
-      device = "/dev/disk/by-uuid/4df96150-4528-4ad3-a82e-c9612e0525ec";
-      fsType = "btrfs";
-      options = [ "subvolid=257" "compress-force=zstd" ];
     };
   };
 
