@@ -255,6 +255,28 @@
     persistence."/.persistent" = {
       directories = [ "/var/log" "/var/lib" "/var/cache" "/root" ];
       files = [ "/etc/machine-id" ];
+      users.shadowrz = {
+        directories = [
+          "Documents"
+          "Downloads"
+          "Pictures"
+          "Projects"
+          "Maildir"
+          "Public"
+          "Videos"
+          ".android"
+          ".cache"
+          ".config"
+          ".gnupg"
+          ".local"
+          ".logseq"
+          ".mozilla"
+          ".renpy"
+          ".ssh"
+          ".vscode"
+        ];
+        files = [".zsh_history" ".gtkrc-2.0"];
+      };
     };
   };
 
