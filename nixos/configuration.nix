@@ -275,7 +275,7 @@
           ".ssh"
           ".vscode"
         ];
-        files = [".zsh_history" ".gtkrc-2.0"];
+        files = [ ".zsh_history" ".gtkrc-2.0" ];
       };
     };
   };
