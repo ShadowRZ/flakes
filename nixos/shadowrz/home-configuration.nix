@@ -104,6 +104,7 @@
         ignoreDups = true;
         ignoreSpace = true;
         size = 50000;
+        path = "${config.xdg.dataHome}/zsh/zsh_history";
       };
       historySubstringSearch.enable = true;
       initExtraFirst = lib.mkBefore ''

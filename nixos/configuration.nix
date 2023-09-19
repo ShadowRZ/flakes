@@ -146,6 +146,7 @@
           gimp # GIMP
           inkscape # Inkscape
           d-spy # D-Spy
+          qmmp # Qmmp
         ];
       };
     };
@@ -255,27 +256,33 @@
     persistence."/.persistent" = {
       directories = [ "/var/log" "/var/lib" "/var/cache" "/root" ];
       files = [ "/etc/machine-id" ];
-      users.shadowrz = {
-        directories = [
-          "Documents"
-          "Downloads"
-          "Pictures"
-          "Projects"
-          "Maildir"
-          "Public"
-          "Videos"
-          ".android"
-          ".cache"
-          ".config"
-          ".gnupg"
-          ".local"
-          ".logseq"
-          ".mozilla"
-          ".renpy"
-          ".ssh"
-          ".vscode"
-        ];
-        files = [ ".zsh_history" ".gtkrc-2.0" ];
+      users = {
+        shadowrz = {
+          directories = [
+            "Documents"
+            "Downloads"
+            "Pictures"
+            "Projects"
+            "Maildir"
+            "Public"
+            "Videos"
+            ".android"
+            ".cache"
+            ".config"
+            ".gnupg"
+            ".local"
+            ".logseq"
+            ".mozilla"
+            ".renpy"
+            ".ssh"
+            ".vscode"
+          ];
+          files = [ ".gtkrc-2.0" ];
+        };
+        root = {
+          home = "/root";
+          directories = [ ".cache/nix" ];
+        };
       };
     };
   };
@@ -407,6 +414,7 @@
     };
     zsh = {
       enable = true;
+      histFile = "$HOME/.cache/zsh_history";
       autosuggestions = { enable = true; };
       syntaxHighlighting = { enable = true; };
       histSize = 50000;
