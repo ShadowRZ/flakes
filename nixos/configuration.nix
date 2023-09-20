@@ -146,7 +146,6 @@
           gimp # GIMP
           inkscape # Inkscape
           d-spy # D-Spy
-          qmmp # Qmmp
         ];
       };
     };
@@ -241,7 +240,6 @@
     };
     plasma5.excludePackages = with pkgs; [
       okular
-      elisa
       khelpcenter
       konsole
       oxygen
@@ -264,6 +262,7 @@
             "Pictures"
             "Projects"
             "Maildir"
+            "Music"
             "Public"
             "Videos"
             ".android"
