@@ -141,7 +141,7 @@
           nheko
           logseq
           blanket
-          vscode-fhs # VS Code
+          vscode # VS Code
           renpy
           gimp # GIMP
           inkscape # Inkscape
