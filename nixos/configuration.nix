@@ -267,6 +267,7 @@
             "Videos"
             ".android"
             ".cache"
+            ".cargo"
             ".config"
             ".gnupg"
             ".local"
