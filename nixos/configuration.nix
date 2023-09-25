@@ -138,7 +138,8 @@
           keepassxc
           kdenlive
           libsForQt5.neochat
-          nheko
+          cinny-desktop
+          yt-dlp
           logseq
           blanket
           vscode # VS Code
