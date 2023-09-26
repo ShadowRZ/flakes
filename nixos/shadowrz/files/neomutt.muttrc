@@ -1,0 +1,25 @@
+unset help
+
+color hdrdefault red default
+color quoted brightblue default
+color signature green default
+color indicator brightyellow default
+color error brightred default
+color status bold yellow default
+color tree magenta default
+color tilde magenta default
+color message brightcyan default
+color markers brightcyan default
+color attachment brightmagenta default
+color search default green
+
+color header brightred default ^(From|Subject):
+color body magenta default "(ftp|http|https)://[^ ]+"	# point out URLs
+color body magenta default [-a-z_0-9.]+@[-a-z_0-9.]+	# e-mail addresses
+color underline brightgreen default
+
+# attributes when using a mono terminal
+#mono header underline ^(From|Subject):
+mono quoted bold
+
+set ts_enabled

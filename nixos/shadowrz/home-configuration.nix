@@ -321,8 +321,12 @@
     ### Neomutt
     neomutt = {
       enable = true;
-      sidebar.enable = true;
+      sidebar = {
+        enable = true;
+        width = 26;
+      };
       vimKeys = true;
+      extraConfig = builtins.readFile ./files/neomutt.muttrc;
     };
     ### Afew
     afew = {
