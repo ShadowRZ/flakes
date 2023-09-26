@@ -370,13 +370,11 @@
         enable = true;
         neomutt = {
           enable = true;
-          virtualMailboxes = [
-            {
-              name = "Nixpkgs";
-              query = "tag:nixpkgs";
-              type = "threads";
-            }
-          ];
+          virtualMailboxes = [{
+            name = "Nixpkgs";
+            query = "tag:nixpkgs";
+            type = "threads";
+          }];
         };
       };
       smtp = {
@@ -389,9 +387,7 @@
       primary = true;
       realName = "夜坂雅";
       userName = "shadowrz@disroot.org";
-      neomutt = {
-        enable = true;
-      };
+      neomutt = { enable = true; };
     };
   };
   ###### End of Account configs.
