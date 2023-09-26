@@ -307,8 +307,6 @@
       shortcut = "a";
       extraConfig = builtins.readFile ./files/tmux.conf;
     };
-    ### Msmtp
-    msmtp.enable = true;
     ### Mbsync
     mbsync.enable = true;
     ### Notmuch
@@ -320,13 +318,17 @@
       };
       new.tags = [ "new" ];
     };
+    ### Neomutt
+    neomutt = {
+      enable = true;
+      sidebar.enable = true;
+      vimKeys = true;
+    };
     ### Afew
     afew = {
       enable = true;
       extraConfig = builtins.readFile ./files/afew.config;
     };
-    ### Alot
-    alot = { enable = true; };
     ### Aria2
     aria2 = { enable = true; };
   };
@@ -350,7 +352,6 @@
     "ShadowRZ" = {
       address = "shadowrz@disroot.org";
       gpg.key = "3237D49E8F815A45213364EA4FF35790F40553A9";
-      msmtp.enable = true;
       mbsync = {
         enable = true;
         create = "both";
@@ -361,7 +362,19 @@
         port = 993;
         tls.enable = true;
       };
-      notmuch.enable = true;
+      notmuch = {
+        enable = true;
+        neomutt = {
+          enable = true;
+          virtualMailboxes = [
+            {
+              name = "Nixpkgs";
+              query = "tag:nixpkgs";
+              type = "threads";
+            }
+          ];
+        };
+      };
       smtp = {
         host = "disroot.org";
         port = 465;
@@ -372,6 +385,9 @@
       primary = true;
       realName = "夜坂雅";
       userName = "shadowrz@disroot.org";
+      neomutt = {
+        enable = true;
+      };
     };
   };
   ###### End of Account configs.
