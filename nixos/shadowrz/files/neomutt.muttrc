@@ -23,3 +23,4 @@ color underline brightgreen default
 mono quoted bold
 
 set ts_enabled
+set index_format="[%4C] %Z %-{%F} %-20.20L %s"
