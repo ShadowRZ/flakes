@@ -171,4 +171,7 @@ if [[ $IN_NIX_SHELL ]]; then
     export SHELL=$__USER_SHELL
     unset __USER_SHELL
 fi
+
+[[ -n "${key[Up]}" ]] && bindkey -- "${key[Up]}" history-substring-search-up
+[[ -n "${key[Down]}" ]] && bindkey -- "${key[Down]}" history-substring-search-down
 # vim:fdm=marker

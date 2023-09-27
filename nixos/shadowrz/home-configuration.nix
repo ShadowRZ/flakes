@@ -335,6 +335,8 @@
     };
     ### Aria2
     aria2 = { enable = true; };
+    ### Zathura
+    zathura = { enable = true; };
   };
   ###### End of program configs.
   ###### Services configs start here.

@@ -147,12 +147,11 @@
           gimp # GIMP
           inkscape # Inkscape
           d-spy # D-Spy
+          celluloid
         ];
       };
     };
   };
-
-  services = { };
 
   # Home Manager
   home-manager = {
@@ -198,7 +197,7 @@
       iputils
       ripgrep
       file
-      ncdu
+      gdu
       wget
       tree
       man-pages
@@ -212,7 +211,6 @@
       # Qt 5 tools
       libsForQt5.qttools.dev
       material-kwin-decoration # KWin material decoration
-      celluloid
       adw-gtk3
       libsForQt5.krecorder
       # Plasma themes
@@ -449,6 +447,7 @@
         # Don't beep at all.
         "NO_BEEP"
       ];
+      interactiveShellInit = builtins.readFile ./files/zshrc;
     };
     # Disable command-not-found as it's unavliable in Flakes build
     command-not-found.enable = lib.mkForce false;
