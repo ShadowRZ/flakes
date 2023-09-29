@@ -122,7 +122,7 @@
       shadowrz = {
         uid = 1000;
         isNormalUser = true;
-        passwordFile = config.sops.secrets.passwd.path;
+        hashedPasswordFile = config.sops.secrets.passwd.path;
         shell = pkgs.zsh;
         description = "羽心印音";
         extraGroups = [ "wheel" "networkmanager" "libvirtd" ];
@@ -161,10 +161,6 @@
     users.shadowrz = import ./shadowrz/home-configuration.nix;
   };
 
-  # As Age keys takes part in Sops-Nix early user password provisioning,
-  # mark containing folders as required for boot.
-  fileSystems."/var/lib".neededForBoot = true;
-
   # Misc
   nixpkgs = {
     config.allowUnfree = true;
@@ -190,6 +186,7 @@
   };
 
   environment = {
+    defaultPackages = lib.mkForce [ ];
     # System level packages.
     systemPackages = with pkgs; [
       dnsutils
@@ -251,7 +248,7 @@
     '';
     # Persistent files
     persistence."/.persistent" = {
-      directories = [ "/var/log" "/var/lib" "/var/cache" "/root" ];
+      directories = [ "/var" "/root" ];
       files = [ "/etc/machine-id" ];
       users = {
         shadowrz = {
@@ -397,6 +394,8 @@
 
   # System programs
   programs = {
+    # Disable building /etc/nanorc
+    nano.syntaxHighlight = false;
     less = { enable = true; };
     htop = {
       enable = true;
