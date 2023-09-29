@@ -358,6 +358,7 @@
     "ShadowRZ" = {
       address = "shadowrz@disroot.org";
       gpg.key = "3237D49E8F815A45213364EA4FF35790F40553A9";
+      msmtp.enable = true;
       mbsync = {
         enable = true;
         create = "both";
