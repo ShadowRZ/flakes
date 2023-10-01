@@ -247,7 +247,7 @@
       nameserver 127.0.53.53
     '';
     # Persistent files
-    persistence."/.persistent" = {
+    persistence."/persist" = {
       directories = [ "/var" "/root" ];
       files = [ "/etc/machine-id" ];
       users = {

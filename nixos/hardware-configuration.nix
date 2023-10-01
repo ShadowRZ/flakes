@@ -23,7 +23,7 @@
       fsType = "vfat";
     };
 
-    "/.persistent" = {
+    "/persist" = {
       device = "/dev/disk/by-uuid/4df96150-4528-4ad3-a82e-c9612e0525ec";
       fsType = "btrfs";
       options = [ "subvolid=256" "compress-force=zstd" ];
