@@ -138,6 +138,7 @@
           keepassxc
           kdenlive
           libsForQt5.neochat
+          fluffychat
           cinny-desktop
           yt-dlp
           logseq
