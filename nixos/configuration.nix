@@ -338,7 +338,19 @@
       displayManager = {
         # Plasma Wayland session works for me.
         defaultSession = "plasmawayland";
-        sddm.enable = true;
+        sddm = {
+          enable = true;
+          settings = {
+            General = {
+              GreeterEnvironment =
+                "QT_PLUGIN_PATH=${pkgs.plasma5Packages.layer-shell-qt}/${pkgs.plasma5Packages.qtbase.qtPluginPrefix},QT_WAYLAND_SHELL_INTEGRATION=layer-shell";
+              DisplayServer = "wayland";
+              InputMethod = "";
+            };
+            Wayland.CompositorCommand =
+              "${pkgs.kwin}/bin/kwin_wayland --no-global-shortcuts --no-lockscreen --locale1";
+          };
+        };
       };
       desktopManager.plasma5 = {
         enable = true;
