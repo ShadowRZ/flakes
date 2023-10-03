@@ -44,7 +44,7 @@
     cpu.intel.updateMicrocode =
       lib.mkDefault config.hardware.enableRedistributableFirmware;
     nvidia = {
-      nvidiaSettings = true;
+      nvidiaSettings = false;
       prime = {
         offload = {
           enable = true;

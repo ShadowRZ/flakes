@@ -348,7 +348,7 @@
               InputMethod = "";
             };
             Wayland.CompositorCommand =
-              "${pkgs.kwin}/bin/kwin_wayland --no-global-shortcuts --no-lockscreen --locale1";
+              "${pkgs.kwin}/bin/kwin_wayland --drm --no-global-shortcuts --no-lockscreen --locale1";
           };
         };
       };
