@@ -288,8 +288,10 @@
   fonts = {
     enableDefaultPackages = false;
     packages = with pkgs; [
-      liberation_ttf # Liberation Fonts
+      dejavu_fonts # DejaVu
       iosevka # Iosevka (Source Build)
+      (iosevka-bin.override { variant = "aile"; }) # Iosevka Aile
+      fantasque-sans-mono # Fantasque Sans Mono
       noto-fonts # Base Noto Fonts
       noto-fonts-cjk # CJK Noto Fonts
       noto-fonts-cjk-serif # Noto Serif CJK
@@ -300,9 +302,9 @@
     ];
     fontconfig = {
       defaultFonts = lib.mkForce {
-        serif = [ "Noto Serif" "Noto Serif CJK SC" ];
-        sansSerif = [ "Noto Sans" "Noto Sans CJK SC" ];
-        monospace = [ "Iosevka Extended" ];
+        serif = [ "DejaVu Serif" "Noto Serif CJK SC" "Noto Color Emoji" ];
+        sansSerif = [ "DejaVu Sans" "Noto Sans CJK SC" "Noto Color Emoji" ];
+        monospace = [ "Fantasque Sans Mono" "Noto Color Emoji" ];
         emoji = [ "Noto Color Emoji" ];
       };
       subpixel.rgba = "rgb";
