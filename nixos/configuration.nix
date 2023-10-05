@@ -290,7 +290,6 @@
     packages = with pkgs; [
       dejavu_fonts # DejaVu
       iosevka # Iosevka (Source Build)
-      (iosevka-bin.override { variant = "aile"; }) # Iosevka Aile
       fantasque-sans-mono # Fantasque Sans Mono
       noto-fonts # Base Noto Fonts
       noto-fonts-cjk # CJK Noto Fonts
@@ -302,9 +301,9 @@
     ];
     fontconfig = {
       defaultFonts = lib.mkForce {
-        serif = [ "DejaVu Serif" "Noto Serif CJK SC" "Noto Color Emoji" ];
-        sansSerif = [ "DejaVu Sans" "Noto Sans CJK SC" "Noto Color Emoji" ];
-        monospace = [ "Fantasque Sans Mono" "Noto Color Emoji" ];
+        serif = [ "DejaVu Serif" "Noto Serif CJK SC" ];
+        sansSerif = [ "DejaVu Sans" "Noto Sans CJK SC" ];
+        monospace = [ "Fantasque Sans Mono" ];
         emoji = [ "Noto Color Emoji" ];
       };
       subpixel.rgba = "rgb";
