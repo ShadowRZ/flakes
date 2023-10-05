@@ -208,11 +208,14 @@
       phinger-cursors
       # Qt 5 tools
       libsForQt5.qttools.dev
+      libsForQt5.kde2-decoration
       material-kwin-decoration # KWin material decoration
       adw-gtk3
       libsForQt5.krecorder
       # Plasma themes
       graphite-kde-theme
+      plasma-overdose-kde-theme
+      materia-kde-theme
     ];
     # Link /share/zsh
     pathsToLink = [ "/share/zsh" ];
