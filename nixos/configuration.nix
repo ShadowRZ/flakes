@@ -208,14 +208,11 @@
       phinger-cursors
       # Qt 5 tools
       libsForQt5.qttools.dev
-      libsForQt5.kde2-decoration
       material-kwin-decoration # KWin material decoration
       adw-gtk3
       libsForQt5.krecorder
       # Plasma themes
       graphite-kde-theme
-      plasma-overdose-kde-theme
-      materia-kde-theme
     ];
     # Link /share/zsh
     pathsToLink = [ "/share/zsh" ];
@@ -291,9 +288,8 @@
   fonts = {
     enableDefaultPackages = false;
     packages = with pkgs; [
-      dejavu_fonts # DejaVu
+      liberation_ttf # Liberation Fonts
       iosevka # Iosevka (Source Build)
-      fantasque-sans-mono # Fantasque Sans Mono
       noto-fonts # Base Noto Fonts
       noto-fonts-cjk # CJK Noto Fonts
       noto-fonts-cjk-serif # Noto Serif CJK
@@ -304,9 +300,9 @@
     ];
     fontconfig = {
       defaultFonts = lib.mkForce {
-        serif = [ "DejaVu Serif" "Noto Serif CJK SC" ];
-        sansSerif = [ "DejaVu Sans" "Noto Sans CJK SC" ];
-        monospace = [ "Fantasque Sans Mono" ];
+        serif = [ "Noto Serif" "Noto Serif CJK SC" ];
+        sansSerif = [ "Noto Sans" "Noto Sans CJK SC" ];
+        monospace = [ "Iosevka Extended" ];
         emoji = [ "Noto Color Emoji" ];
       };
       subpixel.rgba = "rgb";
@@ -342,19 +338,7 @@
       displayManager = {
         # Plasma Wayland session works for me.
         defaultSession = "plasmawayland";
-        sddm = {
-          enable = true;
-          settings = {
-            General = {
-              GreeterEnvironment =
-                "QT_PLUGIN_PATH=${pkgs.plasma5Packages.layer-shell-qt}/${pkgs.plasma5Packages.qtbase.qtPluginPrefix},QT_WAYLAND_SHELL_INTEGRATION=layer-shell";
-              DisplayServer = "wayland";
-              InputMethod = "";
-            };
-            Wayland.CompositorCommand =
-              "${pkgs.kwin}/bin/kwin_wayland --drm --no-global-shortcuts --no-lockscreen --locale1";
-          };
-        };
+        sddm.enable = true;
       };
       desktopManager.plasma5 = {
         enable = true;
