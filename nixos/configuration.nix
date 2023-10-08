@@ -129,7 +129,6 @@
         packages = with pkgs; [
           blender_3_6 # Blender 3.6.* (Binary)
           hugo # Hugo
-          mindustry # Mindustry
           libsForQt5.plasma-sdk # Plasma SDK
           konversation
           libreoffice-fresh # LibreOffice Fresh
@@ -293,7 +292,6 @@
       noto-fonts # Base Noto Fonts
       noto-fonts-cjk # CJK Noto Fonts
       noto-fonts-cjk-serif # Noto Serif CJK
-      noto-fonts-extra # Extra Noto Fonts
       noto-fonts-emoji # Noto Color Emoji
       sarasa-gothic # Sarasa Gothic
       jost # Jost
@@ -321,8 +319,6 @@
         Revision = ${revision}
       '';
     };
-    # Udev
-    udev.packages = with pkgs; [ android-udev-rules ];
     # Generate ZRAM
     zram-generator = {
       enable = true;
