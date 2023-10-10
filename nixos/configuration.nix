@@ -271,6 +271,7 @@
             ".mozilla"
             ".renpy"
             ".ssh"
+            ".var"
             ".vscode"
           ];
           files = [ ".gtkrc-2.0" ];
@@ -387,6 +388,8 @@
     };
     # pykms
     pykms.enable = true;
+    # Flatpak
+    flatpak.enable = true;
   };
 
   # System programs
