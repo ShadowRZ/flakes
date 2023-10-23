@@ -212,6 +212,8 @@
       libsForQt5.krecorder
       # Plasma themes
       graphite-kde-theme
+      # Virtiofsd
+      virtiofsd
     ];
     # Link /share/zsh
     pathsToLink = [ "/share/zsh" ];
