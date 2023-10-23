@@ -130,7 +130,7 @@
       extraLuaConfig = builtins.readFile ./files/nvim.lua;
       plugins = with pkgs.vimPlugins; [
         lualine-nvim
-        catppuccin-nvim
+        everforest
         # Tree Sitter
         (nvim-treesitter.withPlugins (plugins:
           with plugins; [
@@ -142,49 +142,6 @@
             tree-sitter-python
           ]))
       ];
-    };
-    helix = {
-      enable = true;
-      settings = {
-        theme = "catppuccin-mocha";
-        editor = {
-          line-number = "relative";
-          lsp.display-messages = true;
-          cursorline = true;
-          color-modes = true;
-          cursor-shape = {
-            insert = "bar";
-            normal = "block";
-            select = "underline";
-          };
-          indent-guides.render = true;
-          statusline = {
-            left = [
-              "mode"
-              "spacer"
-              "version-control"
-              "spacer"
-              "separator"
-              "file-name"
-              "file-modification-indicator"
-            ];
-            right = [ "diagnostics" "workspace-diagnostics" "spinner" ];
-            mode = {
-              normal = "NORMAL";
-              insert = "INSERT";
-              select = "SELECT";
-            };
-          };
-        };
-        keys.normal = {
-          space.space = "file_picker";
-          space.w = ":w";
-          space.q = ":q";
-          esc = [ "collapse_selection" "keep_primary_selection" ];
-        };
-      };
-      themes.catppuccin-mocha =
-        builtins.fromTOML (builtins.readFile ./files/helix-catppuccin.toml);
     };
     ### Firefox
     firefox = {
@@ -266,6 +223,7 @@
         in {
           userChrome = ''
             @import "${theme}/lib/firefox-gnome-theme/userChrome.css";
+            @import "customChrome.css";
           '';
           userContent = ''
             @import "${theme}/lib/firefox-gnome-theme/userContent.css";
@@ -277,7 +235,7 @@
     alacritty = {
       enable = true;
       settings = {
-        import = [ ./files/catppuccin-mocha.yml ];
+        import = [ ./files/schemes.yml ];
         env.TERM = "xterm-256color";
         window = {
           decoration = "full";
@@ -355,6 +313,7 @@
         in {
           userChrome = ''
             @import "${theme}/lib/thunderbird-gnome-theme/userChrome.css";
+            @import "customChrome.css";
           '';
           userContent = ''
             @import "${theme}/lib/thunderbird-gnome-theme/userContent.css";

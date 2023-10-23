@@ -46,19 +46,12 @@ require('nvim-treesitter.configs').setup({
     }
 })
 
--- Catppuccin
-require("catppuccin").setup({
-    integrations = {
-        treesitter = true
-    }
-})
+-- Everforest
 
-vim.cmd.colorscheme('catppuccin-mocha')
+vim.g.everforest_background = 'soft'
+vim.cmd.colorscheme('everforest')
 
 require('lualine').setup {
-    options = {
-        theme = "catppuccin",
-    },
     sections = {
         lualine_x = {},
         lualine_y = {}
