@@ -148,6 +148,7 @@
           inkscape # Inkscape
           d-spy # D-Spy
           celluloid
+          eclipses.eclipse-java
         ];
       };
     };
