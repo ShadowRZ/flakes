@@ -205,7 +205,7 @@
       fastfetch
       # Graphical packages.
       papirus-icon-theme # Papirus
-      phinger-cursors
+      graphite-cursors
       # Qt 5 tools
       libsForQt5.qttools.dev
       material-kwin-decoration # KWin material decoration
