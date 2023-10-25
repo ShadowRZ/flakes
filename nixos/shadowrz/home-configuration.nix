@@ -231,39 +231,10 @@
         });
       };
     };
-    ### Alacritty
-    alacritty = {
+    ### Wezterm
+    wezterm = {
       enable = true;
-      settings = {
-        import = [ ./files/schemes.yml ];
-        env.TERM = "xterm-256color";
-        window = {
-          decoration = "full";
-          dynamic_title = true;
-        };
-        font = {
-          normal.family = "Sarasa Term SC";
-          size = 16;
-          builtin_box_drawing = true;
-        };
-        cursor.shape = {
-          shape = "Block";
-          blinking = "Off";
-        };
-        shell.program = "${config.programs.tmux.package}/bin/tmux";
-      };
-    };
-    ### Tmux
-    tmux = {
-      enable = true;
-      baseIndex = 1;
-      escapeTime = 0;
-      keyMode = "vi";
-      secureSocket = true;
-      terminal = "tmux-256color";
-      sensibleOnTop = true;
-      shortcut = "a";
-      extraConfig = builtins.readFile ./files/tmux.conf;
+      extraConfig = builtins.readFile ./files/wezterm.lua;
     };
     ### Mbsync
     mbsync.enable = true;
