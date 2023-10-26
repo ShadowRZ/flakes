@@ -267,6 +267,7 @@
             ".cache"
             ".cargo"
             ".config"
+            ".eclipse"
             ".gnupg"
             ".local"
             ".logseq"
