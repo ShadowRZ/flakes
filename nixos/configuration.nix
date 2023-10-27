@@ -140,7 +140,6 @@
           fluffychat
           cinny-desktop
           yt-dlp
-          logseq
           blanket
           vscode # VS Code
           renpy
