@@ -131,6 +131,11 @@
       plugins = with pkgs.vimPlugins; [
         lualine-nvim
         everforest
+        nvim-lspconfig
+        nvim-cmp
+        cmp-nvim-lsp
+        luasnip
+        editorconfig-nvim
         # Tree Sitter
         (nvim-treesitter.withPlugins (plugins:
           with plugins; [
@@ -203,6 +208,7 @@
             clearurls
             don-t-fuck-with-paste
             keepassxc-browser
+            linkhints
             localcdn
             multi-account-containers
             no-pdf-download
@@ -210,12 +216,11 @@
             single-file
             stylus
             tabliss
-            tree-style-tab
             (ublock-origin.override {
-              version = "1.42.4";
+              version = "1.52.2";
               url =
-                "https://github.com/gorhill/uBlock/releases/download/1.42.4/uBlock0_1.42.4.firefox.signed.xpi";
-              sha256 = "sha256-vDwzXJYSactA3RFVF4jQ2GdK78rNyPvfbBmEXq6jOc4=";
+                "https://github.com/gorhill/uBlock/releases/download/1.52.2/uBlock0_1.52.2.firefox.signed.xpi";
+              sha256 = "sha256-6O4/nVl6bULbnXP+h8HVId40B1X9i/3WnkFiPt/gltY=";
             })
             violentmonkey
           ];

@@ -213,6 +213,8 @@
       graphite-kde-theme
       # Virtiofsd
       virtiofsd
+      # wl-clipboard
+      wl-clipboard
     ];
     # Link /share/zsh
     pathsToLink = [ "/share/zsh" ];
