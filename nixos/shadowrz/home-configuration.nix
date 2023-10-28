@@ -316,6 +316,11 @@
       '';
       pinentryFlavor = "qt";
     };
+    ### Emacs Client
+    emacs = {
+      enable = true;
+      socketActivation.enable = true;
+    };
   };
   ###### End of service configs.
 
