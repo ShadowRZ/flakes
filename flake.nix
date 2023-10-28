@@ -14,6 +14,9 @@
     sops-nix.inputs.nixpkgs.follows = "nixpkgs";
     # Impermanence
     impermanence.url = "github:nix-community/impermanence";
+    # Emacs Overlay
+    emacs-overlay.url = "github:nix-community/emacs-overlay";
+    emacs-overlay.inputs.nixpkgs.follows = "nixpkgs";
     # Blender (Binary)
     blender.url = "github:edolstra/nix-warez?dir=blender";
     blender.inputs.nixpkgs.follows = "nixpkgs";
@@ -51,6 +54,8 @@
             inputs.blender.overlays.default
             # Users' flake
             inputs.berberman.overlays.default
+            # Emacs Overlay
+            inputs.emacs-overlay.overlays.default
           ];
           # Configuration revision.
           system.configurationRevision = nixpkgs.lib.mkIf (self ? rev) self.rev;
