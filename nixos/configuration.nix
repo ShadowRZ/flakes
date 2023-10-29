@@ -293,7 +293,6 @@
   fonts = {
     enableDefaultPackages = false;
     packages = with pkgs; [
-      liberation_ttf # Liberation Fonts
       iosevka # Iosevka (Source Build)
       noto-fonts # Base Noto Fonts
       noto-fonts-cjk # CJK Noto Fonts
@@ -301,6 +300,10 @@
       noto-fonts-emoji # Noto Color Emoji
       sarasa-gothic # Sarasa Gothic
       jost # Jost
+      # Iosevka Builds
+      config.nur.repos.shadowrz.iosevka-minoko
+      config.nur.repos.shadowrz.iosevka-aile-minoko
+      config.nur.repos.shadowrz.iosevka-minoko-e
     ];
     fontconfig = {
       defaultFonts = lib.mkForce {
