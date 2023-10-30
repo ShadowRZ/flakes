@@ -130,7 +130,7 @@
       extraLuaConfig = builtins.readFile ./files/nvim.lua;
       plugins = with pkgs.vimPlugins; [
         lualine-nvim
-        everforest
+        dracula-vim
         nvim-lspconfig
         nvim-cmp
         cmp-nvim-lsp
@@ -303,6 +303,11 @@
         });
       };
     };
+    ### Dircolors
+    dircolors = {
+      enable = true;
+      extraConfig = builtins.readFile ./files/dracula.dircolors;
+    };
   };
   ###### End of program configs.
   ###### Services configs start here.
@@ -399,5 +404,12 @@
   fonts.fontconfig.enable = true;
   xdg.configFile = {
     "fontconfig/conf.d/99-fontconfig.conf".source = ./files/fontconfig.conf;
+  };
+
+  xresources = {
+    extraConfig = builtins.readFile ./files/Xresources;
+    properties = {
+      "*faceName" = "Iosevka Minoko-E";
+    };
   };
 }

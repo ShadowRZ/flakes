@@ -46,12 +46,14 @@ require('nvim-treesitter.configs').setup({
     }
 })
 
--- Everforest
-vim.g.everforest_background = 'soft'
-vim.cmd.colorscheme('everforest')
+-- Dracula
+vim.cmd.colorscheme('dracula')
 
 -- Lualine
 require('lualine').setup {
+    options = {
+        theme = 'dracula'
+    },
     sections = {
         lualine_x = {},
         lualine_y = {}
