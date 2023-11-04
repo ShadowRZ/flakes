@@ -215,6 +215,8 @@
       virtiofsd
       # wl-clipboard
       wl-clipboard
+      # Spice-gtk, required for device passthrough
+      spice-gtk
     ];
     # Link /share/zsh
     pathsToLink = [ "/share/zsh" ];
