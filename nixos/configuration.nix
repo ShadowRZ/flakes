@@ -387,6 +387,10 @@
           "/ssh.github.com/china"
           "/api.github.com/china"
           "/cache.nixos.org/china"
+          "/microsoftonline.com/china"
+          "/microsoft.com/china"
+          "/office.net/china"
+          "/live.com/china"
         ];
         speed-check-mode = "tcp:443,tcp:80";
         # Add log
