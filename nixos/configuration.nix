@@ -200,7 +200,6 @@
       unzip
       p7zip
       unar
-      fastfetch
       # Graphical packages.
       papirus-icon-theme # Papirus
       graphite-cursors
