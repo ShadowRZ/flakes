@@ -167,8 +167,8 @@
     overlays = [ (import ./overrides/package-overlay.nix) ];
   };
 
-  # Libvirtd
   virtualisation = {
+    # Libvirtd
     libvirtd = {
       enable = true;
       qemu = {
@@ -182,6 +182,7 @@
         swtpm.enable = true;
       };
     };
+    spiceUSBRedirection.enable = true;
   };
 
   environment = {
@@ -214,8 +215,6 @@
       virtiofsd
       # wl-clipboard
       wl-clipboard
-      # Spice-gtk, required for device passthrough
-      spice-gtk
     ];
     # Link /share/zsh
     pathsToLink = [ "/share/zsh" ];
