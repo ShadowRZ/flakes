@@ -314,6 +314,7 @@
       };
       subpixel.rgba = "rgb";
       localConf = builtins.readFile ./files/52-sarasa-fonts-after-iosevka.conf;
+      cache32Bit = true;
     };
   };
 
@@ -474,7 +475,13 @@
       enable = true;
       settings = builtins.fromTOML (builtins.readFile ./files/starship.toml);
     };
+    # KDE Connect
     kdeconnect.enable = true;
+    # Steam
+    steam = {
+      enable = true;
+      remotePlay.openFirewall = true;
+    };
   };
 
   hardware = {
