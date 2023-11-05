@@ -147,6 +147,9 @@
           inkscape # Inkscape
           d-spy # D-Spy
           celluloid
+          (cataclysm-dda.override {
+            useXdgDir = true;
+          })
           eclipses.eclipse-java
         ];
       };
