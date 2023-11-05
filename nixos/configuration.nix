@@ -278,6 +278,7 @@
             ".mozilla"
             ".renpy"
             ".ssh"
+            ".steam"
             ".thunderbird"
             ".var"
             ".vscode"
@@ -483,6 +484,9 @@
     # Steam
     steam = {
       enable = true;
+      package = pkgs.steam.override {
+        extraArgs = "-forcedesktopscaling 1.5";
+      };
       remotePlay.openFirewall = true;
     };
   };
