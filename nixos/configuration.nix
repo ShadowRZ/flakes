@@ -151,6 +151,8 @@
             useXdgDir = true;
           })
           eclipses.eclipse-java
+          lmms
+          audacity
         ];
       };
     };
