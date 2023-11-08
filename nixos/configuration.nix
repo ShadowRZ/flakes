@@ -153,6 +153,11 @@
           eclipses.eclipse-java
           lmms
           audacity
+          ardour
+          rosegarden
+          sweethome3d.application
+          sweethome3d.textures-editor
+          sweethome3d.furniture-editor
         ];
       };
     };
