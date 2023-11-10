@@ -151,6 +151,7 @@
             useXdgDir = true;
           })
           eclipses.eclipse-java
+          jetbrains.idea-community
           lmms
           audacity
           ardour
