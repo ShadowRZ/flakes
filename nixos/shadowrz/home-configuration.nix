@@ -308,6 +308,11 @@
       enable = true;
       extraConfig = builtins.readFile ./files/dracula.dircolors;
     };
+    ### Direnv
+    direnv = {
+      enable = true;
+      nix-direnv.enable = true;
+    };
   };
   ###### End of program configs.
   ###### Services configs start here.

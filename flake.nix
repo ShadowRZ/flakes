@@ -4,6 +4,8 @@
   inputs = {
     # Nixpkgs
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
+    # Flake utils
+    flake-utils.url = "github:numtide/flake-utils";
     # Home Manager
     home-manager.url = "github:nix-community/home-manager";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
@@ -29,44 +31,51 @@
     berberman.inputs.nixpkgs.follows = "nixpkgs";
   };
 
-  outputs = inputs@{ self, home-manager, nixpkgs, ... }: {
-    # NixOS configurations.
-    nixosConfigurations.hanekokoroos = nixpkgs.lib.nixosSystem {
-      system = "x86_64-linux";
-      modules = [
-        ./nixos/configuration.nix
-        # (modulesPath + "/installer/scan/not-detected.nix")
-        nixpkgs.nixosModules.notDetected
-        # Home Manager Module
-        home-manager.nixosModules.home-manager
-        # Impermanence
-        inputs.impermanence.nixosModule
-        # Sops-Nix
-        inputs.sops-nix.nixosModules.sops
-        # NUR
-        inputs.nur.nixosModules.nur
-        # Nix Index database
-        inputs.nix-indexdb.nixosModules.nix-index
-        {
-          # Overlays
-          nixpkgs.overlays = [
-            # Blender (Binary)
-            inputs.blender.overlays.default
-            # Users' flake
-            inputs.berberman.overlays.default
-            # Emacs Overlay
-            inputs.emacs-overlay.overlays.default
-          ];
-          # Configuration revision.
-          system.configurationRevision = nixpkgs.lib.mkIf (self ? rev) self.rev;
-          # Pin NIX_PATH
-          nix.settings.nix-path = [ "nixpkgs=${nixpkgs}" ];
-          nix.registry = {
-            p.flake = self;
-            nixpkgs.flake = nixpkgs;
-          };
-        }
-      ];
-    };
-  };
+  outputs = inputs@{ self, nixpkgs, flake-utils, ... }:
+    {
+      # NixOS configurations.
+      nixosConfigurations.hanekokoroos = nixpkgs.lib.nixosSystem {
+        system = "x86_64-linux";
+        modules = [
+          ./nixos/configuration.nix
+          # (modulesPath + "/installer/scan/not-detected.nix")
+          nixpkgs.nixosModules.notDetected
+          # Home Manager Module
+          inputs.home-manager.nixosModules.home-manager
+          # Impermanence
+          inputs.impermanence.nixosModule
+          # Sops-Nix
+          inputs.sops-nix.nixosModules.sops
+          # NUR
+          inputs.nur.nixosModules.nur
+          # Nix Index database
+          inputs.nix-indexdb.nixosModules.nix-index
+          {
+            # Overlays
+            nixpkgs.overlays = [
+              # Blender (Binary)
+              inputs.blender.overlays.default
+              # Users' flake
+              inputs.berberman.overlays.default
+              # Emacs Overlay
+              inputs.emacs-overlay.overlays.default
+            ];
+            # Configuration revision.
+            system.configurationRevision =
+              nixpkgs.lib.mkIf (self ? rev) self.rev;
+            # Pin NIX_PATH
+            nix.settings.nix-path = [ "nixpkgs=${nixpkgs}" ];
+            nix.registry = {
+              p.flake = self;
+              nixpkgs.flake = nixpkgs;
+            };
+          }
+        ];
+      };
+    } // flake-utils.lib.eachDefaultSystem (system:
+      let pkgs = nixpkgs.legacyPackages.${system};
+      in {
+        devShells.default = with pkgs;
+          mkShell { nativeBuildInputs = [ nixfmt nil ]; };
+      });
 }
