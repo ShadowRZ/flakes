@@ -147,9 +147,7 @@
           inkscape # Inkscape
           d-spy # D-Spy
           celluloid
-          (cataclysm-dda.override {
-            useXdgDir = true;
-          })
+          (cataclysm-dda.override { useXdgDir = true; })
           eclipses.eclipse-java
           jetbrains.idea-community
           lmms
@@ -374,7 +372,7 @@
     # Smartdns
     smartdns = {
       enable = true;
-      settings = with pkgs; {
+      settings = {
         conf-file = [
           "${./files/accelerated-domains.china.smartdns.conf}"
           "${./files/apple.china.smartdns.conf}"
@@ -492,9 +490,7 @@
     # Steam
     steam = {
       enable = true;
-      package = pkgs.steam.override {
-        extraArgs = "-forcedesktopscaling 1.5";
-      };
+      package = pkgs.steam.override { extraArgs = "-forcedesktopscaling 1.5"; };
       remotePlay.openFirewall = true;
     };
   };

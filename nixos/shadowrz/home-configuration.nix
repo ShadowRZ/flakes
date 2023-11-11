@@ -413,8 +413,6 @@
 
   xresources = {
     extraConfig = builtins.readFile ./files/Xresources;
-    properties = {
-      "*faceName" = "Iosevka Minoko-E";
-    };
+    properties = { "*faceName" = "Iosevka Minoko-E"; };
   };
 }
