@@ -354,7 +354,10 @@
       displayManager = {
         # Plasma Wayland session works for me.
         defaultSession = "plasmawayland";
-        sddm.enable = true;
+        sddm = {
+          enable = true;
+          wayland.enable = true;
+        };
       };
       desktopManager.plasma5 = {
         enable = true;
