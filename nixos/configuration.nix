@@ -139,6 +139,7 @@
           libsForQt5.neochat
           fluffychat
           cinny-desktop
+          nheko
           yt-dlp
           blanket
           vscode # VS Code
@@ -147,7 +148,6 @@
           inkscape # Inkscape
           d-spy # D-Spy
           celluloid
-          (cataclysm-dda.override { useXdgDir = true; })
           eclipses.eclipse-java
           jetbrains.idea-community
           lmms
