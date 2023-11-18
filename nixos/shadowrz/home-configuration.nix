@@ -386,8 +386,6 @@
       LESSHISTFILE = "-";
       GST_VAAPI_ALL_DRIVERS = "1";
       # Fcitx 5
-      GTK_IM_MODULE = "fcitx";
-      QT_IM_MODULE = "fcitx";
       XMODIFIERS = "@im=fcitx";
       # Inherits from home.sessionVariables
       GNUPGHOME = config.home.sessionVariables.GNUPGHOME;
