@@ -7,7 +7,7 @@ if wezterm.config_builder then
 end
 
 config.color_scheme = 'Dracula (Official)'
-config.font = wezterm.font_with_callback(
+config.font = wezterm.font_with_fallback(
   {
     'Iosevka Minoko Term',
     'Sarasa Term SC'
