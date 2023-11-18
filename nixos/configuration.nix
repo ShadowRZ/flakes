@@ -228,21 +228,7 @@
     # Link /share/zsh
     pathsToLink = [ "/share/zsh" ];
     # Set a NIX_BUILD_SHELL
-    variables = let
-      nix-build-shell = pkgs.writeScript "nix-build-shell" ''
-        #!${pkgs.runtimeShell}
-        # Remember the user shell.
-        shell=$SHELL
-
-        # nix-shell run this script as (shell) --rcfile $2
-        rcfile="$2"
-        source "$rcfile"
-
-        # Run user shell.
-        SHELL=$shell exec -a "$shell" "$shell"
-      '';
-    in {
-      NIX_BUILD_SHELL = "${nix-build-shell}";
+    variables = {
       VK_ICD_FILENAMES =
         "${pkgs.mesa.drivers}/share/vulkan/icd.d/intel_icd.x86_64.json";
     };
@@ -312,6 +298,7 @@
       jost # Jost
       # Iosevka Builds
       config.nur.repos.shadowrz.iosevka-minoko
+      config.nur.repos.shadowrz.iosevka-minoko-term
       config.nur.repos.shadowrz.iosevka-aile-minoko
       config.nur.repos.shadowrz.iosevka-minoko-e
     ];
@@ -319,7 +306,7 @@
       defaultFonts = lib.mkForce {
         serif = [ "Noto Serif" "Noto Serif CJK SC" ];
         sansSerif = [ "Noto Sans" "Noto Sans CJK SC" ];
-        monospace = [ "Iosevka Extended" ];
+        monospace = [ "Iosevka Minoko-E" ];
         emoji = [ "Noto Color Emoji" ];
       };
       subpixel.rgba = "rgb";
@@ -492,6 +479,8 @@
       package = pkgs.steam.override { extraArgs = "-forcedesktopscaling 1.5"; };
       remotePlay.openFirewall = true;
     };
+    # Virt Manager
+    virt-manager = { enable = true; };
   };
 
   hardware = {
