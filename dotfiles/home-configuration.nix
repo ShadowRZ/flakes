@@ -1,6 +1,6 @@
 # Shared configuration.
 
-{ pkgs, lib, ... }: {
+{ config, pkgs, lib, ... }: {
 
   home = { stateVersion = "23.05"; };
 
@@ -8,6 +8,14 @@
     # Zsh
     zsh = {
       enable = true;
+      history = {
+        extended = true;
+        expireDuplicatesFirst = true;
+        ignoreDups = true;
+        ignoreSpace = true;
+        size = 50000;
+        path = "${config.xdg.dataHome}/zsh/zsh_history";
+      };
       shellGlobalAliases = {
         "..." = "../..";
         "...." = "../../..";
@@ -23,7 +31,12 @@
         ${pkgs.util-linux}/bin/setterm -cursor on
         ${pkgs.coreutils}/bin/stty -ixon # Disable flow control
       '';
-      initExtra = builtins.readFile ./files/zshrc;
+      initExtra = with pkgs; ''
+        . ${oh-my-zsh}/share/oh-my-zsh/plugins/git/git.plugin.zsh
+        . ${zsh-you-should-use}/share/zsh/plugins/you-should-use/you-should-use.plugin.zsh
+
+        ${builtins.readFile ./files/zshrc}
+      '';
     };
     ### Dircolors
     dircolors = {
