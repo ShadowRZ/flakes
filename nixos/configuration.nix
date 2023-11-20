@@ -110,7 +110,7 @@
 
   # Sops-Nix
   sops = {
-    defaultSopsFile = ./secrets.yaml;
+    defaultSopsFile = ./secrets/hanekokoroos-secrets.yaml;
     age.keyFile = "/var/lib/sops.key";
     secrets = { passwd.neededForUsers = true; };
   };
@@ -162,18 +162,17 @@
     };
   };
 
-  # Home Manager
-  home-manager = {
-    useUserPackages = true;
-    useGlobalPkgs = true;
-    extraSpecialArgs = { inherit (config) nur; };
-    users.shadowrz = import ./shadowrz/home-configuration.nix;
-  };
-
   # Misc
   nixpkgs = {
     config.allowUnfree = true;
-    overlays = [ (import ./overrides/package-overlay.nix) ];
+    overlays = [
+      (final: prev: {
+        # lilydjwg/subreap
+        zsh = prev.zsh.overrideAttrs (attrs: {
+          patches = (attrs.patches or [ ]) ++ [ ./patches/zsh-subreap.patch ];
+        });
+      })
+    ];
   };
 
   virtualisation = {
@@ -315,7 +314,21 @@
         emoji = [ "Noto Color Emoji" ];
       };
       subpixel.rgba = "rgb";
-      localConf = builtins.readFile ./files/52-sarasa-fonts-after-iosevka.conf;
+      localConf = ''
+        <?xml version="1.0"?>
+        <!DOCTYPE fontconfig SYSTEM "fonts.dtd">
+        <fontconfig>
+          <!-- Add Sarasa Mono SC for Iosevka based fonts -->
+          <match target="pattern">
+            <test name="family" compare="contains">
+              <string>Iosevka</string>
+            </test>
+            <edit binding="strong" mode="append" name="family">
+              <string>Sarasa Mono SC</string>
+            </edit>
+          </match>
+        </fontconfig>
+      '';
       cache32Bit = true;
     };
   };
@@ -326,9 +339,10 @@
       greetingLine = with config.system.nixos; ''
         Hanekokoro OS
         Configuration Revision = ${config.system.configurationRevision}
+        https://github.com/ShadowRZ/flakes
 
         Based on NixOS ${release} (${codeName})
-        Revision = ${revision}
+        NixOS Revision = ${revision}
       '';
     };
     # Generate ZRAM
@@ -426,9 +440,11 @@
     };
     zsh = {
       enable = true;
-      histFile = "$HOME/.cache/zsh_history";
+      histFile = "$HOME/.local/share/zsh/zsh_history";
       autosuggestions = { enable = true; };
       syntaxHighlighting = { enable = true; };
+      vteIntegration = true;
+      enableLsColors = false;
       histSize = 50000;
       setOptions = [
         # History related options.
@@ -436,6 +452,7 @@
         "HIST_FIND_NO_DUPS"
         "HIST_SAVE_NO_DUPS"
         "HIST_REDUCE_BLANKS"
+        "EXTENDED_HISTORY"
         # Completion related options.
         "ALWAYS_TO_END"
         "LIST_PACKED"
@@ -459,6 +476,8 @@
         "TRANSIENT_RPROMPT"
         # Don't beep at all.
         "NO_BEEP"
+        # Auto CD
+        "AUTO_CD"
       ];
       interactiveShellInit = builtins.readFile ./files/zshrc;
     };

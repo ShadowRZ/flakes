@@ -5,9 +5,9 @@ add_newline = false
 disabled = true
 
 [character]
-success_symbol = '[\$](bold green)'
-error_symbol = '[\$](bold red)'
-vimcmd_symbol = '[\[VISUAL\]](bold yellow) [\$](bold green)'
+success_symbol = '[@](bold green)'
+error_symbol = '[@](bold red)'
+vimcmd_symbol = '[\[VISUAL\]](bold yellow) [@](bold green)'
 
 [git_commit]
 tag_symbol = ' tag '

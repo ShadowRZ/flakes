@@ -50,7 +50,7 @@
           inputs.nur.nixosModules.nur
           # Nix Index database
           inputs.nix-indexdb.nixosModules.nix-index
-          {
+          ({ config, ... }: {
             # Overlays
             nixpkgs.overlays = [
               # Blender (Binary)
@@ -69,7 +69,24 @@
               p.flake = self;
               nixpkgs.flake = nixpkgs;
             };
-          }
+            # Home Manager
+            home-manager = {
+              useUserPackages = true;
+              useGlobalPkgs = true;
+              sharedModules = [ ./dotfiles/home-configuration.nix ];
+              extraSpecialArgs = { inherit (config) nur; };
+              users = {
+                shadowrz = {
+                  imports = [
+                    ./dotfiles/shadowrz/home-configuration.nix
+                    ./nixos/shadowrz/home-configuration.nix
+                  ];
+                };
+                # Enable root modules
+                root = { };
+              };
+            };
+          })
         ];
       };
     } // flake-utils.lib.eachDefaultSystem (system:
