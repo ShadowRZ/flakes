@@ -232,6 +232,11 @@
       VK_ICD_FILENAMES =
         "${pkgs.mesa.drivers}/share/vulkan/icd.d/intel_icd.x86_64.json";
     };
+    extraInit = ''
+      # https://fcitx-im.org/wiki/Using_Fcitx_5_on_Wayland#KDE_Plasma
+      export -n GTK_IM_MODULE QT_IM_MODULE
+      unset GTK_IM_MODULE QT_IM_MODULE
+    '';
     plasma5.excludePackages = with pkgs; [
       okular
       khelpcenter
