@@ -254,7 +254,7 @@
       enable = true;
       hooks = {
         preNew = "mbsync -a";
-        #postNew = with pkgs; "${afew}/bin/afew -a -t";
+        postNew = with pkgs; "${afew}/bin/afew -a -t";
       };
       new.tags = [ "new" ];
     };
@@ -270,7 +270,7 @@
     };
     ### Afew
     afew = {
-      enable = false;
+      enable = true;
       extraConfig = builtins.readFile ./files/afew.config;
     };
     ### Aria2
@@ -339,7 +339,7 @@
     "ShadowRZ" = {
       address = "shadowrz@disroot.org";
       gpg.key = "3237D49E8F815A45213364EA4FF35790F40553A9";
-      #msmtp.enable = true;
+      msmtp.enable = true;
       mbsync = {
         enable = true;
         create = "both";
