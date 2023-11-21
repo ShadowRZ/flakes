@@ -26,7 +26,11 @@
         "......" = "../../../../..";
         "......." = "../../../../../..";
       };
-      historySubstringSearch.enable = true;
+      historySubstringSearch = {
+        enable = true;
+        searchUpKey = [ "$key[Up]" ];
+        searchDownKey = [ "$key[Down]" ];
+      };
       initExtraFirst = lib.mkBefore ''
         # Subreap
         { zmodload lilydjwg/subreap && subreap; } >/dev/null 2>&1
@@ -34,11 +38,9 @@
         ${pkgs.util-linux}/bin/setterm -cursor on
         ${pkgs.coreutils}/bin/stty -ixon # Disable flow control
       '';
-      initExtra = with pkgs; lib.mkAfter ''
+      initExtra = with pkgs; ''
         . ${oh-my-zsh}/share/oh-my-zsh/plugins/git/git.plugin.zsh
         . ${zsh-you-should-use}/share/zsh/plugins/you-should-use/you-should-use.plugin.zsh
-
-        ${builtins.readFile ./files/zshrc}
       '';
     };
     ### Dircolors
