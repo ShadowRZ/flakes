@@ -11,9 +11,7 @@
     };
     zsh = {
       autocd = true;
-      history = {
-        ignoreAllDups = true;
-      };
+      history = { ignoreAllDups = true; };
       enableAutosuggestions = true;
       enableCompletion = true;
       syntaxHighlighting = { enable = true; };

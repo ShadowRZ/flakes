@@ -2,7 +2,22 @@
 
 { config, pkgs, lib, ... }: {
 
-  home = { stateVersion = "23.05"; };
+  home = {
+    stateVersion = "23.05";
+    shellAliases = {
+      df = "df -h";
+      du = "du -h";
+      grep = "grep --color=auto";
+      ls = "ls -h --group-directories-first --color=auto";
+
+      chmod = "chmod --preserve-root -v";
+      chown = "chown --preserve-root -v";
+
+      ll = "ls -l";
+      l = "ll -A";
+      la = "ls -a";
+    };
+  };
 
   programs = {
     # Zsh

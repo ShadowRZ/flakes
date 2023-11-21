@@ -226,10 +226,22 @@
     ];
     # Link /share/zsh
     pathsToLink = [ "/share/zsh" ];
-    # Set a NIX_BUILD_SHELL
     variables = {
       VK_ICD_FILENAMES =
         "${pkgs.mesa.drivers}/share/vulkan/icd.d/intel_icd.x86_64.json";
+    };
+    shellAliases = lib.mkForce {
+      df = "df -h";
+      du = "du -h";
+      grep = "grep --color=auto";
+      ls = "ls -h --group-directories-first --color=auto";
+
+      chmod = "chmod --preserve-root -v";
+      chown = "chown --preserve-root -v";
+
+      ll = "ls -l";
+      l = "ll -A";
+      la = "ls -a";
     };
     extraInit = ''
       # https://fcitx-im.org/wiki/Using_Fcitx_5_on_Wayland#KDE_Plasma
