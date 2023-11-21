@@ -18,11 +18,24 @@
       homeConfigurations = {
         root = home-manager.lib.homeManagerConfiguration {
           inherit pkgs;
-          modules = shared;
+          modules = shared ++ [{
+            home = {
+              username = "root";
+              homeDirectory = "/root";
+            };
+          }];
         };
         shadowrz = home-manager.lib.homeManagerConfiguration {
           inherit pkgs;
-          modules = shared ++ [ ./shadowrz/home-configuration.nix ];
+          modules = shared ++ [
+            ./shadowrz/home-configuration.nix
+            {
+              home = {
+                username = "root";
+                homeDirectory = "/root";
+              };
+            }
+          ];
         };
       };
     };
