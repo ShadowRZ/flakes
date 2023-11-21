@@ -16,7 +16,7 @@
         ignoreSpace = true;
         size = 50000;
         save = 50000;
-        shared = false;
+        share = false;
         path = "${config.xdg.dataHome}/zsh/zsh_history";
       };
       shellGlobalAliases = {
