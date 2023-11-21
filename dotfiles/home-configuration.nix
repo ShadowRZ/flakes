@@ -8,12 +8,15 @@
     # Zsh
     zsh = {
       enable = true;
+      defaultKeymap = "emacs";
       history = {
         extended = true;
         expireDuplicatesFirst = true;
         ignoreDups = true;
         ignoreSpace = true;
         size = 50000;
+        save = 50000;
+        shared = false;
         path = "${config.xdg.dataHome}/zsh/zsh_history";
       };
       shellGlobalAliases = {

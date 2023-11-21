@@ -17,6 +17,7 @@
     in {
       hmModules = {
         inherit shared;
+        hanekokoroos = import ./hanekokoroos-configuration.nix;
         shadowrz = import ./shadowrz/home-configuration.nix;
       };
       homeConfigurations = {
