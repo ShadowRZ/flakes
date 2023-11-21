@@ -1,4 +1,4 @@
-{
+{ lib, ... }: {
   programs = {
     less = { enable = true; };
     lesspipe = { enable = true; };
@@ -43,7 +43,7 @@
 
         ${builtins.readFile ./files/zinputrc.zshrc}
       '';
-      initExtra = builtins.readFile ./files/hanekokoroos.zshrc;
+      initExtra = lib.mkBefore builtins.readFile ./files/hanekokoroos.zshrc;
     };
     starship = {
       enable = true;

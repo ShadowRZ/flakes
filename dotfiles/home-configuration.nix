@@ -34,7 +34,7 @@
         ${pkgs.util-linux}/bin/setterm -cursor on
         ${pkgs.coreutils}/bin/stty -ixon # Disable flow control
       '';
-      initExtra = with pkgs; ''
+      initExtra = with pkgs; lib.mkAfter ''
         . ${oh-my-zsh}/share/oh-my-zsh/plugins/git/git.plugin.zsh
         . ${zsh-you-should-use}/share/zsh/plugins/you-should-use/you-should-use.plugin.zsh
 

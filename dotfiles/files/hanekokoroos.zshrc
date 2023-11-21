@@ -1,6 +1,3 @@
-key[Backspace]="${terminfo[kbs]}"
-[[ -n "{key[Backspace]}" ]] && bindkey -- "${key[Backspace]}" backward-delete-char
-
 ### Bindings
 function foreground-last-job () {
     if (( ${#jobstates} )); then
