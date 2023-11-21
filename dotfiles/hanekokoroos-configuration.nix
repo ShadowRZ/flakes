@@ -17,9 +17,6 @@
       enableAutosuggestions = true;
       enableCompletion = true;
       syntaxHighlighting = { enable = true; };
-      vteIntegration = true;
-      enableLsColors = false;
-      histSize = 50000;
       initExtraFirst = ''
         setopt HIST_VERIFY
         setopt HIST_FIND_NO_DUPS
