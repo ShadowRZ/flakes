@@ -150,8 +150,8 @@ CORRECT_IGNORE='_*'
 }
 
 # useful functions
-autoload -Uz zmv zcalc zargs url-quote-magic bracketed-paste-magic
-zle -N bracketed-paste bracketed-paste-magic
+autoload -Uz zmv zcalc zargs bracketed-paste-url-magic
+zle -N bracketed-paste bracketed-paste-url-magic
 
 # Colored man pages and more.
 export LESS_TERMCAP_mb=$'\E[01;31m'
