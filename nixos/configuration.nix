@@ -191,6 +191,10 @@
       };
     };
     spiceUSBRedirection.enable = true;
+    podman = {
+      enable = true;
+      dockerCompat = true;
+    };
   };
 
   environment = {
