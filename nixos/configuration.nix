@@ -469,6 +469,7 @@
         "HIST_SAVE_NO_DUPS"
         "HIST_REDUCE_BLANKS"
         "EXTENDED_HISTORY"
+        "INC_APPEND_HISTORY_TIME"
         # Completion related options.
         "ALWAYS_TO_END"
         "LIST_PACKED"

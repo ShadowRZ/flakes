@@ -21,6 +21,7 @@
         setopt HIST_SAVE_NO_DUPS
         setopt HIST_REDUCE_BLANKS
         setopt EXTENDED_HISTORY
+        setopt INC_APPEND_HISTORY_TIME
         setopt ALWAYS_TO_END
         setopt LIST_PACKED
         setopt COMPLETE_IN_WORD
@@ -38,10 +39,8 @@
         setopt NO_FLOW_CONTROL
         setopt TRANSIENT_RPROMPT
         setopt NO_BEEP
-
-        ${builtins.readFile ./files/zinputrc.zshrc}
       '';
-      initExtra = builtins.readFile ./files/hanekokoroos.zshrc;
+      initExtra = builtins.readFile ./files/zshrc;
     };
     starship = {
       enable = true;
