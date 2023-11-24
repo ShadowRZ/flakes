@@ -130,9 +130,7 @@
           blender_4_0 # Blender 4.0.* (Binary)
           hugo # Hugo
           libsForQt5.plasma-sdk # Plasma SDK
-          konversation
           libreoffice-fresh # LibreOffice Fresh
-          virt-viewer # Virt Viewer
           ffmpeg-full # FFmpeg
           keepassxc
           kdenlive
@@ -150,10 +148,8 @@
           celluloid
           eclipses.eclipse-java
           jetbrains.idea-community
-          lmms
           audacity
-          ardour
-          rosegarden
+          gnome.gnome-font-viewer
           sweethome3d.application
           sweethome3d.textures-editor
           sweethome3d.furniture-editor
