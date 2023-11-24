@@ -2,13 +2,13 @@
 
 stdenvNoCC.mkDerivation rec {
   pname = "thunderbird-gnome-theme";
-  version = "3df2e63b4818cf78b4bd8408763638b907df372b";
+  version = "a899ca12204d19f4834fbd092aa5bb05dc4bd127";
 
   src = fetchFromGitHub {
     owner = "rafaelmardojai";
     repo = pname;
     rev = version;
-    hash = "sha256-KwjdXFyrorAXiOQnAsqKOatpRaKTuVTnLfs4xOLe3PY=";
+    hash = "sha256-3TQYBJAeQ2fPFxQnD5iKRKKWFlN3GJhz1EkdwE+4m0k=";
   };
 
   postPatch = ''
