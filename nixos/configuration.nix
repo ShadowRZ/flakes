@@ -316,6 +316,7 @@
       noto-fonts-emoji # Noto Color Emoji
       sarasa-gothic # Sarasa Gothic
       jost # Jost
+      config.nur.repos.xddxdd.hoyo-glyphs
       # Iosevka Builds
       config.nur.repos.shadowrz.iosevka-minoko
       config.nur.repos.shadowrz.iosevka-minoko-term
