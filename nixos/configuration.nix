@@ -127,7 +127,7 @@
         description = "羽心印音";
         extraGroups = [ "wheel" "networkmanager" "libvirtd" ];
         packages = with pkgs; [
-          blender_4_0 # Blender 4.0.* (Binary)
+          blender_3_6 # Blender 3.6.* (Binary)
           hugo # Hugo
           libsForQt5.plasma-sdk # Plasma SDK
           libreoffice-fresh # LibreOffice Fresh
