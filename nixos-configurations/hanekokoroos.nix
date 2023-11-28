@@ -173,6 +173,7 @@
         defaultSession = "plasmawayland";
         sddm = {
           enable = true;
+          theme = "Graphite";
           wayland.enable = true;
         };
       };
