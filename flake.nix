@@ -43,6 +43,14 @@
       url = "github:nix-community/nix-index-database";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    # Nix On Droid
+    nix-on-droid = {
+      url = "github:nix-community/nix-on-droid";
+      inputs = {
+        nixpkgs.follows = "nixpkgs";
+        home-manager.follows = "home-manager";
+      };
+    };
     # Users' flake
     berberman = {
       url = "github:berberman/flakes";
@@ -67,59 +75,29 @@
         globalArgs = { inherit inputs; };
         nixos.hosts.hanekokoroos.userHomeModules = [ "shadowrz" "root" ];
       };
+
+      flake = {
+        nixOnDroidConfigurations.default =
+          inputs.nix-on-droid.lib.nixOnDroidConfiguration {
+            modules = [
+              ./nix-on-droid/nix-on-droid.nix
+              {
+                nix = {
+                  nixPath = [ "nixpkgs=${inputs.nixpkgs}" ];
+                  registry = { nixpkgs.flake = inputs.nixpkgs; };
+                };
+                home-manager = {
+                  useGlobalPkgs = true;
+                  config.imports = with inputs; [
+                    self.homeModules.default
+                    self.homeModules.shadowrz
+                    nix-indexdb.hmModules.nix-index
+                    { programs.nix-index-database.comma.enable = true; }
+                  ];
+                };
+              }
+            ];
+          };
+      };
     };
-
-#  outputs = inputs@{ flake-parts, ... }:
-#    flake-parts.lib.mkFlake { inherit inputs; } {
-#      flake = {
-#        # NixOS configurations.
-#        nixosConfigurations.hanekokoroos = inputs.nixpkgs.lib.nixosSystem {
-#          system = "x86_64-linux";
-#          modules = [
-#            ./nixos/configuration.nix
-#            inputs.nixpkgs.nixosModules.notDetected
-#            inputs.home-manager.nixosModules.home-manager
-#            inputs.impermanence.nixosModule
-#            inputs.sops-nix.nixosModules.sops
-#            inputs.nur.nixosModules.nur
-#            inputs.nix-indexdb.nixosModules.nix-index
-#            ({ config, ... }: {
-#              # Overlays
-#              nixpkgs.overlays = [
-#                inputs.blender.overlays.default
-#                inputs.berberman.overlays.default
-#                inputs.emacs-overlay.overlays.default
-#              ];
-#              # Configuration revision.
-#              system.configurationRevision =
-#                inputs.nixpkgs.lib.mkIf (inputs.self ? rev) inputs.self.rev;
-#              # Pin NIX_PATH
-#              nix.settings.nix-path = [ "nixpkgs=${inputs.nixpkgs}" ];
-#              nix.registry = {
-#                p.flake = inputs.self;
-#                nixpkgs.flake = inputs.nixpkgs;
-#              };
-#              # Home Manager
-#              home-manager = {
-#                useUserPackages = true;
-#                useGlobalPkgs = true;
-#                sharedModules = [ ./dotfiles/home-configuration.nix ];
-#                extraSpecialArgs = { inherit (config) nur; };
-#                users = {
-#                  shadowrz = {
-#                    imports = [
-#                      ./dotfiles/shadowrz/home-configuration.nix
-#                      ./nixos/shadowrz/home-configuration.nix
-#                    ];
-#                  };
-#                  # Enable root modules
-#                  root = { };
-#                };
-#              };
-#            })
-#          ];
-#        };
-#      };
-#    };
 }
-
