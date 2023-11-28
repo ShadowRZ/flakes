@@ -1,5 +1,6 @@
-{ config, pkgs, lib, ... }: {
-  imports = [ ./hardware-configuration.nix ];
+# Mostly identical configs across almost all machines I'll ever have.
+
+{ config, pkgs, lib, inputs, ... }: {
 
   boot = {
     loader = {
@@ -72,8 +73,6 @@
   time.timeZone = "Asia/Shanghai";
 
   networking = {
-    # Hostname
-    hostName = "hanekokoroos";
     # Use NetworkManager
     networkmanager = {
       enable = true;
@@ -108,60 +107,13 @@
     resolvconf.enable = false;
   };
 
-  # Sops-Nix
-  sops = {
-    defaultSopsFile = ./secrets/hanekokoroos-secrets.yaml;
-    age.keyFile = "/var/lib/sops.key";
-    secrets = { passwd.neededForUsers = true; };
-  };
-
-  # Users
-  users = {
-    mutableUsers = true;
-    users = {
-      shadowrz = {
-        uid = 1000;
-        isNormalUser = true;
-        hashedPasswordFile = config.sops.secrets.passwd.path;
-        shell = pkgs.zsh;
-        description = "羽心印音";
-        extraGroups = [ "wheel" "networkmanager" "libvirtd" ];
-        packages = with pkgs; [
-          blender_3_6 # Blender 3.6.* (Binary)
-          hugo # Hugo
-          libsForQt5.plasma-sdk # Plasma SDK
-          libreoffice-fresh # LibreOffice Fresh
-          ffmpeg-full # FFmpeg
-          keepassxc
-          kdenlive
-          libsForQt5.neochat
-          fluffychat
-          cinny-desktop
-          nheko
-          yt-dlp
-          blanket
-          vscode # VS Code
-          renpy
-          gimp # GIMP
-          inkscape # Inkscape
-          d-spy # D-Spy
-          celluloid
-          eclipses.eclipse-java
-          jetbrains.idea-community
-          audacity
-          gnome.gnome-font-viewer
-          sweethome3d.application
-          sweethome3d.textures-editor
-          sweethome3d.furniture-editor
-        ];
-      };
-    };
-  };
-
   # Misc
   nixpkgs = {
     config.allowUnfree = true;
     overlays = [
+      inputs.blender.overlays.default
+      inputs.berberman.overlays.default
+      inputs.emacs-overlay.overlays.default
       (final: prev: {
         # lilydjwg/subreap
         zsh = prev.zsh.overrideAttrs (attrs: {
@@ -171,26 +123,15 @@
     ];
   };
 
-  virtualisation = {
-    # Libvirtd
-    libvirtd = {
-      enable = true;
-      qemu = {
-        package = pkgs.qemu_kvm;
-        # Enable UEFI
-        ovmf = {
-          enable = true;
-          packages = [ pkgs.OVMFFull.fd ];
-        };
-        # Enable virtual TPM support
-        swtpm.enable = true;
-      };
-    };
-    spiceUSBRedirection.enable = true;
-    podman = {
-      enable = true;
-      dockerCompat = true;
-    };
+  # Configuration revision.
+  system.configurationRevision =
+    lib.mkIf (inputs.self ? rev) inputs.self.rev;
+
+  # Pin NIX_PATH
+  nix.settings.nix-path = [ "nixpkgs=${inputs.nixpkgs}" ];
+  nix.registry = {
+    p.flake = inputs.self;
+    nixpkgs.flake = inputs.nixpkgs;
   };
 
   environment = {
@@ -212,17 +153,6 @@
       # Graphical packages.
       papirus-icon-theme # Papirus
       graphite-cursors
-      # Qt 5 tools
-      libsForQt5.qttools.dev
-      material-kwin-decoration # KWin material decoration
-      adw-gtk3
-      libsForQt5.krecorder
-      # Plasma themes
-      graphite-kde-theme
-      # Virtiofsd
-      virtiofsd
-      # wl-clipboard
-      wl-clipboard
     ];
     # Link /share/zsh
     pathsToLink = [ "/share/zsh" ];
@@ -260,45 +190,6 @@
     etc."resolv.conf".text = ''
       nameserver 127.0.53.53
     '';
-    # Persistent files
-    persistence."/persist" = {
-      directories = [ "/var" "/root" ];
-      files = [ "/etc/machine-id" ];
-      users = {
-        shadowrz = {
-          directories = [
-            "Documents"
-            "Downloads"
-            "Pictures"
-            "Projects"
-            "Maildir"
-            "Music"
-            "Public"
-            "Videos"
-            ".android"
-            ".cache"
-            ".cargo"
-            ".config"
-            ".eclipse"
-            ".gnupg"
-            ".local"
-            ".logseq"
-            ".mozilla"
-            ".renpy"
-            ".ssh"
-            ".steam"
-            ".thunderbird"
-            ".var"
-            ".vscode"
-          ];
-          files = [ ".gtkrc-2.0" ];
-        };
-        root = {
-          home = "/root";
-          directories = [ ".cache/nix" ];
-        };
-      };
-    };
   };
 
   # Fonts.
@@ -347,50 +238,6 @@
   };
 
   services = {
-    # Getty
-    getty = {
-      greetingLine = with config.system.nixos; ''
-        Hanekokoro OS
-        Configuration Revision = ${config.system.configurationRevision}
-        https://github.com/ShadowRZ/flakes
-
-        Based on NixOS ${release} (${codeName})
-        NixOS Revision = ${revision}
-      '';
-    };
-    # Generate ZRAM
-    zram-generator = {
-      enable = true;
-      settings.zram0 = {
-        compression-algorithm = "zstd";
-        zram-size = "ram";
-      };
-    };
-    xserver = {
-      enable = true;
-      videoDrivers = [ "nvidia" ];
-      # SDDM
-      displayManager = {
-        # Plasma Wayland session works for me.
-        defaultSession = "plasmawayland";
-        sddm = {
-          enable = true;
-          wayland.enable = true;
-        };
-      };
-      desktopManager.plasma5 = {
-        enable = true;
-        runUsingSystemd = true;
-      };
-    };
-    # Pipewire
-    pipewire = {
-      enable = true;
-      alsa.enable = true;
-      pulse.enable = true;
-      # If you want to use JACK applications, uncomment this
-      jack.enable = true;
-    };
     # Smartdns
     smartdns = {
       enable = true;
@@ -427,24 +274,11 @@
         log-file = "/var/log/smartdns.log";
       };
     };
-    # pykms
-    pykms.enable = true;
-    # Flatpak
-    flatpak.enable = true;
   };
 
   # System programs
   programs = {
-    # Disable building /etc/nanorc
-    nano.syntaxHighlight = false;
-    less = { enable = true; };
-    htop = {
-      enable = true;
-      settings = {
-        hide_kernel_threads = true;
-        hide_userland_threads = true;
-      };
-    };
+    nano.enable = false;
     # Dconf
     dconf.enable = true;
     neovim = {
@@ -453,47 +287,7 @@
     };
     zsh = {
       enable = true;
-      histFile = "$HOME/.local/share/zsh/zsh_history";
-      autosuggestions = { enable = true; };
-      syntaxHighlighting = { enable = true; };
-      vteIntegration = true;
       enableLsColors = false;
-      histSize = 50000;
-      setOptions = [
-        # History related options.
-        "HIST_VERIFY"
-        "HIST_FIND_NO_DUPS"
-        "HIST_SAVE_NO_DUPS"
-        "HIST_REDUCE_BLANKS"
-        "EXTENDED_HISTORY"
-        "INC_APPEND_HISTORY_TIME"
-        # Completion related options.
-        "ALWAYS_TO_END"
-        "LIST_PACKED"
-        "COMPLETE_IN_WORD"
-        "MENU_COMPLETE"
-        # Navigation related options.
-        "PUSHD_IGNORE_DUPS"
-        "PUSHD_SILENT"
-        "PUSHD_TO_HOME"
-        "AUTO_PUSHD"
-        # Globbing related options.
-        "EXTENDED_GLOB"
-        "MAGIC_EQUAL_SUBST"
-        # I/O related options.
-        "NO_CLOBBER"
-        "INTERACTIVE_COMMENTS"
-        "RC_QUOTES"
-        "CORRECT"
-        "NO_FLOW_CONTROL"
-        # Remove any RPROMPT after executing command.
-        "TRANSIENT_RPROMPT"
-        # Don't beep at all.
-        "NO_BEEP"
-        # Auto CD
-        "AUTO_CD"
-      ];
-      interactiveShellInit = builtins.readFile ./files/zshrc;
     };
     # Disable command-not-found as it's unavliable in Flakes build
     command-not-found.enable = lib.mkForce false;
@@ -504,52 +298,7 @@
     };
     # Enable Comma
     nix-index-database.comma.enable = true;
-    # Starship (Global)
-    starship = {
-      enable = true;
-      settings = builtins.fromTOML (builtins.readFile ./files/starship.toml);
-    };
-    # KDE Connect
-    kdeconnect.enable = true;
-    # Steam
-    steam = {
-      enable = true;
-      package = pkgs.steam.override { extraArgs = "-forcedesktopscaling 1.5"; };
-      remotePlay.openFirewall = true;
-    };
-    # Virt Manager
-    virt-manager = { enable = true; };
   };
-
-  hardware = {
-    pulseaudio.enable = false;
-    # Bluetooth
-    bluetooth.enable = true;
-    opengl = {
-      enable = true;
-      driSupport = true;
-      extraPackages = with pkgs; [
-        intel-media-driver
-        intel-vaapi-driver
-        intel-compute-runtime
-      ];
-    };
-  };
-
-  # Enable sounds
-  sound.enable = true;
-
-  xdg.portal = {
-    enable = true;
-    # Enable GTK portal
-    extraPortals = [ pkgs.xdg-desktop-portal-gtk ];
-  };
-
-  # Rtkit
-  security.rtkit.enable = true;
-
-  # Disable all HTML documentations.
-  documentation.doc.enable = lib.mkForce false;
 
   i18n = {
     # Build all Glibc supported locales as defined in:
@@ -574,9 +323,17 @@
     };
   };
 
-  # Kill generated Systemd service for Fcitx 5
-  # Required to make sure KWin can bring a Fcitx 5 up to support Wayland IME protocol
-  systemd.user.services.fcitx5-daemon = lib.mkForce { };
+  home-manager = {
+    useUserPackages = true;
+    useGlobalPkgs = true;
+    extraSpecialArgs = { inherit (config) nur; };
+  };
+
+  # Rtkit
+  security.rtkit.enable = true;
+
+  # Disable all HTML documentations.
+  documentation.doc.enable = lib.mkForce false;
 
   # DO NOT FIDDLE WITH THIS VALUE !!!
   # This value determines the NixOS release from which the default

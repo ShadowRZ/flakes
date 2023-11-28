@@ -1,3 +1,5 @@
+# Shared config between NixOS / Nix On Droid
+
 { pkgs, ... }: {
 
   home = {
