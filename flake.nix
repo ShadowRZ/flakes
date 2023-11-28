@@ -1,5 +1,5 @@
 {
-  description = "Hanekokoro OS";
+  description = "Project Hanekokoro";
 
   inputs = {
     # Nixpkgs
