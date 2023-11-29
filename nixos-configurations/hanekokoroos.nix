@@ -42,9 +42,7 @@
           ffmpeg-full # FFmpeg
           keepassxc
           kdenlive
-          libsForQt5.neochat
           fluffychat
-          cinny-desktop
           nheko
           yt-dlp
           blanket
@@ -54,7 +52,6 @@
           inkscape # Inkscape
           d-spy # D-Spy
           logseq
-          fractal
           celluloid
           eclipses.eclipse-java
           jetbrains.idea-community
