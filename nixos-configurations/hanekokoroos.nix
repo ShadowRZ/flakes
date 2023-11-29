@@ -54,6 +54,7 @@
           inkscape # Inkscape
           d-spy # D-Spy
           logseq
+          fractal
           celluloid
           eclipses.eclipse-java
           jetbrains.idea-community
