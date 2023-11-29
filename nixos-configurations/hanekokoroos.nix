@@ -53,6 +53,7 @@
           gimp # GIMP
           inkscape # Inkscape
           d-spy # D-Spy
+          logseq
           celluloid
           eclipses.eclipse-java
           jetbrains.idea-community
