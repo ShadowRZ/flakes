@@ -230,8 +230,8 @@
 
   xdg.portal = {
     enable = true;
-    # Enable GTK portal
-    extraPortals = [ pkgs.xdg-desktop-portal-gtk ];
+    ## Enable GTK portal
+    #extraPortals = [ pkgs.xdg-desktop-portal-gtk ];
   };
 
   # Kill generated Systemd service for Fcitx 5
