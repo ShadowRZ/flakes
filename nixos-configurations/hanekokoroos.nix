@@ -94,6 +94,7 @@
       # Qt 5 tools
       libsForQt5.qttools.dev
       material-kwin-decoration # KWin material decoration
+      config.nur.repos.shadowrz.klassy
       adw-gtk3
       libsForQt5.krecorder
       # Plasma themes

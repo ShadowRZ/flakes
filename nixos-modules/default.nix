@@ -37,12 +37,14 @@
         "https://mirrors.bfsu.edu.cn/nix-channels/store"
         "https://berberman.cachix.org"
         "https://nix-community.cachix.org"
+        "https://shadowrz.cachix.org"
         "https://cache.garnix.io"
       ];
       trusted-public-keys = [
         "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs="
         "berberman.cachix.org-1:UHGhodNXVruGzWrwJ12B1grPK/6Qnrx2c3TjKueQPds="
         "cache.garnix.io:CTFPyKSLcx5RMJKfLo5EEPUObbA78b0YQ2DTCJXqr9g="
+        "shadowrz.cachix.org-1:I+6FCWMtdGmN8zYVncKdys/LVsLkCMWO3tfXbwQPTU0="
       ];
       builders-use-substitutes = true;
       flake-registry = "/etc/nix/registry.json";
