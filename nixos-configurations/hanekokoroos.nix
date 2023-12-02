@@ -44,6 +44,7 @@
           kdenlive
           fluffychat
           nheko
+          cinny-desktop
           yt-dlp
           blanket
           vscode # VS Code
