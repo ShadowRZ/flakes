@@ -57,8 +57,6 @@
           eclipses.eclipse-java
           jetbrains.idea-community
           audacity
-          gnome.gnome-font-viewer
-          sweethome3d.application
           sweethome3d.textures-editor
           sweethome3d.furniture-editor
         ];
