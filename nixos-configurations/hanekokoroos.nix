@@ -53,6 +53,7 @@
           inkscape # Inkscape
           d-spy # D-Spy
           logseq
+          calibre
           celluloid
           eclipses.eclipse-java
           jetbrains.idea-community

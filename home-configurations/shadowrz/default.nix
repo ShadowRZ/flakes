@@ -18,8 +18,6 @@
       package = pkgs.emacs-pgtk;
       extraPackages = epkgs: with epkgs; [ treesit-grammars.with-all-grammars ];
     };
-    ### Zathura
-    zathura = { enable = true; };
     ### Mbsync
     mbsync.enable = true;
     ### Notmuch

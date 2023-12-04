@@ -181,7 +181,6 @@
       unset GTK_IM_MODULE QT_IM_MODULE
     '';
     plasma5.excludePackages = with pkgs; [
-      okular
       khelpcenter
       konsole
       oxygen
