@@ -55,6 +55,7 @@
           logseq
           calibre
           celluloid
+          mindustry-wayland
           eclipses.eclipse-java
           jetbrains.idea-community
           audacity
