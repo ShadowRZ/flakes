@@ -1,10 +1,6 @@
 { config, lib, pkgs, ezModules, ... }: {
 
-  imports = [
-    ezModules.firefox
-    ezModules.thunderbird
-    ezModules.shadowrz
-  ];
+  imports = [ ezModules.firefox ezModules.thunderbird ezModules.shadowrz ];
 
   programs = {
     ### Wezterm

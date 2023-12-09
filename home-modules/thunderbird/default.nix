@@ -13,8 +13,7 @@
             "gnomeTheme.activeTabContrast" = true;
           };
           withExternalGnupg = true;
-        } // (let
-          theme = pkgs.callPackage ./thunderbird-gnome-theme.nix { };
+        } // (let theme = pkgs.callPackage ./thunderbird-gnome-theme.nix { };
         in {
           userChrome = ''
             @import "${theme}/lib/thunderbird-gnome-theme/userChrome.css";

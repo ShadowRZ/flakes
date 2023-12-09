@@ -55,27 +55,40 @@
             "gnomeTheme.activeTabContrast" = true;
           };
           # Firefox extensions
-          # TODO: Add links to https://addons.mozilla.org
-          extensions = with nur.repos.rycee.firefox-addons; [
-            clearurls
-            don-t-fuck-with-paste
-            keepassxc-browser
-            linkhints
-            localcdn
-            multi-account-containers
-            no-pdf-download
-            offline-qr-code-generator
-            single-file
-            stylus
-            tabliss
-            (ublock-origin.override {
-              version = "1.52.2";
-              url =
-                "https://github.com/gorhill/uBlock/releases/download/1.52.2/uBlock0_1.52.2.firefox.signed.xpi";
-              sha256 = "sha256-6O4/nVl6bULbnXP+h8HVId40B1X9i/3WnkFiPt/gltY=";
-            })
-            violentmonkey
-          ];
+          extensions = with nur.repos.rycee.firefox-addons;
+            [
+              clearurls
+              don-t-fuck-with-paste
+              ghosttext
+              keepassxc-browser
+              link-gopher
+              localcdn
+              multi-account-containers
+              no-pdf-download
+              offline-qr-code-generator
+              sidebery
+              single-file
+              stylus
+              tabliss
+              (ublock-origin.override {
+                version = "1.52.2";
+                url =
+                  "https://github.com/gorhill/uBlock/releases/download/1.52.2/uBlock0_1.52.2.firefox.signed.xpi";
+                sha256 = "sha256-6O4/nVl6bULbnXP+h8HVId40B1X9i/3WnkFiPt/gltY=";
+              })
+              violentmonkey
+            ] ++ (let
+              addons = pkgs.callPackage ./addons.nix {
+                buildFirefoxXpiAddon = nur.repos.rycee.firefox-addons.buildFirefoxXpiAddon;
+              };
+            in with addons; [
+              copy-linktab-name-and-url
+              custom-scrollbars
+              emoji-sav
+              foxyimage
+              measure-it
+              textarea-cache
+            ]);
         } // (let theme = pkgs.callPackage ./firefox-gnome-theme.nix { };
         in {
           userChrome = ''

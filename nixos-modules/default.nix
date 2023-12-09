@@ -126,8 +126,7 @@
   };
 
   # Configuration revision.
-  system.configurationRevision =
-    lib.mkIf (inputs.self ? rev) inputs.self.rev;
+  system.configurationRevision = lib.mkIf (inputs.self ? rev) inputs.self.rev;
 
   # Pin NIX_PATH
   nix.settings.nix-path = [ "nixpkgs=${inputs.nixpkgs}" ];
