@@ -94,6 +94,14 @@
           userChrome = ''
             @import "${theme}/lib/firefox-gnome-theme/userChrome.css";
             @import "customChrome.css";
+
+            #TabsToolbar {
+              display: none !important;
+            }
+
+            #sidebar-header {
+              display: none !important;
+            }
           '';
           userContent = ''
             @import "${theme}/lib/firefox-gnome-theme/userContent.css";
