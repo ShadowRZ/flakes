@@ -274,6 +274,7 @@
         log-file = "/var/log/smartdns.log";
       };
     };
+    xserver = { excludePackages = [ pkgs.xterm ]; };
   };
 
   # System programs
