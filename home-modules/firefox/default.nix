@@ -3,48 +3,52 @@
     ### Firefox
     firefox = {
       enable = true;
-      package = pkgs.firefox.override {
-        extraPolicies = {
-          PasswordManagerEnabled = false;
-          DisableFirefoxAccounts = true;
-          DisablePocket = true;
-          ExtensionUpdate = false;
-          FirefoxHome = {
-            Pocket = false;
-            Snippets = false;
-          };
-          EnableTrackingProtection = {
-            Value = true;
-            Locked = true;
-            Cryptomining = true;
-            Fingerprinting = true;
-          };
-          UserMessaging = {
-            ExtensionRecommendations = false;
-            SkipOnboarding = true;
-          };
+      policies = {
+        PasswordManagerEnabled = false;
+        DisableFirefoxAccounts = true;
+        DisablePocket = true;
+        ExtensionUpdate = false;
+        FirefoxHome = {
+          Pocket = false;
+          Snippets = false;
         };
-        extraPrefs = ''
-          lockPref("browser.newtabpage.activity-stream.feeds.topsites", false);
-          lockPref("browser.newtabpage.activity-stream.showSponsoredTopSites", false);
-          lockPref("security.identityblock.show_extended_validation", true);
-        '';
+        EnableTrackingProtection = {
+          Value = true;
+          Locked = true;
+          Cryptomining = true;
+          Fingerprinting = true;
+        };
+        UserMessaging = {
+          ExtensionRecommendations = false;
+          SkipOnboarding = true;
+          UrlbarInterventions = false;
+          MoreFromMozilla = false;
+        };
+        Preferences = {
+          "browser.newtabpage.activity-stream.feeds.topsites" = false;
+          "browser.newtabpage.activity-stream.showSponsoredTopSites" = false;
+          "browser.urlbar.autoFill.adaptiveHistory.enabled" = true;
+          # Force enable VA-API
+          "media.ffmpeg.vaapi.enabled" = true;
+          # Enable "Not Secure" texts
+          "security.insecure_connection_text.enabled" = true;
+          "security.insecure_connection_text.pbmode.enabled" = true;
+          # Set UI density to normal
+          "browser.uidensity" = 0;
+        };
       };
       # Profiles
       profiles = {
         default = {
           name = "羽心印音";
           settings = {
-            "fission.autostart" = true;
-            "media.ffmpeg.vaapi.enabled" = true;
-            "media.rdd-ffmpeg.enabled" = true;
+            # Disable builtin MPRIS support in favor of Plasma Integration's one
+            "media.hardwaremediakeys.enabled" = false;
             # Force enable account containers
             "privacy.userContext.enabled" = true;
             "privacy.userContext.ui.enabled" = true;
             # Enable customChrome.css
             "toolkit.legacyUserProfileCustomizations.stylesheets" = true;
-            # Set UI density to normal
-            "browser.uidensity" = 0;
             # Enable SVG context-propertes
             "svg.context-properties.content.enabled" = true;
             # Disable private window dark theme
@@ -58,7 +62,9 @@
           extensions = with nur.repos.rycee.firefox-addons;
             [
               clearurls
+              cliget
               don-t-fuck-with-paste
+              foxyproxy-standard
               ghosttext
               keepassxc-browser
               link-gopher
@@ -66,20 +72,25 @@
               multi-account-containers
               no-pdf-download
               offline-qr-code-generator
+              open-in-browser
+              org-capture
+              plasma-integration
               sidebery
               single-file
               stylus
               tabliss
-              (ublock-origin.override {
+              (ublock-origin.override rec {
                 version = "1.52.2";
                 url =
-                  "https://github.com/gorhill/uBlock/releases/download/1.52.2/uBlock0_1.52.2.firefox.signed.xpi";
+                  "https://github.com/gorhill/uBlock/releases/download/${version}/uBlock0_${version}.firefox.signed.xpi";
                 sha256 = "sha256-6O4/nVl6bULbnXP+h8HVId40B1X9i/3WnkFiPt/gltY=";
               })
               violentmonkey
+              vue-js-devtools
             ] ++ (let
               addons = pkgs.callPackage ./addons.nix {
-                buildFirefoxXpiAddon = nur.repos.rycee.firefox-addons.buildFirefoxXpiAddon;
+                buildFirefoxXpiAddon =
+                  nur.repos.rycee.firefox-addons.buildFirefoxXpiAddon;
               };
             in with addons; [
               copy-linktab-name-and-url
@@ -88,6 +99,7 @@
               foxyimage
               measure-it
               textarea-cache
+              tranquility-reader
             ]);
         } // (let theme = pkgs.callPackage ./firefox-gnome-theme.nix { };
         in {

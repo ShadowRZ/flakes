@@ -115,4 +115,25 @@
         platforms = platforms.all;
         };
       };
+    "tranquility-reader" = buildFirefoxXpiAddon {
+      pname = "tranquility-reader";
+      version = "3.0.24";
+      addonId = "tranquility@ushnisha.com";
+      url = "https://addons.mozilla.org/firefox/downloads/file/3934978/tranquility_1-3.0.24.xpi";
+      sha256 = "15b32eb8d05f8c972dc402f037e3b9d9152a6eb42d8ffc64fcf6a588a3486857";
+      meta = with lib;
+      {
+        homepage = "https://github.com/ushnisha/tranquility-reader-webextensions";
+        description = "Tranquility Reader improves the readability of web articles by removing unnecessary elements like ads, images, social sharing widgets, and other distracting fluff.";
+        license = licenses.gpl3;
+        mozPermissions = [
+          "<all_urls>"
+          "activeTab"
+          "storage"
+          "alarms"
+          "contextMenus"
+          ];
+        platforms = platforms.all;
+        };
+      };
     }
