@@ -174,6 +174,9 @@
         defaultSession = "plasmawayland";
         sddm = {
           enable = true;
+          settings = {
+            General.GreeterEnvironment = "QT_ENABLE_HIGHDPI_SCALING=1,QT_FONT_DPI=96";
+          };
           theme = "Graphite";
           wayland.enable = true;
         };
