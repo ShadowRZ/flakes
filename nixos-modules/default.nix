@@ -111,7 +111,18 @@
 
   # Misc
   nixpkgs = {
-    config.allowUnfree = true;
+    config = {
+      # Solely allows some packages
+      allowUnfreePredicate = pkg:
+        builtins.elem (lib.getName pkg) [ "vscode" ] || pkgs.lib.any
+        (prefix: pkgs.lib.hasPrefix prefix (pkgs.lib.getName pkg)) [
+          "steam"
+          "nvidia"
+        ];
+      # Solely allows Electron
+      allowInsecurePredicate = pkg:
+        builtins.elem (pkgs.lib.getName pkg) [ "electron" ];
+    };
     overlays = [
       inputs.blender.overlays.default
       inputs.berberman.overlays.default
