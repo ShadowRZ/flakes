@@ -64,7 +64,7 @@
     };
   };
 
-  # Configure console.
+  # Configure fallback console.
   console = {
     packages = with pkgs; [ terminus_font ];
     earlySetup = true;
@@ -274,7 +274,28 @@
         log-file = "/var/log/smartdns.log";
       };
     };
+    # Drop XTerm.
     xserver = { excludePackages = [ pkgs.xterm ]; };
+    # Enable KMSCON.
+    kmscon = {
+      enable = true;
+      hwRender = true;
+      extraConfig = ''
+        font-size=24
+        font-dpi=144
+      '';
+      extraOptions = "--term xterm-256color";
+      fonts = with pkgs; [
+        {
+          name = "Iosevka Minoko Term Extralight";
+          package = config.nur.repos.shadowrz.iosevka-minoko-term;
+        }
+        {
+          name = "Sarasa Term SC";
+          package = sarasa-gothic;
+        }
+      ];
+    };
   };
 
   # System programs
