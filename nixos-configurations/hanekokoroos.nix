@@ -25,7 +25,7 @@
 
   # Users
   users = {
-    mutableUsers = true;
+    mutableUsers = false;
     users = {
       shadowrz = {
         uid = 1000;
@@ -91,10 +91,9 @@
   environment = {
     # System level packages.
     systemPackages = with pkgs; [
+      config.nur.repos.shadowrz.klassy
       # Qt 5 tools
       libsForQt5.qttools.dev
-      material-kwin-decoration # KWin material decoration
-      config.nur.repos.shadowrz.klassy
       adw-gtk3
       libsForQt5.krecorder
       # Plasma themes
@@ -103,6 +102,11 @@
       virtiofsd
       # wl-clipboard
       wl-clipboard
+      # Used to configure SDDM Breeze Theme
+      (writeTextDir "share/sddm/themes/breeze/theme.conf.user" ''
+        [General]
+        background=${nixos-artwork.wallpapers.nineish}/share/backgrounds/nixos/nix-wallpaper-nineish.png
+      '')
     ];
     # Persistent files
     persistence."/persist" = {
@@ -175,9 +179,13 @@
         sddm = {
           enable = true;
           settings = {
-            General.GreeterEnvironment = "QT_ENABLE_HIGHDPI_SCALING=1,QT_FONT_DPI=96";
+            General.GreeterEnvironment = "QT_SCALE_FACTOR=1.5,QT_FONT_DPI=96";
+            Theme = {
+              Font = "Jost*";
+              CursorTheme = "graphite-light";
+              CursorSize = 36;
+            };
           };
-          theme = "Graphite";
           wayland.enable = true;
         };
       };
@@ -235,8 +243,8 @@
 
   xdg.portal = {
     enable = true;
-    ## Enable GTK portal
-    #extraPortals = [ pkgs.xdg-desktop-portal-gtk ];
+    # Enable GTK portal
+    extraPortals = [ pkgs.xdg-desktop-portal-gtk ];
   };
 
   # Kill generated Systemd service for Fcitx 5
