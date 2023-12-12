@@ -181,7 +181,7 @@
           settings = {
             General.GreeterEnvironment = "QT_SCALE_FACTOR=1.5,QT_FONT_DPI=96";
             Theme = {
-              Font = "Jost*";
+              Font = "Recursive Sn Lnr St";
               CursorTheme = "graphite-light";
               CursorSize = 36;
             };

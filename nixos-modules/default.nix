@@ -207,13 +207,14 @@
   fonts = {
     enableDefaultPackages = false;
     packages = with pkgs; [
-      iosevka # Iosevka (Source Build)
       noto-fonts # Base Noto Fonts
-      noto-fonts-cjk # CJK Noto Fonts
-      noto-fonts-cjk-serif # Noto Serif CJK
-      noto-fonts-emoji # Noto Color Emoji
+      twitter-color-emoji # Twemoji
       sarasa-gothic # Sarasa Gothic
+      source-han-sans-vf-otf # Source Han Sans Variable
+      source-han-serif-vf-otf # Source Han Serif Variable
       jost # Jost
+      dejavu_fonts # DejaVu
+      recursive # Recursive fonts
       config.nur.repos.xddxdd.hoyo-glyphs
       # Iosevka Builds
       config.nur.repos.shadowrz.iosevka-minoko
@@ -223,10 +224,13 @@
     ];
     fontconfig = {
       defaultFonts = lib.mkForce {
-        serif = [ "Noto Serif" "Noto Serif CJK SC" ];
-        sansSerif = [ "Noto Sans" "Noto Sans CJK SC" ];
+        # XXX: Qt solely uses the first 255 fonts from fontconfig:
+        # https://bugreports.qt.io/browse/QTBUG-80434
+        # So put emoji font here.
+        sansSerif = [ "DejaVu Sans" "Source Han Sans VF" "Twitter Color Emoji" ];
+        serif = [ "DejaVu Serif" "Source Han Serif VF" "Twitter Color Emoji" ];
         monospace = [ "Iosevka Minoko-E" ];
-        emoji = [ "Noto Color Emoji" ];
+        emoji = [ "Twitter Color Emoji" ];
       };
       subpixel.rgba = "rgb";
       localConf = ''
