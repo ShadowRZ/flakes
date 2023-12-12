@@ -53,14 +53,11 @@
           inkscape # Inkscape
           d-spy # D-Spy
           logseq
-          calibre
+          foliate
           celluloid
           mindustry-wayland
           eclipses.eclipse-java
-          jetbrains.idea-community
           audacity
-          sweethome3d.textures-editor
-          sweethome3d.furniture-editor
         ];
       };
     };
@@ -95,7 +92,6 @@
       # Qt 5 tools
       libsForQt5.qttools.dev
       adw-gtk3
-      libsForQt5.krecorder
       # Plasma themes
       graphite-kde-theme
       # Virtiofsd

@@ -193,6 +193,7 @@
     plasma5.excludePackages = with pkgs; [
       khelpcenter
       konsole
+      okular
       oxygen
       libsForQt5.print-manager
     ];
