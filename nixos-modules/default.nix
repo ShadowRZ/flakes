@@ -210,7 +210,7 @@
     packages = with pkgs; [
       noto-fonts # Base Noto Fonts
       twitter-color-emoji # Twemoji
-      sarasa-gothic # Sarasa Gothic
+      source-han-mono # Source Han Mono
       source-han-sans-vf-otf # Source Han Sans Variable
       source-han-serif-vf-otf # Source Han Serif Variable
       jost # Jost
@@ -230,7 +230,7 @@
         # So put emoji font here.
         sansSerif = [ "DejaVu Sans" "Source Han Sans SC VF" "Twitter Color Emoji" ];
         serif = [ "DejaVu Serif" "Source Han Serif SC VF" "Twitter Color Emoji" ];
-        monospace = [ "Iosevka Minoko-E" ];
+        monospace = [ "Iosevka Minoko-E" "Source Han Mono SC" ];
         emoji = [ "Twitter Color Emoji" ];
       };
       subpixel.rgba = "rgb";
@@ -238,13 +238,13 @@
         <?xml version="1.0"?>
         <!DOCTYPE fontconfig SYSTEM "fonts.dtd">
         <fontconfig>
-          <!-- Add Sarasa Mono SC for Iosevka based fonts -->
+          <!-- Add Source Han Mono SC for Iosevka based fonts -->
           <match target="pattern">
             <test name="family" compare="contains">
               <string>Iosevka</string>
             </test>
             <edit binding="strong" mode="append" name="family">
-              <string>Sarasa Mono SC</string>
+              <string>Source Han Mono SC</string>
             </edit>
           </match>
         </fontconfig>
@@ -307,8 +307,8 @@
           package = config.nur.repos.shadowrz.iosevka-minoko-term;
         }
         {
-          name = "Sarasa Term SC";
-          package = sarasa-gothic;
+          name = "Source Han Mono SC";
+          package = source-han-mono;
         }
       ];
     };

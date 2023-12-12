@@ -10,7 +10,7 @@ config.color_scheme = 'Dracula (Official)'
 config.font = wezterm.font_with_fallback(
   {
     'Iosevka Minoko Term',
-    'Sarasa Term SC'
+    'Source Han Mono SC'
   },
   {
     weight = 'ExtraLight'
@@ -25,7 +25,7 @@ config.window_padding = {
 }
 
 config.window_frame = {
-  font = wezterm.font { family = 'Iosevka Minoko', weight = 'Bold', stretch = 'Expanded' },
+  font = wezterm.font { family = 'Iosevka Aile Minoko', weight = 'Bold' },
   font_size = 12.0,
   active_titlebar_bg = '#272e33',
   inactive_titlebar_bg = '#272e33'
