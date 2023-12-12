@@ -55,8 +55,6 @@
           logseq
           foliate
           celluloid
-          mindustry-wayland
-          eclipses.eclipse-java
           audacity
         ];
       };
@@ -228,8 +226,6 @@
       driSupport32Bit = true;
       extraPackages = with pkgs; [
         intel-media-driver
-        intel-vaapi-driver
-        intel-compute-runtime
       ];
     };
   };
@@ -292,11 +288,11 @@
     cpu.intel.updateMicrocode =
       lib.mkDefault config.hardware.enableRedistributableFirmware;
     nvidia = {
-      nvidiaSettings = true;
+      nvidiaSettings = false;
       prime = {
         offload = {
           enable = true;
-          enableOffloadCmd = true;
+          enableOffloadCmd = false;
         };
         intelBusId = "PCI:0:2:0";
         nvidiaBusId = "PCI:1:0:0";
