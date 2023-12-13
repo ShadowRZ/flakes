@@ -48,6 +48,7 @@
           yt-dlp
           blanket
           vscode # VS Code
+          geany # Geany
           renpy
           gimp # GIMP
           inkscape # Inkscape
