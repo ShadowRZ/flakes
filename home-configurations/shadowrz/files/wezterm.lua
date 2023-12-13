@@ -10,7 +10,7 @@ config.color_scheme = 'Dracula (Official)'
 config.font = wezterm.font_with_fallback(
   {
     'Iosevka Minoko Term',
-    'Source Han Mono SC'
+    'Sarasa Mono SC'
   },
   {
     weight = 'ExtraLight'
