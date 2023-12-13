@@ -292,6 +292,7 @@
       lib.mkDefault config.hardware.enableRedistributableFirmware;
     nvidia = {
       nvidiaSettings = false;
+      package = config.boot.kernelPackages.nvidiaPackages.production;
       prime = {
         offload = {
           enable = true;
