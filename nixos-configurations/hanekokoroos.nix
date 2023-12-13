@@ -300,7 +300,7 @@
       lib.mkDefault config.hardware.enableRedistributableFirmware;
     nvidia = {
       nvidiaSettings = false;
-      package = config.boot.kernelPackages.nvidiaPackages.production;
+      dynamicBoost.enable = true;
       prime = {
         offload = {
           enable = true;
