@@ -291,26 +291,6 @@
     };
     # Drop XTerm.
     xserver = { excludePackages = [ pkgs.xterm ]; };
-    # Enable KMSCON.
-    kmscon = {
-      enable = true;
-      hwRender = true;
-      extraConfig = ''
-        font-size=24
-        font-dpi=144
-      '';
-      extraOptions = "--term xterm-256color";
-      fonts = with pkgs; [
-        {
-          name = "Iosevka Minoko Term Extralight";
-          package = config.nur.repos.shadowrz.iosevka-minoko-term;
-        }
-        {
-          name = "Sarasa Mono SC";
-          package = sarasa-gothic;
-        }
-      ];
-    };
   };
 
   # System programs
