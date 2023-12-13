@@ -104,6 +104,17 @@
         [General]
         background=${nixos-artwork.wallpapers.nineish}/share/backgrounds/nixos/nix-wallpaper-nineish.png
       '')
+      # Offload script
+      (writeShellScriptBin "nvidia-offload" ''
+        unset __EGL_VENDOR_LIBRARY_FILENAMES
+        unset VK_ICD_FILENAMES
+
+        export __NV_PRIME_RENDER_OFFLOAD=1
+        export __NV_PRIME_RENDER_OFFLOAD_PROVIDER=NVIDIA-G0
+        export __GLX_VENDOR_LIBRARY_NAME=nvidia
+        export __VK_LAYER_NV_optimus=NVIDIA_only
+        exec "$@"
+      '')
     ];
     # Persistent files
     persistence."/persist" = {
@@ -124,7 +135,6 @@
             ".cache"
             ".cargo"
             ".config"
-            ".eclipse"
             ".gnupg"
             ".local"
             ".logseq"
@@ -227,9 +237,7 @@
       enable = true;
       driSupport = true;
       driSupport32Bit = true;
-      extraPackages = with pkgs; [
-        intel-media-driver
-      ];
+      extraPackages = with pkgs; [ intel-media-driver ];
     };
   };
 
