@@ -57,6 +57,7 @@
           foliate
           celluloid
           audacity
+          jetbrains.idea-community
         ];
       };
     };
