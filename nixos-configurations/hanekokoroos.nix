@@ -53,6 +53,7 @@
           gimp # GIMP
           inkscape # Inkscape
           d-spy # D-Spy
+          mangohud
           logseq
           foliate
           celluloid
