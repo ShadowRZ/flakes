@@ -54,6 +54,7 @@
           inkscape # Inkscape
           d-spy # D-Spy
           mangohud
+          krusader
           logseq
           foliate
           celluloid
