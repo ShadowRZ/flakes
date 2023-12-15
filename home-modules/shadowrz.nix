@@ -73,7 +73,6 @@
       extraLuaConfig = builtins.readFile ./files/nvim.lua;
       plugins = with pkgs.vimPlugins; [
         lualine-nvim
-        dracula-vim
         nvim-lspconfig
         nvim-cmp
         cmp-nvim-lsp

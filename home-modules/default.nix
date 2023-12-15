@@ -119,7 +119,7 @@
     ### Dircolors
     dircolors = {
       enable = true;
-      extraConfig = builtins.readFile ./files/dracula.dircolors;
+      extraConfig = builtins.readFile ./files/dircolors.dircolors;
     };
     ### Starship
     starship = {

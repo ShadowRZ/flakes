@@ -46,14 +46,8 @@ require('nvim-treesitter.configs').setup({
     }
 })
 
--- Dracula
-vim.cmd.colorscheme('dracula')
-
 -- Lualine
 require('lualine').setup {
-    options = {
-        theme = 'dracula'
-    },
     sections = {
         lualine_x = {},
         lualine_y = {}

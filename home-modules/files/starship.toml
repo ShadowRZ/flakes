@@ -18,11 +18,11 @@ behind = '<'
 diverged = '<>'
 renamed = 'r'
 deleted = 'x'
-style = "bold #ff5555"
+style = "bold"
 
 [aws]
 symbol = 'aws '
-style = "bold #ffb86c"
+style = "bold"
 
 [azure]
 symbol = 'az '
@@ -34,7 +34,7 @@ symbol = 'bun '
 symbol = 'C '
 
 [cmd_duration]
-style = "bold #f1fa8c"
+style = "bold"
 
 [cobol]
 symbol = 'cobol '
@@ -62,7 +62,7 @@ symbol = '.NET '
 
 [directory]
 read_only = ' ro'
-style = "bold #50fa7b"
+style = "bold"
 
 [docker_context]
 symbol = 'docker '
@@ -84,7 +84,7 @@ symbol = 'gcp '
 
 [git_branch]
 symbol = 'git '
-style = "bold #ff79c6"
+style = "bold"
 
 [golang]
 symbol = 'go '
@@ -99,7 +99,7 @@ symbol = 'guix '
 symbol = 'hg '
 
 [hostname]
-style = "bold #bd93f9"
+style = "bold"
 
 [java]
 symbol = 'java '
@@ -230,7 +230,7 @@ symbol = 'terraform '
 
 [username]
 format = "[$user]($style) on "
-style_user = "bold #8be9fd"
+style_user = "bold"
 
 [zig]
 symbol = 'zig '
