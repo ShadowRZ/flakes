@@ -14,6 +14,9 @@
         flake-parts.follows = "flake-parts";
       };
     };
+    devshell = {
+      url = "github:numtide/devshell";
+    };
     # Home Manager
     home-manager = {
       url = "github:nix-community/home-manager";
@@ -60,14 +63,18 @@
 
   outputs = inputs@{ flake-parts, ez-configs, ... }:
     flake-parts.lib.mkFlake { inherit inputs; } {
-      imports = [ ez-configs.flakeModule ];
+      imports = [
+        ez-configs.flakeModule
+        inputs.devshell.flakeModule
+      ];
 
       systems =
         [ "x86_64-linux" "aarch64-linux" "aarch64-darwin" "x86_64-darwin" ];
 
       perSystem = { pkgs, ... }: {
-        devShells.default = with pkgs;
-          mkShell { nativeBuildInputs = [ nixfmt nil ]; };
+        devshells.default = {
+          packages = with pkgs; [ nixfmt nil ];
+        };
       };
 
       ezConfigs = {
