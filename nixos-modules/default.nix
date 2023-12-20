@@ -216,6 +216,7 @@
       jost # Jost
       dejavu_fonts # DejaVu
       recursive # Recursive fonts
+      victor-mono
       # Iosevka Builds
       config.nur.repos.shadowrz.iosevka-minoko
       config.nur.repos.shadowrz.iosevka-minoko-term
