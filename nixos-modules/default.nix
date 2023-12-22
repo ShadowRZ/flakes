@@ -32,19 +32,20 @@
     channel.enable = false;
     settings = {
       trusted-users = [ "root" "@wheel" ];
-      substituters = lib.mkBefore [
-        "https://mirror.sjtu.edu.cn/nix-channels/store"
-        "https://mirrors.bfsu.edu.cn/nix-channels/store"
-        "https://berberman.cachix.org"
-        "https://nix-community.cachix.org"
-        "https://shadowrz.cachix.org"
-        "https://cache.garnix.io"
+      substituters = lib.mkForce [
+        "https://shadowrz.cachix.org?priority=10"
+        "https://mirror.sjtu.edu.cn/nix-channels/store?priority=10"
+        "https://mirrors.bfsu.edu.cn/nix-channels/store?priority=10"
+        "https://cache.nixos.org?priority=10"
+        "https://cache.garnix.io?priority=20"
+        "https://berberman.cachix.org?priority=20"
+        "https://nix-community.cachix.org?priority=20"
       ];
       trusted-public-keys = [
         "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs="
         "berberman.cachix.org-1:UHGhodNXVruGzWrwJ12B1grPK/6Qnrx2c3TjKueQPds="
-        "cache.garnix.io:CTFPyKSLcx5RMJKfLo5EEPUObbA78b0YQ2DTCJXqr9g="
         "shadowrz.cachix.org-1:I+6FCWMtdGmN8zYVncKdys/LVsLkCMWO3tfXbwQPTU0="
+        "cache.garnix.io:CTFPyKSLcx5RMJKfLo5EEPUObbA78b0YQ2DTCJXqr9g="
       ];
       builders-use-substitutes = true;
       flake-registry = "/etc/nix/registry.json";
@@ -61,6 +62,8 @@
       auto-allocate-uids = true;
       use-cgroups = true;
       use-xdg-base-directories = true;
+      http-connections = 0;
+      max-substitution-jobs = 128;
     };
   };
 
