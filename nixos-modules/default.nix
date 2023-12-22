@@ -33,13 +33,13 @@
     settings = {
       trusted-users = [ "root" "@wheel" ];
       substituters = lib.mkForce [
-        "https://shadowrz.cachix.org?priority=10"
         "https://mirror.sjtu.edu.cn/nix-channels/store?priority=10"
         "https://mirrors.bfsu.edu.cn/nix-channels/store?priority=10"
         "https://cache.nixos.org?priority=10"
         "https://cache.garnix.io?priority=20"
-        "https://berberman.cachix.org?priority=20"
-        "https://nix-community.cachix.org?priority=20"
+        "https://shadowrz.cachix.org?priority=30"
+        "https://berberman.cachix.org?priority=30"
+        "https://nix-community.cachix.org?priority=30"
       ];
       trusted-public-keys = [
         "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs="
