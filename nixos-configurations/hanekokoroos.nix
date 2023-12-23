@@ -96,6 +96,7 @@
       adw-gtk3
       # Plasma themes
       graphite-kde-theme
+      plasma-overdose-kde-theme
       # Virtiofsd
       virtiofsd
       # wl-clipboard
@@ -137,6 +138,7 @@
             ".cargo"
             ".config"
             ".gnupg"
+            ".java"
             ".local"
             ".logseq"
             ".mozilla"

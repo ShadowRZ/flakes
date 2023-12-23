@@ -3,20 +3,20 @@ if wezterm.config_builder then
   config = wezterm.config_builder()
 end
 
-config.color_scheme = 'Sakura'
+config.color_scheme = 'Everforest Dark (Gogh)'
 config.font_size = 19.0
 
 config.colors = {
   tab_bar = {
     active_tab = {
-      bg_color = '#18131e',
-      fg_color = '#ff65fd',
+      bg_color = wezterm.color.get_builtin_schemes()[config.color_scheme].background,
+      fg_color = wezterm.color.get_builtin_schemes()[config.color_scheme].cursor_bg,
     },
     inactive_tab = {
-      bg_color = '#24242e',
-      fg_color = '#c05cbf',
+      bg_color = wezterm.color.get_builtin_schemes()[config.color_scheme].cursor_fg,
+      fg_color = wezterm.color.get_builtin_schemes()[config.color_scheme].background,
     },
-    inactive_tab_edge = '#c05cbf'
+    inactive_tab_edge = wezterm.color.get_builtin_schemes()[config.color_scheme].cursor_bg
   }
 }
 
@@ -45,8 +45,8 @@ config.window_frame = {
     }
   ),
   font_size = 10.0,
-  active_titlebar_bg = '#24242e',
-  inactive_titlebar_bg = '#24242e'
+  active_titlebar_bg = wezterm.color.get_builtin_schemes()[config.color_scheme].cursor_fg,
+  inactive_titlebar_bg = wezterm.color.get_builtin_schemes()[config.color_scheme].cursor_fg
 }
 
 config.background = {

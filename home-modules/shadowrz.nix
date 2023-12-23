@@ -78,6 +78,7 @@
         cmp-nvim-lsp
         luasnip
         editorconfig-nvim
+        everforest
         # Tree Sitter
         (nvim-treesitter.withPlugins (plugins:
           with plugins; [

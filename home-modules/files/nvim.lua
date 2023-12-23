@@ -18,6 +18,9 @@ vim.opt.shiftwidth = 4
 vim.opt.softtabstop = 4
 vim.opt.expandtab = true
 
+vim.cmd.colorscheme('everforest')
+vim.cmd('highlight! Normal ctermbg=NONE guibg=NONE')
+
 -- Space open / closes folds
 vim.keymap.set('n', '<Space>', 'za')
 
@@ -48,6 +51,9 @@ require('nvim-treesitter.configs').setup({
 
 -- Lualine
 require('lualine').setup {
+    options = {
+        theme = 'everforest'
+    },
     sections = {
         lualine_x = {},
         lualine_y = {}
