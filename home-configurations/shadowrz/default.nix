@@ -9,7 +9,8 @@
       extraConfig = builtins.readFile (pkgs.substituteAll {
         src = ./files/wezterm.lua;
         bgImage = pkgs.fetchurl {
-          url = "https://doki.assets.unthrottled.io/backgrounds/wallpapers/vanilla_dark.png";
+          url =
+            "https://doki.assets.unthrottled.io/backgrounds/wallpapers/vanilla_dark.png";
           sha256 = "sha256-fjN/jG+P28wAd8t0P5YmUYgTEgpgPcSiLlimrMsqXhE=";
           preferLocalBuild = true;
         };

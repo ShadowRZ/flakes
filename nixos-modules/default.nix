@@ -231,8 +231,10 @@
         # XXX: Qt solely uses the first 255 fonts from fontconfig:
         # https://bugreports.qt.io/browse/QTBUG-80434
         # So put emoji font here.
-        sansSerif = [ "DejaVu Sans" "Source Han Sans SC VF" "Twitter Color Emoji" ];
-        serif = [ "DejaVu Serif" "Source Han Serif SC VF" "Twitter Color Emoji" ];
+        sansSerif =
+          [ "DejaVu Sans" "Source Han Sans SC VF" "Twitter Color Emoji" ];
+        serif =
+          [ "DejaVu Serif" "Source Han Serif SC VF" "Twitter Color Emoji" ];
         monospace = [ "Iosevka Minoko-E" "Sarasa Mono SC" ];
         emoji = [ "Twitter Color Emoji" ];
       };
@@ -295,6 +297,8 @@
     };
     # Drop XTerm.
     xserver = { excludePackages = [ pkgs.xterm ]; };
+    # Avahi
+    avahi = { enable = true; };
   };
 
   # System programs
