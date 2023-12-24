@@ -93,9 +93,9 @@
     };
     # Disable global DHCP
     useDHCP = false;
-    # Enable firewall
+    # Disable firewall
     firewall = {
-      enable = true;
+      enable = false;
       allowedTCPPorts = [ 22 80 8000 8080 ];
       allowedUDPPorts = [ 53 ];
       allowPing = true;
