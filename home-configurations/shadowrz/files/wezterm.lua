@@ -3,7 +3,7 @@ if wezterm.config_builder then
   config = wezterm.config_builder()
 end
 
-config.color_scheme = 'Everforest Dark (Gogh)'
+config.color_scheme = 'nord'
 config.font_size = 19.0
 
 config.colors = {
@@ -14,7 +14,7 @@ config.colors = {
     },
     inactive_tab = {
       bg_color = wezterm.color.get_builtin_schemes()[config.color_scheme].cursor_fg,
-      fg_color = wezterm.color.get_builtin_schemes()[config.color_scheme].background,
+      fg_color = wezterm.color.get_builtin_schemes()[config.color_scheme].cursor_bg,
     },
     inactive_tab_edge = wezterm.color.get_builtin_schemes()[config.color_scheme].cursor_bg
   }

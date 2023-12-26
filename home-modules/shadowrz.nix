@@ -78,7 +78,7 @@
         cmp-nvim-lsp
         luasnip
         editorconfig-nvim
-        everforest
+        nord-vim
         # Tree Sitter
         (nvim-treesitter.withPlugins (plugins:
           with plugins; [
