@@ -48,6 +48,11 @@
       enable = true;
       extraConfig = builtins.readFile ./files/afew.config;
     };
+    ### OBS
+    obs-studio = {
+      enable = true;
+      plugins = with pkgs.obs-studio-plugins; [ wlrobs ];
+    };
   };
 
   services = {
