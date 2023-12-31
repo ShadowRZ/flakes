@@ -29,11 +29,6 @@
     };
     # Impermanence
     impermanence = { url = "github:nix-community/impermanence"; };
-    # Emacs Overlay
-    emacs-overlay = {
-      url = "github:nix-community/emacs-overlay";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
     # Blender (Binary)
     blender = {
       url = "github:edolstra/nix-warez?dir=blender";

@@ -129,7 +129,6 @@
     overlays = [
       inputs.blender.overlays.default
       inputs.berberman.overlays.default
-      inputs.emacs-overlay.overlays.default
       (final: prev: {
         # lilydjwg/subreap
         zsh = prev.zsh.overrideAttrs (attrs: {

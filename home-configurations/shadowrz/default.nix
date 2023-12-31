@@ -16,12 +16,6 @@
         };
       });
     };
-    ### GNU Emacs
-    emacs = {
-      enable = true;
-      package = pkgs.emacs-pgtk;
-      extraPackages = epkgs: with epkgs; [ treesit-grammars.with-all-grammars ];
-    };
     ### Mbsync
     mbsync.enable = true;
     ### Notmuch
@@ -64,11 +58,6 @@
         allow-emacs-pinentry
       '';
       pinentryFlavor = "qt";
-    };
-    ### Emacs Client
-    emacs = {
-      enable = true;
-      socketActivation.enable = true;
     };
   };
 
