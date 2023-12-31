@@ -60,6 +60,7 @@
           celluloid
           audacity
           jetbrains.idea-community
+          kate
         ];
       };
     };
@@ -90,6 +91,7 @@
   environment = {
     # System level packages.
     systemPackages = with pkgs; [
+      kwrited
       config.nur.repos.shadowrz.klassy
       # Qt 5 tools
       libsForQt5.qttools.dev
