@@ -81,7 +81,6 @@
               no-pdf-download
               offline-qr-code-generator
               open-in-browser
-              org-capture
               plasma-integration
               sidebery
               single-file
