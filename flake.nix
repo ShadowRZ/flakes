@@ -69,6 +69,7 @@
         root = ./.;
         globalArgs = { inherit inputs; };
         nixos.hosts.hanekokoroos.userHomeModules = [ "shadowrz" "root" ];
+        nixos.hosts.mika-honey.userHomeModules = [ "shadowrz" "root" ];
       };
 
       flake = {
