@@ -112,8 +112,6 @@
 
         ${builtins.readFile ./files/zinputrc.zsh}
         ${builtins.readFile ./files/zshrc}
-
-        ${pfetch-rs}/bin/pfetch
       '';
     };
     ### Dircolors
