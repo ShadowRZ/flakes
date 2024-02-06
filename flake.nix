@@ -47,6 +47,11 @@
         home-manager.follows = "home-manager";
       };
     };
+    # NixOS WSL
+    nixos-wsl = {
+      url = "github:nix-community/NixOS-WSL";
+      inputs = { nixpkgs.follows = "nixpkgs"; };
+    };
     # Users' flake
     berberman = {
       url = "github:berberman/flakes";
@@ -75,6 +80,8 @@
       flake = {
         nixOnDroidConfigurations.default =
           import ./nix-on-droid { inherit inputs; };
+        nixosConfigurations.unknown-dimensions =
+          import ./nixos-wsl { inherit inputs; };
       };
     };
 }

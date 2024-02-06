@@ -199,6 +199,5 @@
     };
   };
 
-  swapDevices =
-    [{ device = "/dev/disk/by-label/@linux-swap"; }];
+  swapDevices = [{ device = "/dev/disk/by-label/@linux-swap"; }];
 }
