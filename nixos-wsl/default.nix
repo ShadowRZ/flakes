@@ -11,10 +11,13 @@ inputs.nixpkgs.lib.nixosSystem {
       };
       home-manager = {
         useGlobalPkgs = true;
-        sharedModules = with inputs; [
-          self.homeModules.default
-          self.homeModules.shadowrz
-        ];
+        useUserPackages = true;
+        users.shadowrz = {
+          imports = with inputs; [
+            self.homeModules.default
+            self.homeModules.shadowrz
+          ];
+        };
       };
     }
   ];

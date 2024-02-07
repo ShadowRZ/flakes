@@ -22,9 +22,10 @@
       shadowrz = {
         shell = pkgs.zsh;
         description = "紫叶零湄";
-        packages = with pkgs; [
-          hugo # Hugo
-        ];
+        packages = with pkgs;
+          [
+            hugo # Hugo
+          ];
       };
     };
   };
@@ -150,4 +151,3 @@
   system.stateVersion = "24.05";
 
 }
-
