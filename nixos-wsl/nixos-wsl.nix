@@ -22,12 +22,11 @@
       shadowrz = {
         shell = pkgs.zsh;
         description = "紫叶零湄";
-        packages = with pkgs;
-          [
-            hugo # Hugo
-            nixfmt
-            nil
-          ];
+        packages = with pkgs; [
+          hugo # Hugo
+          nixfmt
+          nil
+        ];
       };
     };
   };
