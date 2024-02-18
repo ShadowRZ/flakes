@@ -25,6 +25,8 @@
         packages = with pkgs;
           [
             hugo # Hugo
+            nixfmt
+            nil
           ];
       };
     };

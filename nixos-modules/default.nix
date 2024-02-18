@@ -164,6 +164,8 @@
       unzip
       p7zip
       unar
+      nixfmt
+      nil
       # Graphical packages.
       papirus-icon-theme # Papirus
       graphite-cursors
