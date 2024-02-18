@@ -66,10 +66,6 @@
       systems =
         [ "x86_64-linux" "aarch64-linux" "aarch64-darwin" "x86_64-darwin" ];
 
-      perSystem = { pkgs, ... }: {
-        devshells.default = { packages = with pkgs; [ nixfmt nil ]; };
-      };
-
       ezConfigs = {
         root = ./.;
         globalArgs = { inherit inputs; };
