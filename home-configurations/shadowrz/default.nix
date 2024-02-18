@@ -49,17 +49,8 @@
     };
   };
 
-  services = {
-    ### GnuPG Agent
-    gpg-agent = {
-      enable = true;
-      extraConfig = ''
-        allow-loopback-pinentry
-        allow-emacs-pinentry
-      '';
-      pinentryFlavor = "qt";
-    };
-  };
+  # Enable a Qt pinentry
+  services.gpg-agent.pinentryFlavor = lib.mkForce "qt";
 
   systemd.user = {
     # Kill generated Systemd service for Fcitx 5

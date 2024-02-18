@@ -125,4 +125,16 @@
       settings = builtins.fromTOML (builtins.readFile ./files/starship.toml);
     };
   };
+
+  services = {
+    ### GnuPG Agent
+    gpg-agent = {
+      enable = true;
+      extraConfig = ''
+        allow-loopback-pinentry
+        allow-emacs-pinentry
+      '';
+      pinentryFlavor = "curses";
+    };
+  };
 }
