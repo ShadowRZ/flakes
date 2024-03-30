@@ -6,7 +6,7 @@ inputs.nixpkgs.lib.nixosSystem {
     inputs.home-manager.nixosModules.default
     {
       nix = {
-        nixPath = [ "nixpkgs=${inputs.nixpkgs}" ];
+        settings.nix-path = [ "nixpkgs=${inputs.nixpkgs}" ];
         registry = { nixpkgs.flake = inputs.nixpkgs; };
       };
       home-manager = {
