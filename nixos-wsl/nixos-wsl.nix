@@ -132,6 +132,9 @@
     nix-index-database.comma.enable = true;
   };
 
+  # XXX: OpenGL apps won't even start.
+  hardware.opengl.enable = lib.mkForce false;
+
   # Disable all HTML documentations.
   documentation.doc.enable = lib.mkForce false;
 
