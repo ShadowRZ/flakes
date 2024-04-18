@@ -134,7 +134,7 @@
         allow-loopback-pinentry
         allow-emacs-pinentry
       '';
-      pinentryFlavor = "curses";
+      pinentryPackage = pkgs.pinentry-curses;
     };
   };
 }

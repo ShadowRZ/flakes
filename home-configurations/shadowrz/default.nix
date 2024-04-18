@@ -50,7 +50,7 @@
   };
 
   # Enable a Qt pinentry
-  services.gpg-agent.pinentryFlavor = lib.mkForce "qt";
+  services.gpg-agent.pinentryPackage = lib.mkForce pkgs.pinentry-qt;
 
   systemd.user = {
     # Kill generated Systemd service for Fcitx 5
