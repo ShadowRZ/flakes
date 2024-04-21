@@ -1,4 +1,4 @@
-# Project Hanekokoro
+# Codename Hanekokoro
 
 **WARN: The following contents hasn't changed for a while.**
 
