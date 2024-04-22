@@ -1,4 +1,4 @@
-{ pkgs, lib, ... }: {
+{ config, pkgs, lib, ... }: {
   environment = {
     systemPackages = with pkgs; [
       adw-gtk3
@@ -37,24 +37,24 @@
   };
 
   services = {
+    displayManager = {
+      # SDDM
+      sddm = {
+        enable = true;
+        settings = {
+          General.GreeterEnvironment = "QT_SCALE_FACTOR=1.5,QT_FONT_DPI=96";
+          Theme = {
+            Font = "Recursive Sn Lnr St";
+            CursorTheme = "graphite-light";
+            CursorSize = 36;
+          };
+        };
+        wayland.enable = true;
+      };
+    };
     xserver = {
       enable = true;
       excludePackages = [ pkgs.xterm ];
-      displayManager = {
-        # SDDM
-        sddm = {
-          enable = true;
-          settings = {
-            General.GreeterEnvironment = "QT_SCALE_FACTOR=1.5,QT_FONT_DPI=96";
-            Theme = {
-              Font = "Recursive Sn Lnr St";
-              CursorTheme = "graphite-light";
-              CursorSize = 36;
-            };
-          };
-          wayland.enable = true;
-        };
-      };
     };
     # Pipewire
     pipewire = {

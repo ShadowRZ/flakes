@@ -9,6 +9,11 @@
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    # Home Manager
+    disko = {
+      url = "github:nix-community/disko";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     # NUR
     nur = { url = "github:nix-community/NUR"; };
     # Sops-Nix
@@ -56,49 +61,30 @@
         system = "x86_64-linux";
         specialArgs = { inherit inputs; };
         modules = [
-          ({ config, ... }: {
-            imports = [
-              # Flake inputs
-              inputs.nixpkgs.nixosModules.notdetected
-              inputs.impermanence.nixosModule
-              inputs.nur.nixosModules.nur
-              inputs.nix-indexdb.nixosModules.nix-index
-              # Modules
-              ./nixos/modules
-              ./nixos/modules/boot-systemd.nix
-              ./nixos/modules/graphical
-              ./nixos/modules/networking
-              ./nixos/modules/networking/networkmanager.nix
-              ./nixos/modules/user-profiles.nix
-              ./nixos/modules/vmos-guest.nix
-              ./nixos/profiles/plasma-desktop.nix
-            ];
-            networking.hostname = "mika-honey";
-            services.getty = {
-              greetingLine = with config.system.nixos; ''
-                Mika Honey
-                Configuration Revision = ${config.system.configurationRevision}
-                https://github.com/ShadowRZ/flakes
-
-                Based on NixOS ${release} (${codeName})
-                NixOS Revision = ${revision}
-              '';
-            };
-            # Host configs
-            boot = {
-              kernelModules = [ ];
-              initrd = {
-                availableKernelModules = [
-                  "ata_piix"
-                  "mptspi"
-                  "uhci_hcd"
-                  "ehci_pci"
-                  "sd_mod"
-                  "sr_mod"
-                ];
+          # Modules
+          ./nixos/modules
+          ./nixos/modules/boot-systemd.nix
+          ./nixos/modules/graphical
+          ./nixos/modules/networking
+          ./nixos/modules/networking/networkmanager.nix
+          ./nixos/modules/user-profiles.nix
+          ./nixos/modules/vmos-guest.nix
+          ./nixos/profiles/plasma-desktop.nix
+          # Disko config
+          inputs.disko.nixosModules.disko
+          ./nixos/disko/btrfs-subvolume.nix
+          # System profile
+          ./nixos/profiles/system/mika-honey.nix
+          {
+            home-manager = {
+              sharedModules = [ ./home ];
+              users = {
+                shadowrz.imports =
+                  [ ./home/env-extras.nix ./home/graphical.nix ./home/firefox ];
+                root = { };
               };
             };
-          })
+          }
         ];
       };
     };

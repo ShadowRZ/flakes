@@ -11,10 +11,10 @@
       response =
     '';
     unmanaged = [ "interface-name:virbr*" "lo" ];
-    # Disable resolvconf
-    # Otherwise NetworkManager would use resolvconf to update /etc/resolv.conf
-    resolvconf.enable = false;
   };
+  # Disable resolvconf
+  # Otherwise NetworkManager would use resolvconf to update /etc/resolv.conf
+  networking.resolvconf.enable = false;
   # Manually configures a working /etc/resolv.conf
   # since we don't have anyone to update it
   environment.etc."resolv.conf".text = ''

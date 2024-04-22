@@ -3,11 +3,14 @@
   imports = [
     # Global Flake Inputs
     inputs.nixpkgs.nixosModules.notDetected
-    inputs.impermanence.nixosModule
+    inputs.impermanence.nixosModules.impermanence
+    inputs.home-manager.nixosModules.home-manager
     inputs.sops-nix.nixosModules.sops
     inputs.nur.nixosModules.nur
     inputs.nix-indexdb.nixosModules.nix-index
   ];
+
+  system.configurationRevision = lib.mkIf (inputs.self ? rev) inputs.self.rev;
 
   boot = {
     # Kernel.
@@ -105,6 +108,7 @@
         builtins.elem (pkgs.lib.getName pkg) [ "electron" ];
     };
     overlays = [
+      inputs.berberman.overlays.default
       (final: prev: {
         # lilydjwg/subreap
         zsh = prev.zsh.overrideAttrs (attrs: {
