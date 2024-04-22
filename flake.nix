@@ -4,17 +4,6 @@
   inputs = {
     # Nixpkgs
     nixpkgs = { url = "github:NixOS/nixpkgs/nixos-unstable"; };
-    # Flake Parts
-    flake-parts = { url = "github:hercules-ci/flake-parts"; };
-    # Ez Configs
-    ez-configs = {
-      url = "github:ehllie/ez-configs";
-      inputs = {
-        nixpkgs.follows = "nixpkgs";
-        flake-parts.follows = "flake-parts";
-      };
-    };
-    devshell = { url = "github:numtide/devshell"; };
     # Home Manager
     home-manager = {
       url = "github:nix-community/home-manager";
@@ -59,25 +48,62 @@
     };
   };
 
-  outputs = inputs@{ flake-parts, ez-configs, ... }:
-    flake-parts.lib.mkFlake { inherit inputs; } {
-      imports = [ ez-configs.flakeModule inputs.devshell.flakeModule ];
+  outputs = inputs@{ nixpkgs, home-manager, ... }: {
 
-      systems =
-        [ "x86_64-linux" "aarch64-linux" "aarch64-darwin" "x86_64-darwin" ];
+    nixosConfigurations = {
+      unknown-dimensions = import ./nixos-wsl { inherit inputs; };
+      mika-honey = nixpkgs.lib.nixosSystem {
+        system = "x86_64-linux";
+        specialArgs = { inherit inputs; };
+        modules = [
+          ({ config, ... }: {
+            imports = [
+              # Flake inputs
+              inputs.nixpkgs.nixosModules.notdetected
+              inputs.impermanence.nixosModule
+              inputs.nur.nixosModules.nur
+              inputs.nix-indexdb.nixosModules.nix-index
+              # Modules
+              ./nixos/modules
+              ./nixos/modules/boot-systemd.nix
+              ./nixos/modules/graphical
+              ./nixos/modules/networking
+              ./nixos/modules/networking/networkmanager.nix
+              ./nixos/modules/user-profiles.nix
+              ./nixos/modules/vmos-guest.nix
+              ./nixos/profiles/plasma-desktop.nix
+            ];
+            networking.hostname = "mika-honey";
+            services.getty = {
+              greetingLine = with config.system.nixos; ''
+                Mika Honey
+                Configuration Revision = ${config.system.configurationRevision}
+                https://github.com/ShadowRZ/flakes
 
-      ezConfigs = {
-        root = ./.;
-        globalArgs = { inherit inputs; };
-        nixos.hosts.hanekokoroos.userHomeModules = [ "shadowrz" "root" ];
-        nixos.hosts.mika-honey.userHomeModules = [ "shadowrz" "root" ];
-      };
-
-      flake = {
-        nixOnDroidConfigurations.default =
-          import ./nix-on-droid { inherit inputs; };
-        nixosConfigurations.unknown-dimensions =
-          import ./nixos-wsl { inherit inputs; };
+                Based on NixOS ${release} (${codeName})
+                NixOS Revision = ${revision}
+              '';
+            };
+            # Host configs
+            boot = {
+              kernelModules = [ ];
+              initrd = {
+                availableKernelModules = [
+                  "ata_piix"
+                  "mptspi"
+                  "uhci_hcd"
+                  "ehci_pci"
+                  "sd_mod"
+                  "sr_mod"
+                ];
+              };
+            };
+          })
+        ];
       };
     };
+
+    nixOnDroidConfigurations.default =
+      import ./nix-on-droid { inherit inputs; };
+  };
 }
