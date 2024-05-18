@@ -56,11 +56,15 @@
   outputs = inputs@{ nixpkgs, home-manager, ... }: {
 
     nixosConfigurations = let modules = import ./nixos-modules.nix; in {
-      unknown-dimensions = import ./nixos-wsl { inherit inputs; };
       mika-honey = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
         specialArgs = { inherit inputs; };
         modules = modules.mika-honey;
+      };
+      mononekomi = nixpkgs.lib.nixosSystem {
+        system = "x86_64-linux";
+        specialArgs = { inherit inputs; };
+        modules = modules.mononekomi;
       };
     };
 

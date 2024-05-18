@@ -8,7 +8,7 @@
         uid = 1000;
         isNormalUser = true;
         shell = pkgs.zsh;
-        description = "紫叶零湄";
+        description = "夜坂雅";
         extraGroups = [ "wheel" "networkmanager" ];
         packages = with pkgs; [ krusader ];
       };
