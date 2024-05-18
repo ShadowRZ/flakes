@@ -55,37 +55,12 @@
 
   outputs = inputs@{ nixpkgs, home-manager, ... }: {
 
-    nixosConfigurations = {
+    nixosConfigurations = let modules = import ./nixos-modules.nix; in {
       unknown-dimensions = import ./nixos-wsl { inherit inputs; };
       mika-honey = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
         specialArgs = { inherit inputs; };
-        modules = [
-          # Modules
-          ./nixos/modules
-          ./nixos/modules/boot-systemd.nix
-          ./nixos/modules/graphical
-          ./nixos/modules/networking
-          ./nixos/modules/networking/networkmanager.nix
-          ./nixos/modules/user-profiles.nix
-          ./nixos/modules/vmos-guest.nix
-          ./nixos/profiles/plasma-desktop.nix
-          # Disko config
-          inputs.disko.nixosModules.disko
-          ./nixos/disko/btrfs-subvolume.nix
-          # System profile
-          ./nixos/profiles/system/mika-honey.nix
-          {
-            home-manager = {
-              sharedModules = [ ./home ];
-              users = {
-                shadowrz.imports =
-                  [ ./home/env-extras.nix ./home/graphical.nix ./home/firefox ];
-                root = { };
-              };
-            };
-          }
-        ];
+        modules = modules.mika-honey;
       };
     };
 

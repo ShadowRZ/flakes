@@ -8,6 +8,7 @@
     inputs.sops-nix.nixosModules.sops
     inputs.nur.nixosModules.nur
     inputs.nix-indexdb.nixosModules.nix-index
+    inputs.disko.nixosModules.disko
   ];
 
   system.configurationRevision = lib.mkIf (inputs.self ? rev) inputs.self.rev;

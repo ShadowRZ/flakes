@@ -21,22 +21,37 @@
               };
             };
             root = {
-              size = "100%";
+              size = "-8G";
               content = {
-                type = "btrfs";
-                extraArgs = [ "-f" ]; # Override existing partition
-                # Subvolumes must set a mountpoint in order to be mounted,
-                # unless their parent is mounted
-                subvolumes = {
-                  "/@persist" = {
-                    mountpoint = "/persist";
-                    mountOptions = [ "compress-force=zstd" ];
-                  };
-                  "/@nix" = {
-                    mountpoint = "/nix";
-                    mountOptions = [ "compress-force=zstd" ];
+                type = "luks";
+                name = "crypted";
+                settings = {
+                  allowDiscards = true;
+                };
+                content = {
+                  type = "btrfs";
+                  extraArgs = [ "-f" ]; # Override existing partition
+                  # Subvolumes must set a mountpoint in order to be mounted,
+                  # unless their parent is mounted
+                  subvolumes = {
+                    "/@persist" = {
+                      mountpoint = "/persist";
+                      mountOptions = [ "compress-force=zstd" ];
+                    };
+                    "/@nix" = {
+                      mountpoint = "/nix";
+                      mountOptions = [ "compress-force=zstd" ];
+                    };
                   };
                 };
+              };
+            };
+            swap = {
+              size = "100%";
+              content = {
+                type = "swap";
+                discardPolicy = "both";
+                resumeDevice = true; # resume from hiberation from this device
               };
             };
           };
