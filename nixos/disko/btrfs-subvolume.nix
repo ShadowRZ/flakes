@@ -21,7 +21,7 @@
               };
             };
             root = {
-              size = "-8G";
+              end = "-8G";
               content = {
                 type = "luks";
                 name = "crypted";
