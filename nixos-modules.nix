@@ -9,10 +9,10 @@
     ./nixos/modules/user-profiles.nix
     ./nixos/modules/vmos-guest.nix
     ./nixos/profiles/plasma-desktop.nix
-    # Disko config
-    ./nixos/disko/btrfs-subvolume.nix
     # System profile
     ./nixos/profiles/system/mika-honey.nix
+    # Disko config
+    ./nixos/profiles/system/disko/mika-honey.nix
     {
       home-manager = {
         sharedModules = [ ./home ];
@@ -33,10 +33,10 @@
     ./nixos/modules/networking/networkmanager.nix
     ./nixos/modules/user-profiles.nix
     ./nixos/profiles/plasma-desktop.nix
-    # Disko config
-    ./nixos/disko/btrfs-subvolume.nix
     # System profile
     ./nixos/profiles/system/mononekomi.nix
+    # Disko config
+    ./nixos/profiles/system/disko/mononekomi.nix
     {
       home-manager = {
         sharedModules = [ ./home ];
