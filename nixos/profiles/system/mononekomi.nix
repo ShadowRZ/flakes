@@ -1,4 +1,4 @@
-{ config, ... }: {
+{ config, lib, ... }: {
 
   networking.hostName = "mononekomi";
   services.getty = {
