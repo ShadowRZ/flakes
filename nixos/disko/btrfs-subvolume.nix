@@ -50,7 +50,7 @@
               size = "100%";
               content = {
                 type = "swap";
-                discardPolicy = "both";
+                # discardPolicy = "both"; TODO
                 resumeDevice = true; # resume from hiberation from this device
               };
             };
