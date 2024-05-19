@@ -28,7 +28,7 @@
         # Use Plasma 6
         plasma6Support = true;
         addons = with pkgs; [
-          qt6Packages.fcitx5-chinese-addons
+          kdePackages.fcitx5-chinese-addons
           fcitx5-pinyin-moegirl
           fcitx5-pinyin-zhwiki
         ];
