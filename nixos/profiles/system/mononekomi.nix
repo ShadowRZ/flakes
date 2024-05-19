@@ -1,4 +1,4 @@
-{ config, lib, ... }: {
+{ config, lib, pkgs, ... }: {
 
   networking.hostName = "mononekomi";
   services.getty = {
@@ -44,7 +44,10 @@
     age.keyFile = "/var/lib/sops.key";
     secrets = { passwd = { neededForUsers = true; }; };
   };
-
-  users.users.shadowrz.hashedPasswordFile = config.sops.secrets.passwd.path;
   fileSystems."/persist".neededForBoot = true;
+
+  users.users.shadowrz = {
+    packages = with pkgs; [ fractal ];
+    hashedPasswordFile = config.sops.secrets.passwd.path;
+  };
 }
