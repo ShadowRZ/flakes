@@ -41,11 +41,6 @@
         home-manager.follows = "home-manager";
       };
     };
-    # NixOS WSL
-    nixos-wsl = {
-      url = "github:nix-community/NixOS-WSL";
-      inputs = { nixpkgs.follows = "nixpkgs"; };
-    };
     # Users' flake
     berberman = {
       url = "github:berberman/flakes";
