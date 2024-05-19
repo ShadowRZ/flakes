@@ -3,13 +3,13 @@
   networking.networkmanager = {
     enable = true;
     dns = "dnsmasq";
-    extraConfig = ''
-      [keyfile]
-      path = /var/lib/NetworkManager/system-connections
-      [connectivity]
-      uri = http://google.cn/generate_204
-      response =
-    '';
+    settings = {
+      keyfile = { path = "/var/lib/NetworkManager/system-connections"; };
+      connectivity = {
+        uri = "http://google.cn/generate_204";
+        response = "";
+      };
+    };
     unmanaged = [ "interface-name:virbr*" "lo" ];
   };
   # Disable resolvconf
