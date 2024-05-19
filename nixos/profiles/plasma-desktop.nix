@@ -4,7 +4,10 @@
     enableQt5Integration = true;
   };
 
-  environment.plasma6.excludePackages = with pkgs; [ konsole khelpcenter ];
+  environment = {
+    systemPackages = [ pkgs.klassy-qt6 ];
+    plasma6.excludePackages = with pkgs; [ konsole khelpcenter ];
+  };
 
   # KDE Connect
   programs.kdeconnect.enable = true;
