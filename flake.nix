@@ -63,6 +63,8 @@
       };
     };
 
+    overlays.default = import ./pkgs/overlay.nix;
+
     nixOnDroidConfigurations.default =
       import ./nix-on-droid { inherit inputs; };
   };

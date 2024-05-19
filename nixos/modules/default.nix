@@ -110,6 +110,7 @@
     };
     overlays = [
       inputs.berberman.overlays.default
+      inputs.self.overlays.default
       (final: prev: {
         # lilydjwg/subreap
         zsh = prev.zsh.overrideAttrs (attrs: {
