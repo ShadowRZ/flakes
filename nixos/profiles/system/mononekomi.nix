@@ -36,8 +36,12 @@
     };
   };
 
-  ### FIXME
-  users.users.shadowrz.initialHashedPassword = "";
-  # XXX: Disable password requirement for wheel
-  security.sudo.wheelNeedsPassword = false;
+  sops = {
+    defaultSopsFile = ./secrets/mononekomi.yaml;
+    age.keyFile = "/var/lib/sops.key";
+    secrets = { passwd = { neededForUsers = true; }; };
+  };
+
+  users.users.shadowrz.hashedPasswordFile = config.sops.secrets.passwd.path;
+  fileSystems."/persist".neededForBoot = true;
 }
