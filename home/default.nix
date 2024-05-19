@@ -16,9 +16,7 @@
       l = "ll -A";
       la = "ls -a";
     };
-    sessionVariables = {
-      GTK_CSD = "0";
-    };
+    sessionVariables = { GTK_CSD = "0"; };
   };
 
   programs = {

@@ -99,7 +99,7 @@
     config = {
       # Solely allows some packages
       allowUnfreePredicate = pkg:
-        builtins.elem (lib.getName pkg) [ "vscode" ] || pkgs.lib.any
+        builtins.elem (lib.getName pkg) [ "vscode" "code" ] || pkgs.lib.any
         (prefix: pkgs.lib.hasPrefix prefix (pkgs.lib.getName pkg)) [
           "steam"
           "nvidia"
@@ -111,6 +111,7 @@
     overlays = [
       inputs.berberman.overlays.default
       inputs.self.overlays.default
+      inputs.blender.overlays.default
       (final: prev: {
         # lilydjwg/subreap
         zsh = prev.zsh.overrideAttrs (attrs: {

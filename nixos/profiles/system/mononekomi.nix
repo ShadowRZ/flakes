@@ -47,7 +47,30 @@
   fileSystems."/persist".neededForBoot = true;
 
   users.users.shadowrz = {
-    packages = with pkgs; [ fractal keepassxc ];
+    packages = with pkgs; [
+      fractal
+      keepassxc
+      blender_3_6 # Blender 3.6.* (Binary)
+      hugo # Hugo
+      kdePackages.plasma-sdk # Plasma SDK
+      libreoffice-fresh # LibreOffice Fresh
+      ffmpeg-full # FFmpeg
+      kdenlive
+      yt-dlp
+      blanket
+      vscode-fhs # VS Code
+      geany # Geany
+      renpy
+      gimp # GIMP
+      inkscape # Inkscape
+      d-spy # D-Spy
+      mangohud
+      logseq
+      foliate
+      celluloid
+      audacity
+      jetbrains.idea-community
+    ];
     hashedPasswordFile = config.sops.secrets.passwd.path;
   };
 }

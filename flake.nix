@@ -50,7 +50,8 @@
 
   outputs = inputs@{ nixpkgs, home-manager, ... }: {
 
-    nixosConfigurations = let modules = import ./nixos-modules.nix; in {
+    nixosConfigurations = let modules = import ./nixos-modules.nix;
+    in {
       mika-honey = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
         specialArgs = { inherit inputs; };
