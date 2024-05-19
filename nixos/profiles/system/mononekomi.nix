@@ -47,7 +47,7 @@
   fileSystems."/persist".neededForBoot = true;
 
   users.users.shadowrz = {
-    packages = with pkgs; [ fractal ];
+    packages = with pkgs; [ fractal keepassxc ];
     hashedPasswordFile = config.sops.secrets.passwd.path;
   };
 }
