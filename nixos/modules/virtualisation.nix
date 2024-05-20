@@ -5,7 +5,8 @@
     libvirtd = {
       enable = true;
       qemu = {
-        package = pkgs.qemu_kvm;
+        # Full arches
+        package = pkgs.qemu;
         # Enable UEFI
         ovmf = {
           enable = true;
@@ -13,6 +14,7 @@
         };
         # Enable virtual TPM support
         swtpm.enable = true;
+        vhostUserPackages = [ pkgs.virtiofsd ];
       };
     };
     spiceUSBRedirection.enable = true;
@@ -27,8 +29,6 @@
 
   # Users
   users.users.shadowrz.extraGroups = [ "libvirtd" ];
-
-  environment.systemPackages = with pkgs; [ virtiofsd ];
 
   services.pykms.enable = true;
 
