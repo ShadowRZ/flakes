@@ -7,6 +7,8 @@
       qemu = {
         # Full arches
         package = pkgs.qemu;
+        # Don't run as root
+        runAsRoot = false;
         # Enable UEFI
         ovmf = {
           enable = true;
