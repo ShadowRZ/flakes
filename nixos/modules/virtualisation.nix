@@ -21,6 +21,8 @@
       enable = true;
       dockerCompat = true;
     };
+    # For Dev Containers
+    containers = { enable = true; };
   };
 
   # Users

@@ -58,7 +58,7 @@
       kdenlive
       yt-dlp
       blanket
-      vscode-fhs # VS Code
+      vscode # VS Code
       geany # Geany
       renpy
       gimp # GIMP
