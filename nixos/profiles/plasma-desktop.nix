@@ -5,7 +5,7 @@
   };
 
   environment = {
-    systemPackages = [ pkgs.klassy-qt6 ];
+    systemPackages = with pkgs; [ klassy-qt6 libsForQt5.polonium ];
     plasma6.excludePackages = with pkgs; [ konsole khelpcenter ];
   };
 
