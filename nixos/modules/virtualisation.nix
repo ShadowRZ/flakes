@@ -5,8 +5,7 @@
     libvirtd = {
       enable = true;
       qemu = {
-        # Full arches
-        package = pkgs.qemu;
+        package = pkgs.qemu_kvm;
         # Don't run as root
         runAsRoot = false;
         # Enable UEFI
