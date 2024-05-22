@@ -9,7 +9,10 @@
     plasma6.excludePackages = with pkgs; [ konsole khelpcenter ];
   };
 
-  programs.ssh.askPassword = "${pkgs.kdePackages.ksshaskpass}/bin/ksshaskpass";
+  programs.ssh = {
+    enableAskPassword = true;
+    askPassword = "${pkgs.kdePackages.ksshaskpass}/bin/ksshaskpass";
+  };
 
   # KDE Connect
   programs.kdeconnect.enable = true;
