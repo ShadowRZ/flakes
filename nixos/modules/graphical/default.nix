@@ -44,9 +44,9 @@
         settings = {
           General.GreeterEnvironment = "QT_SCALE_FACTOR=1.5,QT_FONT_DPI=96";
           Theme = {
-            Font = "Recursive Sn Lnr St";
+            Font = "Montserrat";
             CursorTheme = "graphite-light";
-            CursorSize = 36;
+            CursorSize = 24;
           };
         };
         wayland.enable = true;
@@ -64,8 +64,6 @@
       # If you want to use JACK applications, uncomment this
       jack.enable = true;
     };
-    # Flatpak
-    flatpak.enable = true;
   };
 
   hardware = {
@@ -94,14 +92,13 @@
     enableDefaultPackages = false;
     packages = with pkgs; [
       noto-fonts # Base Noto Fonts
-      twitter-color-emoji # Twemoji
+      noto-fonts-color-emoji # Noto Color Emoji
       sarasa-gothic # Sarasa Gothic
       source-han-sans-vf-otf # Source Han Sans Variable
       source-han-serif-vf-otf # Source Han Serif Variable
       jost # Jost
       dejavu_fonts # DejaVu
-      recursive # Recursive fonts
-      victor-mono
+      montserrat # Montserrat
       # Iosevka Builds
       config.nur.repos.shadowrz.iosevka-minoko
       config.nur.repos.shadowrz.iosevka-minoko-term
@@ -114,11 +111,11 @@
         # https://bugreports.qt.io/browse/QTBUG-80434
         # So put emoji font here.
         sansSerif =
-          [ "DejaVu Sans" "Source Han Sans SC VF" "Twitter Color Emoji" ];
+          [ "DejaVu Sans" "Source Han Sans SC VF" "Noto Color Emoji" ];
         serif =
-          [ "DejaVu Serif" "Source Han Serif SC VF" "Twitter Color Emoji" ];
+          [ "DejaVu Serif" "Source Han Serif SC VF" "Noto Color Emoji" ];
         monospace = [ "Iosevka Minoko-E" "Sarasa Mono SC" ];
-        emoji = [ "Twitter Color Emoji" ];
+        emoji = [ "Noto Color Emoji" ];
       };
       subpixel.rgba = "rgb";
       localConf = ''
