@@ -155,6 +155,10 @@
       l = "ll -A";
       la = "ls -a";
     };
+    variables = {
+      VK_ICD_FILENAMES =
+        "${pkgs.mesa.drivers}/share/vulkan/icd.d/intel_icd.x86_64.json";
+    };
   };
 
   # System programs
