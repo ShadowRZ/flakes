@@ -163,6 +163,7 @@
 
   # System programs
   programs = {
+    adb.enable = true;
     nano.enable = false;
     neovim = {
       enable = true;
@@ -172,6 +173,7 @@
       enable = true;
       enableLsColors = false;
     };
+    ssh = { startAgent = true; };
     # Disable command-not-found as it's unavliable in Flakes build
     command-not-found.enable = lib.mkForce false;
     # Nix-Index
@@ -198,6 +200,13 @@
     supportedLocales = [ "all" ];
   };
 
+  security.pam.loginLimits = [{
+    domain = "*";
+    type = "-";
+    item = "memlock";
+    value = "unlimited";
+  }];
+
   home-manager = {
     useUserPackages = true;
     useGlobalPkgs = true;
@@ -213,8 +222,12 @@
         zram-size = "ram";
       };
     };
+    pcscd.enable = true;
+    fstrim.enable = true;
     dbus.implementation = "broker";
   };
+
+  powerManagement.powertop.enable = true;
 
   # Disable all HTML documentations.
   documentation.doc.enable = lib.mkForce false;

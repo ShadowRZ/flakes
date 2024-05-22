@@ -111,4 +111,10 @@
       pinentryPackage = pkgs.pinentry-curses;
     };
   };
+
+  # Xresources
+  xresources.properties = {
+    "Xcursor.theme" = "graphite-light";
+    "Xcursor.size" = "32"; # 24 x 1.5 = 32
+  };
 }

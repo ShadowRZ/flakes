@@ -44,7 +44,11 @@
 
   sops = {
     defaultSopsFile = ./secrets/mononekomi.yaml;
-    age.keyFile = "/var/lib/sops.key";
+    age = {
+      keyFile = "/var/lib/sops.key";
+      sshKeyPaths = [ ];
+    };
+    gnupg.sshKeyPaths = [ ];
     secrets = { passwd = { neededForUsers = true; }; };
   };
   fileSystems."/persist".neededForBoot = true;
