@@ -25,7 +25,10 @@
               content = {
                 type = "luks";
                 name = "crypted";
-                settings = { allowDiscards = true; };
+                settings = {
+                  allowDiscards = true;
+                  crypttabExtraOpts = [ "fido2-device=auto" ];
+                };
                 content = {
                   type = "btrfs";
                   extraArgs = [ "-f" ]; # Override existing partition

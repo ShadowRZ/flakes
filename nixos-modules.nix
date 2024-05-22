@@ -32,6 +32,7 @@
     ./nixos/modules/networking
     ./nixos/modules/networking/networkmanager.nix
     ./nixos/modules/virtualisation.nix
+    ./nixos/modules/u2f-configs.nix
     ./nixos/modules/user-profiles.nix
     ./nixos/profiles/plasma-desktop.nix
     # System profile
