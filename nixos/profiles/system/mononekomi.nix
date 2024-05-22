@@ -1,14 +1,17 @@
 { config, lib, pkgs, ... }: {
 
   networking.hostName = "mononekomi";
-  services.getty = {
-    greetingLine = with config.system.nixos; ''
-      Mononekomi @ Revision = ${config.system.configurationRevision}
-      https://github.com/ShadowRZ/flakes
+  services = {
+    fwupd.enable = true;
+    getty = {
+      greetingLine = with config.system.nixos; ''
+        Mononekomi @ Revision = ${config.system.configurationRevision}
+        https://github.com/ShadowRZ/flakes
 
-      Based on NixOS ${release} (${codeName})
-      NixOS Revision = ${revision}
-    '';
+        Based on NixOS ${release} (${codeName})
+        NixOS Revision = ${revision}
+      '';
+    };
   };
   # Host configs
   boot = {
