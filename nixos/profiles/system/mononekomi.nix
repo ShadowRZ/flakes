@@ -55,7 +55,7 @@
       kdePackages.plasma-sdk # Plasma SDK
       libreoffice-fresh # LibreOffice Fresh
       ffmpeg-full # FFmpeg
-      kdenlive
+      kdePackages.kdenlive
       yt-dlp
       blanket
       vscode # VS Code
