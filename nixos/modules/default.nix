@@ -222,7 +222,6 @@
         zram-size = "ram";
       };
     };
-    pcscd.enable = true;
     fstrim.enable = true;
     dbus.implementation = "broker";
   };
