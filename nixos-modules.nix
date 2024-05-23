@@ -34,6 +34,7 @@
     ./nixos/modules/virtualisation.nix
     ./nixos/modules/u2f-configs.nix
     ./nixos/modules/user-profiles.nix
+    ./nixos/modules/lanzaboote-secureboot.nix
     ./nixos/profiles/plasma-desktop.nix
     # System profile
     ./nixos/profiles/system/mononekomi.nix

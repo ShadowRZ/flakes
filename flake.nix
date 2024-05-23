@@ -46,6 +46,11 @@
       url = "github:berberman/flakes";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    # Lanzaboote
+    lanzaboote = {
+      url = "github:nix-community/lanzaboote/v0.3.0";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs = inputs@{ nixpkgs, home-manager, ... }: {
