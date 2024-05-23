@@ -34,16 +34,22 @@
           ".cache"
           ".cargo"
           ".config"
-          ".gnupg"
           ".java"
           ".local"
           ".logseq"
           ".mozilla"
           ".renpy"
-          ".ssh"
           ".thunderbird"
           ".var"
           ".vscode"
+          {
+            directory = ".gnupg";
+            mode = "0700";
+          }
+          {
+            directory = ".ssh";
+            mode = "0700";
+          }
         ];
         files = [ ".gtkrc-2.0" ];
       };
