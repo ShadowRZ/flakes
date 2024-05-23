@@ -27,6 +27,7 @@
                 name = "crypted";
                 settings = {
                   allowDiscards = true;
+                  bypassWorkqueues = true;
                   crypttabExtraOpts = [ "fido2-device=auto" ];
                 };
                 content = {
@@ -51,7 +52,7 @@
               size = "100%";
               content = {
                 type = "swap";
-                # discardPolicy = "both"; TODO
+                discardPolicy = "both";
                 resumeDevice = true; # resume from hiberation from this device
               };
             };
