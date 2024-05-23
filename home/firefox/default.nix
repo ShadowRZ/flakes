@@ -71,8 +71,8 @@
             [
               clearurls
               cliget
+              container-proxy
               don-t-fuck-with-paste
-              foxyproxy-standard
               ghosttext
               keepassxc-browser
               link-gopher
@@ -92,6 +92,7 @@
                   "https://github.com/gorhill/uBlock/releases/download/${version}/uBlock0_${version}.firefox.signed.xpi";
                 sha256 = "sha256-6O4/nVl6bULbnXP+h8HVId40B1X9i/3WnkFiPt/gltY=";
               })
+              vimium-c
               violentmonkey
               vue-js-devtools
             ] ++ (let
