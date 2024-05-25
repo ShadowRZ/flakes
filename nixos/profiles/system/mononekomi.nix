@@ -61,6 +61,7 @@
       hugo # Hugo
       kdePackages.plasma-sdk # Plasma SDK
       libreoffice-fresh # LibreOffice Fresh
+      onlyoffice-bin_latest
       ffmpeg-full # FFmpeg
       kdePackages.kdenlive
       yt-dlp
