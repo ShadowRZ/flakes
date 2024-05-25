@@ -5,7 +5,15 @@
   };
 
   environment = {
-    systemPackages = with pkgs; [ klassy-qt6 ];
+    systemPackages = with pkgs; [
+      klassy-qt6
+      aha # aha
+      pciutils # lspci
+      clinfo # clinfo
+      mesa-demos # glxinfo, eglinfo
+      vulkan-tools # vulkaninfo
+      wayland-utils # wayland-info
+    ];
     plasma6.excludePackages = with pkgs; [ konsole khelpcenter ];
   };
 
