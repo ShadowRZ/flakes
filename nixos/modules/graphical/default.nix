@@ -42,7 +42,7 @@
       sddm = {
         enable = true;
         settings = {
-          General.GreeterEnvironment = "QT_SCALE_FACTOR=1.5,QT_FONT_DPI=96";
+          General.GreeterEnvironment = "QT_SCALE_FACTOR=1.25,QT_FONT_DPI=96";
           Theme = {
             Font = "Montserrat";
             CursorTheme = "graphite-light";
