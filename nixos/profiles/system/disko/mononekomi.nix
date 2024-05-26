@@ -44,16 +44,14 @@
                       mountpoint = "/nix";
                       mountOptions = [ "compress-force=zstd" ];
                     };
+                    "/@swap" = {
+                      mountpoint = "/.swapvol";
+                      swap = {
+                        swapfile.size = "8G";
+                      };
+                    };
                   };
                 };
-              };
-            };
-            swap = {
-              size = "100%";
-              content = {
-                type = "swap";
-                discardPolicy = "both";
-                resumeDevice = true; # resume from hiberation from this device
               };
             };
           };
