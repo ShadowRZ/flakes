@@ -99,6 +99,8 @@
       jost # Jost
       dejavu_fonts # DejaVu
       montserrat # Montserrat
+      config.nur.repos.shadowrz.maoken-assorted-sans
+      config.nur.repos.shadowrz.resource-han-rounded
       # Iosevka Builds
       config.nur.repos.shadowrz.iosevka-minoko
       config.nur.repos.shadowrz.iosevka-minoko-term
@@ -118,21 +120,7 @@
         emoji = [ "Noto Color Emoji" ];
       };
       subpixel.rgba = "rgb";
-      localConf = ''
-        <?xml version="1.0"?>
-        <!DOCTYPE fontconfig SYSTEM "fonts.dtd">
-        <fontconfig>
-          <!-- Add Sarasa Mono SC for Iosevka based fonts -->
-          <match target="pattern">
-            <test name="family" compare="contains">
-              <string>Iosevka</string>
-            </test>
-            <edit binding="strong" mode="append" name="family">
-              <string>Sarasa Mono SC</string>
-            </edit>
-          </match>
-        </fontconfig>
-      '';
+      localConf = builtins.readFile ./fontconfig.conf;
       cache32Bit = true;
     };
   };
