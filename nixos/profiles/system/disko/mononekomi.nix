@@ -21,7 +21,7 @@
               };
             };
             root = {
-              end = "-8G";
+              end = "100%";
               content = {
                 type = "luks";
                 name = "crypted";
@@ -65,7 +65,5 @@
       };
     };
   };
-
-  fileSystems."/persist".neededForBoot = true;
 }
 

@@ -11,6 +11,8 @@
     inputs.disko.nixosModules.disko
   ];
 
+  hardware.enableRedistributableFirmware = lib.mkDefault true;
+
   system.configurationRevision = lib.mkIf (inputs.self ? rev) inputs.self.rev;
 
   boot = {
