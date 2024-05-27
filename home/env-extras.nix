@@ -97,6 +97,8 @@
       # Inherits from home.sessionVariables
       GNUPGHOME = config.home.sessionVariables.GNUPGHOME;
       GTK_CSD = config.home.sessionVariables.GTK_CSD;
+      XCURSOR_THEME = config.home.sessionVariables.XCURSOR_THEME;
+      XCURSOR_SIZE = config.home.sessionVariables.XCURSOR_SIZE;
     };
   };
 
@@ -112,9 +114,9 @@
     };
   };
 
-  # Xresources
-  xresources.properties = {
-    "Xcursor.theme" = "graphite-light";
-    "Xcursor.size" = "32"; # 24 x 1.5 = 32
+  home.sessionVariables = {
+    GTK_CSD = "0";
+    XCURSOR_THEME = "graphite-light";
+    XCURSOR_SIZE = "36";
   };
 }

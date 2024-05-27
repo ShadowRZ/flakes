@@ -51,7 +51,6 @@
             mode = "0700";
           }
         ];
-        files = [ ".gtkrc-2.0" ];
       };
       root = {
         home = "/root";
