@@ -21,7 +21,6 @@
 
         # Enable builtin OSC
         osc = true;
-        script-opts = "osc-vidscale=no";
 
         # Subtitles.
         sub-align-x = "right";
@@ -31,8 +30,28 @@
         sub-border-size = 3;
         sub-color = "#DE8148";
 
-        # (Try to) prefer hardware decoding.
-        hwdec = "auto-safe";
+        # Prefer hardware decoding.
+        hwdec = "vulkan,vaapi";
+
+        gpu-hwdec-interop = "vaapi";
+        vo = "gpu-next";
+        tone-mapping = "auto";
+        tone-mapping-mode = "auto";
+        af = "dynaudnorm=g=45:p=0.5:m=1:s=0";
+        hwdec-codecs = "all";
+        sub-auto = "fuzzy";
+        vd-lavc-dr = "yes";
+        replaygain = "album";
+        gpu-api = "vulkan";
+        native-keyrepeat = true;
+        keep-open = "yes";
+      };
+      scriptOpts = {
+        osc = {
+          scalewindowed = 2.0;
+          vidscale = false;
+          visibility = "always";
+        };
       };
       scripts = with pkgs.mpvScripts; [ mpris ];
     };
