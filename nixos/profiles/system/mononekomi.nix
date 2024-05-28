@@ -15,7 +15,7 @@
   };
   # Host configs
   boot = {
-    kernelModules = [ ];
+    kernelModules = [ "nvidia-uvm" ];
     initrd = {
       availableKernelModules =
         [ "xhci_pci" "thunderbolt" "nvme" "usbhid" "usb_storage" "sd_mod" ];
@@ -29,8 +29,8 @@
     cpu.intel.updateMicrocode =
       lib.mkDefault config.hardware.enableRedistributableFirmware;
     nvidia = {
+      open = true;
       nvidiaSettings = false;
-      dynamicBoost.enable = true;
       prime = {
         offload = {
           enable = true;
