@@ -15,7 +15,7 @@
       enable = true;
       config = {
         # OSD configs.
-        osd-font = "MaokenAssortedSans";
+        osd-font = "Iosevka Aile Minoko";
         osd-font-size = 40;
         osd-on-seek = "msg-bar";
 
@@ -26,7 +26,7 @@
         sub-align-x = "right";
         sub-font-size = 45;
         sub-justify = "auto";
-        sub-font = "MaokenAssortedSans";
+        sub-font = "Iosevka Aile Minoko";
         sub-border-size = 3;
         sub-color = "#DE8148";
 
@@ -36,7 +36,6 @@
         gpu-hwdec-interop = "vaapi";
         vo = "gpu-next";
         tone-mapping = "auto";
-        tone-mapping-mode = "auto";
         af = "dynaudnorm=g=45:p=0.5:m=1:s=0";
         hwdec-codecs = "all";
         sub-auto = "fuzzy";
@@ -44,13 +43,23 @@
         replaygain = "album";
         gpu-api = "vulkan";
         native-keyrepeat = true;
-        keep-open = "yes";
       };
       scriptOpts = {
         osc = {
-          scalewindowed = 2.0;
+          scalewindowed = 1.5;
+          scalefullscreen = 1.5;
           vidscale = false;
           visibility = "always";
+          seekbarstyle = "knob";
+          seekrangestyle = "slider";
+        };
+        console = {
+          font = "Iosevka Minoko";
+          font_size = 22;
+        };
+        stats = {
+          font = "Iosevka Aile Minoko";
+          font_mono = "Iosevka Minoko";
         };
       };
       scripts = with pkgs.mpvScripts; [ mpris ];
