@@ -90,7 +90,7 @@
       size = 32;
     };
     font = {
-      name = "Montserrat Alternates";
+      name = "Iosevka Aile Minoko SmEx";
       size = 12;
     };
     gtk2 = {
