@@ -40,6 +40,13 @@
         nvidiaBusId = "PCI:1:0:0";
       };
     };
+    opengl = {
+      extraPackages = with pkgs; [ intel-compute-runtime intel-media-driver ];
+      extraPackages32 = with pkgs.pkgsi686Linux; [
+        intel-compute-runtime
+        intel-media-driver
+      ];
+    };
   };
 
   sops = {

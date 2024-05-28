@@ -114,8 +114,7 @@
         # So put emoji font here.
         sansSerif =
           [ "DejaVu Sans" "Source Han Sans SC VF" "Noto Color Emoji" ];
-        serif =
-          [ "DejaVu Serif" "Source Han Serif SC VF" "Noto Color Emoji" ];
+        serif = [ "DejaVu Serif" "Source Han Serif SC VF" "Noto Color Emoji" ];
         monospace = [ "Iosevka Minoko-E" "Sarasa Mono SC" ];
         emoji = [ "Noto Color Emoji" ];
       };
