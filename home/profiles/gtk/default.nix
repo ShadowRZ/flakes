@@ -14,7 +14,7 @@
       size = 32;
     };
     font = {
-      name = "Iosevka Aile Minoko SmEx";
+      name = "Cantarell";
       size = 12;
     };
     gtk2 = {

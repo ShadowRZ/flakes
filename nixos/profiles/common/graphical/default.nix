@@ -42,7 +42,7 @@
         settings = {
           General.GreeterEnvironment = "QT_SCALE_FACTOR=1.25,QT_FONT_DPI=96";
           Theme = {
-            Font = "Iosevka Aile Minoko SmEx";
+            Font = "Cantarell";
             CursorTheme = "graphite-light";
             CursorSize = 24;
           };
@@ -95,9 +95,8 @@
       sarasa-gothic # Sarasa Gothic
       source-han-sans-vf-otf # Source Han Sans Variable
       source-han-serif-vf-otf # Source Han Serif Variable
-      jost # Jost
       dejavu_fonts # DejaVu
-      montserrat # Montserrat
+      cantarell-fonts # Cantarell
       config.nur.repos.shadowrz.maoken-assorted-sans
       config.nur.repos.shadowrz.resource-han-rounded
       # Iosevka Builds
