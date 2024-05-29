@@ -1,24 +1,24 @@
 [
-    {
-        "slug": "custom-scrollbars"
-    },
-    {
-        "slug": "measure-it"
-    },
-    {
-        "slug": "foxyimage"
-    },
-    {
-        "slug": "textarea-cache"
-    },
-    {
-        "slug": "emoji-sav"
-    },
-    {
-        "slug": "tranquility-1",
-        "pname": "tranquility-reader"
-    },
-    {
-        "slug": "copy-linktab-name-and-url"
-    }
+  {
+    "slug": "custom-scrollbars"
+  },
+  {
+    "slug": "measure-it"
+  },
+  {
+    "slug": "foxyimage"
+  },
+  {
+    "slug": "textarea-cache"
+  },
+  {
+    "slug": "emoji-sav"
+  },
+  {
+    "slug": "tranquility-1",
+    "pname": "tranquility-reader"
+  },
+  {
+    "slug": "copy-linktab-name-and-url"
+  }
 ]

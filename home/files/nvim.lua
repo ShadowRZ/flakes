@@ -25,42 +25,42 @@ vim.cmd('highlight! Normal ctermbg=NONE guibg=NONE')
 vim.keymap.set('n', '<Space>', 'za')
 
 vim.api.nvim_create_autocmd({"BufEnter", "BufWinEnter"}, {
-    pattern = {".git/COMMIT_EDITMSG"},
-    callback = function(ev) vim.bo.textwidth = 72 end
+  pattern = {".git/COMMIT_EDITMSG"},
+  callback = function(ev) vim.bo.textwidth = 72 end
 })
 vim.api.nvim_create_autocmd({"FileType"}, {
-    pattern = {"nix"},
-    callback = function(ev)
-        vim.bo.shiftwidth = 2
-        vim.bo.softtabstop = 2
-    end
+  pattern = {"nix"},
+  callback = function(ev)
+    vim.bo.shiftwidth = 2
+    vim.bo.softtabstop = 2
+  end
 })
 
 -- Tree Sitter
 require('nvim-treesitter.configs').setup({
-    highlight = {
-        enable = true,
-    },
-    incremental_selection = {
-        enable = true,
-    },
-    indent = {
-        enable = true,
-    }
+  highlight = {
+    enable = true,
+  },
+  incremental_selection = {
+    enable = true,
+  },
+  indent = {
+    enable = true,
+  }
 })
 
 -- Lualine
 require('lualine').setup {
-    options = {
-        theme = 'nord'
-    },
-    sections = {
-        lualine_x = {},
-        lualine_y = {}
-    },
-    inactive_sections = {
-        lualine_x = {}
-    },
+  options = {
+    theme = 'nord'
+  },
+  sections = {
+    lualine_x = {},
+    lualine_y = {}
+  },
+  inactive_sections = {
+    lualine_x = {}
+  },
 }
 
 -- LSP

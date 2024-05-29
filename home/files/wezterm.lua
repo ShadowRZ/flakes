@@ -21,13 +21,13 @@ config.colors = {
 }
 
 config.font = wezterm.font_with_fallback(
-  {
-    'Iosevka Minoko Term',
-    'Sarasa Mono SC'
-  },
-  {
-    weight = 'ExtraLight'
-  }
+{
+  'Iosevka Minoko Term',
+  'Sarasa Mono SC'
+},
+{
+  weight = 'ExtraLight'
+}
 )
 
 config.window_padding = {
@@ -39,14 +39,14 @@ config.window_padding = {
 
 config.window_frame = {
   font = wezterm.font_with_fallback(
-    {
-      'Space Grotesk',
-      'Source Han Sans SC VF'
-    }
-  ),
-  font_size = 10.0,
-  active_titlebar_bg = wezterm.color.get_builtin_schemes()[config.color_scheme].cursor_fg,
-  inactive_titlebar_bg = wezterm.color.get_builtin_schemes()[config.color_scheme].cursor_fg
+  {
+    'Space Grotesk',
+    'Source Han Sans SC VF'
+  }
+),
+font_size = 10.0,
+active_titlebar_bg = wezterm.color.get_builtin_schemes()[config.color_scheme].cursor_fg,
+inactive_titlebar_bg = wezterm.color.get_builtin_schemes()[config.color_scheme].cursor_fg
 }
 
 config.background = {

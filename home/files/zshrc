@@ -1,13 +1,13 @@
 ### Bindings
 function foreground-last-job () {
-    if (( ${#jobstates} )); then
-        zle .push-input
-        [[ -o hist_ignore_space ]] && BUFFER=' ' || BUFFER=''
-        BUFFER="${BUFFER}fg"
-        zle .accept-line
-    else
-        zle -M '[ShadowRZ/Zsh] No background jobs. Doing nothing.'
-    fi
+  if (( ${#jobstates} )); then
+    zle .push-input
+    [[ -o hist_ignore_space ]] && BUFFER=' ' || BUFFER=''
+    BUFFER="${BUFFER}fg"
+    zle .accept-line
+  else
+    zle -M '[ShadowRZ/Zsh] No background jobs. Doing nothing.'
+  fi
 }
 zle -N foreground-last-job
 
@@ -99,17 +99,17 @@ zstyle ':completion:*:man:*'      menu yes select
 # Terminal Title
 autoload -Uz add-zsh-hook
 function set-xterm-terminal-title () {
-    printf '\e]2;%s\a' "$@"
+  printf '\e]2;%s\a' "$@"
 }
 function precmd-set-terminal-title () {
-    set-xterm-terminal-title "${(%):-"%n@%m: %~"}"
+  set-xterm-terminal-title "${(%):-"%n@%m: %~"}"
 }
 function preexec-set-terminal-title () {
-    set-xterm-terminal-title "${(%):-"%n@%m: "}$2"
+  set-xterm-terminal-title "${(%):-"%n@%m: "}$2"
 }
 if [[ "$TERM" == (screen*|xterm*|rxvt*|tmux*|putty*|konsole*|gnome*) ]]; then
-    add-zsh-hook -Uz precmd precmd-set-terminal-title
-    add-zsh-hook -Uz preexec preexec-set-terminal-title
+  add-zsh-hook -Uz precmd precmd-set-terminal-title
+  add-zsh-hook -Uz preexec preexec-set-terminal-title
 fi
 
 # remove duplicates from paths
@@ -118,15 +118,15 @@ typeset -U fpath
 
 # Customized word selecting.
 for f in backward-kill-word \
-         backward-word \
-         capitalize-word \
-         down-case-word \
-         forward-word \
-         kill-word \
-         transpose-words \
-         up-case-word; do
-    autoload -Uz $f-match
-    zle -N $f $f-match
+    backward-word \
+    capitalize-word \
+    down-case-word \
+    forward-word \
+    kill-word \
+    transpose-words \
+    up-case-word; do
+  autoload -Uz $f-match
+  zle -N $f $f-match
 done
 
 autoload -Uz select-word-style
@@ -141,12 +141,12 @@ REPORTTIME=5
 CORRECT_IGNORE='_*'
 # Time format.
 () {
-    local white_b=$fg_bold[white] yellow_b=$fg_bold[yellow] blue=$fg[blue] rst=$reset_color
-    TIMEFMT=(
-        "${yellow_b}[ShadowRZ/Zsh/Elpased] EST=%*Es$rst $white_b%J$rst"$'\n' # First line
-        "${yellow_b} CPU$rst: USR: $blue%U$rst SYS: $blue%S$rst PER:$blue%P$rst"$'\n' # Second line
-        "${yellow_b} MEM$rst: $blue%M$rst" # Third line
-    )
+  local white_b=$fg_bold[white] yellow_b=$fg_bold[yellow] blue=$fg[blue] rst=$reset_color
+  TIMEFMT=(
+    "${yellow_b}[ShadowRZ/Zsh/Elpased] EST=%*Es$rst $white_b%J$rst"$'\n' # First line
+    "${yellow_b} CPU$rst: USR: $blue%U$rst SYS: $blue%S$rst PER:$blue%P$rst"$'\n' # Second line
+    "${yellow_b} MEM$rst: $blue%M$rst" # Third line
+  )
 }
 
 # useful functions
