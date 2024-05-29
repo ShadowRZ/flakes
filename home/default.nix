@@ -2,7 +2,9 @@
 { config, pkgs, lib, ... }: {
 
   home = {
-    stateVersion = "24.05";
+    username = lib.mkDefault "shadowrz";
+    homeDirectory = lib.mkDefault "/home/${config.home.username}";
+
     shellAliases = {
       df = "df -h";
       du = "du -h";
@@ -16,114 +18,30 @@
       l = "ll -A";
       la = "ls -a";
     };
-    sessionVariables = { GTK_CSD = "0"; };
+
+    # This value determines the Home Manager release that your
+    # configuration is compatible with. This helps avoid breakage
+    # when a new Home Manager release introduces backwards
+    # incompatible changes.
+    #
+    # You can update Home Manager without changing this value. See
+    # the Home Manager release notes for a list of state version
+    # changes in each release.
+    stateVersion = "24.05";
   };
 
-  programs = {
-    less = { enable = true; };
-    lesspipe = { enable = true; };
-    htop = {
-      enable = true;
-      settings = {
-        hide_kernel_threads = true;
-        hide_userland_threads = true;
-        hide_running_in_container = false;
-        shadow_other_users = true;
-        show_thread_names = true;
-        show_program_path = true;
-        highlight_base_name = true;
-        highlight_deleted_exe = true;
-        shadow_distribution_path_prefix = true;
-        highlight_megabytes = true;
-        highlight_threads = true;
-        highlight_changes = true;
-        highlight_changes_delay_secs = 5;
-        find_comm_in_cmdline = true;
-        strip_exe_from_cmdline = true;
-        enable_mouse = true;
-        tree_view = true;
-      };
-    };
-    # Zsh
-    zsh = {
-      enable = true;
-      defaultKeymap = "emacs";
-      autocd = true;
-      history = { ignoreAllDups = true; };
-      autosuggestion.enable = true;
-      enableCompletion = true;
-      syntaxHighlighting = { enable = true; };
-      history = {
-        extended = true;
-        expireDuplicatesFirst = true;
-        ignoreDups = true;
-        ignoreSpace = true;
-        size = 50000;
-        save = 50000;
-        share = false;
-        path = "${config.xdg.dataHome}/zsh/zsh_history";
-      };
-      shellGlobalAliases = {
-        "..." = "../..";
-        "...." = "../../..";
-        "....." = "../../../..";
-        "......" = "../../../../..";
-        "......." = "../../../../../..";
-      };
-      historySubstringSearch = {
-        enable = true;
-        searchUpKey = [ "$key[Up]" ];
-        searchDownKey = [ "$key[Down]" ];
-      };
-      initExtraFirst = lib.mkBefore ''
-        # Subreap
-        { zmodload lilydjwg/subreap && subreap; } >/dev/null 2>&1
-        # Enable terminal cursor
-        ${pkgs.util-linux}/bin/setterm -cursor on
-        ${pkgs.coreutils}/bin/stty -ixon # Disable flow control
+  imports = [
+    ./profiles/dircolors
+    ./profiles/git
+    ./profiles/gnupg
+    ./profiles/htop
+    ./profiles/starship
+    ./profiles/zsh
+  ];
 
-        setopt HIST_VERIFY
-        setopt HIST_FIND_NO_DUPS
-        setopt HIST_SAVE_NO_DUPS
-        setopt HIST_REDUCE_BLANKS
-        setopt EXTENDED_HISTORY
-        setopt INC_APPEND_HISTORY_TIME
-        setopt ALWAYS_TO_END
-        setopt LIST_PACKED
-        setopt COMPLETE_IN_WORD
-        setopt MENU_COMPLETE
-        setopt PUSHD_IGNORE_DUPS
-        setopt PUSHD_SILENT
-        setopt PUSHD_TO_HOME
-        setopt AUTO_PUSHD
-        setopt EXTENDED_GLOB
-        setopt MAGIC_EQUAL_SUBST
-        setopt NO_CLOBBER
-        setopt INTERACTIVE_COMMENTS
-        setopt RC_QUOTES
-        setopt CORRECT
-        setopt NO_FLOW_CONTROL
-        setopt TRANSIENT_RPROMPT
-        setopt NO_BEEP
-      '';
-      initExtra = with pkgs; ''
-        . ${oh-my-zsh}/share/oh-my-zsh/plugins/git/git.plugin.zsh
-        . ${zsh-you-should-use}/share/zsh/plugins/you-should-use/you-should-use.plugin.zsh
+  programs.aria2.enable = true;
+  programs.ripgrep.enable = true;
+  programs.zoxide.enable = true;
 
-        ${builtins.readFile ./files/zinputrc.zsh}
-        ${builtins.readFile ./files/zshrc}
-      '';
-    };
-    ### Dircolors
-    dircolors = {
-      enable = true;
-      extraConfig = builtins.readFile ./files/dircolors.dircolors;
-    };
-    ### Starship
-    starship = {
-      enable = true;
-      settings = builtins.fromTOML (builtins.readFile ./files/starship.toml);
-    };
-  };
-
+  home.packages = with pkgs; [ fd ];
 }

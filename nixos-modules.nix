@@ -17,8 +17,7 @@
       home-manager = {
         sharedModules = [ ./home ];
         users = {
-          shadowrz.imports =
-            [ ./home/env-extras.nix ./home/graphical.nix ./home/firefox ];
+          shadowrz.imports = [ ./home/firefox ];
           root = { };
         };
       };
@@ -44,8 +43,14 @@
       home-manager = {
         sharedModules = [ ./home ];
         users = {
-          shadowrz.imports =
-            [ ./home/env-extras.nix ./home/graphical.nix ./home/firefox ];
+          shadowrz.imports = [
+            ./home/profiles/dconf
+            ./home/profiles/firefox
+            ./home/profiles/fontconfig
+            ./home/profiles/gtk
+            ./home/profiles/mpv
+            ./home/profiles/wezterm
+          ];
           root = { };
         };
       };
