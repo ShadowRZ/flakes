@@ -36,6 +36,7 @@
     ./profiles/git
     ./profiles/gnupg
     ./profiles/neovim
+    ./profiles/nix
     ./profiles/htop
     ./profiles/starship
     ./profiles/zsh
