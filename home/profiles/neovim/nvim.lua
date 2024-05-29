@@ -18,7 +18,7 @@ vim.opt.shiftwidth = 4
 vim.opt.softtabstop = 4
 vim.opt.expandtab = true
 
-vim.cmd.colorscheme('nord')
+vim.cmd.colorscheme('catppuccin-mocha')
 vim.cmd('highlight! Normal ctermbg=NONE guibg=NONE')
 
 -- Space open / closes folds
@@ -52,7 +52,7 @@ require('nvim-treesitter.configs').setup({
 -- Lualine
 require('lualine').setup {
   options = {
-    theme = 'nord'
+    theme = 'catppuccin'
   },
   sections = {
     lualine_x = {},
