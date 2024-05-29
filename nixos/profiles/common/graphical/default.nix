@@ -1,4 +1,7 @@
 { config, pkgs, lib, ... }: {
+
+  home-manager.users.shadowrz = import ./home;
+
   environment = {
     systemPackages = with pkgs; [
       adw-gtk3
@@ -13,11 +16,6 @@
       papirus-icon-theme # Papirus
       graphite-cursors
     ];
-    extraInit = ''
-      # https://fcitx-im.org/wiki/Using_Fcitx_5_on_Wayland#KDE_Plasma
-      typeset +x GTK_IM_MODULE QT_IM_MODULE
-      unset GTK_IM_MODULE QT_IM_MODULE
-    '';
   };
 
   i18n = {
@@ -25,8 +23,8 @@
     inputMethod = {
       enabled = "fcitx5";
       fcitx5 = {
-        # Use Plasma 6
         plasma6Support = true;
+        waylandFrontend = true;
         addons = with pkgs; [
           kdePackages.fcitx5-chinese-addons
           fcitx5-pinyin-moegirl
@@ -64,6 +62,7 @@
       # If you want to use JACK applications, uncomment this
       jack.enable = true;
     };
+    gvfs.enable = true;
   };
 
   hardware = {

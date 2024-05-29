@@ -12,7 +12,5 @@
     };
   };
 
-  hardware.gpgSmartcards.enable = true;
-
   services.udev.packages = [ pkgs.libfido2 ];
 }

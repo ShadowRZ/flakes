@@ -1,6 +1,4 @@
-{ config, pkgs, lib, inputs, ... }: {
-
-  imports = [ inputs.lanzaboote.nixosModules.lanzaboote ];
+{ config, pkgs, lib, ... }: {
 
   environment.systemPackages = [
     # For debugging and troubleshooting Secure Boot.

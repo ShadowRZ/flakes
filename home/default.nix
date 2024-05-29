@@ -32,8 +32,10 @@
 
   imports = [
     ./profiles/dircolors
+    ./profiles/direnv
     ./profiles/git
     ./profiles/gnupg
+    ./profiles/neovim
     ./profiles/htop
     ./profiles/starship
     ./profiles/zsh

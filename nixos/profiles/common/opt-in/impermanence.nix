@@ -1,23 +1,9 @@
-{ pkgs, ... }: {
-
-  # Users
-  users = {
-    mutableUsers = false;
-    users = {
-      shadowrz = {
-        uid = 1000;
-        isNormalUser = true;
-        shell = pkgs.zsh;
-        description = "夜坂雅";
-        extraGroups = [ "wheel" "networkmanager" ];
-        packages = with pkgs; [ krusader ];
-      };
-    };
-  };
-
+{
+  fileSystems."/persist".neededForBoot = true;
   # Persistent files
   environment.persistence."/persist" = {
-    directories = [ "/var" "/root" ];
+    hideMounts = true;
+    directories = [ "/var/log" "/var/lib" ];
     files = [ "/etc/machine-id" ];
     users = {
       shadowrz = {
@@ -33,7 +19,7 @@
           ".android"
           ".cache"
           ".cargo"
-          ".config"
+          ".config" # FIXME
           ".java"
           ".local"
           ".logseq"

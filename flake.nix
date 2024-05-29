@@ -5,9 +5,7 @@
     # Nixpkgs
     nixpkgs = { url = "github:NixOS/nixpkgs/nixos-unstable"; };
     # NixOS Sensible
-    nixos-sensible = {
-      url = "github:Guanran928/nixos-sensible";
-    };
+    nixos-sensible = { url = "github:Guanran928/nixos-sensible"; };
     # Flake Utils
     flake-utils = {
       url = "github:numtide/flake-utils";
@@ -79,27 +77,22 @@
   outputs = inputs@{ flake-parts, ... }:
     flake-parts.lib.mkFlake { inherit inputs; } {
       imports = [ inputs.treefmt-nix.flakeModule ];
-
       systems = inputs.flake-utils.lib.defaultSystems;
-
+      perSystem = { pkgs, ... }: {
+        packages = import ./pkgs { inherit pkgs; };
+      };
       flake = {
-
-        nixosConfigurations = let modules = import ./nixos-modules.nix;
-        in {
-          mika-honey = inputs.nixpkgs.lib.nixosSystem {
-            system = "x86_64-linux";
-            specialArgs = { inherit inputs; };
-            modules = modules.mika-honey;
-          };
+        nixosConfigurations = {
           mononekomi = inputs.nixpkgs.lib.nixosSystem {
             system = "x86_64-linux";
             specialArgs = { inherit inputs; };
-            modules = modules.mononekomi;
+            modules = [ ./hosts/mononekomi ];
           };
         };
-
-        overlays.default = import ./pkgs/overlay.nix;
-
+        overlays = {
+          default = import ./overlays;
+          packages = import ./pkgs/overlay.nix;
+        };
         nixOnDroidConfigurations.default =
           import ./nix-on-droid { inherit inputs; };
       };

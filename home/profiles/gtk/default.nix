@@ -35,5 +35,6 @@
     theme = { name = "adw-gtk3"; };
   };
 
-  systemd.user.sessionVariables.GTK2_RC_FILES = config.home.sessionVariables.GTK2_RC_FILES;
+  systemd.user.sessionVariables.GTK2_RC_FILES =
+    config.home.sessionVariables.GTK2_RC_FILES;
 }

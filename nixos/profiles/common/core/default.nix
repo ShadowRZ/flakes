@@ -1,78 +1,74 @@
 { inputs, config, pkgs, lib, ... }: {
 
-  imports = [
+  imports = [ ./hardening ./networking ./nix ] ++ (with inputs; [
     # Global Flake Inputs
-    inputs.nixpkgs.nixosModules.notDetected
-    inputs.impermanence.nixosModules.impermanence
-    inputs.home-manager.nixosModules.home-manager
-    inputs.sops-nix.nixosModules.sops
-    inputs.nur.nixosModules.nur
-    inputs.nix-indexdb.nixosModules.nix-index
-    inputs.disko.nixosModules.disko
-    inputs.nixos-sensible.nixosModules.default
+    nixpkgs.nixosModules.notDetected
+    impermanence.nixosModules.impermanence
+    home-manager.nixosModules.home-manager
+    sops-nix.nixosModules.sops
+    nur.nixosModules.nur
+    nix-indexdb.nixosModules.nix-index
+    disko.nixosModules.disko
+    nixos-sensible.nixosModules.default
+    lanzaboote.nixosModules.lanzaboote
+  ]);
+
+  nixpkgs.overlays = [
+    inputs.berberman.overlays.default
+    inputs.blender.overlays.default
+    inputs.self.overlays.default
+    inputs.self.overlays.packages
   ];
 
-  hardware.enableRedistributableFirmware = lib.mkDefault true;
-
+  # Stores system revision.
   system.configurationRevision = lib.mkIf (inputs.self ? rev) inputs.self.rev;
 
-  boot = {
-    # Kernel.
-    kernelPackages = pkgs.linuxKernel.packages.linux_xanmod_latest;
-    kernelParams = lib.mkAfter [
-      "quiet"
-      "udev.log_priority=3"
-      "vt.global_cursor_default=0"
-    ];
-    tmp.useTmpfs = true;
-    initrd = {
-      verbose = false;
-      systemd.enable = true;
+  ## Home Manager
+  home-manager.users.shadowrz = import ../../../../home;
+
+  home-manager = {
+    useUserPackages = true;
+    useGlobalPkgs = true;
+    extraSpecialArgs = {
+      inherit inputs;
+      inherit (config) nur;
     };
-    consoleLogLevel = 0;
-    plymouth.enable = true;
   };
 
-  nix = { };
-  # Configure Nix.
-  nix = {
-    channel.enable = false;
-    registry = { nixpkgs.flake = inputs.nixpkgs; };
-    settings = {
-      nix-path = [ "nixpkgs=${inputs.nixpkgs}" ];
-      trusted-users = [ "root" "@wheel" ];
-      substituters = lib.mkForce [
-        "https://mirror.sjtu.edu.cn/nix-channels/store?priority=10"
-        "https://mirrors.bfsu.edu.cn/nix-channels/store?priority=10"
-        "https://cache.nixos.org?priority=15"
-        "https://cache.garnix.io?priority=20"
-        "https://shadowrz.cachix.org?priority=30"
-        "https://berberman.cachix.org?priority=30"
-        "https://nix-community.cachix.org?priority=30"
-      ];
-      trusted-public-keys = [
-        "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs="
-        "berberman.cachix.org-1:UHGhodNXVruGzWrwJ12B1grPK/6Qnrx2c3TjKueQPds="
-        "shadowrz.cachix.org-1:I+6FCWMtdGmN8zYVncKdys/LVsLkCMWO3tfXbwQPTU0="
-        "cache.garnix.io:CTFPyKSLcx5RMJKfLo5EEPUObbA78b0YQ2DTCJXqr9g="
-      ];
-      builders-use-substitutes = true;
-      flake-registry = "/etc/nix/registry.json";
-      auto-optimise-store = true;
-      allowed-users = [ "@wheel" ];
-      keep-derivations = true;
-      experimental-features = [
-        "nix-command"
-        "flakes"
-        "ca-derivations"
-        "auto-allocate-uids"
-        "cgroups"
-      ];
-      auto-allocate-uids = true;
-      use-cgroups = true;
-      use-xdg-base-directories = true;
-      http-connections = 0;
-      max-substitution-jobs = 128;
+  sops = {
+    defaultSopsFile = ../../../../secrets.yaml;
+    age = {
+      keyFile = "/var/lib/sops.key";
+      sshKeyPaths = [ ];
+    };
+    gnupg.sshKeyPaths = [ ];
+    secrets = { passwd = { neededForUsers = true; }; };
+  };
+
+  # Kernel
+  boot.kernelPackages = pkgs.linuxKernel.packages.linux_xanmod_latest;
+  boot.tmp.useTmpfs = true;
+  boot.plymouth.enable = true;
+
+  services.getty.greetingLine = with config.system.nixos; ''
+    NixOS ${release} (${codeName})
+    https://github.com/NixOS/nixpkgs/tree/${revision}
+
+    \e{lightmagenta}Project Hanekokoro
+    https://github.com/ShadowRZ/flakes/tree/${config.system.configurationRevision}\e{reset}
+  '';
+
+  # Users
+  users = {
+    mutableUsers = false;
+    users = {
+      shadowrz = {
+        uid = 1000;
+        isNormalUser = true;
+        shell = pkgs.zsh;
+        description = "夜坂雅";
+        extraGroups = [ "wheel" ];
+      };
     };
   };
 
@@ -80,7 +76,7 @@
   console = {
     packages = with pkgs; [ terminus_font ];
     earlySetup = true;
-    font = "ter-132b";
+    font = "ter-v32b";
   };
 
   # Set your time zone.
@@ -111,37 +107,24 @@
       allowInsecurePredicate = pkg:
         builtins.elem (pkgs.lib.getName pkg) [ "electron" ];
     };
-    overlays = [
-      inputs.berberman.overlays.default
-      inputs.self.overlays.default
-      inputs.blender.overlays.default
-      (final: prev: {
-        # lilydjwg/subreap
-        zsh = prev.zsh.overrideAttrs (attrs: {
-          patches = (attrs.patches or [ ]) ++ [ ./patches/zsh-subreap.patch ];
-        });
-      })
-    ];
   };
 
   environment = {
-    defaultPackages = lib.mkForce [ ];
     # System level packages.
     systemPackages = with pkgs; [
       dnsutils
-      fd
-      iputils
-      ripgrep
+      pciutils
+      usbutils
+      lsof
+      ltrace
+      strace
       file
       gdu
       wget
       tree
-      man-pages
       unzip
       p7zip
       unar
-      nixfmt
-      nil
     ];
     # Link /share/zsh
     pathsToLink = [ "/share/zsh" ];
@@ -211,12 +194,6 @@
     value = "unlimited";
   }];
 
-  home-manager = {
-    useUserPackages = true;
-    useGlobalPkgs = true;
-    extraSpecialArgs = { inherit (config) nur; };
-  };
-
   services = {
     # Generate ZRAM
     zram-generator = {
@@ -231,9 +208,6 @@
   };
 
   powerManagement.powertop.enable = true;
-
-  # Disable all HTML documentations.
-  documentation.doc.enable = lib.mkForce false;
 
   # DO NOT FIDDLE WITH THIS VALUE !!!
   # This value determines the NixOS release from which the default
