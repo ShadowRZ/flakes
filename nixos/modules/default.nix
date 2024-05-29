@@ -9,6 +9,7 @@
     inputs.nur.nixosModules.nur
     inputs.nix-indexdb.nixosModules.nix-index
     inputs.disko.nixosModules.disko
+    inputs.nixos-sensible.nixosModules.default
   ];
 
   hardware.enableRedistributableFirmware = lib.mkDefault true;
@@ -167,6 +168,7 @@
   programs = {
     adb.enable = true;
     nano.enable = false;
+    vim.defaultEditor = false;
     neovim = {
       enable = true;
       defaultEditor = true;

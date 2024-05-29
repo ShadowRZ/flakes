@@ -4,6 +4,10 @@
   inputs = {
     # Nixpkgs
     nixpkgs = { url = "github:NixOS/nixpkgs/nixos-unstable"; };
+    # NixOS Sensible
+    nixos-sensible = {
+      url = "github:Guanran928/nixos-sensible";
+    };
     # Flake Utils
     flake-utils = {
       url = "github:numtide/flake-utils";

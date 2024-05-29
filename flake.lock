@@ -344,6 +344,21 @@
         "type": "github"
       }
     },
+    "nixos-sensible": {
+      "locked": {
+        "lastModified": 1711451092,
+        "narHash": "sha256-17X9t5IL4cerDvoympJPIkECVG/L/yaGr+Ic3kBBYdE=",
+        "owner": "Guanran928",
+        "repo": "nixos-sensible",
+        "rev": "23a6d9d6d5dfb2c2b89b413d900e9a4456d2c28f",
+        "type": "github"
+      },
+      "original": {
+        "owner": "Guanran928",
+        "repo": "nixos-sensible",
+        "type": "github"
+      }
+    },
     "nixpkgs": {
       "locked": {
         "lastModified": 1716509168,
@@ -559,6 +574,7 @@
         "lanzaboote": "lanzaboote",
         "nix-indexdb": "nix-indexdb",
         "nix-on-droid": "nix-on-droid",
+        "nixos-sensible": "nixos-sensible",
         "nixpkgs": "nixpkgs",
         "nur": "nur",
         "sops-nix": "sops-nix",
