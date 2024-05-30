@@ -97,8 +97,14 @@
         };
         nixOnDroidConfigurations = {
           akasha = inputs.nix-on-droid.lib.nixOnDroidConfiguration {
-            specialArgs = {inherit inputs;};
+            extraSpecialArgs = {inherit inputs;};
             modules = [./hosts/akasha];
+            pkgs = import inputs.nixpkgs {
+              system = "aarch64-linux";
+              overlays = [
+                inputs.nur.overlay
+              ];
+            };
           };
         };
       };
