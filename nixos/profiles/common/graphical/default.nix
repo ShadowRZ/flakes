@@ -13,10 +13,12 @@
         background=${nixos-artwork.wallpapers.nineish}/share/backgrounds/nixos/nix-wallpaper-nineish.png
       '')
       # Graphical packages.
-      papirus-icon-theme # Papirus
       graphite-cursors
     ];
   };
+
+  # Clashes with system path
+  users.users.shadowrz.packages = with pkgs; [ papirus-icon-theme ];
 
   i18n = {
     # Fcitx 5
