@@ -23,6 +23,7 @@
           ".java"
           ".local"
           ".logseq"
+          ".mitmproxy"
           ".mozilla"
           ".renpy"
           ".thunderbird"
