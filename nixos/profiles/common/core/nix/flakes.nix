@@ -1,4 +1,4 @@
-{ inputs, lib, pkgs, ... }: {
+{ inputs, lib, ... }: {
   # Enable Flakes
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
 
@@ -12,8 +12,8 @@
   # To make nix3 commands consistent with the flake
   nix.registry = lib.mapAttrs (_: value: { flake = value; }) inputs;
 
-  # Install Git
-  environment.systemPackages = [ pkgs.git ];
+  nixpkgs.flake.setNixPath = false;
+  nixpkgs.flake.setFlakeRegistry = false;
 
   # Does not work with Flake based configurations
   system.copySystemConfiguration = false;
