@@ -1,5 +1,9 @@
-{ config, pkgs, lib, ... }: {
-
+{
+  config,
+  pkgs,
+  lib,
+  ...
+}: {
   home-manager.users.shadowrz = import ./home;
 
   environment = {
@@ -18,7 +22,7 @@
   };
 
   # Clashes with system path
-  users.users.shadowrz.packages = with pkgs; [ papirus-icon-theme ];
+  users.users.shadowrz.packages = with pkgs; [papirus-icon-theme];
 
   i18n = {
     # Fcitx 5
@@ -54,7 +58,7 @@
     };
     xserver = {
       enable = true;
-      excludePackages = [ pkgs.xterm ];
+      excludePackages = [pkgs.xterm];
     };
     # Pipewire
     pipewire = {
@@ -83,7 +87,7 @@
   xdg.portal = {
     enable = true;
     # Enable GTK portal
-    extraPortals = [ pkgs.xdg-desktop-portal-gtk ];
+    extraPortals = [pkgs.xdg-desktop-portal-gtk];
   };
 
   programs.dconf.enable = true;
@@ -112,11 +116,10 @@
         # XXX: Qt solely uses the first 255 fonts from fontconfig:
         # https://bugreports.qt.io/browse/QTBUG-80434
         # So put emoji font here.
-        sansSerif =
-          [ "DejaVu Sans" "Source Han Sans SC VF" "Noto Color Emoji" ];
-        serif = [ "DejaVu Serif" "Source Han Serif SC VF" "Noto Color Emoji" ];
-        monospace = [ "Iosevka Minoko-E" "Sarasa Mono SC" ];
-        emoji = [ "Noto Color Emoji" ];
+        sansSerif = ["DejaVu Sans" "Source Han Sans SC VF" "Noto Color Emoji"];
+        serif = ["DejaVu Serif" "Source Han Serif SC VF" "Noto Color Emoji"];
+        monospace = ["Iosevka Minoko-E" "Sarasa Mono SC"];
+        emoji = ["Noto Color Emoji"];
       };
       subpixel.rgba = "rgb";
       localConf = builtins.readFile ./fontconfig.conf;

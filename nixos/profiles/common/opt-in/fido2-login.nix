@@ -1,5 +1,4 @@
-{ pkgs, ... }: {
-
+{pkgs, ...}: {
   security.pam = {
     services = {
       login.u2fAuth = true;
@@ -12,5 +11,5 @@
     };
   };
 
-  services.udev.packages = [ pkgs.libfido2 ];
+  services.udev.packages = [pkgs.libfido2];
 }

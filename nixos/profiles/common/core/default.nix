@@ -1,17 +1,24 @@
-{ inputs, config, pkgs, lib, ... }: {
-
-  imports = [ ./hardening ./networking ./nix ] ++ (with inputs; [
-    # Global Flake Inputs
-    nixpkgs.nixosModules.notDetected
-    impermanence.nixosModules.impermanence
-    home-manager.nixosModules.home-manager
-    sops-nix.nixosModules.sops
-    nur.nixosModules.nur
-    nix-indexdb.nixosModules.nix-index
-    disko.nixosModules.disko
-    nixos-sensible.nixosModules.default
-    lanzaboote.nixosModules.lanzaboote
-  ]);
+{
+  inputs,
+  config,
+  pkgs,
+  lib,
+  ...
+}: {
+  imports =
+    [./hardening ./networking ./nix]
+    ++ (with inputs; [
+      # Global Flake Inputs
+      nixpkgs.nixosModules.notDetected
+      impermanence.nixosModules.impermanence
+      home-manager.nixosModules.home-manager
+      sops-nix.nixosModules.sops
+      nur.nixosModules.nur
+      nix-indexdb.nixosModules.nix-index
+      disko.nixosModules.disko
+      nixos-sensible.nixosModules.default
+      lanzaboote.nixosModules.lanzaboote
+    ]);
 
   nixpkgs.overlays = [
     inputs.berberman.overlays.default
@@ -39,10 +46,10 @@
     defaultSopsFile = ../../../../secrets.yaml;
     age = {
       keyFile = "/var/lib/sops.key";
-      sshKeyPaths = [ ];
+      sshKeyPaths = [];
     };
-    gnupg.sshKeyPaths = [ ];
-    secrets = { passwd = { neededForUsers = true; }; };
+    gnupg.sshKeyPaths = [];
+    secrets = {passwd = {neededForUsers = true;};};
   };
 
   # Kernel
@@ -67,14 +74,14 @@
         isNormalUser = true;
         shell = pkgs.zsh;
         description = "夜坂雅";
-        extraGroups = [ "wheel" ];
+        extraGroups = ["wheel"];
       };
     };
   };
 
   # Configure fallback console.
   console = {
-    packages = with pkgs; [ terminus_font ];
+    packages = with pkgs; [terminus_font];
     earlySetup = true;
     font = "ter-v32b";
   };
@@ -98,14 +105,15 @@
     config = {
       # Solely allows some packages
       allowUnfreePredicate = pkg:
-        builtins.elem (lib.getName pkg) [ "vscode" "code" ] || pkgs.lib.any
+        builtins.elem (lib.getName pkg) ["vscode" "code"]
+        || pkgs.lib.any
         (prefix: pkgs.lib.hasPrefix prefix (pkgs.lib.getName pkg)) [
           "steam"
           "nvidia"
         ];
       # Solely allows Electron
       allowInsecurePredicate = pkg:
-        builtins.elem (pkgs.lib.getName pkg) [ "electron" ];
+        builtins.elem (pkgs.lib.getName pkg) ["electron"];
     };
   };
 
@@ -127,7 +135,7 @@
       unar
     ];
     # Link /share/zsh
-    pathsToLink = [ "/share/zsh" ];
+    pathsToLink = ["/share/zsh"];
     shellAliases = lib.mkForce {
       df = "df -h";
       du = "du -h";
@@ -142,8 +150,7 @@
       la = "ls -a";
     };
     variables = {
-      VK_ICD_FILENAMES =
-        "${pkgs.mesa.drivers}/share/vulkan/icd.d/intel_icd.x86_64.json";
+      VK_ICD_FILENAMES = "${pkgs.mesa.drivers}/share/vulkan/icd.d/intel_icd.x86_64.json";
     };
   };
 
@@ -160,7 +167,7 @@
       enable = true;
       enableLsColors = false;
     };
-    ssh = { startAgent = true; };
+    ssh = {startAgent = true;};
     # Disable command-not-found as it's unavliable in Flakes build
     command-not-found.enable = lib.mkForce false;
     # Nix-Index
@@ -184,15 +191,17 @@
     # lost LOCALE_ARCHIVE_2_27 and taken LOCALE_ARCHIVE which is not built
     # with all locales like Home Manager.
     # Especially Perl which gave warning if it can't use such locale.
-    supportedLocales = [ "all" ];
+    supportedLocales = ["all"];
   };
 
-  security.pam.loginLimits = [{
-    domain = "*";
-    type = "-";
-    item = "memlock";
-    value = "unlimited";
-  }];
+  security.pam.loginLimits = [
+    {
+      domain = "*";
+      type = "-";
+      item = "memlock";
+      value = "unlimited";
+    }
+  ];
 
   services = {
     # Generate ZRAM

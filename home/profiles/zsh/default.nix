@@ -1,12 +1,17 @@
-{ config, pkgs, lib, ... }: {
+{
+  config,
+  pkgs,
+  lib,
+  ...
+}: {
   programs.zsh = {
     enable = true;
     defaultKeymap = "emacs";
     autocd = true;
-    history = { ignoreAllDups = true; };
+    history = {ignoreAllDups = true;};
     autosuggestion.enable = true;
     enableCompletion = true;
-    syntaxHighlighting = { enable = true; };
+    syntaxHighlighting = {enable = true;};
     history = {
       extended = true;
       expireDuplicatesFirst = true;
@@ -26,8 +31,8 @@
     };
     historySubstringSearch = {
       enable = true;
-      searchUpKey = [ "$key[Up]" ];
-      searchDownKey = [ "$key[Down]" ];
+      searchUpKey = ["$key[Up]"];
+      searchDownKey = ["$key[Down]"];
     };
     initExtraFirst = lib.mkBefore ''
       # Subreap

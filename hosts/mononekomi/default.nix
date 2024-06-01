@@ -1,5 +1,8 @@
-{ config, pkgs, ... }: {
-
+{
+  config,
+  pkgs,
+  ...
+}: {
   imports = [
     # OS
     ../../nixos/profiles/desktop
@@ -16,7 +19,7 @@
     ../../nixos/profiles/common/opt-in/disko.nix
   ];
 
-  _module.args.disks = [ "/dev/disk/by-path/pci-0000:06:00.0-nvme-1" ];
+  _module.args.disks = ["/dev/disk/by-path/pci-0000:06:00.0-nvme-1"];
 
   networking.hostName = "mononekomi";
 
@@ -26,7 +29,7 @@
   services.fwupd.enable = true;
 
   # Enable NVIDIA
-  services.xserver.videoDrivers = [ "nvidia" ];
+  services.xserver.videoDrivers = ["nvidia"];
 
   users.users.shadowrz = {
     packages = with pkgs; [

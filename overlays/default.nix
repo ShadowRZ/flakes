@@ -1,6 +1,6 @@
-final: prev: {
+_final: prev: {
   # lilydjwg/subreap
   zsh = prev.zsh.overrideAttrs (attrs: {
-    patches = (attrs.patches or [ ]) ++ [ ./patches/zsh-subreap.patch ];
+    patches = (attrs.patches or []) ++ [./patches/zsh-subreap.patch];
   });
 }

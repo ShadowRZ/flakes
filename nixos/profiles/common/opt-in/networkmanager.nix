@@ -5,12 +5,12 @@
     dns = "systemd-resolved";
     wifi.backend = "iwd";
     settings = {
-      keyfile = { path = "/var/lib/NetworkManager/system-connections"; };
+      keyfile = {path = "/var/lib/NetworkManager/system-connections";};
       connectivity = {
         uri = "http://google.cn/generate_204";
         response = "";
       };
     };
-    unmanaged = [ "interface-name:virbr*" "lo" ];
+    unmanaged = ["interface-name:virbr*" "lo"];
   };
 }

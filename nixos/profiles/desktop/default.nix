@@ -1,1 +1,1 @@
-{ imports = [ ../common/core ../common/graphical ../common/physical ]; }
+{imports = [../common/core ../common/graphical ../common/physical];}

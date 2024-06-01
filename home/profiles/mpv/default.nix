@@ -1,4 +1,4 @@
-{ pkgs, ... }: {
+{pkgs, ...}: {
   programs.mpv = {
     enable = true;
     config = {
@@ -50,6 +50,6 @@
         font_mono = "Iosevka Minoko";
       };
     };
-    scripts = with pkgs.mpvScripts; [ mpris ];
+    scripts = with pkgs.mpvScripts; [mpris];
   };
 }

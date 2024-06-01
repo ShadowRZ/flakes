@@ -1,4 +1,4 @@
-{ config, ... }: {
+{config, ...}: {
   gtk = let
     gtkIni = {
       gtk-application-prefer-dark-theme = false;
@@ -31,8 +31,8 @@
     };
     gtk3.extraConfig = gtkIni;
     gtk4.extraConfig = gtkIni;
-    iconTheme = { name = "klassy"; };
-    theme = { name = "adw-gtk3"; };
+    iconTheme = {name = "klassy";};
+    theme = {name = "adw-gtk3";};
   };
 
   systemd.user.sessionVariables.GTK2_RC_FILES =

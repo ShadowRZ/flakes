@@ -1,4 +1,4 @@
-{ disks ? [ "/dev/sda" ], ... }: {
+{disks ? ["/dev/sda"], ...}: {
   disko.devices = {
     disk = {
       rootfs = {
@@ -17,7 +17,7 @@
                 type = "filesystem";
                 format = "vfat";
                 mountpoint = "/boot";
-                mountOptions = [ "defaults" "umask=0077" ];
+                mountOptions = ["defaults" "umask=0077"];
               };
             };
             root = {
@@ -28,25 +28,25 @@
                 settings = {
                   allowDiscards = true;
                   bypassWorkqueues = true;
-                  crypttabExtraOpts = [ "fido2-device=auto" ];
+                  crypttabExtraOpts = ["fido2-device=auto"];
                 };
                 content = {
                   type = "btrfs";
-                  extraArgs = [ "-f" ]; # Override existing partition
+                  extraArgs = ["-f"]; # Override existing partition
                   # Subvolumes must set a mountpoint in order to be mounted,
                   # unless their parent is mounted
                   subvolumes = {
                     "/@persist" = {
                       mountpoint = "/persist";
-                      mountOptions = [ "defaults" "compress-force=zstd" ];
+                      mountOptions = ["defaults" "compress-force=zstd"];
                     };
                     "/@nix" = {
                       mountpoint = "/nix";
-                      mountOptions = [ "defaults" "compress-force=zstd" ];
+                      mountOptions = ["defaults" "compress-force=zstd"];
                     };
                     "/@swap" = {
                       mountpoint = "/.swapvol";
-                      swap = { swapfile.size = "8G"; };
+                      swap = {swapfile.size = "8G";};
                     };
                   };
                 };
@@ -59,9 +59,8 @@
     nodev = {
       "/" = {
         fsType = "tmpfs";
-        mountOptions = [ "defaults" "size=2G" "mode=755" "nosuid" "nodev" ];
+        mountOptions = ["defaults" "size=2G" "mode=755" "nosuid" "nodev"];
       };
     };
   };
 }
-

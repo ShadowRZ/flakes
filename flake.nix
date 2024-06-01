@@ -137,7 +137,6 @@
   };
 
   outputs = inputs @ {
-    self,
     flake-parts,
     ...
   }:

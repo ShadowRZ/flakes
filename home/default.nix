@@ -1,6 +1,10 @@
 # Shared configuration.
-{ config, pkgs, lib, ... }: {
-
+{
+  config,
+  pkgs,
+  lib,
+  ...
+}: {
   home = {
     username = lib.mkDefault "shadowrz";
     homeDirectory = lib.mkDefault "/home/${config.home.username}";
@@ -46,5 +50,5 @@
   programs.ripgrep.enable = true;
   programs.zoxide.enable = true;
 
-  home.packages = with pkgs; [ fd ];
+  home.packages = with pkgs; [fd];
 }

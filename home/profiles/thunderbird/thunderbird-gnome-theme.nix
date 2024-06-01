@@ -1,5 +1,8 @@
-{ lib, stdenvNoCC, fetchFromGitHub }:
-
+{
+  lib,
+  stdenvNoCC,
+  fetchFromGitHub,
+}:
 stdenvNoCC.mkDerivation rec {
   pname = "thunderbird-gnome-theme";
   version = "966e9dd54bd2ce9d36d51cd6af8c3bac7a764a68";
@@ -28,7 +31,7 @@ stdenvNoCC.mkDerivation rec {
   meta = with lib; {
     homepage = "https://github.com/rafaelmardojai/thunderbird-gnome-theme";
     description = "A GNOME theme for Thunderbird";
-    license = with licenses; [ unlicense ];
+    license = with licenses; [unlicense];
     platforms = platforms.all;
   };
 }

@@ -1,4 +1,4 @@
-{ lib, ... }: {
+{lib, ...}: {
   boot = {
     kernelParams = lib.mkAfter [
       "quiet"

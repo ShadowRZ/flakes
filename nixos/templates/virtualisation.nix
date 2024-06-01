@@ -1,5 +1,4 @@
-{ pkgs, ... }: {
-
+{pkgs, ...}: {
   virtualisation = {
     # Libvirtd
     libvirtd = {
@@ -11,11 +10,11 @@
         # Enable UEFI
         ovmf = {
           enable = true;
-          packages = [ pkgs.OVMFFull.fd ];
+          packages = [pkgs.OVMFFull.fd];
         };
         # Enable virtual TPM support
         swtpm.enable = true;
-        vhostUserPackages = [ pkgs.virtiofsd ];
+        vhostUserPackages = [pkgs.virtiofsd];
       };
     };
     spiceUSBRedirection.enable = true;
@@ -25,11 +24,11 @@
       dockerCompat = true;
     };
     # For Dev Containers
-    containers = { enable = true; };
+    containers = {enable = true;};
   };
 
   # Users
-  users.users.shadowrz.extraGroups = [ "libvirtd" ];
+  users.users.shadowrz.extraGroups = ["libvirtd"];
 
   services.pykms.enable = true;
 
