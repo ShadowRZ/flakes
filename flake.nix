@@ -76,12 +76,17 @@
     systems = {url = "github:nix-systems/default";};
   };
 
-  outputs = inputs @ {flake-parts, ...}:
+  outputs = inputs @ {
+    self,
+    flake-parts,
+    ...
+  }:
     flake-parts.lib.mkFlake {inherit inputs;} {
       imports = [inputs.treefmt-nix.flakeModule];
       systems = inputs.flake-utils.lib.defaultSystems;
       perSystem = {pkgs, ...}: {
         packages = import ./pkgs {inherit pkgs;};
+        treefmt.config = import ./treefmt.nix;
       };
       flake = {
         nixosConfigurations = {
