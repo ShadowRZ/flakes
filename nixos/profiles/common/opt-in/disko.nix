@@ -27,7 +27,6 @@
                 settings = {
                   allowDiscards = true;
                   bypassWorkqueues = true;
-                  crypttabExtraOpts = ["fido2-device=auto"];
                 };
                 content = {
                   type = "btrfs";
@@ -55,7 +54,6 @@
                 settings = {
                   allowDiscards = true;
                   bypassWorkqueues = true;
-                  crypttabExtraOpts = ["fido2-device=auto"];
                 };
                 content = {
                   type = "swap";
