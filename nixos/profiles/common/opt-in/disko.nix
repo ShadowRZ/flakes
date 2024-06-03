@@ -20,7 +20,7 @@
               };
             };
             root = {
-              end = "100%";
+              end = "-16G";
               content = {
                 type = "luks";
                 name = "crypted";
@@ -43,11 +43,23 @@
                       mountpoint = "/nix";
                       mountOptions = ["defaults" "compress-force=zstd"];
                     };
-                    "/@swap" = {
-                      mountpoint = "/.swapvol";
-                      swap = {swapfile.size = "8G";};
-                    };
                   };
+                };
+              };
+            };
+            "swap" = {
+              size = "100%";
+              content = {
+                type = "luks";
+                name = "swap-inner";
+                settings = {
+                  allowDiscards = true;
+                  bypassWorkqueues = true;
+                  crypttabExtraOpts = ["fido2-device=auto"];
+                };
+                content = {
+                  type = "swap";
+                  resumeDevice = true;
                 };
               };
             };
