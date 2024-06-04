@@ -1,4 +1,5 @@
 {
+  config,
   inputs,
   pkgs,
   ...
@@ -31,8 +32,12 @@
     };
   };
 
-  boot.kernelModules = ["nvidia-uvm"];
-  boot.initrd.availableKernelModules = ["xhci_pci" "thunderbolt" "nvme" "usbhid" "usb_storage" "sd_mod"];
+  boot.kernelModules = ["nvidia-uvm" "legion-laptop"];
+  boot.initrd.availableKernelModules = ["xhci_pci" "thunderbolt" "nvme" "usbhid" "usb_storage" "sd_mod" "legion-laptop"];
+
+  # Legion Module
+  boot.extraModulePackages = [config.boot.kernelPackages.lenovo-legion-module];
+  environment.systemPackages = [pkgs.lenovo-legion];
 
   nixpkgs.hostPlatform = "x86_64-linux";
 }
