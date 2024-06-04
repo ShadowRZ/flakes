@@ -136,10 +136,7 @@
     };
   };
 
-  outputs = inputs @ {
-    flake-parts,
-    ...
-  }:
+  outputs = inputs @ {flake-parts, ...}:
     flake-parts.lib.mkFlake {inherit inputs;} {
       imports = [inputs.treefmt-nix.flakeModule];
       systems = inputs.flake-utils.lib.defaultSystems;
