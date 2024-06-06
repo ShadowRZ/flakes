@@ -31,14 +31,24 @@
   system.configurationRevision = lib.mkIf (inputs.self ? rev) inputs.self.rev;
 
   ## Home Manager
-  home-manager.users.shadowrz = import ../../../../home;
-
   home-manager = {
     useUserPackages = true;
     useGlobalPkgs = true;
     extraSpecialArgs = {
       inherit inputs;
       inherit (config) nur;
+    };
+    users = {
+      shadowrz = import ../../../../home;
+      root = {
+        imports = [
+          ../../../../home
+          {
+            home.username = "root";
+            home.homeDirectory = "/root";
+          }
+        ];
+      };
     };
   };
 
@@ -83,7 +93,7 @@
   console = {
     packages = with pkgs; [terminus_font];
     earlySetup = true;
-    font = "ter-v32b";
+    font = "ter-i32b";
   };
 
   # Set your time zone.
