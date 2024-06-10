@@ -11,6 +11,7 @@
       (prefix: pkgs.lib.hasPrefix prefix (pkgs.lib.getName pkg)) [
         "steam"
         "nvidia"
+        "libXNVCtrl" # ?
       ];
     # Solely allows Electron
     allowInsecurePredicate = pkg:
