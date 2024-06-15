@@ -120,6 +120,7 @@
           in {
             userChrome = ''
               @import "${theme}/lib/firefox-gnome-theme/userChrome.css";
+              @import "firefox-gnome-theme/customChrome.css";
               @import "customChrome.css";
 
               #TabsToolbar {
