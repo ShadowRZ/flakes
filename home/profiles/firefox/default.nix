@@ -13,6 +13,8 @@
           kdePackages.plasma-browser-integration
           # KeePassXC
           keepassxc
+          # Firefox PWA Plugin
+          firefoxpwa
         ];
       };
       policies = {
@@ -92,9 +94,9 @@
                 stylus
                 tabliss
                 (ublock-origin.override rec {
-                  version = "1.52.2";
+                  version = "1.58.0";
                   url = "https://github.com/gorhill/uBlock/releases/download/${version}/uBlock0_${version}.firefox.signed.xpi";
-                  sha256 = "sha256-6O4/nVl6bULbnXP+h8HVId40B1X9i/3WnkFiPt/gltY=";
+                  sha256 = "sha256-RwxWmUpxdNshV4rc5ZixWKXcCXDIfFz+iJrGMr0wheo=";
                 })
                 vimium-c
                 violentmonkey
@@ -113,6 +115,7 @@
                   measure-it
                   textarea-cache
                   tranquility-reader
+                  pwas-for-firefox
                 ]);
           }
           // (let

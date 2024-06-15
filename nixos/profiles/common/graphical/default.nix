@@ -18,6 +18,8 @@
       '')
       # Graphical packages.
       graphite-cursors
+      # Firefox PWA
+      firefoxpwa
     ];
   };
 
