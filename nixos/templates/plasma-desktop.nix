@@ -17,6 +17,7 @@
       mesa-demos # glxinfo, eglinfo
       vulkan-tools # vulkaninfo
       wayland-utils # wayland-info
+      kdePackages.krecorder
       (catppuccin-kde.override {
         flavour = ["mocha" "macchiato" "frappe" "latte"];
         accents = [
