@@ -77,10 +77,7 @@
     pulseaudio.enable = false;
     # Bluetooth
     bluetooth.enable = true;
-    opengl = {
-      enable = true;
-      driSupport = true;
-    };
+    opengl.enable = true;
   };
 
   # Enable sounds
