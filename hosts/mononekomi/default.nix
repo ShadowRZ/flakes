@@ -55,7 +55,7 @@
       foliate
       celluloid
       audacity
-      jetbrains.idea-community-bin # FIXME
+      jetbrains.idea-community
       mindustry-wayland
     ];
     hashedPasswordFile = config.sops.secrets.passwd.path;
