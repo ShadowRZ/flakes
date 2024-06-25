@@ -77,7 +77,7 @@
     pulseaudio.enable = false;
     # Bluetooth
     bluetooth.enable = true;
-    opengl.enable = true;
+    graphics.enable = true;
   };
 
   # Enable sounds
