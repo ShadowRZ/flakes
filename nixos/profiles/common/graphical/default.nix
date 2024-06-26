@@ -102,6 +102,9 @@
       source-han-serif-vf-otf # Source Han Serif Variable
       dejavu_fonts # DejaVu
       cantarell-fonts # Cantarell
+      (google-fonts.override {
+        fonts = ["Space Grotesk"];
+      })
       config.nur.repos.shadowrz.maoken-assorted-sans
       config.nur.repos.shadowrz.resource-han-rounded
       # Iosevka Builds
