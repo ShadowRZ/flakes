@@ -56,7 +56,7 @@
       celluloid
       audacity
       jetbrains.idea-community
-      mindustry-wayland
+      # mindustry-wayland
     ];
     hashedPasswordFile = config.sops.secrets.passwd.path;
   };
