@@ -14,7 +14,7 @@
       sub-align-x = "right";
       sub-font-size = 45;
       sub-justify = "auto";
-      sub-font = "Iosevka Aile Minoko";
+      sub-font = "Space Grotesk";
       sub-border-size = 3;
       sub-color = "#DE8148";
 
@@ -24,7 +24,6 @@
       gpu-hwdec-interop = "vaapi";
       vo = "gpu-next";
       tone-mapping = "auto";
-      af = "dynaudnorm=g=45:p=0.5:m=1:s=0";
       hwdec-codecs = "all";
       sub-auto = "fuzzy";
       vd-lavc-dr = "yes";
@@ -47,7 +46,7 @@
       };
       stats = {
         font = "Iosevka Aile Minoko";
-        font_mono = "Iosevka Minoko";
+        font_mono = "Iosevka Minoko-E";
       };
     };
     scripts = with pkgs.mpvScripts; [mpris];
