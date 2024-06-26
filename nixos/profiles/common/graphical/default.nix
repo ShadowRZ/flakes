@@ -50,7 +50,7 @@
         settings = {
           General.GreeterEnvironment = "QT_SCALE_FACTOR=1.25,QT_FONT_DPI=96";
           Theme = {
-            Font = "Cantarell";
+            Font = "Space Grotesk";
             CursorTheme = "graphite-light";
             CursorSize = 24;
           };

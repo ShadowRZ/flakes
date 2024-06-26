@@ -14,7 +14,7 @@
       size = 32;
     };
     font = {
-      name = "Cantarell";
+      name = "Space Grotesk";
       size = 12;
     };
     gtk2 = {
