@@ -139,8 +139,7 @@
     flake-parts.lib.mkFlake {inherit inputs;} {
       imports = [inputs.treefmt-nix.flakeModule];
       systems = inputs.flake-utils.lib.defaultSystems;
-      perSystem = {pkgs, ...}: {
-        packages = import ./pkgs {inherit pkgs;};
+      perSystem = {
         treefmt.config = import ./treefmt.nix;
       };
       flake = {
@@ -151,10 +150,7 @@
             modules = [./hosts/mononekomi];
           };
         };
-        overlays = {
-          default = import ./overlays;
-          packages = import ./pkgs/overlay.nix;
-        };
+        overlays = {default = import ./overlays;};
         nixOnDroidConfigurations = {
           akasha = inputs.nix-on-droid.lib.nixOnDroidConfiguration {
             extraSpecialArgs = {inherit inputs;};

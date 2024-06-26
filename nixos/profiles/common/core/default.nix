@@ -24,7 +24,6 @@
     inputs.berberman.overlays.default
     inputs.blender.overlays.default
     inputs.self.overlays.default
-    inputs.self.overlays.packages
   ];
 
   # Stores system revision.
