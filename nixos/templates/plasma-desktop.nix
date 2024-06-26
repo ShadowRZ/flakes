@@ -1,4 +1,5 @@
 {
+  config,
   pkgs,
   lib,
   ...
@@ -10,8 +11,7 @@
 
   environment = {
     systemPackages = with pkgs; [
-      klassy-qt6
-      kdePackages.qtstyleplugin-kvantum
+      config.nur.repos.shadowrz.klassy-qt6
       aha # aha
       clinfo # clinfo
       mesa-demos # glxinfo, eglinfo
@@ -32,22 +32,6 @@
           "blue"
           "lavender"
         ];
-      })
-      (catppuccin-kvantum.override {
-        variant = "Mocha";
-        accent = "Pink";
-      })
-      (catppuccin-kvantum.override {
-        variant = "Frappe";
-        accent = "Pink";
-      })
-      (catppuccin-kvantum.override {
-        variant = "Latte";
-        accent = "Pink";
-      })
-      (catppuccin-kvantum.override {
-        variant = "Macchiato";
-        accent = "Pink";
       })
     ];
     plasma6.excludePackages = with pkgs; [konsole khelpcenter];
