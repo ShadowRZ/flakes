@@ -6,5 +6,6 @@
     "fontconfig"
     "gtk"
     "wezterm"
+    "thunderbird"
   ];
 }
