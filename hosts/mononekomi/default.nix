@@ -34,6 +34,9 @@
   users.users.shadowrz = {
     packages = with pkgs; [
       fractal
+      cinny-desktop
+      nheko
+      kdePackages.neochat
       keepassxc
       blender_3_6 # Blender 3.6.* (Binary)
       hugo # Hugo
