@@ -40,9 +40,29 @@ config.window_frame = {
     'Source Han Sans SC VF'
   }
 ),
-font_size = 10.0,
-active_titlebar_bg = wezterm.color.get_builtin_schemes()[config.color_scheme].cursor_fg,
-inactive_titlebar_bg = wezterm.color.get_builtin_schemes()[config.color_scheme].cursor_fg
+  font_size = 10.0,
+  active_titlebar_bg = wezterm.color.get_builtin_schemes()[config.color_scheme].cursor_fg,
+  inactive_titlebar_bg = wezterm.color.get_builtin_schemes()[config.color_scheme].cursor_fg
+}
+
+config.mouse_bindings = {
+  {
+    event = { Up = { streak = 1, button = 'Left' } },
+    mods = 'NONE',
+    action = wezterm.action.CompleteSelection 'PrimarySelection',
+  },
+  -- Bind 'Up' event of CTRL-Click to open hyperlinks
+  {
+    event = { Up = { streak = 1, button = 'Left' } },
+    mods = 'CTRL',
+    action = wezterm.action.OpenLinkAtMouseCursor,
+  },
+  -- Disable the 'Down' event of CTRL-Click to avoid weird program behaviors
+  {
+    event = { Down = { streak = 1, button = 'Left' } },
+    mods = 'CTRL',
+    action = wezterm.action.Nop,
+  },
 }
 
 config.window_decorations = 'INTEGRATED_BUTTONS|RESIZE'
