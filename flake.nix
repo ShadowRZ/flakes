@@ -62,14 +62,15 @@
     };
     # Lanzaboote
     lanzaboote = {
-      url = "github:nix-community/lanzaboote/v0.3.0";
+      url = "github:nix-community/lanzaboote/v0.4.1";
       inputs = {
         nixpkgs.follows = "nixpkgs";
         flake-parts.follows = "flake-parts";
         flake-utils.follows = "flake-utils";
         crane.follows = "crane";
         flake-compat.follows = "flake-compat";
-        pre-commit-hooks-nix.follows = "pre-commit-hooks-nix";
+        # https://github.com/nix-community/lanzaboote/blob/v0.4.1/flake.nix#L11
+        pre-commit-hooks-nix.follows = "";
         rust-overlay.follows = "rust-overlay";
       };
     };
@@ -117,13 +118,6 @@
       inputs.nixpkgs.follows = "nixpkgs";
       inputs.flake-compat.follows = "flake-compat";
       inputs.flake-utils.follows = "flake-utils";
-    };
-    pre-commit-hooks-nix = {
-      url = "github:cachix/pre-commit-hooks.nix";
-      inputs.nixpkgs.follows = "nixpkgs";
-      inputs.nixpkgs-stable.follows = "nixpkgs-stable";
-      inputs.flake-compat.follows = "flake-compat";
-      inputs.gitignore.follows = "gitignore";
     };
     rust-overlay = {
       url = "github:oxalica/rust-overlay";
