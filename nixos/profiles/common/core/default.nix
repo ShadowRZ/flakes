@@ -64,7 +64,12 @@
   # Kernel
   boot.kernelPackages = pkgs.linuxKernel.packages.linux_xanmod_latest;
   boot.tmp.useTmpfs = true;
-  boot.plymouth.enable = true;
+  boot.plymouth = {
+    enable = true;
+    font = "${config.nur.repos.shadowrz.iosevka-minoko}/share/fonts/truetype/IosevkaMinoko-ExtendedBold.ttf";
+    theme = "angular_alt";
+    themePackages = [pkgs.adi1090x-plymouth-themes];
+  };
 
   services.getty.greetingLine = with config.system.nixos; ''
     NixOS ${release} (${codeName})
