@@ -39,5 +39,8 @@
   boot.extraModulePackages = [config.boot.kernelPackages.lenovo-legion-module];
   environment.systemPackages = [pkgs.lenovo-legion];
 
+  # Bolt
+  services.hardware.bolt.enable = true;
+
   nixpkgs.hostPlatform = "x86_64-linux";
 }
