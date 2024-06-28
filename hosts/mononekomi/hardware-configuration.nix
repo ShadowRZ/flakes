@@ -33,7 +33,10 @@
   };
 
   boot.kernelModules = ["nvidia-uvm" "legion-laptop"];
-  boot.initrd.availableKernelModules = ["xhci_pci" "thunderbolt" "nvme" "usbhid" "usb_storage" "sd_mod" "legion-laptop"];
+  boot.initrd = {
+    availableKernelModules = ["xhci_pci" "thunderbolt" "nvme" "usbhid" "usb_storage" "sd_mod" "legion-laptop" "i915"];
+    kernelModules = ["i915"];
+  };
 
   # Legion Module
   boot.extraModulePackages = [config.boot.kernelPackages.lenovo-legion-module];
