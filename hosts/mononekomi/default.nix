@@ -36,15 +36,13 @@
       fractal
       cinny-desktop
       nheko
-      kdePackages.neochat
       keepassxc
       blender_3_6 # Blender 3.6.* (Binary)
       hugo # Hugo
-      kdePackages.plasma-sdk # Plasma SDK
-      libreoffice-fresh # LibreOffice Fresh
       onlyoffice-bin_latest
       ffmpeg-full # FFmpeg
-      kdePackages.kdenlive
+      gammaray
+      helvum
       yt-dlp
       blanket
       vscode # VS Code
@@ -53,13 +51,32 @@
       gimp # GIMP
       inkscape # Inkscape
       d-spy # D-Spy
+      meld # Meld
       mangohud
       logseq
       foliate
       celluloid
       audacity
+      apostrophe
       jetbrains.idea-community
+      libreoffice-fresh # LibreOffice Fresh
+      (deadbeef-with-plugins.override {
+        plugins = with deadbeefPlugins; [
+          headerbar-gtk3
+          mpris2
+          musical-spectrum
+          statusnotifier
+        ];
+      })
+      waylyrics
       # mindustry-wayland
+      ## KDE Packages
+      kdePackages.kdenlive
+      kdePackages.kcalc
+      kdePackages.kcharselect
+      kdePackages.kontact
+      kdePackages.kmail
+      kdePackages.plasma-sdk # Plasma SDK
     ];
     hashedPasswordFile = config.sops.secrets.passwd.path;
   };
