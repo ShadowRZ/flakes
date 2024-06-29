@@ -60,14 +60,7 @@
       apostrophe
       jetbrains.idea-community
       libreoffice-fresh # LibreOffice Fresh
-      (deadbeef-with-plugins.override {
-        plugins = with deadbeefPlugins; [
-          headerbar-gtk3
-          mpris2
-          musical-spectrum
-          statusnotifier
-        ];
-      })
+      qmmp # Qmmp
       waylyrics
       # mindustry-wayland
       ## KDE Packages
