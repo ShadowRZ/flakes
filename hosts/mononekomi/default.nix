@@ -69,6 +69,7 @@
       kdePackages.kcharselect
       kdePackages.kontact
       kdePackages.kmail
+      kdePackages.kmail-account-wizard
       kdePackages.plasma-sdk # Plasma SDK
       ## Akonadi
       kdePackages.akonadi
