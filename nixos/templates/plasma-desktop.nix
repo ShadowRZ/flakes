@@ -45,8 +45,12 @@
   systemd.user.services.fcitx5-daemon = lib.mkForce {};
 
   home-manager.sharedModules = [
-    {
+    ({config, ...}: {
       systemd.user.services."app-org.fcitx.Fcitx5@autostart" = lib.mkForce {};
-    }
+
+      # Fix some HiDPI problems with QtWebEngine
+      home.sessionVariables.QT_SCALE_FACTOR_ROUNDING_POLICY = "RoundPreferFloor";
+      systemd.user.sessionVariables.QT_SCALE_FACTOR_ROUNDING_POLICY = config.home.sessionVariables.QT_SCALE_FACTOR_ROUNDING_POLICY;
+    })
   ];
 }
