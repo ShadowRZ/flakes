@@ -66,12 +66,9 @@
   boot.tmp.useTmpfs = true;
   boot.plymouth = {
     enable = true;
-    font = "${config.nur.repos.shadowrz.iosevka-minoko}/share/fonts/truetype/IosevkaMinoko-ExtendedBold.ttf";
+    font = "${config.nur.repos.shadowrz.iosevka-minoko}/share/fonts/truetype/IosevkaMinoko-ExtendedLight.ttf";
     theme = "angular_alt";
     themePackages = [pkgs.adi1090x-plymouth-themes];
-    extraConfig = ''
-      DeviceScale=2
-    '';
   };
 
   services.getty.greetingLine = with config.system.nixos; ''
