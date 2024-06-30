@@ -8,13 +8,14 @@
     users = {
       shadowrz = {
         directories = [
+          "Desktop"
           "Documents"
           "Downloads"
           "Pictures"
           "Projects"
-          "Maildir"
           "Music"
           "Public"
+          "Templates"
           "Videos"
           ".android"
           ".cache"
