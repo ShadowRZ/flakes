@@ -26,7 +26,6 @@
           ".mitmproxy"
           ".mozilla"
           ".renpy"
-          ".thunderbird"
           ".var"
           ".vscode"
           {
