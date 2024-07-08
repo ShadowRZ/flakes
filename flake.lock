@@ -85,6 +85,32 @@
         "type": "github"
       }
     },
+    "emacs-overlay": {
+      "inputs": {
+        "flake-utils": [
+          "flake-utils"
+        ],
+        "nixpkgs": [
+          "nixpkgs"
+        ],
+        "nixpkgs-stable": [
+          "nixpkgs-stable"
+        ]
+      },
+      "locked": {
+        "lastModified": 1720429744,
+        "narHash": "sha256-DFDThlsRInZPkbReZgXOhDv3CqsOkf8KEs1RkGTb4R4=",
+        "owner": "nix-community",
+        "repo": "emacs-overlay",
+        "rev": "743e01cc6f5be48230b99178e3f14b34da84022e",
+        "type": "github"
+      },
+      "original": {
+        "owner": "nix-community",
+        "repo": "emacs-overlay",
+        "type": "github"
+      }
+    },
     "flake-compat": {
       "locked": {
         "lastModified": 1696426674,
@@ -446,6 +472,7 @@
         "blender": "blender",
         "crane": "crane",
         "disko": "disko",
+        "emacs-overlay": "emacs-overlay",
         "flake-compat": "flake-compat",
         "flake-parts": "flake-parts",
         "flake-utils": "flake-utils",

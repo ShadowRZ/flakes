@@ -35,6 +35,13 @@
       inputs.nixpkgs.follows = "nixpkgs";
       inputs.nixpkgs-stable.follows = "nixpkgs-stable";
     };
+    # Emacs Overlay
+    emacs-overlay = {
+      url = "github:nix-community/emacs-overlay";
+      inputs.nixpkgs.follows = "nixpkgs";
+      inputs.nixpkgs-stable.follows = "nixpkgs-stable";
+      inputs.flake-utils.follows = "flake-utils";
+    };
     # Impermanence
     impermanence = {url = "github:nix-community/impermanence";};
     # Blender (Binary)
