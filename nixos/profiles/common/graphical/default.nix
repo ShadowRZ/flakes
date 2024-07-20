@@ -80,9 +80,6 @@
     graphics.enable = true;
   };
 
-  # Enable sounds
-  sound.enable = true;
-
   xdg.portal = {
     enable = true;
     # Enable GTK portal
@@ -105,12 +102,14 @@
       (google-fonts.override {
         fonts = ["Space Grotesk"];
       })
+      (iosevka-bin.override {
+        variant = "Aile";
+      })
       config.nur.repos.shadowrz.maoken-assorted-sans
       config.nur.repos.shadowrz.resource-han-rounded
       # Iosevka Builds
       config.nur.repos.shadowrz.iosevka-minoko
       config.nur.repos.shadowrz.iosevka-minoko-term
-      config.nur.repos.shadowrz.iosevka-aile-minoko
       config.nur.repos.shadowrz.iosevka-minoko-e
     ];
     fontconfig = {
