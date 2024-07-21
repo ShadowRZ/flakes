@@ -29,7 +29,8 @@
   i18n = {
     # Fcitx 5
     inputMethod = {
-      enabled = "fcitx5";
+      enable = true;
+      type = "fcitx5";
       fcitx5 = {
         plasma6Support = true;
         waylandFrontend = true;
