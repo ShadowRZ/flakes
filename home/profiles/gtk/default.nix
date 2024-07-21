@@ -10,7 +10,7 @@
   in {
     enable = true;
     cursorTheme = {
-      name = "graphite-light";
+      name = "Fuchsia";
       size = 32;
     };
     font = {

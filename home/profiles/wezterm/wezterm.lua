@@ -3,7 +3,8 @@ if wezterm.config_builder then
   config = wezterm.config_builder()
 end
 
-config.xcursor_theme = 'graphite-light'
+config.xcursor_theme = 'Fuchsia'
+config.xcursor_size = 32
 config.color_scheme = 'Catppuccin Mocha'
 config.font_size = 19.0
 
