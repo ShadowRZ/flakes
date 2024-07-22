@@ -49,6 +49,9 @@
           "security.insecure_connection_text.pbmode.enabled" = true;
           # Set UI density to normal
           "browser.uidensity" = 0;
+          # Disable PPA
+          # https://michael.kjorling.se/blog/2024/disabling-privacy-preserving-ad-measurement-in-firefox-128/
+          "dom.private-attribution.submission.enabled" = false;
         };
       };
       # Profiles
