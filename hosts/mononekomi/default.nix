@@ -62,7 +62,9 @@
       libreoffice-fresh # LibreOffice Fresh
       qmmp # Qmmp
       waylyrics
-      # mindustry-wayland
+      lapce
+      ungoogled-chromium
+      mindustry-wayland
       ## KDE Packages
       kdePackages.kdenlive
       kdePackages.kcalc
