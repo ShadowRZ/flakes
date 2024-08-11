@@ -21,6 +21,7 @@
           ".cache"
           ".cargo"
           ".config" # FIXME
+          ".gradle"
           ".java"
           ".local"
           ".logseq"
