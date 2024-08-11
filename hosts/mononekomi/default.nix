@@ -39,9 +39,7 @@
       keepassxc
       blender_3_6 # Blender 3.6.* (Binary)
       hugo # Hugo
-      onlyoffice-bin_latest
       ffmpeg-full # FFmpeg
-      gammaray
       helvum
       yt-dlp
       blanket
@@ -53,17 +51,14 @@
       d-spy # D-Spy
       meld # Meld
       mangohud
-      logseq
       foliate
       celluloid
       audacity
       apostrophe
-      jetbrains.idea-community
       libreoffice-fresh # LibreOffice Fresh
       qmmp # Qmmp
       waylyrics
-      lapce
-      ungoogled-chromium
+      android-studio
       mindustry-wayland
       ## KDE Packages
       kdePackages.kdenlive
