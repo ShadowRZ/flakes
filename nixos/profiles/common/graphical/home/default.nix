@@ -7,5 +7,6 @@
     "gtk"
     "wezterm"
     "emacs"
+    "obs"
   ];
 }
