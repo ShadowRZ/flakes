@@ -5,7 +5,6 @@
       substituters = [
         "https://mirrors.ustc.edu.cn/nix-channels/store?priority=10"
         "https://mirror.sjtu.edu.cn/nix-channels/store?priority=10"
-        "https://mirrors.bfsu.edu.cn/nix-channels/store?priority=10"
         "https://shadowrz.cachix.org?priority=20"
         "https://berberman.cachix.org?priority=20"
         "https://nix-community.cachix.org?priority=20"
