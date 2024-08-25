@@ -5,7 +5,7 @@
     "dconf"
     "fontconfig"
     "gtk"
-    "wezterm"
+    "kitty"
     "emacs"
     "obs"
   ];
