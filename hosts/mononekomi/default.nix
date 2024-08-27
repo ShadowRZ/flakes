@@ -41,7 +41,7 @@
       helvum
       yt-dlp
       blanket
-      vscode # VS Code
+      vscode-fhs # VS Code
       geany # Geany
       renpy
       gimp # GIMP
