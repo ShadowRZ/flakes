@@ -88,7 +88,7 @@
 
   home-manager = {
     useGlobalPkgs = true;
-    config = ../../home;
+    config = ../home;
     sharedModules = [
       {
         imports = with inputs; [

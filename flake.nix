@@ -155,7 +155,7 @@
         nixOnDroidConfigurations = {
           akasha = inputs.nix-on-droid.lib.nixOnDroidConfiguration {
             extraSpecialArgs = {inherit inputs;};
-            modules = [./hosts/akasha];
+            modules = [./nix-on-droid/configurations.nix];
             pkgs = import inputs.nixpkgs {
               system = "aarch64-linux";
               overlays = [
