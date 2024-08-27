@@ -4,5 +4,5 @@
   ### nix
   programs.deadnix.enable = true;
   programs.statix.enable = true;
-  programs.alejandra.enable = true;
+  programs.nixfmt.enable = true;
 }

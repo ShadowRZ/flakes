@@ -3,10 +3,16 @@
 
   inputs = {
     # Nixpkgs
-    nixpkgs = {url = "github:NixOS/nixpkgs/nixos-unstable";};
-    nixpkgs-stable = {url = "github:NixOS/nixpkgs/nixos-24.05";};
+    nixpkgs = {
+      url = "github:NixOS/nixpkgs/nixos-unstable";
+    };
+    nixpkgs-stable = {
+      url = "github:NixOS/nixpkgs/nixos-24.05";
+    };
     # NixOS Sensible
-    nixos-sensible = {url = "github:Guanran928/nixos-sensible";};
+    nixos-sensible = {
+      url = "github:Guanran928/nixos-sensible";
+    };
     # Flake Utils
     flake-utils = {
       url = "github:numtide/flake-utils";
@@ -28,7 +34,9 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     # NUR
-    nur = {url = "github:nix-community/NUR";};
+    nur = {
+      url = "github:nix-community/NUR";
+    };
     # Sops-Nix
     sops-nix = {
       url = "github:Mic92/sops-nix";
@@ -43,7 +51,9 @@
       inputs.flake-utils.follows = "flake-utils";
     };
     # Impermanence
-    impermanence = {url = "github:nix-community/impermanence";};
+    impermanence = {
+      url = "github:nix-community/impermanence";
+    };
     # Blender (Binary)
     blender = {
       url = "github:edolstra/nix-warez?dir=blender";
@@ -93,7 +103,9 @@
       inputs.nvfetcher.follows = "nvfetcher";
     };
     ### Dedupes
-    systems = {url = "github:nix-systems/default";};
+    systems = {
+      url = "github:nix-systems/default";
+    };
     crane = {
       url = "github:ipetkov/crane";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -136,9 +148,10 @@
     };
   };
 
-  outputs = inputs @ {flake-parts, ...}:
-    flake-parts.lib.mkFlake {inherit inputs;} {
-      imports = [inputs.treefmt-nix.flakeModule];
+  outputs =
+    inputs@{ flake-parts, ... }:
+    flake-parts.lib.mkFlake { inherit inputs; } {
+      imports = [ inputs.treefmt-nix.flakeModule ];
       systems = inputs.flake-utils.lib.defaultSystems;
       perSystem = {
         treefmt.config = import ./treefmt.nix;
@@ -147,15 +160,21 @@
         nixosConfigurations = {
           mononekomi = inputs.nixpkgs.lib.nixosSystem {
             system = "x86_64-linux";
-            specialArgs = {inherit inputs;};
-            modules = [./hosts/mononekomi/configuration.nix];
+            specialArgs = {
+              inherit inputs;
+            };
+            modules = [ ./hosts/mononekomi/configuration.nix ];
           };
         };
-        overlays = {default = import ./overlays;};
+        overlays = {
+          default = import ./overlays;
+        };
         nixOnDroidConfigurations = {
           akasha = inputs.nix-on-droid.lib.nixOnDroidConfiguration {
-            extraSpecialArgs = {inherit inputs;};
-            modules = [./nix-on-droid/configurations.nix];
+            extraSpecialArgs = {
+              inherit inputs;
+            };
+            modules = [ ./nix-on-droid/configurations.nix ];
             pkgs = import inputs.nixpkgs {
               system = "aarch64-linux";
               overlays = [

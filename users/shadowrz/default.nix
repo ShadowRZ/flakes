@@ -1,4 +1,5 @@
-{pkgs, ...}: {
+{ pkgs, ... }:
+{
   users.users.shadowrz = {
     uid = 1000;
     isNormalUser = true;
@@ -7,7 +8,7 @@
   };
 
   home-manager.users.shadowrz = {
-    imports = [../../home];
+    imports = [ ../../home ];
 
     home = {
       username = "shadowrz";

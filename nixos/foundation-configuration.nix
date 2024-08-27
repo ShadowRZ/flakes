@@ -4,7 +4,8 @@
   pkgs,
   lib,
   ...
-}: {
+}:
+{
   imports = with inputs; [
     # Global Flake Inputs
     nixpkgs.nixosModules.notDetected
@@ -42,10 +43,14 @@
     defaultSopsFile = ../secrets.yaml;
     age = {
       keyFile = "/var/lib/sops.key";
-      sshKeyPaths = [];
+      sshKeyPaths = [ ];
     };
-    gnupg.sshKeyPaths = [];
-    secrets = {passwd = {neededForUsers = true;};};
+    gnupg.sshKeyPaths = [ ];
+    secrets = {
+      passwd = {
+        neededForUsers = true;
+      };
+    };
   };
 
   boot.tmp.useTmpfs = true;
@@ -53,7 +58,7 @@
     enable = true;
     font = "${config.nur.repos.shadowrz.iosevka-minoko}/share/fonts/truetype/IosevkaMinoko-ExtendedLight.ttf";
     theme = "angular_alt";
-    themePackages = [pkgs.adi1090x-plymouth-themes];
+    themePackages = [ pkgs.adi1090x-plymouth-themes ];
   };
 
   services.getty.greetingLine = with config.system.nixos; ''
@@ -66,7 +71,7 @@
 
   # Configure fallback console.
   console = {
-    packages = with pkgs; [terminus_font];
+    packages = with pkgs; [ terminus_font ];
     earlySetup = true;
     font = "ter-i32b";
   };
@@ -105,7 +110,7 @@
       unar
     ];
     # Link /share/zsh
-    pathsToLink = ["/share/zsh"];
+    pathsToLink = [ "/share/zsh" ];
     shellAliases = lib.mkForce {
       df = "df -h";
       du = "du -h";
@@ -137,7 +142,9 @@
       enable = true;
       enableLsColors = false;
     };
-    ssh = {startAgent = true;};
+    ssh = {
+      startAgent = true;
+    };
     # Disable command-not-found as it's unavliable in Flakes build
     command-not-found.enable = lib.mkForce false;
     # Nix-Index
@@ -161,7 +168,7 @@
     # lost LOCALE_ARCHIVE_2_27 and taken LOCALE_ARCHIVE which is not built
     # with all locales like Home Manager.
     # Especially Perl which gave warning if it can't use such locale.
-    supportedLocales = ["all"];
+    supportedLocales = [ "all" ];
   };
 
   security.pam.loginLimits = [

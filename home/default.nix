@@ -1,5 +1,6 @@
 # Shared configuration.
-{pkgs, ...}: {
+{ pkgs, ... }:
+{
   home = {
     shellAliases = {
       df = "df -h";
@@ -42,5 +43,5 @@
   programs.ripgrep.enable = true;
   programs.zoxide.enable = true;
 
-  home.packages = with pkgs; [fd];
+  home.packages = with pkgs; [ fd ];
 }

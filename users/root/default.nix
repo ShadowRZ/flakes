@@ -1,6 +1,6 @@
 {
   home-manager.users.root = {
-    imports = [../../home];
+    imports = [ ../../home ];
 
     home = {
       username = "root";

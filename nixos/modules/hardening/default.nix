@@ -2,7 +2,7 @@
   ### Basic hardening
   # ref: https://github.com/NixOS/nixpkgs/blob/master/nixos/modules/profiles/hardened.nix
   # ref: https://madaidans-insecurities.github.io/guides/linux-hardening.html
-  imports = [./sysctl.nix];
+  imports = [ ./sysctl.nix ];
 
   security.sudo-rs.enable = true;
   security.sudo-rs.execWheelOnly = true;

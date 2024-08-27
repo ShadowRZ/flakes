@@ -1,1 +1,6 @@
-{imports = [./nix.nix ./flakes.nix];}
+{
+  imports = [
+    ./nix.nix
+    ./flakes.nix
+  ];
+}

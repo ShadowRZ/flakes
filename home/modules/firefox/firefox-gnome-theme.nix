@@ -31,7 +31,7 @@ stdenvNoCC.mkDerivation rec {
   meta = with lib; {
     homepage = "https://github.com/rafaelmardojai/firefox-gnome-theme";
     description = "A GNOME theme for Firefox";
-    license = with licenses; [unlicense];
+    license = with licenses; [ unlicense ];
     platforms = platforms.all;
   };
 }

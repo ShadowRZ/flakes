@@ -2,7 +2,8 @@
   pkgs,
   lib,
   ...
-}: {
+}:
+{
   imports = [
     # Foundation
     ../../nixos/foundation-configuration.nix
@@ -35,7 +36,7 @@
   services.fwupd.enable = true;
 
   # Enable NVIDIA
-  services.xserver.videoDrivers = ["nvidia"];
+  services.xserver.videoDrivers = [ "nvidia" ];
 
   networking.stevenblack.enable = true;
   services.system76-scheduler.enable = true;
@@ -48,10 +49,13 @@
   # Unfree configs
   nixpkgs.config = {
     # Solely allows some packages
-    allowUnfreePredicate = pkg:
-      builtins.elem (lib.getName pkg) ["vscode" "code"]
-      || pkgs.lib.any
-      (prefix: pkgs.lib.hasPrefix prefix (pkgs.lib.getName pkg)) [
+    allowUnfreePredicate =
+      pkg:
+      builtins.elem (lib.getName pkg) [
+        "vscode"
+        "code"
+      ]
+      || pkgs.lib.any (prefix: pkgs.lib.hasPrefix prefix (pkgs.lib.getName pkg)) [
         "steam"
         "nvidia"
         "android-studio"
@@ -59,8 +63,7 @@
         "libXNVCtrl" # ?
       ];
     # Solely allows Electron
-    allowInsecurePredicate = pkg:
-      builtins.elem (pkgs.lib.getName pkg) ["electron"];
+    allowInsecurePredicate = pkg: builtins.elem (pkgs.lib.getName pkg) [ "electron" ];
     # https://developer.android.google.cn/studio/terms
     android_sdk.accept_license = true;
   };

@@ -3,8 +3,11 @@
   # Persistent files
   environment.persistence."/persist" = {
     hideMounts = true;
-    directories = ["/var/log" "/var/lib"];
-    files = ["/etc/machine-id"];
+    directories = [
+      "/var/log"
+      "/var/lib"
+    ];
+    files = [ "/etc/machine-id" ];
     users = {
       shadowrz = {
         directories = [
@@ -42,7 +45,7 @@
       };
       root = {
         home = "/root";
-        directories = [".cache/nix"];
+        directories = [ ".cache/nix" ];
       };
     };
   };

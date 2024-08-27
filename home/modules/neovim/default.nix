@@ -1,4 +1,5 @@
-{pkgs, ...}: {
+{ pkgs, ... }:
+{
   programs.neovim = {
     enable = true;
     vimAlias = true;
@@ -14,15 +15,16 @@
       editorconfig-nvim
       catppuccin-nvim
       # Tree Sitter
-      (nvim-treesitter.withPlugins (plugins:
-        with plugins; [
+      (nvim-treesitter.withPlugins (
+        plugins: with plugins; [
           tree-sitter-nix
           tree-sitter-lua
           tree-sitter-rust
           tree-sitter-c
           tree-sitter-cpp
           tree-sitter-python
-        ]))
+        ]
+      ))
     ];
   };
 }

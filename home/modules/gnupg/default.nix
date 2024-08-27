@@ -2,7 +2,8 @@
   config,
   pkgs,
   ...
-}: {
+}:
+{
   ### GnuPG
   programs.gpg = {
     enable = true;
@@ -32,6 +33,5 @@
     };
   };
 
-  systemd.user.sessionVariables.GNUPGHOME =
-    config.home.sessionVariables.GNUPGHOME;
+  systemd.user.sessionVariables.GNUPGHOME = config.home.sessionVariables.GNUPGHOME;
 }

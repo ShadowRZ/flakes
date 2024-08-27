@@ -2,7 +2,8 @@
   pkgs,
   nur,
   ...
-}: {
+}:
+{
   programs = {
     ### Firefox
     firefox = {
@@ -77,7 +78,8 @@
               "gnomeTheme.activeTabContrast" = true;
             };
             # Firefox extensions
-            extensions = with nur.repos.rycee.firefox-addons;
+            extensions =
+              with nur.repos.rycee.firefox-addons;
               [
                 clearurls
                 cliget
@@ -105,12 +107,14 @@
                 violentmonkey
                 vue-js-devtools
               ]
-              ++ (let
-                addons = pkgs.callPackage ./addons.nix {
-                  inherit (nur.repos.rycee.firefox-addons) buildFirefoxXpiAddon;
-                };
-              in
-                with addons; [
+              ++ (
+                let
+                  addons = pkgs.callPackage ./addons.nix {
+                    inherit (nur.repos.rycee.firefox-addons) buildFirefoxXpiAddon;
+                  };
+                in
+                with addons;
+                [
                   copy-linktab-name-and-url
                   custom-scrollbars
                   emoji-sav
@@ -119,28 +123,32 @@
                   textarea-cache
                   tranquility-reader
                   pwas-for-firefox
-                ]);
+                ]
+              );
           }
-          // (let
-            theme = pkgs.callPackage ./firefox-gnome-theme.nix {};
-          in {
-            userChrome = ''
-              @import "${theme}/lib/firefox-gnome-theme/userChrome.css";
-              @import "firefox-gnome-theme/customChrome.css";
-              @import "customChrome.css";
+          // (
+            let
+              theme = pkgs.callPackage ./firefox-gnome-theme.nix { };
+            in
+            {
+              userChrome = ''
+                @import "${theme}/lib/firefox-gnome-theme/userChrome.css";
+                @import "firefox-gnome-theme/customChrome.css";
+                @import "customChrome.css";
 
-              #TabsToolbar {
-                display: none !important;
-              }
+                #TabsToolbar {
+                  display: none !important;
+                }
 
-              #sidebar-header {
-                display: none !important;
-              }
-            '';
-            userContent = ''
-              @import "${theme}/lib/firefox-gnome-theme/userContent.css";
-            '';
-          });
+                #sidebar-header {
+                  display: none !important;
+                }
+              '';
+              userContent = ''
+                @import "${theme}/lib/firefox-gnome-theme/userContent.css";
+              '';
+            }
+          );
       };
     };
   };

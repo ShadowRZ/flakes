@@ -16,7 +16,10 @@
                 type = "filesystem";
                 format = "vfat";
                 mountpoint = "/boot";
-                mountOptions = ["defaults" "umask=0077"];
+                mountOptions = [
+                  "defaults"
+                  "umask=0077"
+                ];
               };
             };
             root = {
@@ -30,17 +33,23 @@
                 };
                 content = {
                   type = "btrfs";
-                  extraArgs = ["-f"]; # Override existing partition
+                  extraArgs = [ "-f" ]; # Override existing partition
                   # Subvolumes must set a mountpoint in order to be mounted,
                   # unless their parent is mounted
                   subvolumes = {
                     "/@persist" = {
                       mountpoint = "/persist";
-                      mountOptions = ["defaults" "compress-force=zstd"];
+                      mountOptions = [
+                        "defaults"
+                        "compress-force=zstd"
+                      ];
                     };
                     "/@nix" = {
                       mountpoint = "/nix";
-                      mountOptions = ["defaults" "compress-force=zstd"];
+                      mountOptions = [
+                        "defaults"
+                        "compress-force=zstd"
+                      ];
                     };
                   };
                 };
@@ -68,7 +77,13 @@
     nodev = {
       "/" = {
         fsType = "tmpfs";
-        mountOptions = ["defaults" "size=2G" "mode=755" "nosuid" "nodev"];
+        mountOptions = [
+          "defaults"
+          "size=2G"
+          "mode=755"
+          "nosuid"
+          "nodev"
+        ];
       };
     };
   };

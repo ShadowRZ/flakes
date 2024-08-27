@@ -3,7 +3,8 @@
   inputs,
   pkgs,
   ...
-}: {
+}:
+{
   imports = [
     inputs.nixpkgs.nixosModules.notDetected
     inputs.nixos-sensible.nixosModules.zram
@@ -24,7 +25,10 @@
       };
     };
     graphics = {
-      extraPackages = with pkgs; [intel-compute-runtime intel-media-driver];
+      extraPackages = with pkgs; [
+        intel-compute-runtime
+        intel-media-driver
+      ];
       extraPackages32 = with pkgs.pkgsi686Linux; [
         intel-media-driver
       ];
@@ -32,15 +36,27 @@
     };
   };
 
-  boot.kernelModules = ["nvidia-uvm" "legion-laptop"];
+  boot.kernelModules = [
+    "nvidia-uvm"
+    "legion-laptop"
+  ];
   boot.initrd = {
-    availableKernelModules = ["xhci_pci" "thunderbolt" "nvme" "usbhid" "usb_storage" "sd_mod" "legion-laptop" "i915"];
-    kernelModules = ["i915"];
+    availableKernelModules = [
+      "xhci_pci"
+      "thunderbolt"
+      "nvme"
+      "usbhid"
+      "usb_storage"
+      "sd_mod"
+      "legion-laptop"
+      "i915"
+    ];
+    kernelModules = [ "i915" ];
   };
 
   # Legion Module
-  boot.extraModulePackages = [config.boot.kernelPackages.lenovo-legion-module];
-  environment.systemPackages = [pkgs.lenovo-legion];
+  boot.extraModulePackages = [ config.boot.kernelPackages.lenovo-legion-module ];
+  environment.systemPackages = [ pkgs.lenovo-legion ];
 
   # Bolt
   services.hardware.bolt.enable = true;

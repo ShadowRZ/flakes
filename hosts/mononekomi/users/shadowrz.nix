@@ -2,8 +2,9 @@
   config,
   pkgs,
   ...
-}: {
-  imports = [../../../users/shadowrz];
+}:
+{
+  imports = [ ../../../users/shadowrz ];
 
   home-manager.users.shadowrz.imports = [
     ../../../home/modules/firefox
@@ -17,7 +18,10 @@
   ];
 
   users.users.shadowrz = {
-    extraGroups = ["wheel" "networkmanager"];
+    extraGroups = [
+      "wheel"
+      "networkmanager"
+    ];
     packages = with pkgs; [
       fractal
       keepassxc

@@ -18,9 +18,13 @@
       ];
       builders-use-substitutes = true;
       auto-optimise-store = true;
-      trusted-users = ["@wheel"];
+      trusted-users = [ "@wheel" ];
       keep-derivations = true;
-      experimental-features = ["ca-derivations" "auto-allocate-uids" "cgroups"];
+      experimental-features = [
+        "ca-derivations"
+        "auto-allocate-uids"
+        "cgroups"
+      ];
       auto-allocate-uids = true;
       use-cgroups = true;
       use-xdg-base-directories = true;

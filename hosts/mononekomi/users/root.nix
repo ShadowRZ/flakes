@@ -1,3 +1,3 @@
 {
-  imports = [../../../users/root];
+  imports = [ ../../../users/root ];
 }
