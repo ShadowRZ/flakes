@@ -3,35 +3,21 @@
   pkgs,
   ...
 }: {
-  imports = [
-    # OS
-    ../../nixos/profiles/desktop
-    ../../nixos/templates/plasma-desktop.nix
-    ../../nixos/templates/virtualisation.nix
-    ../../nixos/profiles/common/opt-in/networkmanager.nix
-    ../../nixos/profiles/common/opt-in/fido2-login.nix
-    ../../nixos/profiles/common/opt-in/silent-boot.nix
-    # Hardware
-    ./hardware-configuration.nix
-    ./anti-feature.nix
-    ../../nixos/profiles/common/opt-in/lanzaboote.nix
-    ../../nixos/profiles/common/opt-in/impermanence.nix
-    ../../nixos/profiles/common/opt-in/disko.nix
+  imports = [../../../users/shadowrz];
+
+  home-manager.users.shadowrz.imports = [
+    ../../../home/modules/firefox
+    ../../../home/modules/mpv
+    ../../../home/modules/dconf
+    ../../../home/modules/fontconfig
+    ../../../home/modules/gtk
+    ../../../home/modules/kitty
+    ../../../home/modules/emacs
+    ../../../home/modules/obs
   ];
 
-  _module.args.disks = ["/dev/disk/by-path/pci-0000:06:00.0-nvme-1"];
-
-  networking.hostName = "mononekomi";
-
-  boot.loader.timeout = 0;
-
-  # fwupd, also deals with UEFI capsule updates used by the host machine.
-  services.fwupd.enable = true;
-
-  # Enable NVIDIA
-  services.xserver.videoDrivers = ["nvidia"];
-
   users.users.shadowrz = {
+    extraGroups = ["wheel" "networkmanager"];
     packages = with pkgs; [
       fractal
       keepassxc

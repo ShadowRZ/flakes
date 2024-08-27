@@ -4,23 +4,30 @@
   lib,
   ...
 }: {
-  home-manager.users.shadowrz = import ./home;
-
   environment = {
     systemPackages = with pkgs; [
       adw-gtk3
       # wl-clipboard
       wl-clipboard
-      # Used to configure SDDM Breeze Theme
-      (writeTextDir "share/sddm/themes/breeze/theme.conf.user" ''
-        [General]
-        background=${nixos-artwork.wallpapers.nineish}/share/backgrounds/nixos/nix-wallpaper-nineish.png
-      '')
       # Graphical packages.
       fuchsia-cursor
-      # Firefox PWA
-      firefoxpwa
     ];
+  };
+
+  services = {
+    xserver = {
+      enable = true;
+      excludePackages = [pkgs.xterm];
+    };
+    # Pipewire
+    pipewire = {
+      enable = true;
+      alsa.enable = true;
+      pulse.enable = true;
+      # If you want to use JACK applications, uncomment this
+      jack.enable = true;
+    };
+    gvfs.enable = true;
   };
 
   # Clashes with system path
@@ -41,37 +48,6 @@
         ];
       };
     };
-  };
-
-  services = {
-    displayManager = {
-      # SDDM
-      sddm = {
-        enable = true;
-        settings = {
-          General.GreeterEnvironment = "QT_SCALE_FACTOR=1.25,QT_FONT_DPI=96";
-          Theme = {
-            Font = "Space Grotesk";
-            CursorTheme = "Fuchsia";
-            CursorSize = 32;
-          };
-        };
-        wayland.enable = true;
-      };
-    };
-    xserver = {
-      enable = true;
-      excludePackages = [pkgs.xterm];
-    };
-    # Pipewire
-    pipewire = {
-      enable = true;
-      alsa.enable = true;
-      pulse.enable = true;
-      # If you want to use JACK applications, uncomment this
-      jack.enable = true;
-    };
-    gvfs.enable = true;
   };
 
   hardware = {

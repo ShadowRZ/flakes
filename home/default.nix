@@ -1,14 +1,6 @@
 # Shared configuration.
-{
-  config,
-  pkgs,
-  lib,
-  ...
-}: {
+{pkgs, ...}: {
   home = {
-    username = lib.mkDefault "shadowrz";
-    homeDirectory = lib.mkDefault "/home/${config.home.username}";
-
     shellAliases = {
       df = "df -h";
       du = "du -h";
@@ -35,15 +27,15 @@
   };
 
   imports = [
-    ./programs/dircolors
-    ./programs/direnv
-    ./programs/git
-    ./programs/gnupg
-    ./programs/neovim
-    ./programs/nix
-    ./programs/htop
-    ./programs/starship
-    ./programs/zsh
+    ./modules/dircolors
+    ./modules/direnv
+    ./modules/git
+    ./modules/gnupg
+    ./modules/neovim
+    ./modules/nix
+    ./modules/htop
+    ./modules/starship
+    ./modules/zsh
   ];
 
   programs.aria2.enable = true;

@@ -5,20 +5,18 @@
   lib,
   ...
 }: {
-  imports =
-    [./hardening ./networking ./nix]
-    ++ (with inputs; [
-      # Global Flake Inputs
-      nixpkgs.nixosModules.notDetected
-      impermanence.nixosModules.impermanence
-      home-manager.nixosModules.home-manager
-      sops-nix.nixosModules.sops
-      nur.nixosModules.nur
-      nix-indexdb.nixosModules.nix-index
-      disko.nixosModules.disko
-      nixos-sensible.nixosModules.default
-      lanzaboote.nixosModules.lanzaboote
-    ]);
+  imports = with inputs; [
+    # Global Flake Inputs
+    nixpkgs.nixosModules.notDetected
+    impermanence.nixosModules.impermanence
+    home-manager.nixosModules.home-manager
+    sops-nix.nixosModules.sops
+    nur.nixosModules.nur
+    nix-indexdb.nixosModules.nix-index
+    disko.nixosModules.disko
+    nixos-sensible.nixosModules.default
+    lanzaboote.nixosModules.lanzaboote
+  ];
 
   nixpkgs.overlays = [
     inputs.berberman.overlays.default
@@ -38,22 +36,10 @@
       inherit inputs;
       inherit (config) nur;
     };
-    users = {
-      shadowrz = import ../../../../home;
-      root = {
-        imports = [
-          ../../../../home
-          {
-            home.username = "root";
-            home.homeDirectory = "/root";
-          }
-        ];
-      };
-    };
   };
 
   sops = {
-    defaultSopsFile = ../../../../secrets.yaml;
+    defaultSopsFile = ../secrets.yaml;
     age = {
       keyFile = "/var/lib/sops.key";
       sshKeyPaths = [];
@@ -62,8 +48,6 @@
     secrets = {passwd = {neededForUsers = true;};};
   };
 
-  # Kernel
-  boot.kernelPackages = pkgs.linuxKernel.packages.linux_xanmod_latest;
   boot.tmp.useTmpfs = true;
   boot.plymouth = {
     enable = true;
@@ -79,20 +63,6 @@
     \e{lightmagenta}Project Hanekokoro
     https://github.com/ShadowRZ/flakes/tree/${config.system.configurationRevision}\e{reset}
   '';
-
-  # Users
-  users = {
-    mutableUsers = false;
-    users = {
-      shadowrz = {
-        uid = 1000;
-        isNormalUser = true;
-        shell = pkgs.zsh;
-        description = "夜坂雅";
-        extraGroups = ["wheel"];
-      };
-    };
-  };
 
   # Configure fallback console.
   console = {
@@ -115,23 +85,6 @@
     nat.enable = true;
     # Predictable interfaces
     usePredictableInterfaceNames = true;
-  };
-
-  # Misc
-  nixpkgs = {
-    config = {
-      # Solely allows some packages
-      allowUnfreePredicate = pkg:
-        builtins.elem (lib.getName pkg) ["vscode" "code"]
-        || pkgs.lib.any
-        (prefix: pkgs.lib.hasPrefix prefix (pkgs.lib.getName pkg)) [
-          "steam"
-          "nvidia"
-        ];
-      # Solely allows Electron
-      allowInsecurePredicate = pkg:
-        builtins.elem (pkgs.lib.getName pkg) ["electron"];
-    };
   };
 
   environment = {
@@ -233,15 +186,6 @@
     dbus.implementation = "broker";
   };
 
+  users.mutableUsers = false;
   powerManagement.powertop.enable = true;
-
-  # DO NOT FIDDLE WITH THIS VALUE !!!
-  # This value determines the NixOS release from which the default
-  # settings for stateful data, like file locations and database versions
-  # on your system were taken.
-  # Before changing this value (which you shouldn't do unless you have
-  # REALLY NECESSARY reason to do this) read the documentation for this option
-  # (e.g. man configuration.nix or on https://nixos.org/nixos/options.html)
-  # and release notes, SERIOUSLY.
-  system.stateVersion = "24.05"; # Did you read the comment?
 }

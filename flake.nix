@@ -148,7 +148,7 @@
           mononekomi = inputs.nixpkgs.lib.nixosSystem {
             system = "x86_64-linux";
             specialArgs = {inherit inputs;};
-            modules = [./hosts/mononekomi];
+            modules = [./hosts/mononekomi/configuration.nix];
           };
         };
         overlays = {default = import ./overlays;};

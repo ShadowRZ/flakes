@@ -1,9 +1,9 @@
-{disks ? ["/dev/sda"], ...}: {
+{
   disko.devices = {
     disk = {
       rootfs = {
         type = "disk";
-        device = builtins.elemAt disks 0;
+        device = "/dev/disk/by-path/pci-0000:06:00.0-nvme-1";
         content = {
           type = "gpt";
           partitions = {
