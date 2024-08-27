@@ -1,5 +1,5 @@
 {
-  imports = map (n: ../../../../../home/profiles/${n}) [
+  imports = map (n: ../../../../../home/programs/${n}) [
     "firefox"
     "mpv"
     "dconf"

@@ -35,15 +35,15 @@
   };
 
   imports = [
-    ./profiles/dircolors
-    ./profiles/direnv
-    ./profiles/git
-    ./profiles/gnupg
-    ./profiles/neovim
-    ./profiles/nix
-    ./profiles/htop
-    ./profiles/starship
-    ./profiles/zsh
+    ./programs/dircolors
+    ./programs/direnv
+    ./programs/git
+    ./programs/gnupg
+    ./programs/neovim
+    ./programs/nix
+    ./programs/htop
+    ./programs/starship
+    ./programs/zsh
   ];
 
   programs.aria2.enable = true;
