@@ -64,26 +64,27 @@
 
   terminal.font = "${pkgs.nur.repos.shadowrz.iosevka-minoko-term}/share/fonts/truetype/IosevkaMinokoTerm-Regular.ttf";
 
-  # https://github.com/catppuccin/termux/blob/68f0b175e5ba18bdb0ff01607f29fb5ecc6eb2c5/Mocha/colors.properties
+  # https://github.com/rose-pine/termux/blob/f6f6375e1118cd374b9e7b74de1c23c7becb5913/app/src/main/assets/colors/ros%C3%A9-pine.properties
   terminal.colors = {
-    background = "#1e1e2e";
-    foreground = "#cdd6f4";
-    color0 = "#45475a";
-    color8 = "#585b70";
-    color1 = "#f38ba8";
-    color9 = "#f38ba8";
-    color2 = "#a6e3a1";
-    color10 = "#a6e3a1";
-    color3 = "#f9e2af";
-    color11 = "#f9e2af";
-    color4 = "#89b4fa";
-    color12 = "#89b4fa";
-    color5 = "#f5c2e7";
-    color13 = "#f5c2e7";
-    color6 = "#94e2d5";
-    color14 = "#94e2d5";
-    color7 = "#bac2de";
-    color15 = "#a6adc8";
+    background = "#191724";
+    foreground = "#e0def4";
+    cursor = "#6e6a86";
+    color0 = "#26233a";
+    color8 = "#6e6a86";
+    color1 = "#eb6f92";
+    color9 = "#eb6f92";
+    color2 = "#31748f";
+    color10 = "#31748f";
+    color3 = "#f6c177";
+    color11 = "#f6c177";
+    color4 = "#9ccfd8";
+    color12 = "#9ccfd8";
+    color5 = "#c4a7e7";
+    color13 = "#c4a7e7";
+    color6 = "#ebbcba";
+    color14 = "#ebbcba";
+    color7 = "#e0def4";
+    color15 = "#e0def4";
   };
 
   # Set your time zone

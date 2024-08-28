@@ -7,10 +7,10 @@ My personal NixOS configuration. for packages see [`github:ShadowRZ/nur-packages
 ## Components
 
 * **Desktop Environment:** [KDE Plasma 6]
-* **Terminal:** [WezTerm]
+* **Terminal:** [Kitty]
 * **Shell:** [Zsh] [^1] + [Starship]
 * **Display Manager:** [SDDM]
-* **Colorscheme:** [Catppuccin]
+* **Colorscheme:** [Rosé Pine]
 * **Media player:** [mpv]
 * **Terminal Editor:** [Neovim]
 * **\[Desktop\] Filesystem & Encryption**: tmpfs `/`, [Btrfs] subvolumes on a [LUKS] encrypted partition for Nix Store and persisted data. Uses a passphrase to unlock. [^2]
@@ -22,15 +22,17 @@ My personal NixOS configuration. for packages see [`github:ShadowRZ/nur-packages
 ## Config References
 
 * [`github:Guanran928/flakes`](https://github.com/Guanran928/flakes)
+* [`github:Zaechus/nixos-config`](https://github.com/Zaechus/nixos-config)
+* [`github:NickCao/flakes`](https://github.com/NickCao/flakes)
 
 <!-- References -->
 
 [KDE Plasma 6]: https://kde.org/plasma-desktop
-[WezTerm]: https://wezfurlong.org/wezterm/
+[Kitty]: https://sw.kovidgoyal.net/kitty/
 [Zsh]: https://zsh.sourceforge.io
 [Starship]: https://starship.rs
 [SDDM]: https://wiki.archlinux.org/title/SDDM
-[Catppuccin]: https://catppuccin.com
+[Rosé Pine]: https://rosepinetheme.com
 [mpv]: https://mpv.io
 [Neovim]: https://neovim.io
 [Btrfs]: https://btrfs.readthedocs.io

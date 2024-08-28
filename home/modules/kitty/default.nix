@@ -5,7 +5,7 @@
       name = "Iosevka Minoko Term";
       size = 19;
     };
-    theme = "Catppuccin-Mocha";
+    theme = "Rosé Pine";
     settings = {
       scrollback_lines = 40000;
       show_hyperlink_targets = true;

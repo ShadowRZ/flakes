@@ -36,26 +36,6 @@
       vulkan-tools # vulkaninfo
       wayland-utils # wayland-info
       kdePackages.krecorder
-      (catppuccin-kde.override {
-        flavour = [
-          "mocha"
-          "macchiato"
-          "frappe"
-          "latte"
-        ];
-        accents = [
-          "rosewater"
-          "pink"
-          "red"
-          "yellow"
-          "green"
-          "teal"
-          "sky"
-          "sapphire"
-          "blue"
-          "lavender"
-        ];
-      })
     ];
     plasma6.excludePackages = with pkgs; [
       konsole
