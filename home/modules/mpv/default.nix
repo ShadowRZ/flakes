@@ -4,20 +4,24 @@
     enable = true;
     config = {
       # OSD configs.
-      osd-font = "Iosevka Aile Minoko";
-      osd-font-size = 40;
-      osd-on-seek = "msg-bar";
+      osd-font = "Iosevka Aile";
+      osd-bar = false;
+      border = true;
 
-      # Enable builtin OSC
-      osc = true;
+      # Disable builtin OSC
+      osc = false;
 
       # Subtitles.
-      sub-align-x = "right";
-      sub-font-size = 45;
+      sub-align-x = "left";
+      sub-font-size = 36;
       sub-justify = "auto";
-      sub-font = "Space Grotesk";
-      sub-border-size = 3;
-      sub-color = "#DE8148";
+      sub-font = "Iosevka Aile";
+      sub-border-size = 1;
+      sub-border-color = "#C0808080";
+      sub-color = "#FF6699";
+
+      osd-border-size = 1;
+      osd-border-color = "#C0808080";
 
       # Prefer hardware decoding.
       hwdec = "vulkan,vaapi";
@@ -33,21 +37,21 @@
       native-keyrepeat = true;
     };
     scriptOpts = {
-      osc = {
-        scalewindowed = 1.5;
-        scalefullscreen = 1.5;
-        vidscale = false;
-        visibility = "always";
-        seekbarstyle = "knob";
-        seekrangestyle = "slider";
-      };
       console = {
         font = "Iosevka Minoko";
-        font_size = 22;
+        font_size = 24;
       };
       stats = {
-        font = "Iosevka Aile Minoko";
+        font = "Iosevka Aile";
         font_mono = "Iosevka Minoko-E";
+      };
+      uosc = {
+        timeline_size = 24;
+        timeline_style = "bar";
+        scale_fullscreen = 1;
+        text_border = 0.5;
+        controls = "menu,gap,subtitles,<has_many_audio>audio,<has_many_video>video,<has_many_edition>editions,<stream>stream-quality,gap,space,shuffle,loop-playlist,loop-file,gap,prev,items,next,gap,fullscreen";
+        refine = "text_width";
       };
     };
     profiles = {
@@ -59,6 +63,9 @@
         ytdl-raw-options = "cookies-from-browser=firefox";
       };
     };
-    scripts = with pkgs.mpvScripts; [ mpris ];
+    scripts = with pkgs.mpvScripts; [
+      mpris
+      uosc
+    ];
   };
 }
