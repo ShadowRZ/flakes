@@ -173,7 +173,7 @@
             extraSpecialArgs = {
               inherit inputs;
             };
-            modules = [ ./nix-on-droid/configurations.nix ];
+            modules = [ ./nix-on-droid/configuration.nix ];
             pkgs = import inputs.nixpkgs {
               system = "aarch64-linux";
               overlays = [
