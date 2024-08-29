@@ -56,16 +56,15 @@
   boot.tmp.useTmpfs = true;
   boot.plymouth = {
     enable = true;
-    font = "${config.nur.repos.shadowrz.iosevka-minoko}/share/fonts/truetype/IosevkaMinoko-ExtendedLight.ttf";
-    theme = "angular_alt";
-    themePackages = [ pkgs.adi1090x-plymouth-themes ];
+    theme = "bgrt";
+    font = "${config.nur.repos.shadowrz.iosevka-minoko-e}/share/fonts/truetype/IosevkaMinokoE-Regular.ttf";
   };
 
   services.getty.greetingLine = with config.system.nixos; ''
     NixOS ${release} (${codeName})
     https://github.com/NixOS/nixpkgs/tree/${revision}
 
-    \e{lightmagenta}Project Hanekokoro
+    \e{lightmagenta}Codename Hanekokoro
     https://github.com/ShadowRZ/flakes/tree/${config.system.configurationRevision}\e{reset}
   '';
 
@@ -73,7 +72,7 @@
   console = {
     packages = with pkgs; [ terminus_font ];
     earlySetup = true;
-    font = "ter-i32b";
+    font = "ter-v32n";
   };
 
   boot.loader.systemd-boot.consoleMode = "max";

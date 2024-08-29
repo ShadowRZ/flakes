@@ -68,6 +68,8 @@
     android_sdk.accept_license = true;
   };
 
+  environment.systemPackages = [ pkgs.firefoxpwa ];
+
   # DO NOT FIDDLE WITH THIS VALUE !!!
   # This value determines the NixOS release from which the default
   # settings for stateful data, like file locations and database versions
