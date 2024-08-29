@@ -43,6 +43,16 @@
   services.power-profiles-daemon.enable = true;
   services.thermald.enable = true;
 
+  sops = {
+    defaultSopsFile = ./secrets.yaml;
+    age.keyFile = "/var/lib/sops.key";
+    secrets = {
+      passwd = {
+        neededForUsers = true;
+      };
+    };
+  };
+
   # Kernel
   boot.kernelPackages = pkgs.linuxKernel.packages.linux_xanmod_latest;
 

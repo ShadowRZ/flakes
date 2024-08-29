@@ -40,17 +40,8 @@
   };
 
   sops = {
-    defaultSopsFile = ../secrets.yaml;
-    age = {
-      keyFile = "/var/lib/sops.key";
-      sshKeyPaths = [ ];
-    };
+    age.sshKeyPaths = [ ];
     gnupg.sshKeyPaths = [ ];
-    secrets = {
-      passwd = {
-        neededForUsers = true;
-      };
-    };
   };
 
   boot.tmp.useTmpfs = true;
