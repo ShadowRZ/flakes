@@ -37,7 +37,6 @@
   };
 
   boot.kernelModules = [
-    "nvidia-uvm"
     "legion-laptop"
   ];
   boot.initrd = {
@@ -49,9 +48,7 @@
       "usb_storage"
       "sd_mod"
       "legion-laptop"
-      "i915"
     ];
-    kernelModules = [ "i915" ];
   };
 
   # Legion Module

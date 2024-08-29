@@ -75,8 +75,6 @@
     font = "ter-v32n";
   };
 
-  boot.loader.systemd-boot.consoleMode = "max";
-
   # Set your time zone.
   time.timeZone = "Asia/Shanghai";
 
