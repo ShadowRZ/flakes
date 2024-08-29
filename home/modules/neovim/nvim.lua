@@ -52,7 +52,7 @@ require('nvim-treesitter.configs').setup({
 -- Lualine
 require('lualine').setup {
   options = {
-    theme = 'catppuccin'
+    theme = 'rose-pine'
   },
   sections = {
     lualine_x = {},

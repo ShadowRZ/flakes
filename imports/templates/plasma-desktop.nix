@@ -18,7 +18,7 @@
           General.GreeterEnvironment = "QT_SCALE_FACTOR=1.25,QT_FONT_DPI=96";
           Theme = {
             Font = "Space Grotesk";
-            CursorTheme = "Fuchsia";
+            CursorTheme = "BreezeX-RosePineDawn-Linux";
             CursorSize = 32;
           };
         };
@@ -36,6 +36,12 @@
       vulkan-tools # vulkaninfo
       wayland-utils # wayland-info
       kdePackages.krecorder
+      rose-pine-cursor
+      # Used to configure SDDM Breeze Theme
+      (writeTextDir "share/sddm/themes/breeze/theme.conf.user" ''
+        [General]
+        background=${nixos-artwork.wallpapers.nineish}/share/backgrounds/nixos/nix-wallpaper-nineish.png
+      '')
     ];
     plasma6.excludePackages = with pkgs; [
       konsole

@@ -10,8 +10,6 @@
       adw-gtk3
       # wl-clipboard
       wl-clipboard
-      # Graphical packages.
-      fuchsia-cursor
     ];
   };
 

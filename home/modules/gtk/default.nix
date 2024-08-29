@@ -12,10 +12,6 @@
     in
     {
       enable = true;
-      cursorTheme = {
-        name = "Fuchsia";
-        size = 32;
-      };
       font = {
         name = "Space Grotesk";
         size = 12;

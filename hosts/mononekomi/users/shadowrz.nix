@@ -15,6 +15,7 @@
     ../../../home/modules/kitty
     ../../../home/modules/emacs
     ../../../home/modules/obs
+    ../../../home/modules/cursor
   ];
 
   users.users.shadowrz = {
@@ -29,7 +30,6 @@
       hugo # Hugo
       ffmpeg-full # FFmpeg
       helvum
-      yt-dlp
       blanket
       vscode-fhs # VS Code
       geany # Geany
