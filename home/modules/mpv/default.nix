@@ -50,6 +50,15 @@
         font_mono = "Iosevka Minoko-E";
       };
     };
+    profiles = {
+      bilibili = {
+        profile-desc = "[BiliBili] Videos";
+        profile-cond = "path:match('https://www.bilibili.com')~=nil or path:match('https://bilibili.com')~=nil";
+        profile-restore = "copy";
+        referrer = "https://www.bilibili.com/";
+        ytdl-raw-options = "cookies-from-browser=firefox";
+      };
+    };
     scripts = with pkgs.mpvScripts; [ mpris ];
   };
 }
