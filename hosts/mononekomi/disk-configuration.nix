@@ -59,7 +59,7 @@
               size = "100%";
               content = {
                 type = "luks";
-                name = "swap-inner";
+                name = "swap";
                 settings = {
                   allowDiscards = true;
                   bypassWorkqueues = true;
