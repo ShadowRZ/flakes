@@ -48,7 +48,7 @@
   boot.plymouth = {
     enable = true;
     theme = "bgrt";
-    font = "${pkgs.jost}/share/fonts/opentype/Jost-600-Semi.otf";
+    font = "${config.nur.repos.shadowrz.iosevka-minoko}/share/fonts/truetype/IosevkaMinoko-ExtendedBold.ttf";
   };
 
   services.getty.greetingLine = with config.system.nixos; ''
