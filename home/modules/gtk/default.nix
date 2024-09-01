@@ -13,7 +13,7 @@
     {
       enable = true;
       font = {
-        name = "Space Grotesk";
+        name = "Iosevka Aile Minoko";
         size = 12;
       };
       gtk2 = {

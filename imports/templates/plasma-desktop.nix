@@ -17,7 +17,7 @@
         settings = {
           General.GreeterEnvironment = "QT_SCALE_FACTOR=1.25,QT_FONT_DPI=96";
           Theme = {
-            Font = "Space Grotesk";
+            Font = "Iosevka Aile Minoko";
             CursorTheme = "BreezeX-RosePineDawn-Linux";
             CursorSize = 32;
           };
