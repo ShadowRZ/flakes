@@ -46,10 +46,10 @@
   };
   "emoji-sav" = buildFirefoxXpiAddon {
     pname = "emoji-sav";
-    version = "3.22.0.1";
+    version = "3.22.1";
     addonId = "emoji@saveriomorelli.com";
-    url = "https://addons.mozilla.org/firefox/downloads/file/4280189/emoji_sav-3.22.0.1.xpi";
-    sha256 = "7330675700854131f04a972c8c0951b6a23d5a3bf39e7d0f294466f3ad40c314";
+    url = "https://addons.mozilla.org/firefox/downloads/file/4329377/emoji_sav-3.22.1.xpi";
+    sha256 = "3feec80f2350245a9adf31b0133219005b0d4eb1bc2337ee2a16dc7a62291093";
     meta = with lib; {
       homepage = "https://www.emojiaddon.com";
       description = "It permits just with a single click to copy an emoji.\nThere is a search-box and the \"Most used emojis\" section (the first one).\n\nIf you want to send feedback or report bug, please contact me: <a href=\"https://prod.outgoing.prod.webservices.mozgcp.net/v1/b753c67704f26ea23ad2ea0e6cdf84584259e0610aff7861a2c72976219974ed/https%3A//www.emojiaddon.com/help\" rel=\"nofollow\">https://www.emojiaddon.com/help</a>";
