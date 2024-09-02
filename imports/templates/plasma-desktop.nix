@@ -46,6 +46,7 @@
     plasma6.excludePackages = with pkgs; [
       konsole
       khelpcenter
+      kate
     ];
   };
 

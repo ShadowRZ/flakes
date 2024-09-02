@@ -48,6 +48,8 @@
       waylyrics
       android-studio
       mindustry-wayland
+      gnome-builder
+      featherpad
       ## KDE Packages
       kdePackages.kdenlive
       kdePackages.kcalc
