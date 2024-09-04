@@ -19,6 +19,9 @@
       keyserver = "hkps://keys.openpgp.org";
       verbose = false;
     };
+    scdaemonSettings = {
+      disable-ccid = true;
+    };
   };
 
   services = {

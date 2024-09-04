@@ -179,6 +179,7 @@
     };
     fstrim.enable = true;
     dbus.implementation = "broker";
+    pcscd.enable = true;
   };
 
   users.mutableUsers = false;
