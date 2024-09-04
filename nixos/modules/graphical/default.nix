@@ -85,7 +85,6 @@
         variant = "Aile";
       })
       config.nur.repos.shadowrz.maoken-assorted-sans
-      config.nur.repos.shadowrz.resource-han-rounded
       # Iosevka Builds
       config.nur.repos.shadowrz.iosevka-aile-minoko
       config.nur.repos.shadowrz.iosevka-minoko
