@@ -30,6 +30,11 @@
                 settings = {
                   allowDiscards = true;
                   bypassWorkqueues = true;
+                  crypttabExtraOpts = [
+                    "same-cpu-crypt"
+                    "submit-from-crypt-cpus"
+                    "fido2-device=auto"
+                  ];
                 };
                 content = {
                   type = "btrfs";
@@ -63,6 +68,11 @@
                 settings = {
                   allowDiscards = true;
                   bypassWorkqueues = true;
+                  crypttabExtraOpts = [
+                    "same-cpu-crypt"
+                    "submit-from-crypt-cpus"
+                    "fido2-device=auto"
+                  ];
                 };
                 content = {
                   type = "swap";
