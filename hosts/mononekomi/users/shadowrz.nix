@@ -16,6 +16,7 @@
     ../../../home/modules/emacs
     ../../../home/modules/obs
     ../../../home/modules/cursor
+    ../../../home/modules/wezterm
   ];
 
   users.users.shadowrz = {
