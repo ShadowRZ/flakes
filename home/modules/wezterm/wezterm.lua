@@ -36,21 +36,47 @@ config.window_padding = {
 
 config.window_frame = {
   font = wezterm.font_with_fallback(
-  {
-    'Space Grotesk',
-    'Source Han Sans SC VF'
-  }
-),
-  font_size = 10.0,
+    {
+      'Space Grotesk',
+      'Source Han Sans SC VF'
+    }
+  ),
+  font_size = 11.5,
   active_titlebar_bg = wezterm.color.get_builtin_schemes()[config.color_scheme].cursor_fg,
   inactive_titlebar_bg = wezterm.color.get_builtin_schemes()[config.color_scheme].cursor_fg
 }
 
 config.mouse_bindings = {
+  -- Bind clipboard actions to more sensible keys
   {
     event = { Up = { streak = 1, button = 'Left' } },
     mods = 'NONE',
     action = wezterm.action.CompleteSelection 'PrimarySelection',
+  },
+  {
+    event = { Up = { streak = 2, button = 'Left' } },
+    mods = 'NONE',
+    action = wezterm.action.CompleteSelection 'PrimarySelection',
+  },
+  {
+    event = { Up = { streak = 3, button = 'Left' } },
+    mods = 'NONE',
+    action = wezterm.action.CompleteSelection 'PrimarySelection',
+  },
+  {
+    event = { Up = { streak = 1, button = 'Left' } },
+    mods = 'SHIFT',
+    action = wezterm.action.Nop,
+  },
+  {
+    event = { Up = { streak = 1, button = 'Left' } },
+    mods = 'ALT',
+    action = wezterm.action.Nop,
+  },
+  {
+    event = { Up = { streak = 1, button = 'Left' } },
+    mods = 'SHIFT|ALT',
+    action = wezterm.action.Nop,
   },
   -- Bind 'Up' event of CTRL-Click to open hyperlinks
   {
@@ -66,7 +92,8 @@ config.mouse_bindings = {
   },
 }
 
-config.window_decorations = 'INTEGRATED_BUTTONS|RESIZE'
+-- FIXME: https://github.com/wez/wezterm/issues/5360
+-- config.window_decorations = 'INTEGRATED_BUTTONS|RESIZE'
 
 return config
 -- vim:ts=2:sw=2:et
