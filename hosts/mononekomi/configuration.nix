@@ -15,6 +15,7 @@
     # Imports
     ../../imports/templates/plasma-desktop.nix
     ../../imports/templates/virtualisation.nix
+    ../../imports/templates/nftables-firewall.nix
     ../../imports/networkmanager.nix
     ../../imports/fido2-login.nix
     ../../imports/silent-boot.nix

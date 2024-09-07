@@ -73,7 +73,7 @@
     # Disable global DHCP
     useDHCP = false;
     # Disable firewall
-    firewall.enable = false;
+    firewall.enable = lib.mkDefault false;
     # Enable NAT
     nat.enable = true;
     # Predictable interfaces
