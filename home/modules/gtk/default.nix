@@ -13,7 +13,7 @@
     {
       enable = true;
       font = {
-        name = "Iosevka Aile Minoko";
+        name = "Sarasa UI SC";
         size = 12;
       };
       gtk2 = {
