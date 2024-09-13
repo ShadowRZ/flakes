@@ -1,7 +1,7 @@
-{ inputs, ... }: {
+{ pkgs, ... }: {
   programs.wezterm = {
     enable = true;
-    package = inputs.wezterm.packages.x86_64-linux.default;
+    package = pkgs.wezterm;
     extraConfig = builtins.readFile ./wezterm.lua;
   };
 }
