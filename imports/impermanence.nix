@@ -42,6 +42,7 @@
             mode = "0700";
           }
         ];
+        files = [ ".npmrc" ];
       };
       root = {
         home = "/root";
