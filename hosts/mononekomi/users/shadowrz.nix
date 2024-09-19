@@ -17,6 +17,7 @@
     ../../../home/modules/emacs
     ../../../home/modules/obs
     ../../../home/modules/cursor
+    ../../../home/modules/vscode
   ];
 
   users.users.shadowrz = {
@@ -32,7 +33,6 @@
       ffmpeg-full # FFmpeg
       helvum
       blanket
-      vscode-fhs # VS Code
       geany # Geany
       renpy
       gimp # GIMP
