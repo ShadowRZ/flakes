@@ -5,7 +5,7 @@
       main = {
         font = "Iosevka Minoko Term:size=19";
         box-drawings-uses-font-glyphs = true;
-        initial-window-mode = "fullscreen";
+        initial-window-mode = "maximized";
         resize-by-cells = true;
       };
       colors = {
@@ -35,6 +35,9 @@
         dim5 = "c4a7e7";
         dim6 = "ebbcba";
         dim7 = "e0def4";
+      };
+      csd = {
+        preferred = "none";
       };
     };
   };
