@@ -79,6 +79,13 @@
     android_sdk.accept_license = true;
   };
 
+  programs.steam = {
+    enable = true;
+    protontricks.enable = true;
+    remotePlay.openFirewall = true;
+    dedicatedServer.openFirewall = true;
+  };
+
   environment.systemPackages = [ pkgs.firefoxpwa ];
 
   # DO NOT FIDDLE WITH THIS VALUE !!!
