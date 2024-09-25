@@ -12,8 +12,6 @@
         nativeMessagingHosts = with pkgs; [
           # Plasma Integration
           kdePackages.plasma-browser-integration
-          # KeePassXC
-          keepassxc
           # Firefox PWA Plugin
           firefoxpwa
         ];
@@ -83,13 +81,13 @@
               [
                 auto-tab-discard
                 behind-the-overlay-revival
+                bitwarden
                 clearurls
                 cliget
                 copy-selection-as-markdown
                 don-t-fuck-with-paste
                 fastforwardteam
                 ghosttext
-                keepassxc-browser
                 link-gopher
                 linkhints
                 localcdn
