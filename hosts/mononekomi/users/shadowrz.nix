@@ -51,6 +51,7 @@
       mindustry-wayland
       gnome-builder
       featherpad
+      jetbrains.idea-community
       ## KDE Packages
       kdePackages.kdenlive
       kdePackages.kcalc
