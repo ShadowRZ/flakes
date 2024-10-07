@@ -45,7 +45,7 @@
       audacity
       apostrophe
       libreoffice-fresh # LibreOffice Fresh
-      qmmp # Qmmp
+      quodlibet-full # Quod Libet
       waylyrics
       android-studio
       mindustry-wayland
