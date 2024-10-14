@@ -52,7 +52,11 @@
   };
 
   # Legion Module
-  boot.extraModulePackages = [ config.boot.kernelPackages.lenovo-legion-module ];
+  boot.extraModulePackages = [
+    (config.boot.kernelPackages.lenovo-legion-module.overrideAttrs {
+      env.NIX_CFLAGS_COMPILE = "-Wno-error=incompatible-pointer-types";
+    })
+  ];
   environment.systemPackages = [ pkgs.lenovo-legion ];
 
   # Bolt
