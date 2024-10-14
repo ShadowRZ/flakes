@@ -60,7 +60,7 @@
         profile-cond = "path:match('https://www.bilibili.com')~=nil or path:match('https://bilibili.com')~=nil";
         profile-restore = "copy";
         referrer = "https://www.bilibili.com/";
-        ytdl-raw-options = "cookies-from-browser=firefox";
+        ytdl-raw-options = "cookies-from-browser=firefox,sub-lang=[all,-danmaku],write-sub=";
       };
     };
     scripts = with pkgs.mpvScripts; [
