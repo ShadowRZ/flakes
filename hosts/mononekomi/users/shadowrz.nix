@@ -34,7 +34,6 @@
       helvum
       blanket
       geany # Geany
-      renpy
       gimp # GIMP
       inkscape # Inkscape
       d-spy # D-Spy

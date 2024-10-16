@@ -57,7 +57,7 @@
       env.NIX_CFLAGS_COMPILE = "-Wno-error=incompatible-pointer-types";
     })
   ];
-  environment.systemPackages = [ pkgs.lenovo-legion ];
+  #environment.systemPackages = [ pkgs.lenovo-legion ];
 
   # Bolt
   services.hardware.bolt.enable = true;
