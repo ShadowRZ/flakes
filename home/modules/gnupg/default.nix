@@ -20,6 +20,8 @@
       verbose = false;
     };
     scdaemonSettings = {
+      pcsc-driver = "${pkgs.pcscliteWithPolkit.lib}/lib/libpcsclite.so";
+      card-timeout = "5";
       disable-ccid = true;
     };
   };
