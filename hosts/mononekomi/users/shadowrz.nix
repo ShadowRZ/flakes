@@ -50,6 +50,7 @@
       mindustry-wayland
       gnome-builder
       featherpad
+      ungoogled-chromium
       jetbrains.idea-community
       ## KDE Packages
       kdePackages.kdenlive
