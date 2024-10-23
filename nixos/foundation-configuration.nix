@@ -9,21 +9,9 @@
   imports = with inputs; [
     # Global Flake Inputs
     nixpkgs.nixosModules.notDetected
-    impermanence.nixosModules.impermanence
     home-manager.nixosModules.home-manager
-    sops-nix.nixosModules.sops
     nur.nixosModules.nur
     nix-indexdb.nixosModules.nix-index
-    disko.nixosModules.disko
-    nixos-sensible.nixosModules.default
-    lanzaboote.nixosModules.lanzaboote
-  ];
-
-  nixpkgs.overlays = [
-    inputs.berberman.overlays.default
-    inputs.blender.overlays.default
-    inputs.self.overlays.default
-    inputs.emacs-overlay.overlays.emacs
   ];
 
   # Stores system revision.
@@ -39,30 +27,10 @@
     };
   };
 
-  sops = {
-    age.sshKeyPaths = [ ];
-    gnupg.sshKeyPaths = [ ];
-  };
-
   boot.tmp.useTmpfs = true;
   boot.plymouth = {
     enable = true;
     theme = "bgrt";
-  };
-
-  services.getty.greetingLine = with config.system.nixos; ''
-    NixOS ${release} (${codeName})
-    https://github.com/NixOS/nixpkgs/tree/${revision}
-
-    \e{lightmagenta}Codename Hanekokoro
-    https://github.com/ShadowRZ/flakes/tree/${config.system.configurationRevision}\e{reset}
-  '';
-
-  # Configure fallback console.
-  console = {
-    packages = with pkgs; [ terminus_font ];
-    earlySetup = true;
-    font = "ter-v32n";
   };
 
   # Set your time zone.
@@ -96,8 +64,6 @@
       p7zip
       unar
     ];
-    # Link /share/zsh
-    pathsToLink = [ "/share/zsh" ];
     shellAliases = lib.mkForce {
       df = "df -h";
       du = "du -h";
@@ -111,27 +77,10 @@
       l = "ll -A";
       la = "ls -a";
     };
-    variables = {
-      VK_ICD_FILENAMES = "${pkgs.mesa.drivers}/share/vulkan/icd.d/intel_icd.x86_64.json";
-    };
   };
 
   # System programs
   programs = {
-    adb.enable = true;
-    nano.enable = false;
-    vim.defaultEditor = false;
-    neovim = {
-      enable = true;
-      defaultEditor = true;
-    };
-    zsh = {
-      enable = true;
-      enableLsColors = false;
-    };
-    ssh = {
-      startAgent = true;
-    };
     # Disable command-not-found as it's unavliable in Flakes build
     command-not-found.enable = lib.mkForce false;
     # Nix-Index
@@ -167,20 +116,5 @@
     }
   ];
 
-  services = {
-    # Generate ZRAM
-    zram-generator = {
-      enable = true;
-      settings.zram0 = {
-        compression-algorithm = "zstd";
-        zram-size = "ram";
-      };
-    };
-    fstrim.enable = true;
-    dbus.implementation = "broker";
-    pcscd.enable = true;
-  };
-
-  users.mutableUsers = false;
-  powerManagement.powertop.enable = true;
+  services.dbus.implementation = "broker";
 }

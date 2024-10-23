@@ -1,4 +1,12 @@
 {
+  inputs,
+  ...
+}:
+{
+  imports = with inputs; [
+    impermanence.nixosModules.impermanence
+  ];
+
   fileSystems."/persist".neededForBoot = true;
   # Persistent files
   environment.persistence."/persist" = {

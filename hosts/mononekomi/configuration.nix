@@ -1,10 +1,16 @@
 {
+  config,
+  inputs,
   pkgs,
   lib,
   ...
 }:
 {
   imports = [
+    # Global Flake Inputs
+    inputs.nixos-sensible.nixosModules.default
+    inputs.disko.nixosModules.disko
+    inputs.sops-nix.nixosModules.sops
     # Foundation
     ../../nixos/foundation-configuration.nix
     # OS
@@ -29,6 +35,21 @@
     ./users/root.nix
   ];
 
+  services.getty.greetingLine = with config.system.nixos; ''
+    NixOS ${release} (${codeName})
+    https://github.com/NixOS/nixpkgs/tree/${revision}
+
+    \e{lightmagenta}Codename Hanekokoro
+    https://github.com/ShadowRZ/flakes/tree/${config.system.configurationRevision}\e{reset}
+  '';
+
+  nixpkgs.overlays = [
+    inputs.berberman.overlays.default
+    inputs.blender.overlays.default
+    inputs.self.overlays.default
+    inputs.emacs-overlay.overlays.emacs
+  ];
+
   networking.hostName = "mononekomi";
 
   boot.loader.timeout = 0;
@@ -46,7 +67,11 @@
 
   sops = {
     defaultSopsFile = ./secrets.yaml;
-    age.keyFile = "/var/lib/sops.key";
+    age = {
+      keyFile = "/var/lib/sops.key";
+      sshKeyPaths = [ ];
+    };
+    gnupg.sshKeyPaths = [ ];
     secrets = {
       passwd = {
         neededForUsers = true;
@@ -79,17 +104,61 @@
     android_sdk.accept_license = true;
   };
 
-  programs.steam = {
-    enable = true;
-    package = pkgs.steam.override {
-      extraArgs = "-forcedesktopscaling 1.5";
+  # System programs
+  programs = {
+    adb.enable = true;
+    nano.enable = false;
+    vim.defaultEditor = false;
+    neovim = {
+      enable = true;
+      defaultEditor = true;
     };
-    protontricks.enable = true;
-    remotePlay.openFirewall = true;
-    dedicatedServer.openFirewall = true;
+    zsh = {
+      enable = true;
+      enableLsColors = false;
+    };
+    ssh = {
+      startAgent = true;
+    };
+    # Steam
+    steam = {
+      enable = true;
+      package = pkgs.steam.override {
+        extraArgs = "-forcedesktopscaling 1.5";
+      };
+      protontricks.enable = true;
+      remotePlay.openFirewall = true;
+      dedicatedServer.openFirewall = true;
+    };
   };
 
-  environment.systemPackages = [ pkgs.firefoxpwa ];
+  environment = {
+    systemPackages = [ pkgs.firefoxpwa ];
+
+    # Link /share/zsh
+    pathsToLink = [ "/share/zsh" ];
+
+    variables = {
+      VK_ICD_FILENAMES = "${pkgs.mesa.drivers}/share/vulkan/icd.d/intel_icd.x86_64.json";
+    };
+  };
+
+  services = {
+    # Generate ZRAM
+    zram-generator = {
+      enable = true;
+      settings.zram0 = {
+        compression-algorithm = "zstd";
+        zram-size = "ram";
+      };
+    };
+    fstrim.enable = true;
+    dbus.implementation = "broker";
+    pcscd.enable = true;
+  };
+
+  users.mutableUsers = false;
+  powerManagement.powertop.enable = true;
 
   # DO NOT FIDDLE WITH THIS VALUE !!!
   # This value determines the NixOS release from which the default
