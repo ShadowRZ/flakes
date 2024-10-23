@@ -96,6 +96,11 @@
       url = "github:numtide/treefmt-nix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    # NixOS Generators (Build ISO image)
+    nixos-generators = {
+      url = "github:nix-community/nixos-generators";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     # Users' flake
     berberman = {
       url = "github:berberman/flakes";
@@ -152,9 +157,31 @@
     flake-parts.lib.mkFlake { inherit inputs; } {
       imports = [ inputs.treefmt-nix.flakeModule ];
       systems = inputs.flake-utils.lib.defaultSystems;
-      perSystem = {
-        treefmt.config = import ./treefmt.nix;
-      };
+      perSystem =
+        { pkgs, system, ... }:
+        {
+          treefmt.config = import ./treefmt.nix;
+          packages.iso = inputs.nixos-generators.nixosGenerate {
+            inherit system;
+            specialArgs = {
+              inherit inputs pkgs;
+            };
+            modules = [
+              # Pin nixpkgs to the flake input, so that the packages installed
+              # come from the flake inputs.nixpkgs.url.
+              (
+                { ... }:
+                {
+                  nix.registry.nixpkgs.flake = inputs.nixpkgs;
+                }
+              )
+              # Apply the rest of the config.
+              ./nixos/foundation-configuration.nix
+              ./imports/templates/live-images/installation-cd-graphical-plasma6.nix
+            ];
+            format = "iso";
+          };
+        };
       flake = {
         nixosConfigurations = {
           mononekomi = inputs.nixpkgs.lib.nixosSystem {

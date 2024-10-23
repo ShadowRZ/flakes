@@ -8,6 +8,7 @@
 {
   imports = [
     # Global Flake Inputs
+    inputs.nixpkgs.nixosModules.notDetected
     inputs.nixos-sensible.nixosModules.default
     inputs.disko.nixosModules.disko
     inputs.sops-nix.nixosModules.sops

@@ -8,7 +8,6 @@
 {
   imports = with inputs; [
     # Global Flake Inputs
-    nixpkgs.nixosModules.notDetected
     home-manager.nixosModules.home-manager
     nur.nixosModules.nur
     nix-indexdb.nixosModules.nix-index
