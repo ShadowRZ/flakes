@@ -14,7 +14,6 @@
     ../../../home/modules/gtk
     ../../../home/modules/kitty
     ../../../home/modules/foot
-    ../../../home/modules/emacs
     ../../../home/modules/obs
     ../../../home/modules/cursor
     ../../../home/modules/vscode
