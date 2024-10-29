@@ -89,11 +89,6 @@
       url = "github:numtide/treefmt-nix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    # NixOS Generators (Build ISO image)
-    nixos-generators = {
-      url = "github:nix-community/nixos-generators";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
     # Users' flake
     berberman = {
       url = "github:berberman/flakes";
@@ -147,61 +142,26 @@
 
   outputs =
     inputs@{ flake-parts, ... }:
-    flake-parts.lib.mkFlake { inherit inputs; } {
-      imports = [ inputs.treefmt-nix.flakeModule ];
-      systems = inputs.flake-utils.lib.defaultSystems;
-      perSystem =
-        { pkgs, system, ... }:
-        {
+    flake-parts.lib.mkFlake { inherit inputs; } (
+      { inputs, ... }:
+      {
+        imports = [
+          # Global
+          inputs.treefmt-nix.flakeModule
+          # System derivations
+          ./nixos/flake-module.nix
+          ./nix-on-droid/flake-module.nix
+        ];
+        systems = inputs.flake-utils.lib.defaultSystems;
+        perSystem = {
           treefmt.config = import ./treefmt.nix;
-          packages.iso = inputs.nixos-generators.nixosGenerate {
-            inherit system;
-            specialArgs = {
-              inherit inputs pkgs;
-            };
-            modules = [
-              # Pin nixpkgs to the flake input, so that the packages installed
-              # come from the flake inputs.nixpkgs.url.
-              (
-                { ... }:
-                {
-                  nix.registry.nixpkgs.flake = inputs.nixpkgs;
-                }
-              )
-              # Apply the rest of the config.
-              ./nixos/foundation-configuration.nix
-              ./imports/templates/live-images/installation-cd-graphical-plasma6.nix
-            ];
-            format = "iso";
+        };
+        flake = {
+          overlays = {
+            default = import ./overlays;
           };
+
         };
-      flake = {
-        nixosConfigurations = {
-          mononekomi = inputs.nixpkgs.lib.nixosSystem {
-            system = "x86_64-linux";
-            specialArgs = {
-              inherit inputs;
-            };
-            modules = [ ./hosts/mononekomi/configuration.nix ];
-          };
-        };
-        overlays = {
-          default = import ./overlays;
-        };
-        nixOnDroidConfigurations = {
-          akasha = inputs.nix-on-droid.lib.nixOnDroidConfiguration {
-            extraSpecialArgs = {
-              inherit inputs;
-            };
-            modules = [ ./nix-on-droid/configuration.nix ];
-            pkgs = import inputs.nixpkgs {
-              system = "aarch64-linux";
-              overlays = [
-                inputs.nur.overlay
-              ];
-            };
-          };
-        };
-      };
-    };
+      }
+    );
 }
