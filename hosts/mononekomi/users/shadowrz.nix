@@ -23,6 +23,7 @@
     extraGroups = [
       "wheel"
       "networkmanager"
+      "wireshark"
     ];
     packages = with pkgs; [
       fractal

@@ -130,6 +130,10 @@
       remotePlay.openFirewall = true;
       dedicatedServer.openFirewall = true;
     };
+    wireshark = {
+      enable = true;
+      package = pkgs.wireshark;
+    };
   };
 
   environment = {
