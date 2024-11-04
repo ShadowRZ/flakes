@@ -42,7 +42,6 @@
       foliate
       celluloid
       audacity
-      apostrophe
       libreoffice-fresh # LibreOffice Fresh
       quodlibet-full # Quod Libet
       nextcloud-client
