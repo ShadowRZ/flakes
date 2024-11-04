@@ -1,4 +1,3 @@
-{ pkgs, ... }:
 {
   security.pam = {
     services = {
@@ -13,6 +12,4 @@
       };
     };
   };
-
-  services.udev.packages = [ pkgs.libfido2 ];
 }
