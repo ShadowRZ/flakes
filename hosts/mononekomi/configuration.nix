@@ -144,6 +144,7 @@
 
     variables = {
       VK_ICD_FILENAMES = "${pkgs.mesa.drivers}/share/vulkan/icd.d/intel_icd.x86_64.json";
+      GSK_RENDERER = "gl";
     };
   };
 
@@ -160,6 +161,8 @@
     dbus.implementation = "broker";
     pcscd.enable = true;
   };
+
+  security.rtkit.enable = true;
 
   users.mutableUsers = false;
   powerManagement.powertop.enable = true;
