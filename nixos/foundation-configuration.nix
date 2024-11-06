@@ -26,10 +26,13 @@
     };
   };
 
-  boot.tmp.useTmpfs = true;
-  boot.plymouth = {
-    enable = true;
-    theme = "bgrt";
+  boot = {
+    tmp.useTmpfs = true;
+    plymouth = {
+      enable = true;
+      theme = "bgrt";
+    };
+    enableContainers = lib.mkDefault false;
   };
 
   # Set your time zone.
