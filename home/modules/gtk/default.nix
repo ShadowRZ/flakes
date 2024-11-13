@@ -13,7 +13,7 @@
     {
       enable = true;
       font = {
-        name = "Sarasa UI SC";
+        name = "Outfit";
         size = 12;
       };
       gtk2 = {

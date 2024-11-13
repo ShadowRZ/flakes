@@ -76,7 +76,7 @@
       dejavu_fonts # DejaVu
       cantarell-fonts # Cantarell
       (google-fonts.override {
-        fonts = [ "Space Grotesk" ];
+        fonts = [ "Space Grotesk" "Outfit" ];
       })
       (nerdfonts.override {
         fonts = [ "NerdFontsSymbolsOnly" ];
