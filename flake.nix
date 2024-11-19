@@ -6,9 +6,6 @@
     nixpkgs = {
       url = "github:NixOS/nixpkgs/nixos-unstable";
     };
-    nixpkgs-stable = {
-      url = "github:NixOS/nixpkgs/nixos-24.05";
-    };
     # NixOS Sensible
     nixos-sensible = {
       url = "github:Guanran928/nixos-sensible";
@@ -41,7 +38,6 @@
     sops-nix = {
       url = "github:Mic92/sops-nix";
       inputs.nixpkgs.follows = "nixpkgs";
-      inputs.nixpkgs-stable.follows = "nixpkgs-stable";
     };
     # Impermanence
     impermanence = {
