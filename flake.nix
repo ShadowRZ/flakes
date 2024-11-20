@@ -85,12 +85,6 @@
       url = "github:numtide/treefmt-nix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    # Users' flake
-    berberman = {
-      url = "github:berberman/flakes";
-      inputs.nixpkgs.follows = "nixpkgs";
-      inputs.nvfetcher.follows = "nvfetcher";
-    };
     ### Dedupes
     systems = {
       url = "github:nix-systems/default";
@@ -119,12 +113,6 @@
     nmt = {
       url = "sourcehut:~rycee/nmt";
       flake = false;
-    };
-    nvfetcher = {
-      url = "github:berberman/nvfetcher";
-      inputs.nixpkgs.follows = "nixpkgs";
-      inputs.flake-compat.follows = "flake-compat";
-      inputs.flake-utils.follows = "flake-utils";
     };
     rust-overlay = {
       url = "github:oxalica/rust-overlay";

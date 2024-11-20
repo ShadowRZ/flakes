@@ -45,7 +45,6 @@
   '';
 
   nixpkgs.overlays = [
-    inputs.berberman.overlays.default
     inputs.blender.overlays.default
     inputs.self.overlays.default
   ];
@@ -90,6 +89,7 @@
       builtins.elem (lib.getName pkg) [
         "vscode"
         "code"
+        "fcitx5-pinyin-moegirl"
       ]
       || pkgs.lib.any (prefix: pkgs.lib.hasPrefix prefix (pkgs.lib.getName pkg)) [
         "steam"

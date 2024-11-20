@@ -1,28 +1,5 @@
 {
   "nodes": {
-    "berberman": {
-      "inputs": {
-        "nixpkgs": [
-          "nixpkgs"
-        ],
-        "nvfetcher": [
-          "nvfetcher"
-        ]
-      },
-      "locked": {
-        "lastModified": 1728490542,
-        "narHash": "sha256-xrHU/yPMvvQ78L8b8Vv9FMdBQlVEtUGm2MGeUUUUZo4=",
-        "owner": "berberman",
-        "repo": "flakes",
-        "rev": "90677b85d501d3f20c0e47e8762edce6db3b717d",
-        "type": "github"
-      },
-      "original": {
-        "owner": "berberman",
-        "repo": "flakes",
-        "type": "github"
-      }
-    },
     "blender": {
       "inputs": {
         "nixpkgs": [
@@ -393,35 +370,8 @@
         "type": "github"
       }
     },
-    "nvfetcher": {
-      "inputs": {
-        "flake-compat": [
-          "flake-compat"
-        ],
-        "flake-utils": [
-          "flake-utils"
-        ],
-        "nixpkgs": [
-          "nixpkgs"
-        ]
-      },
-      "locked": {
-        "lastModified": 1718252448,
-        "narHash": "sha256-xZZBdKqe1ByITzvx65pVgGQ5jeb73MybjgrcfI84lEo=",
-        "owner": "berberman",
-        "repo": "nvfetcher",
-        "rev": "fa7609950023462c6f91c425de7610c0bb6b86ba",
-        "type": "github"
-      },
-      "original": {
-        "owner": "berberman",
-        "repo": "nvfetcher",
-        "type": "github"
-      }
-    },
     "root": {
       "inputs": {
-        "berberman": "berberman",
         "blender": "blender",
         "crane": "crane",
         "disko": "disko",
@@ -440,7 +390,6 @@
         "nmd": "nmd",
         "nmt": "nmt",
         "nur": "nur",
-        "nvfetcher": "nvfetcher",
         "rust-overlay": "rust-overlay",
         "scss-reset": "scss-reset",
         "sops-nix": "sops-nix",
