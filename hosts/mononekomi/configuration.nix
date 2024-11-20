@@ -75,6 +75,13 @@
       passwd = {
         neededForUsers = true;
       };
+      dae = {};
+    };
+    templates = {
+      "config.dae".content = ''
+        ${builtins.readFile ../../nixos/modules/networking/dae.conf}
+        ${config.sops.placeholder.dae}
+      '';
     };
   };
 
@@ -160,6 +167,11 @@
     fstrim.enable = true;
     dbus.implementation = "broker";
     pcscd.enable = true;
+    dae = {
+      enable = true;
+      disableTxChecksumIpGeneric = false;
+      configFile = config.sops.templates."config.dae".path;
+    };
   };
 
   security.rtkit.enable = true;
