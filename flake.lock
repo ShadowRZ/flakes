@@ -112,26 +112,6 @@
         "type": "github"
       }
     },
-    "gitignore": {
-      "inputs": {
-        "nixpkgs": [
-          "nixpkgs"
-        ]
-      },
-      "locked": {
-        "lastModified": 1709087332,
-        "narHash": "sha256-HG2cCnktfHsKV0s4XW83gU3F57gaTljL9KNSuG6bnQs=",
-        "owner": "hercules-ci",
-        "repo": "gitignore.nix",
-        "rev": "637db329424fd7e46cf4185293b9cc8c88c95394",
-        "type": "github"
-      },
-      "original": {
-        "owner": "hercules-ci",
-        "repo": "gitignore.nix",
-        "type": "github"
-      }
-    },
     "home-manager": {
       "inputs": {
         "nixpkgs": [
@@ -204,32 +184,6 @@
         "type": "github"
       }
     },
-    "nix-formatter-pack": {
-      "inputs": {
-        "nixpkgs": [
-          "nixpkgs"
-        ],
-        "nmd": [
-          "nmd"
-        ],
-        "nmt": [
-          "nmt"
-        ]
-      },
-      "locked": {
-        "lastModified": 1729445390,
-        "narHash": "sha256-TxJ7RZLlBkKWZos1ai3eWIH0fBq1G6SVE+q3dW+0qRU=",
-        "owner": "Gerschtli",
-        "repo": "nix-formatter-pack",
-        "rev": "9f4bcf647cad2edafda7e1143071e0daf37cbc41",
-        "type": "github"
-      },
-      "original": {
-        "owner": "Gerschtli",
-        "repo": "nix-formatter-pack",
-        "type": "github"
-      }
-    },
     "nix-indexdb": {
       "inputs": {
         "nixpkgs": [
@@ -255,9 +209,7 @@
         "home-manager": [
           "home-manager"
         ],
-        "nix-formatter-pack": [
-          "nix-formatter-pack"
-        ],
+        "nix-formatter-pack": [],
         "nixpkgs": [
           "nixpkgs"
         ],
@@ -267,9 +219,7 @@
         "nixpkgs-for-bootstrap": [
           "nixpkgs"
         ],
-        "nmd": [
-          "nmd"
-        ]
+        "nmd": []
       },
       "locked": {
         "lastModified": 1725658585,
@@ -316,45 +266,6 @@
         "type": "github"
       }
     },
-    "nmd": {
-      "inputs": {
-        "nixpkgs": [
-          "nixpkgs"
-        ],
-        "scss-reset": [
-          "scss-reset"
-        ]
-      },
-      "locked": {
-        "lastModified": 1705050560,
-        "narHash": "sha256-x3zzcdvhJpodsmdjqB4t5mkVW22V3wqHLOun0KRBzUI=",
-        "owner": "~rycee",
-        "repo": "nmd",
-        "rev": "66d9334933119c36f91a78d565c152a4fdc8d3d3",
-        "type": "sourcehut"
-      },
-      "original": {
-        "owner": "~rycee",
-        "repo": "nmd",
-        "type": "sourcehut"
-      }
-    },
-    "nmt": {
-      "flake": false,
-      "locked": {
-        "lastModified": 1705307515,
-        "narHash": "sha256-krVKx3/u1mDo8qe5qylYgmwAmlAPHa1BSPDzxq09FmI=",
-        "owner": "~rycee",
-        "repo": "nmt",
-        "rev": "1562940b7765a32f1987bd9a3ee6a4fa034c9429",
-        "type": "sourcehut"
-      },
-      "original": {
-        "owner": "~rycee",
-        "repo": "nmt",
-        "type": "sourcehut"
-      }
-    },
     "nur": {
       "locked": {
         "lastModified": 1732011692,
@@ -378,20 +289,15 @@
         "flake-compat": "flake-compat",
         "flake-parts": "flake-parts",
         "flake-utils": "flake-utils",
-        "gitignore": "gitignore",
         "home-manager": "home-manager",
         "impermanence": "impermanence",
         "lanzaboote": "lanzaboote",
-        "nix-formatter-pack": "nix-formatter-pack",
         "nix-indexdb": "nix-indexdb",
         "nix-on-droid": "nix-on-droid",
         "nixos-sensible": "nixos-sensible",
         "nixpkgs": "nixpkgs",
-        "nmd": "nmd",
-        "nmt": "nmt",
         "nur": "nur",
         "rust-overlay": "rust-overlay",
-        "scss-reset": "scss-reset",
         "sops-nix": "sops-nix",
         "systems": "systems",
         "treefmt-nix": "treefmt-nix"
@@ -414,22 +320,6 @@
       "original": {
         "owner": "oxalica",
         "repo": "rust-overlay",
-        "type": "github"
-      }
-    },
-    "scss-reset": {
-      "flake": false,
-      "locked": {
-        "lastModified": 1683906868,
-        "narHash": "sha256-cif5Sx8Ca5vxdw/mNAgpulLH15TwmzyJFNM7JURpoaE=",
-        "owner": "andreymatin",
-        "repo": "scss-reset",
-        "rev": "5a7bd491ac82441e6283fb0d5d54644b913b30c7",
-        "type": "github"
-      },
-      "original": {
-        "owner": "andreymatin",
-        "repo": "scss-reset",
         "type": "github"
       }
     },

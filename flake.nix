@@ -60,8 +60,8 @@
         nixpkgs.follows = "nixpkgs";
         home-manager.follows = "home-manager";
         nixpkgs-docs.follows = "nixpkgs";
-        nix-formatter-pack.follows = "nix-formatter-pack";
-        nmd.follows = "nmd";
+        nix-formatter-pack.follows = "";
+        nmd.follows = "";
         # Unsupported?
         nixpkgs-for-bootstrap.follows = "nixpkgs";
       };
@@ -95,32 +95,9 @@
     flake-compat = {
       url = "github:edolstra/flake-compat";
     };
-    gitignore = {
-      url = "github:hercules-ci/gitignore.nix";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-    nix-formatter-pack = {
-      url = "github:Gerschtli/nix-formatter-pack";
-      inputs.nixpkgs.follows = "nixpkgs";
-      inputs.nmd.follows = "nmd";
-      inputs.nmt.follows = "nmt";
-    };
-    nmd = {
-      url = "sourcehut:~rycee/nmd";
-      inputs.nixpkgs.follows = "nixpkgs";
-      inputs.scss-reset.follows = "scss-reset";
-    };
-    nmt = {
-      url = "sourcehut:~rycee/nmt";
-      flake = false;
-    };
     rust-overlay = {
       url = "github:oxalica/rust-overlay";
       inputs.nixpkgs.follows = "nixpkgs";
-    };
-    scss-reset = {
-      url = "github:andreymatin/scss-reset";
-      flake = false;
     };
   };
 
