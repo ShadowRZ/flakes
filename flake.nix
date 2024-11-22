@@ -133,18 +133,14 @@
           # Global
           inputs.treefmt-nix.flakeModule
           # System derivations
-          ./nixos/flake-module.nix
+          ./machines/flake-module.nix
           ./nix-on-droid/flake-module.nix
+          # Overlay
+          ./overlays/flake-module.nix
         ];
         systems = inputs.flake-utils.lib.defaultSystems;
         perSystem = {
           treefmt.config = import ./treefmt.nix;
-        };
-        flake = {
-          overlays = {
-            default = import ./overlays;
-          };
-
         };
       }
     );

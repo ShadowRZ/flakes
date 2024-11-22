@@ -1,0 +1,7 @@
+{
+  flake = {
+    overlays = {
+      default = import ./.;
+    };
+  };
+}

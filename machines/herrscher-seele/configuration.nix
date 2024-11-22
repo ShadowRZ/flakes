@@ -1,8 +1,8 @@
 {
   config,
-  inputs,
   pkgs,
   lib,
+  inputs,
   ...
 }:
 {
@@ -14,26 +14,24 @@
     inputs.sops-nix.nixosModules.sops
     # Foundation
     ../../nixos/foundation-configuration.nix
-    # OS
+    # OS core parts
     ../../nixos/modules/graphical
     ../../nixos/modules/hardening
     ../../nixos/modules/networking
     ../../nixos/modules/nix
-    # Imports
-    ../../imports/templates/plasma-desktop.nix
-    ../../imports/templates/virtualisation.nix
-    ../../imports/templates/nftables-firewall.nix
-    ../../imports/networkmanager.nix
-    ../../imports/fido2-login.nix
-    ../../imports/silent-boot.nix
-    # Hardware
-    ./hardware-configuration.nix
-    ./disk-configuration.nix
-    ../../imports/lanzaboote.nix
-    ../../imports/impermanence.nix
+    # Core fragments
+    ./fragments/disk-layout.nix
+    ./fragments/hardware-configuration.nix
+    # Machine specific modules
+    ./modules/impermanence.nix
+    ./modules/networking.nix
+    ./modules/virtualisation.nix
+    # Machine specific templates
+    ./modules/templates/lanzaboote.nix
+    ./modules/templates/plasma-desktop.nix
     # Users
-    ./users/shadowrz.nix
     ./users/root.nix
+    ./users/shadowrz.nix
   ];
 
   services.getty.greetingLine = with config.system.nixos; ''
@@ -41,7 +39,7 @@
     https://github.com/NixOS/nixpkgs/tree/${revision}
 
     \e{lightmagenta}Codename Hanekokoro
-    https://github.com/ShadowRZ/flakes/tree/${config.system.configurationRevision}\e{reset}
+    https://github.com/ShadowRZ/flakes/tree/${config.system.configurationRevision}
   '';
 
   nixpkgs.overlays = [
@@ -49,20 +47,11 @@
     inputs.self.overlays.default
   ];
 
-  networking.hostName = "mononekomi";
-
-  boot.loader.timeout = 0;
-
-  # fwupd, also deals with UEFI capsule updates used by the host machine.
-  services.fwupd.enable = true;
-
-  # Enable NVIDIA
-  services.xserver.videoDrivers = [ "nvidia" ];
-
-  networking.stevenblack.enable = true;
-  services.system76-scheduler.enable = true;
-  services.power-profiles-daemon.enable = true;
-  services.thermald.enable = true;
+  # Kernel
+  boot = {
+    loader.timeout = 0;
+    kernelPackages = pkgs.linuxKernel.packages.linux_xanmod_latest;
+  };
 
   sops = {
     defaultSopsFile = ./secrets.yaml;
@@ -75,18 +64,9 @@
       passwd = {
         neededForUsers = true;
       };
-      dae = {};
-    };
-    templates = {
-      "config.dae".content = ''
-        ${builtins.readFile ../../nixos/modules/networking/dae.conf}
-        ${config.sops.placeholder.dae}
-      '';
+      dae = { };
     };
   };
-
-  # Kernel
-  boot.kernelPackages = pkgs.linuxKernel.packages.linux_xanmod_latest;
 
   # Unfree configs
   nixpkgs.config = {
@@ -167,11 +147,6 @@
     fstrim.enable = true;
     dbus.implementation = "broker";
     pcscd.enable = true;
-    dae = {
-      enable = true;
-      disableTxChecksumIpGeneric = false;
-      configFile = config.sops.templates."config.dae".path;
-    };
   };
 
   security.rtkit.enable = true;
