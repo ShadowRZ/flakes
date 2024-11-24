@@ -1,25 +1,36 @@
-{
-  config,
-  pkgs,
-  ...
+{ inputs
+, inputs'
+, config
+, pkgs
+, ...
 }:
 {
-  imports = [ ../../../users/shadowrz ];
+  home-manager.users.shadowrz = {
+    imports = [
+      inputs.self.hmModules.firefox
+      inputs.self.hmModules.mpv
+      inputs.self.hmModules.dconf
+      inputs.self.hmModules.fontconfig
+      inputs.self.hmModules.gtk
+      inputs.self.hmModules.kitty
+      inputs.self.hmModules.foot
+      inputs.self.hmModules.obs
+      inputs.self.hmModules.cursor
+      inputs.self.hmModules.vscode
+    ];
 
-  home-manager.users.shadowrz.imports = [
-    ../../../home/modules/firefox
-    ../../../home/modules/mpv
-    ../../../home/modules/dconf
-    ../../../home/modules/fontconfig
-    ../../../home/modules/gtk
-    ../../../home/modules/kitty
-    ../../../home/modules/foot
-    ../../../home/modules/obs
-    ../../../home/modules/cursor
-    ../../../home/modules/vscode
-  ];
+    home = {
+      username = "shadowrz";
+      homeDirectory = "/home/shadowrz";
+    };
+  };
 
   users.users.shadowrz = {
+    uid = 1000;
+    isNormalUser = true;
+    shell = pkgs.zsh;
+    description = "夜坂雅";
+
     extraGroups = [
       "wheel"
       "networkmanager"
@@ -28,7 +39,7 @@
     packages = with pkgs; [
       fractal
       keepassxc
-      blender_3_6 # Blender 3.6.* (Binary)
+      inputs'.blender.packages.blender_3_6 # Blender 3.6.* (Binary)
       hugo # Hugo
       ffmpeg-full # FFmpeg
       helvum

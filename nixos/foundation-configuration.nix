@@ -6,11 +6,11 @@
   ...
 }:
 {
-  imports = with inputs; [
+  imports = [
     # Global Flake Inputs
-    home-manager.nixosModules.home-manager
-    nur.nixosModules.nur
-    nix-indexdb.nixosModules.nix-index
+    inputs.home-manager.nixosModules.home-manager
+    inputs.nur.nixosModules.nur
+    inputs.nix-indexdb.nixosModules.nix-index
   ];
 
   # Stores system revision.
@@ -28,10 +28,6 @@
 
   boot = {
     tmp.useTmpfs = true;
-    plymouth = {
-      enable = true;
-      theme = "bgrt";
-    };
     enableContainers = lib.mkDefault false;
   };
 
@@ -41,7 +37,7 @@
   networking = {
     # Disable global DHCP
     useDHCP = false;
-    # Disable firewall
+    # Disable firewall by default.
     firewall.enable = lib.mkDefault false;
     # Enable NAT
     nat.enable = true;
@@ -83,6 +79,13 @@
 
   # System programs
   programs = {
+    # Disable Nano by default.
+    nano.enable = lib.mkDefault false;
+    # In github:Guanran928/nixos-sensible Vim is set as default editor without
+    # programs.vim.enable = true which isn't expected to work.
+    # Workaround this.
+    # The downside is that NixOS configurations must override with lib.mkForce
+    vim.defaultEditor = false;
     # Disable command-not-found as it's unavliable in Flakes build
     command-not-found.enable = lib.mkForce false;
     # Nix-Index
@@ -98,25 +101,8 @@
     defaultLocale = "C.UTF-8";
     # Build all Glibc supported locales as defined in:
     # https://sourceware.org/git/?p=glibc.git;a=blob;f=localedata/SUPPORTED
-    # This is because Home Manager actually configures a locale archive
-    # which is built with all supported locales and exports
-    # LOCALE_ARCHIVE_2_27.
-    # Unfortunately this means other users, especially root with sudo,
-    # various applications stop supporting user's current locale as they
-    # lost LOCALE_ARCHIVE_2_27 and taken LOCALE_ARCHIVE which is not built
-    # with all locales like Home Manager.
-    # Especially Perl which gave warning if it can't use such locale.
     supportedLocales = [ "all" ];
   };
-
-  security.pam.loginLimits = [
-    {
-      domain = "*";
-      type = "-";
-      item = "memlock";
-      value = "unlimited";
-    }
-  ];
 
   services.dbus.implementation = "broker";
 }

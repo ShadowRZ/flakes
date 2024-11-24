@@ -27,6 +27,6 @@
 
   boot.lanzaboote = {
     enable = true;
-    pkiBundle = "${config.users.users.shadowrz.home}/Documents/Secureboot";
+    pkiBundle = lib.mkDefault "/etc/secureboot";
   };
 }

@@ -1,8 +1,7 @@
-{
-  inputs,
-  pkgs,
-  lib,
-  ...
+{ inputs
+, pkgs
+, lib
+, ...
 }:
 {
   environment.packages = with pkgs; [
@@ -92,7 +91,12 @@
 
   home-manager = {
     useGlobalPkgs = true;
-    config = ../home;
+    config = {
+      imports = [
+        inputs.self.hmModules.default
+        inputs.self.hmModules.shell
+      ];
+    };
     sharedModules = [
       {
         imports = with inputs; [

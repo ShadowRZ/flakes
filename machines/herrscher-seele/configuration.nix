@@ -1,9 +1,8 @@
-{
-  config,
-  pkgs,
-  lib,
-  inputs,
-  ...
+{ config
+, pkgs
+, lib
+, inputs
+, ...
 }:
 {
   imports = [
@@ -13,22 +12,24 @@
     inputs.disko.nixosModules.disko
     inputs.sops-nix.nixosModules.sops
     # Foundation
-    ../../nixos/foundation-configuration.nix
+    inputs.self.nixosModules.default
     # OS core parts
-    ../../nixos/modules/graphical
-    ../../nixos/modules/hardening
-    ../../nixos/modules/networking
-    ../../nixos/modules/nix
+    inputs.self.nixosModules.graphical
+    inputs.self.nixosModules.hardening
+    inputs.self.nixosModules.networking
+    inputs.self.nixosModules.nix
+    # Machine specific templates
+    inputs.self.nixosModules.lanzaboote
+    inputs.self.nixosModules.plasma-desktop
     # Core fragments
     ./fragments/disk-layout.nix
     ./fragments/hardware-configuration.nix
+    # Secrets
+    ./secrets
     # Machine specific modules
     ./modules/impermanence.nix
     ./modules/networking.nix
     ./modules/virtualisation.nix
-    # Machine specific templates
-    ./modules/templates/lanzaboote.nix
-    ./modules/templates/plasma-desktop.nix
     # Users
     ./users/root.nix
     ./users/shadowrz.nix
@@ -43,29 +44,22 @@
   '';
 
   nixpkgs.overlays = [
-    inputs.blender.overlays.default
     inputs.self.overlays.default
   ];
+
+  home-manager = {
+    sharedModules = [
+      inputs.self.hmModules.default
+      inputs.self.hmModules.shell
+    ];
+  };
 
   # Kernel
   boot = {
     loader.timeout = 0;
     kernelPackages = pkgs.linuxKernel.packages.linux_xanmod_latest;
-  };
-
-  sops = {
-    defaultSopsFile = ./secrets.yaml;
-    age = {
-      keyFile = "/var/lib/sops.key";
-      sshKeyPaths = [ ];
-    };
-    gnupg.sshKeyPaths = [ ];
-    secrets = {
-      passwd = {
-        neededForUsers = true;
-      };
-      dae = { };
-    };
+    # Set path for Lanzaboote
+    lanzaboote.pkiBundle = "${config.users.users.shadowrz.home}/Documents/Secureboot";
   };
 
   # Unfree configs
@@ -94,8 +88,6 @@
   # System programs
   programs = {
     adb.enable = true;
-    nano.enable = false;
-    vim.defaultEditor = false;
     neovim = {
       enable = true;
       defaultEditor = true;
@@ -126,9 +118,6 @@
   environment = {
     systemPackages = [ pkgs.firefoxpwa ];
 
-    # Link /share/zsh
-    pathsToLink = [ "/share/zsh" ];
-
     variables = {
       VK_ICD_FILENAMES = "${pkgs.mesa.drivers}/share/vulkan/icd.d/intel_icd.x86_64.json";
       GSK_RENDERER = "gl";
@@ -144,12 +133,17 @@
         zram-size = "ram";
       };
     };
-    fstrim.enable = true;
-    dbus.implementation = "broker";
     pcscd.enable = true;
   };
 
-  security.rtkit.enable = true;
+  security.pam.loginLimits = [
+    {
+      domain = "*";
+      type = "-";
+      item = "memlock";
+      value = "unlimited";
+    }
+  ];
 
   users.mutableUsers = false;
   powerManagement.powertop.enable = true;

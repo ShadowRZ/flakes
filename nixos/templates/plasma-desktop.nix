@@ -14,14 +14,6 @@
       # SDDM
       sddm = {
         enable = true;
-        settings = {
-          General.GreeterEnvironment = "QT_SCALE_FACTOR=1.25,QT_FONT_DPI=96";
-          Theme = {
-            Font = "Outfit";
-            CursorTheme = "BreezeX-RosePineDawn-Linux";
-            CursorSize = 32;
-          };
-        };
         wayland.enable = true;
       };
     };
@@ -35,7 +27,6 @@
       mesa-demos # glxinfo, eglinfo
       vulkan-tools # vulkaninfo
       wayland-utils # wayland-info
-      kdePackages.krecorder
       rose-pine-cursor
       # Used to configure SDDM Breeze Theme
       (writeTextDir "share/sddm/themes/breeze/theme.conf.user" ''

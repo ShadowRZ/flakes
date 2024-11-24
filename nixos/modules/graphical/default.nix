@@ -5,11 +5,32 @@
   ...
 }:
 {
+
+  boot = lib.mkMerge [
+    # Enable Plymouth by default
+    ({
+      plymouth = {
+        enable = lib.mkDefault true;
+        theme = "bgrt";
+      };
+    })
+    # Enable silent boot if Plymouth is enabled
+    (lib.mkIf (config.boot.plymouth.enable) {
+      kernelParams = lib.mkAfter [
+        "quiet"
+        "udev.log_priority=3"
+        "vt.global_cursor_default=0"
+      ];
+      initrd.verbose = false;
+      consoleLogLevel = 0;
+    })
+  ];
+
   environment = {
     systemPackages = with pkgs; [
       adw-gtk3
-      # wl-clipboard
       wl-clipboard
+      papirus-icon-theme
     ];
   };
 
@@ -29,8 +50,7 @@
     gvfs.enable = true;
   };
 
-  # Clashes with system path
-  users.users.shadowrz.packages = with pkgs; [ papirus-icon-theme ];
+  security.rtkit.enable = true;
 
   i18n = {
     # Fcitx 5
@@ -76,7 +96,10 @@
       dejavu_fonts # DejaVu
       cantarell-fonts # Cantarell
       (google-fonts.override {
-        fonts = [ "Space Grotesk" "Outfit" ];
+        fonts = [
+          "Space Grotesk"
+          "Outfit"
+        ];
       })
       (nerdfonts.override {
         fonts = [ "NerdFontsSymbolsOnly" ];

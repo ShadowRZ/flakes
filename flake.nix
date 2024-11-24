@@ -109,6 +109,12 @@
         imports = [
           # Global
           inputs.treefmt-nix.flakeModule
+          # Private flake module
+          ./flake-module.nix
+          # NixOS modules
+          ./nixos/flake-module.nix
+          # Home configurations
+          ./home/flake-module.nix
           # System derivations
           ./machines/flake-module.nix
           ./nix-on-droid/flake-module.nix
@@ -116,9 +122,6 @@
           ./overlays/flake-module.nix
         ];
         systems = inputs.flake-utils.lib.defaultSystems;
-        perSystem = {
-          treefmt.config = import ./treefmt.nix;
-        };
       }
     );
 }
