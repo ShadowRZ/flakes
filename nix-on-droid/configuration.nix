@@ -124,4 +124,5 @@
   user.shell = lib.getExe pkgs.zsh;
   environment.sessionVariables."SHELL" = lib.getExe pkgs.zsh;
   environment.sessionVariables."PAGER" = lib.getExe pkgs.less;
+  environment.sessionVariables."EDITOR" = "nvim";
 }
