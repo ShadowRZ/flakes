@@ -20,6 +20,7 @@
     inputs.self.nixosModules.networking
     inputs.self.nixosModules.nix
     # Machine specific templates
+    inputs.self.nixosModules.pam-fido2
     inputs.self.nixosModules.lanzaboote
     inputs.self.nixosModules.plasma-desktop
     # Core fragments
