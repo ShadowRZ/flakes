@@ -1,8 +1,9 @@
-{ inputs
-, inputs'
-, config
-, pkgs
-, ...
+{
+  inputs,
+  inputs',
+  config,
+  pkgs,
+  ...
 }:
 {
   home-manager.users.shadowrz = {

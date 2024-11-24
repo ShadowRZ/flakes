@@ -8,14 +8,14 @@
 
   boot = lib.mkMerge [
     # Enable Plymouth by default
-    ({
+    {
       plymouth = {
         enable = lib.mkDefault true;
         theme = "bgrt";
       };
-    })
+    }
     # Enable silent boot if Plymouth is enabled
-    (lib.mkIf (config.boot.plymouth.enable) {
+    (lib.mkIf config.boot.plymouth.enable {
       kernelParams = lib.mkAfter [
         "quiet"
         "udev.log_priority=3"
