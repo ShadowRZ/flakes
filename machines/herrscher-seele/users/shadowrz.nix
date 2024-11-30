@@ -24,6 +24,9 @@
       username = "shadowrz";
       homeDirectory = "/home/shadowrz";
     };
+
+    systemd.user.sessionVariables.QT_SCALE_FACTOR_ROUNDING_POLICY = "RoundPreferFloor";
+    home.sessionVariables.QT_SCALE_FACTOR_ROUNDING_POLICY = "RoundPreferFloor";
   };
 
   users.users.shadowrz = {
