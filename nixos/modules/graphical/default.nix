@@ -101,9 +101,7 @@
           "Outfit"
         ];
       })
-      (nerdfonts.override {
-        fonts = [ "NerdFontsSymbolsOnly" ];
-      })
+      nerd-fonts.symbols-only
       (iosevka-bin.override {
         variant = "Aile";
       })
