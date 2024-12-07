@@ -124,6 +124,9 @@
       # Kvantum
       pkgs.libsForQt5.qtstyleplugin-kvantum
       pkgs.kdePackages.qtstyleplugin-kvantum
+
+      pkgs.colloid-icon-theme
+      pkgs.graphite-cursors
     ];
 
     variables = {
