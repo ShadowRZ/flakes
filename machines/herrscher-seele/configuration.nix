@@ -118,7 +118,13 @@
   };
 
   environment = {
-    systemPackages = [ pkgs.firefoxpwa ];
+    systemPackages = [
+      # For FirefoxPWA
+      pkgs.firefoxpwa
+      # Kvantum
+      pkgs.libsForQt5.qtstyleplugin-kvantum
+      pkgs.kdePackages.qtstyleplugin-kvantum
+    ];
 
     variables = {
       VK_ICD_FILENAMES = "${pkgs.mesa.drivers}/share/vulkan/icd.d/intel_icd.x86_64.json";
