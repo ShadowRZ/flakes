@@ -1,5 +1,11 @@
 { inputs, ... }:
 {
+  imports = [
+    inputs.treefmt-nix.flakeModule
+  ];
+
+  systems = inputs.flake-utils.lib.defaultSystems;
+
   flake.lib = {
     modulesFromDirectory =
       let

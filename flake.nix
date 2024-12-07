@@ -107,8 +107,6 @@
       { inputs, ... }:
       {
         imports = [
-          # Global
-          inputs.treefmt-nix.flakeModule
           # Private flake module
           ./flake-module.nix
           # NixOS modules
@@ -121,7 +119,6 @@
           # Overlay
           ./overlays/flake-module.nix
         ];
-        systems = inputs.flake-utils.lib.defaultSystems;
       }
     );
 }
