@@ -85,6 +85,10 @@
       url = "github:numtide/treefmt-nix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    lightly = {
+      url = "github:Bali10050/Lightly";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     ### Dedupes
     systems = {
       url = "github:nix-systems/default";

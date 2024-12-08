@@ -3,6 +3,7 @@
   pkgs,
   lib,
   inputs,
+  inputs',
   ...
 }:
 {
@@ -121,6 +122,9 @@
     systemPackages = [
       # For FirefoxPWA
       pkgs.firefoxpwa
+      # Lightly
+      inputs'.lightly.packages.lightly-qt5
+      inputs'.lightly.packages.lightly-qt6
       # Kvantum
       pkgs.libsForQt5.qtstyleplugin-kvantum
       pkgs.kdePackages.qtstyleplugin-kvantum

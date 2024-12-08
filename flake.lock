@@ -184,6 +184,26 @@
         "type": "github"
       }
     },
+    "lightly": {
+      "inputs": {
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1733621978,
+        "narHash": "sha256-1dTeiYCyvLmNZGWhPUMuF7/FppR5ZLBq8UlLqDoULM8=",
+        "owner": "Bali10050",
+        "repo": "Lightly",
+        "rev": "2751ab359f78175ba4a2b954c15b14531034753f",
+        "type": "github"
+      },
+      "original": {
+        "owner": "Bali10050",
+        "repo": "Lightly",
+        "type": "github"
+      }
+    },
     "nix-indexdb": {
       "inputs": {
         "nixpkgs": [
@@ -292,6 +312,7 @@
         "home-manager": "home-manager",
         "impermanence": "impermanence",
         "lanzaboote": "lanzaboote",
+        "lightly": "lightly",
         "nix-indexdb": "nix-indexdb",
         "nix-on-droid": "nix-on-droid",
         "nixos-sensible": "nixos-sensible",
