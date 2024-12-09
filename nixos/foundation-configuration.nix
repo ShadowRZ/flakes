@@ -1,6 +1,5 @@
 {
   inputs,
-  config,
   pkgs,
   lib,
   ...
@@ -9,7 +8,7 @@
   imports = [
     # Global Flake Inputs
     inputs.home-manager.nixosModules.home-manager
-    inputs.nur.nixosModules.nur
+    inputs.nur.modules.nixos.default
     inputs.nix-indexdb.nixosModules.nix-index
   ];
 
@@ -22,7 +21,6 @@
     useGlobalPkgs = true;
     extraSpecialArgs = {
       inherit inputs;
-      inherit (config) nur;
     };
   };
 

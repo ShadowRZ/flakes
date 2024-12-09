@@ -1,5 +1,4 @@
 {
-  config,
   pkgs,
   lib,
   ...
@@ -21,7 +20,7 @@
 
   environment = {
     systemPackages = with pkgs; [
-      config.nur.repos.shadowrz.klassy-qt6
+      nur.repos.shadowrz.klassy-qt6
       aha # aha
       clinfo # clinfo
       mesa-demos # glxinfo, eglinfo

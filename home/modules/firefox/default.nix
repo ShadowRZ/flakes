@@ -1,6 +1,5 @@
 {
   pkgs,
-  nur,
   ...
 }:
 {
@@ -77,7 +76,7 @@
             };
             # Firefox extensions
             extensions =
-              with nur.repos.rycee.firefox-addons;
+              with pkgs.nur.repos.rycee.firefox-addons;
               [
                 auto-tab-discard
                 behind-the-overlay-revival
@@ -117,7 +116,7 @@
               ++ (
                 let
                   addons = pkgs.callPackage ./addons.nix {
-                    inherit (nur.repos.rycee.firefox-addons) buildFirefoxXpiAddon;
+                    inherit (pkgs.nur.repos.rycee.firefox-addons) buildFirefoxXpiAddon;
                   };
                 in
                 with addons;

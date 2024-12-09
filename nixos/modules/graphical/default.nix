@@ -105,12 +105,12 @@
       (iosevka-bin.override {
         variant = "Aile";
       })
-      config.nur.repos.shadowrz.maoken-assorted-sans
+      nur.repos.shadowrz.maoken-assorted-sans
       # Iosevka Builds
-      config.nur.repos.shadowrz.iosevka-aile-minoko
-      config.nur.repos.shadowrz.iosevka-minoko
-      config.nur.repos.shadowrz.iosevka-minoko-term
-      config.nur.repos.shadowrz.iosevka-minoko-e
+      nur.repos.shadowrz.iosevka-aile-minoko
+      nur.repos.shadowrz.iosevka-minoko
+      nur.repos.shadowrz.iosevka-minoko-term
+      nur.repos.shadowrz.iosevka-minoko-e
     ];
     fontconfig = {
       defaultFonts = lib.mkForce {
