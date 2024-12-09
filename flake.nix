@@ -33,6 +33,10 @@
     # NUR
     nur = {
       url = "github:nix-community/NUR";
+      inputs = {
+        flake-parts.follows = "flake-parts";
+        treefmt-nix.follows = "treefmt-nix";
+      };
     };
     # Sops-Nix
     sops-nix = {
