@@ -8,6 +8,7 @@
 {
   home-manager.users.shadowrz = {
     imports = [
+      inputs.self.hmModules.emacs
       inputs.self.hmModules.firefox
       inputs.self.hmModules.mpv
       inputs.self.hmModules.dconf
