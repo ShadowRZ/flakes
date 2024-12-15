@@ -59,6 +59,7 @@
       unzip
       p7zip
       unar
+      man-pages
     ];
     shellAliases = lib.mkForce {
       df = "df -h";
