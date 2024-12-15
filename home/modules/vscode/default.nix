@@ -2,13 +2,9 @@
 {
   programs.vscode = {
     enable = true;
-    package = pkgs.vscode.fhsWithPackages (
-      ps: with ps; [
-        zlib
-        openssl.dev
-        sqlite.dev
-        pkg-config
-      ]
-    );
+    package = pkgs.vscode;
+    # CodeLLDB should use the Nixpkgs one for non FHS usage
+    extensions = [ pkgs.vscode-extensions.vadimcn.vscode-lldb ];
+    mutableExtensionsDir = true;
   };
 }
