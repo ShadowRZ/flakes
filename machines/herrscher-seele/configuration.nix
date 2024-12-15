@@ -130,6 +130,7 @@
       pkgs.kdePackages.qtstyleplugin-kvantum
 
       pkgs.colloid-icon-theme
+      pkgs.tela-icon-theme
       pkgs.graphite-cursors
     ];
 
