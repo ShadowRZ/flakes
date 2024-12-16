@@ -132,6 +132,8 @@
       pkgs.colloid-icon-theme
       pkgs.tela-icon-theme
       pkgs.graphite-cursors
+
+      pkgs.plasma-panel-colorizer
     ];
 
     variables = {
