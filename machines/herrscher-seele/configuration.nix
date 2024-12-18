@@ -131,7 +131,10 @@
 
       pkgs.colloid-icon-theme
       pkgs.tela-icon-theme
-      pkgs.graphite-cursors
+      pkgs.tela-circle-icon-theme
+      pkgs.numix-icon-theme
+      pkgs.fluent-icon-theme
+      pkgs.beauty-line-icon-theme
 
       pkgs.plasma-panel-colorizer
     ];
