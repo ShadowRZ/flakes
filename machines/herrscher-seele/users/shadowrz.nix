@@ -79,7 +79,6 @@
       ## Akonadi
       kdePackages.akonadi
       kdePackages.akonadi-mime
-      kdePackages.akonadi-notes
       kdePackages.akonadi-search
       kdePackages.akonadi-contacts
       kdePackages.akonadi-calendar
