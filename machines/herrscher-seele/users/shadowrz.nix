@@ -68,6 +68,7 @@
       featherpad
       ungoogled-chromium
       dbeaver-bin
+      sqlitebrowser
       jetbrains.idea-community
       ## KDE Packages
       kdePackages.kdenlive

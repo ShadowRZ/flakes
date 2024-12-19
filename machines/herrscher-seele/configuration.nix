@@ -156,6 +156,8 @@
     };
     pcscd.enable = true;
     system76-scheduler.enable = true;
+    # Userborn
+    userborn.enable = true;
   };
 
   security.pam.loginLimits = [
