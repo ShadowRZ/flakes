@@ -67,6 +67,7 @@
       gnome-builder
       featherpad
       ungoogled-chromium
+      dbeaver-bin
       jetbrains.idea-community
       ## KDE Packages
       kdePackages.kdenlive
