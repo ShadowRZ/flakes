@@ -36,6 +36,7 @@
           ".java"
           ".local"
           ".logseq"
+          ".m2"
           ".mitmproxy"
           ".mozilla"
           ".renpy"
