@@ -37,6 +37,26 @@
         "type": "github"
       }
     },
+    "darkly": {
+      "inputs": {
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1734818709,
+        "narHash": "sha256-Rn0Fve/ANpTCgyq7CeIrQUweuvDr3m3LHehL+AJ5QWg=",
+        "owner": "Bali10050",
+        "repo": "Darkly",
+        "rev": "5de7c8bb2029d6333b1b642b94dd98ea39b5643e",
+        "type": "github"
+      },
+      "original": {
+        "owner": "Bali10050",
+        "repo": "Darkly",
+        "type": "github"
+      }
+    },
     "disko": {
       "inputs": {
         "nixpkgs": [
@@ -184,26 +204,6 @@
         "type": "github"
       }
     },
-    "lightly": {
-      "inputs": {
-        "nixpkgs": [
-          "nixpkgs"
-        ]
-      },
-      "locked": {
-        "lastModified": 1734818709,
-        "narHash": "sha256-Rn0Fve/ANpTCgyq7CeIrQUweuvDr3m3LHehL+AJ5QWg=",
-        "owner": "Bali10050",
-        "repo": "Lightly",
-        "rev": "5de7c8bb2029d6333b1b642b94dd98ea39b5643e",
-        "type": "github"
-      },
-      "original": {
-        "owner": "Bali10050",
-        "repo": "Lightly",
-        "type": "github"
-      }
-    },
     "nix-indexdb": {
       "inputs": {
         "nixpkgs": [
@@ -316,6 +316,7 @@
       "inputs": {
         "blender": "blender",
         "crane": "crane",
+        "darkly": "darkly",
         "disko": "disko",
         "flake-compat": "flake-compat",
         "flake-parts": "flake-parts",
@@ -323,7 +324,6 @@
         "home-manager": "home-manager",
         "impermanence": "impermanence",
         "lanzaboote": "lanzaboote",
-        "lightly": "lightly",
         "nix-indexdb": "nix-indexdb",
         "nix-on-droid": "nix-on-droid",
         "nixos-sensible": "nixos-sensible",

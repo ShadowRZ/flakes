@@ -123,8 +123,8 @@
       # For FirefoxPWA
       pkgs.firefoxpwa
       # Lightly
-      inputs'.lightly.packages.lightly-qt5
-      inputs'.lightly.packages.lightly-qt6
+      inputs'.darkly.packages.darkly-qt5
+      inputs'.darkly.packages.darkly-qt6
       # Kvantum
       pkgs.libsForQt5.qtstyleplugin-kvantum
       pkgs.kdePackages.qtstyleplugin-kvantum

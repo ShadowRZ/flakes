@@ -90,8 +90,9 @@
       url = "github:numtide/treefmt-nix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    lightly = {
-      url = "github:Bali10050/Lightly";
+    # Darkly
+    darkly = {
+      url = "github:Bali10050/Darkly";
       inputs.nixpkgs.follows = "nixpkgs";
     };
     ### Dedupes
