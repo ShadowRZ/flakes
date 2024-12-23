@@ -1,9 +1,5 @@
-{ lib, ... }:
 {
-  networking.wireless.iwd.enable = lib.mkDefault true;
   services.resolved.enable = true;
-
-  systemd.network.links."80-iwd" = lib.mkForce { };
 
   ### https://wiki.archlinux.org/title/Sysctl#Improving_performance
   boot.kernelModules = [ "tcp_bbr" ];
