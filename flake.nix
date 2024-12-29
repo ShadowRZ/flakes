@@ -4,7 +4,7 @@
   inputs = {
     # Nixpkgs
     nixpkgs = {
-      url = "github:NixOS/nixpkgs/nixos-unstable";
+      url = "github:NixOS/nixpkgs/nixos-unstable-small";
     };
     # NixOS Sensible
     nixos-sensible = {
