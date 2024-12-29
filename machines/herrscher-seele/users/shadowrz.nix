@@ -59,7 +59,6 @@
       celluloid
       audacity
       libreoffice-fresh # LibreOffice Fresh
-      quodlibet-full # Quod Libet
       nextcloud-client
       waylyrics
       android-studio
