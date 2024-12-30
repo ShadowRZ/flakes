@@ -63,11 +63,14 @@
       waylyrics
       android-studio
       mindustry-wayland
-      gnome-builder
+      cmus
+      python3.pkgs.kde-material-you-colors
+      ghostty
       featherpad
       ungoogled-chromium
       dbeaver-bin
       sqlitebrowser
+      qtcreator
       ## KDE Packages
       kdePackages.kdenlive
       kdePackages.kcalc

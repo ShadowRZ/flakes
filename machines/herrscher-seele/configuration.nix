@@ -122,19 +122,14 @@
     systemPackages = [
       # For FirefoxPWA
       pkgs.firefoxpwa
-      # Lightly
+      # Darkly
       inputs'.darkly.packages.darkly-qt5
       inputs'.darkly.packages.darkly-qt6
       # Kvantum
       pkgs.libsForQt5.qtstyleplugin-kvantum
       pkgs.kdePackages.qtstyleplugin-kvantum
 
-      pkgs.colloid-icon-theme
       pkgs.tela-icon-theme
-      pkgs.tela-circle-icon-theme
-      pkgs.numix-icon-theme
-      pkgs.fluent-icon-theme
-      pkgs.beauty-line-icon-theme
 
       pkgs.plasma-panel-colorizer
     ];
