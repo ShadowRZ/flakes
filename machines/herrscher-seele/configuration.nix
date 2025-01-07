@@ -17,7 +17,7 @@
     inputs.self.nixosModules.default
     # OS core parts
     inputs.self.nixosModules.graphical
-    inputs.self.nixosModules.hardening
+    #inputs.self.nixosModules.hardening
     inputs.self.nixosModules.networking
     inputs.self.nixosModules.nix
     # Machine specific templates
