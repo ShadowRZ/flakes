@@ -100,7 +100,16 @@
     defaultLocale = "C.UTF-8";
     # Build all Glibc supported locales as defined in:
     # https://sourceware.org/git/?p=glibc.git;a=blob;f=localedata/SUPPORTED
-    supportedLocales = [ "all" ];
+    supportedLocales = [
+      "C.UTF-8/UTF-8"
+      "en_US.UTF-8/UTF-8"
+      "zh_CN.UTF-8/UTF-8"
+    ];
+  };
+
+  system.tools = {
+    nixos-option.enable = false;
+    nixos-generate-config.enable = false;
   };
 
   services.dbus.implementation = "broker";

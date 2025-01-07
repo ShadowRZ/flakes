@@ -55,11 +55,8 @@
       d-spy # D-Spy
       meld # Meld
       mangohud
-      foliate
-      celluloid
       audacity
       libreoffice-fresh # LibreOffice Fresh
-      nextcloud-client
       waylyrics
       android-studio
       mindustry-wayland
@@ -68,9 +65,7 @@
       ghostty
       featherpad
       ungoogled-chromium
-      dbeaver-bin
       sqlitebrowser
-      qtcreator
       ## KDE Packages
       kdePackages.kdenlive
       kdePackages.kcalc

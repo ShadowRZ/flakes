@@ -10,11 +10,6 @@
     nixos-sensible = {
       url = "github:Guanran928/nixos-sensible";
     };
-    # Flake Utils
-    flake-utils = {
-      url = "github:numtide/flake-utils";
-      inputs.systems.follows = "systems";
-    };
     # Flake Parts
     flake-parts = {
       url = "github:hercules-ci/flake-parts";
@@ -77,11 +72,13 @@
       inputs = {
         nixpkgs.follows = "nixpkgs";
         flake-parts.follows = "flake-parts";
-        flake-utils.follows = "flake-utils";
         crane.follows = "crane";
-        flake-compat.follows = "flake-compat";
         # https://github.com/nix-community/lanzaboote/blob/v0.4.1/flake.nix#L11
         pre-commit-hooks-nix.follows = "";
+        # Unneeded because we are **in** the flake
+        flake-compat.follows = "";
+        # Unneeded because we use our own rust-overlay
+        flake-utils.follows = "";
         rust-overlay.follows = "rust-overlay";
       };
     };
@@ -96,14 +93,8 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     ### Dedupes
-    systems = {
-      url = "github:nix-systems/default";
-    };
     crane = {
       url = "github:ipetkov/crane";
-    };
-    flake-compat = {
-      url = "github:edolstra/flake-compat";
     };
     rust-overlay = {
       url = "github:oxalica/rust-overlay";
@@ -114,7 +105,7 @@
   outputs =
     inputs@{ flake-parts, ... }:
     flake-parts.lib.mkFlake { inherit inputs; } (
-      { inputs, ... }:
+      { ... }:
       {
         imports = [
           # Private flake module

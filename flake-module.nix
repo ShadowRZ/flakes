@@ -4,7 +4,7 @@
     inputs.treefmt-nix.flakeModule
   ];
 
-  systems = inputs.flake-utils.lib.defaultSystems;
+  systems = inputs.nixpkgs.lib.systems.flakeExposed;
 
   flake.lib = {
     modulesFromDirectory =
@@ -17,9 +17,9 @@
         filterNullAttrValue = attr: inputs.nixpkgs.lib.attrsets.filterAttrs (_: v: v != null) attr;
       in
       directory:
-        builtins.mapAttrs (_: v: import (directory + "/${v}")) (
-          filterNullAttrValue (getDir directory "default.nix")
-        );
+      builtins.mapAttrs (_: v: import (directory + "/${v}")) (
+        filterNullAttrValue (getDir directory "default.nix")
+      );
     modulesFromFiles =
       let
         nixFileOrNull = file: if (inputs.nixpkgs.lib.strings.hasSuffix ".nix" file) then file else null;
@@ -31,10 +31,10 @@
         filterNullAttrValue = attr: inputs.nixpkgs.lib.attrsets.filterAttrs (_: v: v != null) attr;
       in
       directory:
-        inputs.nixpkgs.lib.attrsets.mapAttrs' (name: path: {
-          name = inputs.nixpkgs.lib.strings.removeSuffix ".nix" name;
-          value = import (directory + "/${path}");
-        }) (filterNullAttrValue (getFiles directory));
+      inputs.nixpkgs.lib.attrsets.mapAttrs' (name: path: {
+        name = inputs.nixpkgs.lib.strings.removeSuffix ".nix" name;
+        value = import (directory + "/${path}");
+      }) (filterNullAttrValue (getFiles directory));
   };
   perSystem = {
     treefmt.config = import ./treefmt.nix;

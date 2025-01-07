@@ -1,7 +1,6 @@
 {
   buildFirefoxXpiAddon,
   lib,
-  stdenv,
 }:
 {
   "copy-linktab-name-and-url" = buildFirefoxXpiAddon {
