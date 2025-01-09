@@ -45,8 +45,6 @@
           # Enable "Not Secure" texts
           "security.insecure_connection_text.enabled" = true;
           "security.insecure_connection_text.pbmode.enabled" = true;
-          # Set UI density to normal
-          "browser.uidensity" = 0;
           # Disable PPA
           # https://michael.kjorling.se/blog/2024/disabling-privacy-preserving-ad-measurement-in-firefox-128/
           "dom.private-attribution.submission.enabled" = false;
@@ -67,7 +65,7 @@
               "toolkit.legacyUserProfileCustomizations.stylesheets" = true;
               # Enable SVG context-propertes
               "svg.context-properties.content.enabled" = true;
-              # ShyFox
+              # Required by ShyFox
               "sidebar.revamp" = false;
               "layout.css.has-selector.enabled" = true;
               "browser.urlbar.suggest.calculator" = true;
@@ -76,6 +74,13 @@
               "browser.urlbar.trimURLs" = true;
               "widget.gtk.rounded-bottom-corners.enabled" = true;
               "widget.gtk.ignore-bogus-leave-notify" = "1";
+              # ShyFox
+              "shyfox.larger.context.menu" = true;
+              "shyfox.enable.ext.mono.toolbar.icons" = true;
+              "shyfox.enable.ext.mono.context.icons" = true;
+              "shyfox.enable.context.menu.icons" = true;
+              "shyfox.fill.accent.with.icons.fill.color" = true;
+              "shyfox.force.native.controls" = true;
             };
             # Firefox extensions
             extensions =
