@@ -11,11 +11,8 @@
       inputs.self.hmModules.emacs
       inputs.self.hmModules.firefox
       inputs.self.hmModules.mpv
-      inputs.self.hmModules.dconf
       inputs.self.hmModules.fontconfig
       inputs.self.hmModules.gtk
-      inputs.self.hmModules.kitty
-      inputs.self.hmModules.foot
       inputs.self.hmModules.obs
       inputs.self.hmModules.cursor
       inputs.self.hmModules.vscode
