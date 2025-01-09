@@ -39,6 +39,7 @@
           ".m2"
           ".mitmproxy"
           ".mozilla"
+          ".nvidia-settings-rc"
           ".renpy"
           ".var"
           ".vscode"

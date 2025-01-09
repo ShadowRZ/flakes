@@ -13,8 +13,9 @@
   hardware = {
     cpu.intel.updateMicrocode = true;
     nvidia = {
+      package = config.boot.kernelPackages.nvidiaPackages.latest;
       open = true;
-      nvidiaSettings = false;
+      nvidiaSettings = true;
       prime = {
         offload = {
           enable = true;
