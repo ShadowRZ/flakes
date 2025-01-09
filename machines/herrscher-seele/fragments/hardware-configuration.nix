@@ -45,6 +45,7 @@
 
   boot = {
     kernelModules = [
+      "i915"
       "legion-laptop"
     ];
     initrd = {
