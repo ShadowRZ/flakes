@@ -39,7 +39,6 @@
           ".m2"
           ".mitmproxy"
           ".mozilla"
-          ".nvidia-settings-rc"
           ".renpy"
           ".var"
           ".vscode"
@@ -52,7 +51,10 @@
             mode = "0700";
           }
         ];
-        files = [ ".npmrc" ];
+        files = [
+          ".npmrc"
+          ".nvidia-settings-rc"
+        ];
       };
       root = {
         home = "/root";
