@@ -34,6 +34,7 @@
   };
 
   services = {
+    pulseaudio.enable = false;
     xserver = {
       enable = true;
       excludePackages = [ pkgs.xterm ];
@@ -69,7 +70,6 @@
   };
 
   hardware = {
-    pulseaudio.enable = false;
     # Bluetooth
     bluetooth.enable = true;
     graphics.enable = true;
