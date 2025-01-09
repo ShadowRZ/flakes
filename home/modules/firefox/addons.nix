@@ -1,6 +1,7 @@
 {
   buildFirefoxXpiAddon,
   lib,
+  stdenv,
 }:
 {
   "copy-linktab-name-and-url" = buildFirefoxXpiAddon {
@@ -26,10 +27,10 @@
   };
   "custom-scrollbars" = buildFirefoxXpiAddon {
     pname = "custom-scrollbars";
-    version = "4.3";
+    version = "4.4";
     addonId = "customscrollbars@computerwhiz";
-    url = "https://addons.mozilla.org/firefox/downloads/file/4232938/custom_scrollbars-4.3.xpi";
-    sha256 = "9809c577bacdc3798e8a65351737bcdd15fd7911de2a760ef2df61facb28440d";
+    url = "https://addons.mozilla.org/firefox/downloads/file/4388391/custom_scrollbars-4.4.xpi";
+    sha256 = "a15a5f9198da1c67339f5f76eadf3eccde235ac53eea617b9182b9dc270f8a96";
     meta = with lib; {
       homepage = "https://addons.wesleybranton.com/addon/custom-scrollbars/";
       description = "Give Firefox a personal touch with customized scrollbars!";
@@ -45,13 +46,13 @@
   };
   "emoji-sav" = buildFirefoxXpiAddon {
     pname = "emoji-sav";
-    version = "3.22.1";
+    version = "3.23.1.2";
     addonId = "emoji@saveriomorelli.com";
-    url = "https://addons.mozilla.org/firefox/downloads/file/4329377/emoji_sav-3.22.1.xpi";
-    sha256 = "3feec80f2350245a9adf31b0133219005b0d4eb1bc2337ee2a16dc7a62291093";
+    url = "https://addons.mozilla.org/firefox/downloads/file/4407001/emoji_sav-3.23.1.2.xpi";
+    sha256 = "cebceedb8b72c9c4064fa787e7a4e25d6afd41e7060cd3a2173b6c387e0ab380";
     meta = with lib; {
       homepage = "https://www.emojiaddon.com";
-      description = "It permits just with a single click to copy an emoji.\nThere is a search-box and the \"Most used emojis\" section (the first one).\n\nIf you want to send feedback or report bug, please contact me: <a href=\"https://prod.outgoing.prod.webservices.mozgcp.net/v1/b753c67704f26ea23ad2ea0e6cdf84584259e0610aff7861a2c72976219974ed/https%3A//www.emojiaddon.com/help\" rel=\"nofollow\">https://www.emojiaddon.com/help</a>";
+      description = "It permits just with a single click to copy an emoji.\r\nThere is a search-box and the \"Most used emojis\" section (the first one).\r\n\r\nIf you want to send feedback or report bug, please contact me";
       license = licenses.mpl20;
       mozPermissions = [ "storage" ];
       platforms = platforms.all;
@@ -98,10 +99,10 @@
   };
   "pwas-for-firefox" = buildFirefoxXpiAddon {
     pname = "pwas-for-firefox";
-    version = "2.12.4";
+    version = "2.13.1";
     addonId = "firefoxpwa@filips.si";
-    url = "https://addons.mozilla.org/firefox/downloads/file/4353516/pwas_for_firefox-2.12.4.xpi";
-    sha256 = "44f9c0d9d9dc820f3887261ffa01a4b69fb41e19099053513ee5a5818b248f02";
+    url = "https://addons.mozilla.org/firefox/downloads/file/4383345/pwas_for_firefox-2.13.1.xpi";
+    sha256 = "aff2b25a0d4068c0e77776e624404219e3355735cc8d13a160bb77ebb9412e4d";
     meta = with lib; {
       homepage = "https://github.com/filips123/PWAsForFirefox";
       description = "A tool to install, manage and use Progressive Web Apps (PWAs) in Mozilla Firefox";
@@ -152,6 +153,19 @@
         "alarms"
         "contextMenus"
       ];
+      platforms = platforms.all;
+    };
+  };
+  "userchrome-toggle-extended" = buildFirefoxXpiAddon {
+    pname = "userchrome-toggle-extended";
+    version = "2.0.1";
+    addonId = "userchrome-toggle-extended@n2ezr.ru";
+    url = "https://addons.mozilla.org/firefox/downloads/file/4341014/userchrome_toggle_extended-2.0.1.xpi";
+    sha256 = "3f5be2684284c0b79aaad0f70872a87f21a9a1329a5eaf8e60090e6f0e6a741d";
+    meta = with lib; {
+      description = "This extension allows you to toggle userchrome.css styles on-the-fly with buttons and hotkeys. You'll be able to switch up to six styles";
+      license = licenses.mpl20;
+      mozPermissions = [ "storage" ];
       platforms = platforms.all;
     };
   };

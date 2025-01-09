@@ -129,6 +129,7 @@
                   textarea-cache
                   tranquility-reader
                   pwas-for-firefox
+                  userchrome-toggle-extended
                 ]
               );
           }
