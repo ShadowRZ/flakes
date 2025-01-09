@@ -67,12 +67,15 @@
               "toolkit.legacyUserProfileCustomizations.stylesheets" = true;
               # Enable SVG context-propertes
               "svg.context-properties.content.enabled" = true;
-              # Disable private window dark theme
-              "browser.theme.dark-private-windows" = false;
-              ## Optional options provided by firefox-gnome-theme
-              ## See https://github.com/rafaelmardojai/firefox-gnome-theme
-              "gnomeTheme.hideSingleTab" = true;
-              "gnomeTheme.activeTabContrast" = true;
+              # ShyFox
+              "sidebar.revamp" = false;
+              "layout.css.has-selector.enabled" = true;
+              "browser.urlbar.suggest.calculator" = true;
+              "browser.urlbar.unitConversion.enabled" = true;
+              "browser.urlbar.trimHttps" = true;
+              "browser.urlbar.trimURLs" = true;
+              "widget.gtk.rounded-bottom-corners.enabled" = true;
+              "widget.gtk.ignore-bogus-leave-notify" = "1";
             };
             # Firefox extensions
             extensions =
@@ -135,24 +138,14 @@
           }
           // (
             let
-              theme = pkgs.callPackage ./firefox-gnome-theme.nix { };
+              theme = pkgs.callPackage ./shyfox.nix { };
             in
             {
               userChrome = ''
-                @import "${theme}/lib/firefox-gnome-theme/userChrome.css";
-                @import "firefox-gnome-theme/customChrome.css";
-                @import "customChrome.css";
-
-                #TabsToolbar {
-                  display: none !important;
-                }
-
-                #sidebar-header {
-                  display: none !important;
-                }
+                @import "${theme}/lib/shyfox/userChrome.css";
               '';
               userContent = ''
-                @import "${theme}/lib/firefox-gnome-theme/userContent.css";
+                @import "${theme}/lib/shyfox/userContent.css";
               '';
             }
           );
