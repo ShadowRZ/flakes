@@ -116,9 +116,9 @@
                 tabliss
                 tranquility-1
                 (ublock-origin.override rec {
-                  version = "1.62.0";
-                  url = "https://github.com/gorhill/uBlock/releases/download/${version}/uBlock0_${version}.firefox.xpi";
-                  sha256 = "sha256-IEt2ImiuhxOIuanGB0h7eZoq+JJAb1Y7BmIcvJ0xaaY=";
+                  version = "1.61.2";
+                  url = "https://github.com/gorhill/uBlock/releases/download/${version}/uBlock0_${version}.firefox.signed.xpi";
+                  sha256 = "sha256-7jpySkb/MsF9FyMHf+zG7ef9q3QhVAILUftiU93LuhQ=";
                 })
                 violentmonkey
                 vue-js-devtools
