@@ -58,7 +58,6 @@
       android-studio
       mindustry-wayland
       cmus
-      python3.pkgs.kde-material-you-colors
       ghostty
       featherpad
       ungoogled-chromium
