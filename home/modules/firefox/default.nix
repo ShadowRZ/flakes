@@ -148,6 +148,11 @@
             {
               userChrome = ''
                 @import "${theme}/lib/shyfox/userChrome.css";
+
+                /* Minor tweaks */
+                :root, #screenshots-component * {
+                  --sdbr-wdt: 375px;
+                }
               '';
               userContent = ''
                 @import "${theme}/lib/shyfox/userContent.css";
