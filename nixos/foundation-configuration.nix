@@ -1,27 +1,14 @@
 {
-  inputs,
   pkgs,
   lib,
   ...
 }:
 {
-  imports = [
-    # Global Flake Inputs
-    inputs.home-manager.nixosModules.home-manager
-    inputs.nur.modules.nixos.default
-    inputs.nix-indexdb.nixosModules.nix-index
-  ];
-
-  # Stores system revision.
-  system.configurationRevision = lib.mkIf (inputs.self ? rev) inputs.self.rev;
 
   ## Home Manager
   home-manager = {
     useUserPackages = true;
     useGlobalPkgs = true;
-    extraSpecialArgs = {
-      inherit inputs;
-    };
   };
 
   boot = {
@@ -60,6 +47,9 @@
       p7zip
       unar
       man-pages
+
+      # Comma
+      comma-with-db
     ];
     shellAliases = lib.mkForce {
       df = "df -h";
@@ -90,10 +80,9 @@
     # Nix-Index
     nix-index = {
       enable = true;
+      package = pkgs.nix-index-with-db;
       enableZshIntegration = true;
     };
-    # Enable Comma
-    nix-index-database.comma.enable = true;
   };
 
   i18n = {

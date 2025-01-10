@@ -1,23 +1,10 @@
 {
-  inputs,
-  inputs',
   config,
   pkgs,
   ...
 }:
 {
   home-manager.users.shadowrz = {
-    imports = [
-      inputs.self.hmModules.emacs
-      inputs.self.hmModules.firefox
-      inputs.self.hmModules.mpv
-      inputs.self.hmModules.fontconfig
-      inputs.self.hmModules.gtk
-      inputs.self.hmModules.obs
-      inputs.self.hmModules.cursor
-      inputs.self.hmModules.vscode
-    ];
-
     home = {
       username = "shadowrz";
       homeDirectory = "/home/shadowrz";
@@ -41,7 +28,7 @@
     packages = with pkgs; [
       fractal
       keepassxc
-      inputs'.blender.packages.blender_3_6 # Blender 3.6.* (Binary)
+      blender_3_6 # Blender 3.6.* (Binary)
       hugo # Hugo
       ffmpeg-full # FFmpeg
       helvum

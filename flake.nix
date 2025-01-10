@@ -43,11 +43,6 @@
     impermanence = {
       url = "github:nix-community/impermanence";
     };
-    # Blender (Binary)
-    blender = {
-      url = "github:edolstra/nix-warez?dir=blender";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
     # Prebuilt Nix Index DB
     nix-indexdb = {
       url = "github:nix-community/nix-index-database";
@@ -85,11 +80,6 @@
     # Treefmt
     treefmt-nix = {
       url = "github:numtide/treefmt-nix";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-    # Darkly
-    darkly = {
-      url = "github:Bali10050/Darkly";
       inputs.nixpkgs.follows = "nixpkgs";
     };
     ### Dedupes

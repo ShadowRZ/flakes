@@ -1,27 +1,5 @@
 {
   "nodes": {
-    "blender": {
-      "inputs": {
-        "nixpkgs": [
-          "nixpkgs"
-        ]
-      },
-      "locked": {
-        "dir": "blender",
-        "lastModified": 1734963688,
-        "narHash": "sha256-FTbHXdo1O5avRbOkSzGWI52V0sRX+B9Ka2trEiuaewk=",
-        "owner": "edolstra",
-        "repo": "nix-warez",
-        "rev": "91297beb20864e611af6017c5eeef1b4564d7157",
-        "type": "github"
-      },
-      "original": {
-        "dir": "blender",
-        "owner": "edolstra",
-        "repo": "nix-warez",
-        "type": "github"
-      }
-    },
     "crane": {
       "locked": {
         "lastModified": 1736101677,
@@ -34,26 +12,6 @@
       "original": {
         "owner": "ipetkov",
         "repo": "crane",
-        "type": "github"
-      }
-    },
-    "darkly": {
-      "inputs": {
-        "nixpkgs": [
-          "nixpkgs"
-        ]
-      },
-      "locked": {
-        "lastModified": 1735865141,
-        "narHash": "sha256-9I+e1fkWgJLfHohiBS82Quux5Ig4eXIHYoG9mYutvaE=",
-        "owner": "Bali10050",
-        "repo": "Darkly",
-        "rev": "5ac80fe45f23259d6dde1ea118a016d1ee5aa980",
-        "type": "github"
-      },
-      "original": {
-        "owner": "Bali10050",
-        "repo": "Darkly",
         "type": "github"
       }
     },
@@ -275,9 +233,7 @@
     },
     "root": {
       "inputs": {
-        "blender": "blender",
         "crane": "crane",
-        "darkly": "darkly",
         "disko": "disko",
         "flake-parts": "flake-parts",
         "home-manager": "home-manager",

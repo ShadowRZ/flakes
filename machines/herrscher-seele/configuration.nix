@@ -1,29 +1,10 @@
 {
   config,
   pkgs,
-  lib,
-  inputs,
-  inputs',
   ...
 }:
 {
   imports = [
-    # Global Flake Inputs
-    inputs.nixpkgs.nixosModules.notDetected
-    inputs.nixos-sensible.nixosModules.default
-    inputs.disko.nixosModules.disko
-    inputs.sops-nix.nixosModules.sops
-    # Foundation
-    inputs.self.nixosModules.default
-    # OS core parts
-    inputs.self.nixosModules.graphical
-    inputs.self.nixosModules.hardening
-    inputs.self.nixosModules.networking
-    inputs.self.nixosModules.nix
-    # Machine specific templates
-    inputs.self.nixosModules.pam-fido2
-    inputs.self.nixosModules.lanzaboote
-    inputs.self.nixosModules.plasma-desktop
     # Core fragments
     ./fragments/disk-layout.nix
     ./fragments/hardware-configuration.nix
@@ -46,46 +27,12 @@
     https://github.com/ShadowRZ/flakes/tree/${config.system.configurationRevision}
   '';
 
-  nixpkgs.overlays = [
-    inputs.self.overlays.default
-  ];
-
-  home-manager = {
-    sharedModules = [
-      inputs.self.hmModules.default
-      inputs.self.hmModules.shell
-    ];
-  };
-
   # Kernel
   boot = {
     loader.timeout = 0;
     kernelPackages = pkgs.linuxKernel.packages.linux_xanmod_latest;
     # Set path for Lanzaboote
     lanzaboote.pkiBundle = "${config.users.users.shadowrz.home}/Documents/Secureboot";
-  };
-
-  # Unfree configs
-  nixpkgs.config = {
-    # Solely allows some packages
-    allowUnfreePredicate =
-      pkg:
-      builtins.elem (lib.getName pkg) [
-        "vscode"
-        "code"
-        "fcitx5-pinyin-moegirl"
-      ]
-      || pkgs.lib.any (prefix: pkgs.lib.hasPrefix prefix (pkgs.lib.getName pkg)) [
-        "steam"
-        "nvidia"
-        "android-studio"
-        "android-sdk"
-        "libXNVCtrl" # ?
-      ];
-    # Solely allows Electron
-    allowInsecurePredicate = pkg: builtins.elem (pkgs.lib.getName pkg) [ "electron" ];
-    # https://developer.android.google.cn/studio/terms
-    android_sdk.accept_license = true;
   };
 
   # System programs
@@ -122,9 +69,6 @@
     systemPackages = [
       # For FirefoxPWA
       pkgs.firefoxpwa
-      # Darkly
-      inputs'.darkly.packages.darkly-qt5
-      inputs'.darkly.packages.darkly-qt6
       # Kvantum
       pkgs.libsForQt5.qtstyleplugin-kvantum
       pkgs.kdePackages.qtstyleplugin-kvantum

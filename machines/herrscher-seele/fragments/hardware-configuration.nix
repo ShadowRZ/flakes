@@ -1,15 +1,9 @@
 {
   config,
-  inputs,
   pkgs,
   ...
 }:
 {
-  imports = [
-    inputs.nixpkgs.nixosModules.notDetected
-    inputs.nixos-sensible.nixosModules.zram
-  ];
-
   hardware = {
     cpu.intel.updateMicrocode = true;
     nvidia = {
