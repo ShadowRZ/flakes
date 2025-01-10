@@ -93,7 +93,8 @@
                 cliget
                 copy-selection-as-markdown
                 don-t-fuck-with-paste
-                fastforwardteam
+                fediact
+                firefox-color
                 ghosttext
                 link-gopher
                 linkhints
@@ -107,15 +108,17 @@
                 re-enable-right-click
                 react-devtools
                 reduxdevtools
+                side-view
                 sidebery
                 single-file
                 streetpass-for-mastodon
                 stylus
                 tabliss
+                tranquility-1
                 (ublock-origin.override rec {
-                  version = "1.58.0";
-                  url = "https://github.com/gorhill/uBlock/releases/download/${version}/uBlock0_${version}.firefox.signed.xpi";
-                  sha256 = "sha256-RwxWmUpxdNshV4rc5ZixWKXcCXDIfFz+iJrGMr0wheo=";
+                  version = "1.62.0";
+                  url = "https://github.com/gorhill/uBlock/releases/download/${version}/uBlock0_${version}.firefox.xpi";
+                  sha256 = "sha256-IEt2ImiuhxOIuanGB0h7eZoq+JJAb1Y7BmIcvJ0xaaY=";
                 })
                 violentmonkey
                 vue-js-devtools
@@ -135,7 +138,6 @@
                   foxyimage
                   measure-it
                   textarea-cache
-                  tranquility-reader
                   pwas-for-firefox
                   userchrome-toggle-extended
                 ]
