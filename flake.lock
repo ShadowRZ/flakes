@@ -247,16 +247,14 @@
     "rycee-firefox": {
       "flake": false,
       "locked": {
-        "dir": "pkgs/firefox-addons",
-        "lastModified": 1736510876,
-        "narHash": "sha256-gQtPuV+VH1ZZUAZrwxo6WNMdZao+5zIlMLUBBD+UatE=",
+        "lastModified": 1736568198,
+        "narHash": "sha256-RBTk5KavYsPZ56m9C2evS4pDkEu3+NdxY6mFNbo8DH8=",
         "owner": "rycee",
         "repo": "nur-expressions",
-        "rev": "da021d3646bf8fc6c7a74ad6edbab6fd7e59b828",
+        "rev": "7f8746a7ef2d15b8fb4acc63cb0d7e3a407739bf",
         "type": "gitlab"
       },
       "original": {
-        "dir": "pkgs/firefox-addons",
         "owner": "rycee",
         "repo": "nur-expressions",
         "type": "gitlab"

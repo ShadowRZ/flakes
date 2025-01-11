@@ -5,7 +5,7 @@
       default = import ./.;
       blender-bin = import ./blender-bin.nix;
       firefox-addons =
-        self: super:
+        _self: super:
         let
           rycee = import "${inputs.rycee-firefox}/pkgs/firefox-addons" {
             inherit (super) fetchurl lib stdenv;
