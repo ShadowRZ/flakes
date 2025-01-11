@@ -62,7 +62,7 @@
     ];
   };
 
-  terminal.font = "${pkgs.nur.repos.shadowrz.iosevka-minoko-term}/share/fonts/truetype/IosevkaMinokoTerm-Regular.ttf";
+  terminal.font = "${pkgs.iosevka-minoko-term}/share/fonts/truetype/IosevkaMinokoTerm-Regular.ttf";
 
   # https://github.com/rose-pine/termux/blob/f6f6375e1118cd374b9e7b74de1c23c7becb5913/app/src/main/assets/colors/ros%C3%A9-pine.properties
   terminal.colors = {

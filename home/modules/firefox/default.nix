@@ -83,65 +83,54 @@
               "shyfox.force.native.controls" = true;
             };
             # Firefox extensions
-            extensions =
-              with pkgs.nur.repos.rycee.firefox-addons;
-              [
-                auto-tab-discard
-                behind-the-overlay-revival
-                bitwarden
-                clearurls
-                cliget
-                copy-selection-as-markdown
-                don-t-fuck-with-paste
-                fediact
-                firefox-color
-                ghosttext
-                link-gopher
-                linkhints
-                localcdn
-                multi-account-containers
-                no-pdf-download
-                offline-qr-code-generator
-                open-in-browser
-                plasma-integration
-                qr-code-address-bar
-                re-enable-right-click
-                react-devtools
-                reduxdevtools
-                side-view
-                sidebery
-                single-file
-                streetpass-for-mastodon
-                stylus
-                tabliss
-                tranquility-1
-                (ublock-origin.override rec {
-                  version = "1.61.2";
-                  url = "https://github.com/gorhill/uBlock/releases/download/${version}/uBlock0_${version}.firefox.signed.xpi";
-                  sha256 = "sha256-7jpySkb/MsF9FyMHf+zG7ef9q3QhVAILUftiU93LuhQ=";
-                })
-                violentmonkey
-                vue-js-devtools
-                webhint
-              ]
-              ++ (
-                let
-                  addons = pkgs.callPackage ./addons.nix {
-                    inherit (pkgs.nur.repos.rycee.firefox-addons) buildFirefoxXpiAddon;
-                  };
-                in
-                with addons;
-                [
-                  copy-linktab-name-and-url
-                  custom-scrollbars
-                  emoji-sav
-                  foxyimage
-                  measure-it
-                  textarea-cache
-                  pwas-for-firefox
-                  userchrome-toggle-extended
-                ]
-              );
+            extensions = with pkgs.firefox-addons; [
+              auto-tab-discard
+              behind-the-overlay-revival
+              bitwarden
+              clearurls
+              cliget
+              copy-selection-as-markdown
+              don-t-fuck-with-paste
+              fediact
+              firefox-color
+              ghosttext
+              link-gopher
+              linkhints
+              localcdn
+              multi-account-containers
+              no-pdf-download
+              offline-qr-code-generator
+              open-in-browser
+              plasma-integration
+              qr-code-address-bar
+              re-enable-right-click
+              react-devtools
+              reduxdevtools
+              side-view
+              sidebery
+              single-file
+              streetpass-for-mastodon
+              stylus
+              tabliss
+              tranquility-1
+              (ublock-origin.override rec {
+                version = "1.61.2";
+                url = "https://github.com/gorhill/uBlock/releases/download/${version}/uBlock0_${version}.firefox.signed.xpi";
+                sha256 = "sha256-7jpySkb/MsF9FyMHf+zG7ef9q3QhVAILUftiU93LuhQ=";
+              })
+              violentmonkey
+              vue-js-devtools
+              webhint
+              # Additional
+              copy-linktab-name-and-url
+              custom-scrollbars
+              emoji-sav
+              foxyimage
+              measure-it
+              textarea-cache
+              pwas-for-firefox
+              userchrome-toggle-extended
+            ];
           }
           // (
             let

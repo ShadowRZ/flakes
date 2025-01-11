@@ -48,9 +48,10 @@
         overlays = [
           inputs.self.overlays.default
           inputs.self.overlays.blender-bin
+          inputs.self.overlays.firefox-addons
 
           inputs.nix-indexdb.overlays.nix-index
-          inputs.nur.overlays.default
+          inputs.shadowrz.overlays.default
         ];
         config = {
           allowUnfree = true;

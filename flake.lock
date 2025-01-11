@@ -205,32 +205,6 @@
         "type": "github"
       }
     },
-    "nur": {
-      "inputs": {
-        "flake-parts": [
-          "flake-parts"
-        ],
-        "nixpkgs": [
-          "nixpkgs"
-        ],
-        "treefmt-nix": [
-          "treefmt-nix"
-        ]
-      },
-      "locked": {
-        "lastModified": 1736377748,
-        "narHash": "sha256-JjV5TNM4KHI+9h9D2uN52HDruT/SNzVMP1QxbfEsLKE=",
-        "owner": "nix-community",
-        "repo": "NUR",
-        "rev": "a71f0d6f98f2033ca54b0972d8ee791a055fb43a",
-        "type": "github"
-      },
-      "original": {
-        "owner": "nix-community",
-        "repo": "NUR",
-        "type": "github"
-      }
-    },
     "root": {
       "inputs": {
         "crane": "crane",
@@ -243,8 +217,9 @@
         "nix-on-droid": "nix-on-droid",
         "nixos-sensible": "nixos-sensible",
         "nixpkgs": "nixpkgs",
-        "nur": "nur",
         "rust-overlay": "rust-overlay",
+        "rycee-firefox": "rycee-firefox",
+        "shadowrz": "shadowrz",
         "sops-nix": "sops-nix",
         "treefmt-nix": "treefmt-nix"
       }
@@ -266,6 +241,44 @@
       "original": {
         "owner": "oxalica",
         "repo": "rust-overlay",
+        "type": "github"
+      }
+    },
+    "rycee-firefox": {
+      "flake": false,
+      "locked": {
+        "dir": "pkgs/firefox-addons",
+        "lastModified": 1736510876,
+        "narHash": "sha256-gQtPuV+VH1ZZUAZrwxo6WNMdZao+5zIlMLUBBD+UatE=",
+        "owner": "rycee",
+        "repo": "nur-expressions",
+        "rev": "da021d3646bf8fc6c7a74ad6edbab6fd7e59b828",
+        "type": "gitlab"
+      },
+      "original": {
+        "dir": "pkgs/firefox-addons",
+        "owner": "rycee",
+        "repo": "nur-expressions",
+        "type": "gitlab"
+      }
+    },
+    "shadowrz": {
+      "inputs": {
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1736563499,
+        "narHash": "sha256-Y9GnXnnByeQsL5FIXrPBGM7I3dVdioNMt6p/2k6NdnA=",
+        "owner": "ShadowRZ",
+        "repo": "nur-packages",
+        "rev": "0ce4d2c569db05edbeb159979d22503941e73953",
+        "type": "github"
+      },
+      "original": {
+        "owner": "ShadowRZ",
+        "repo": "nur-packages",
         "type": "github"
       }
     },

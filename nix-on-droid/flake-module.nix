@@ -1,19 +1,14 @@
-{ inputs, ... }:
+{ inputs, withSystem, ... }:
 {
   flake = {
     nixOnDroidConfigurations = {
-      akasha = inputs.nix-on-droid.lib.nixOnDroidConfiguration {
-        extraSpecialArgs = {
-          inherit inputs;
-        };
-        modules = [ ./configuration.nix ];
-        pkgs = import inputs.nixpkgs {
-          system = "aarch64-linux";
-          overlays = [
-            inputs.nur.overlay
-          ];
-        };
-      };
+      akasha = withSystem "x86_64-linux" (
+        { pkgs, ... }:
+        inputs.nix-on-droid.lib.nixOnDroidConfiguration {
+          inherit pkgs;
+          modules = [ ./configuration.nix ];
+        }
+      );
     };
   };
 }

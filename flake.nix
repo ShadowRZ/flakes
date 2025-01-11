@@ -25,15 +25,6 @@
       url = "github:nix-community/disko";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    # NUR
-    nur = {
-      url = "github:nix-community/NUR";
-      inputs = {
-        nixpkgs.follows = "nixpkgs";
-        flake-parts.follows = "flake-parts";
-        treefmt-nix.follows = "treefmt-nix";
-      };
-    };
     # Sops-Nix
     sops-nix = {
       url = "github:Mic92/sops-nix";
@@ -80,6 +71,16 @@
     # Treefmt
     treefmt-nix = {
       url = "github:numtide/treefmt-nix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+    ### Personal packages
+    rycee-firefox = {
+      url = "gitlab:rycee/nur-expressions?dir=pkgs/firefox-addons";
+      # We import it ourselves so no need for these inputs
+      flake = false;
+    };
+    shadowrz = {
+      url = "github:ShadowRZ/nur-packages";
       inputs.nixpkgs.follows = "nixpkgs";
     };
     ### Dedupes

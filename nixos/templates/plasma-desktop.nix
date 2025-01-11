@@ -20,7 +20,7 @@
 
   environment = {
     systemPackages = with pkgs; [
-      nur.repos.shadowrz.klassy-qt6
+      klassy-qt6
       aha # aha
       clinfo # clinfo
       mesa-demos # glxinfo, eglinfo
