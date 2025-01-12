@@ -97,6 +97,14 @@
     system76-scheduler.enable = true;
     # Userborn
     userborn.enable = true;
+    # SDDM
+    displayManager.sddm.settings = {
+      Theme = {
+        Font = "Space Grotesk";
+        CursorTheme = "BreezeX-RosePineDawn-Linux";
+        CursorSize = 32;
+      };
+    };
   };
 
   security.pam.loginLimits = [

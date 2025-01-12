@@ -13,7 +13,7 @@
     {
       enable = true;
       font = {
-        name = "Outfit";
+        name = "Space Grotesk";
         size = 12;
       };
       gtk2 = {
