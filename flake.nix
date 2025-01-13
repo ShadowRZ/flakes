@@ -30,9 +30,9 @@
       url = "github:Mic92/sops-nix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    # Impermanence
-    impermanence = {
-      url = "github:nix-community/impermanence";
+    # Preservation
+    preservation = {
+      url = "github:nix-community/preservation";
     };
     # Prebuilt Nix Index DB
     nix-indexdb = {

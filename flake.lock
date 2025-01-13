@@ -75,21 +75,6 @@
         "type": "github"
       }
     },
-    "impermanence": {
-      "locked": {
-        "lastModified": 1734945620,
-        "narHash": "sha256-olIfsfJK4/GFmPH8mXMmBDAkzVQ1TWJmeGT3wBGfQPY=",
-        "owner": "nix-community",
-        "repo": "impermanence",
-        "rev": "d000479f4f41390ff7cf9204979660ad5dd16176",
-        "type": "github"
-      },
-      "original": {
-        "owner": "nix-community",
-        "repo": "impermanence",
-        "type": "github"
-      }
-    },
     "lanzaboote": {
       "inputs": {
         "crane": [
@@ -205,18 +190,33 @@
         "type": "github"
       }
     },
+    "preservation": {
+      "locked": {
+        "lastModified": 1735322114,
+        "narHash": "sha256-b0ftF6cGH0JoZin93bmycx5qvM4fx6jCR8eM0q6k64s=",
+        "owner": "nix-community",
+        "repo": "preservation",
+        "rev": "089ffe54b44db2b6418dd024a7266c8c9343f805",
+        "type": "github"
+      },
+      "original": {
+        "owner": "nix-community",
+        "repo": "preservation",
+        "type": "github"
+      }
+    },
     "root": {
       "inputs": {
         "crane": "crane",
         "disko": "disko",
         "flake-parts": "flake-parts",
         "home-manager": "home-manager",
-        "impermanence": "impermanence",
         "lanzaboote": "lanzaboote",
         "nix-indexdb": "nix-indexdb",
         "nix-on-droid": "nix-on-droid",
         "nixos-sensible": "nixos-sensible",
         "nixpkgs": "nixpkgs",
+        "preservation": "preservation",
         "rust-overlay": "rust-overlay",
         "rycee-firefox": "rycee-firefox",
         "shadowrz": "shadowrz",

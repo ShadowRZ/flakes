@@ -21,8 +21,8 @@
             inputs.self.nixosModules.nix
             inputs.self.nixosModules.with-flake-revision
             inputs.self.nixosModules.flake-registry
-            # Impermanence
-            inputs.impermanence.nixosModules.impermanence
+            # Perservation
+            inputs.preservation.nixosModules.preservation
             # Lanzaboote
             inputs.lanzaboote.nixosModules.lanzaboote
             # Hardware

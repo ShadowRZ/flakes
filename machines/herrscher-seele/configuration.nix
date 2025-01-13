@@ -11,8 +11,8 @@
     # Secrets
     ./secrets
     # Machine specific modules
-    ./modules/impermanence.nix
     ./modules/networking.nix
+    ./modules/preservation.nix
     ./modules/virtualisation.nix
     # Users
     ./users/root.nix
