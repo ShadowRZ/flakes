@@ -1,5 +1,4 @@
 {
-  inputs,
   pkgs,
   lib,
   ...
@@ -43,10 +42,6 @@
 
   # Set up nix for flakes
   nix = {
-    nixPath = [ "nixpkgs=${inputs.nixpkgs}" ];
-    registry = {
-      nixpkgs.flake = inputs.nixpkgs;
-    };
     extraOptions = ''
       experimental-features = nix-command flakes
       trusted-public-keys = cache.nixos.org-1:6NCHdD59X431o0gWypbMrAURkbJ16ZPMQFGspcDShjY= nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs= cache.garnix.io:CTFPyKSLcx5RMJKfLo5EEPUObbA78b0YQ2DTCJXqr9g= nix-on-droid.cachix.org-1:56snoMJTXmDRC1Ei24CmKoUqvHJ9XCp+nidK7qkMQrU= shadowrz.cachix.org-1:I+6FCWMtdGmN8zYVncKdys/LVsLkCMWO3tfXbwQPTU0=
@@ -89,26 +84,6 @@
 
   # Set your time zone
   time.timeZone = "Asia/Shanghai";
-
-  home-manager = {
-    useGlobalPkgs = true;
-    config = {
-      imports = [
-        inputs.self.hmModules.default
-        inputs.self.hmModules.shell
-      ];
-    };
-    sharedModules = [
-      {
-        imports = with inputs; [
-          nix-indexdb.hmModules.nix-index
-          {
-            programs.nix-index-database.comma.enable = true;
-          }
-        ];
-      }
-    ];
-  };
 
   android-integration = {
     am.enable = true;

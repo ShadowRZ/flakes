@@ -2,11 +2,40 @@
 {
   flake = {
     nixOnDroidConfigurations = {
-      akasha = withSystem "x86_64-linux" (
+      akasha = withSystem "aarch64-linux" (
         { pkgs, ... }:
         inputs.nix-on-droid.lib.nixOnDroidConfiguration {
           inherit pkgs;
-          modules = [ ./configuration.nix ];
+          modules = [
+            ./configuration.nix
+            {
+              nix = {
+                nixPath = [ "nixpkgs=${inputs.nixpkgs}" ];
+                registry = {
+                  nixpkgs.flake = inputs.nixpkgs;
+                };
+              };
+              home-manager = {
+                useGlobalPkgs = true;
+                config = {
+                  imports = [
+                    inputs.self.hmModules.default
+                    inputs.self.hmModules.shell
+                  ];
+                };
+                sharedModules = [
+                  {
+                    imports = with inputs; [
+                      nix-indexdb.hmModules.nix-index
+                      {
+                        programs.nix-index-database.comma.enable = true;
+                      }
+                    ];
+                  }
+                ];
+              };
+            }
+          ];
         }
       );
     };
