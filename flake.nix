@@ -54,7 +54,7 @@
     };
     # Lanzaboote
     lanzaboote = {
-      url = "github:nix-community/lanzaboote/v0.4.1";
+      url = "github:nix-community/lanzaboote";
       inputs = {
         nixpkgs.follows = "nixpkgs";
         flake-parts.follows = "flake-parts";
@@ -63,8 +63,6 @@
         pre-commit-hooks-nix.follows = "";
         # Unneeded because we are **in** the flake
         flake-compat.follows = "";
-        # Unneeded because we use our own rust-overlay
-        flake-utils.follows = "";
         rust-overlay.follows = "rust-overlay";
       };
     };
