@@ -21,18 +21,11 @@
                   imports = [
                     inputs.self.hmModules.default
                     inputs.self.hmModules.shell
+                    inputs.nix-indexdb.hmModules.nix-index
                   ];
+                  programs.nix-index-database.comma.enable = true;
+                  manual.manpages.enable = false;
                 };
-                sharedModules = [
-                  {
-                    imports = with inputs; [
-                      nix-indexdb.hmModules.nix-index
-                      {
-                        programs.nix-index-database.comma.enable = true;
-                      }
-                    ];
-                  }
-                ];
               };
             }
           ];
