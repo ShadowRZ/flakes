@@ -34,9 +34,9 @@
       '')
     ];
     plasma6.excludePackages = with pkgs; [
-      konsole
-      khelpcenter
-      kate
+      kdePackages.konsole
+      kdePackages.khelpcenter
+      kdePackages.kate
     ];
   };
 
