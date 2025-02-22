@@ -83,7 +83,7 @@
               "shyfox.force.native.controls" = true;
             };
             # Firefox extensions
-            extensions = with pkgs.firefox-addons; [
+            extensions.packages = with pkgs.firefox-addons; [
               auto-tab-discard
               behind-the-overlay-revival
               bitwarden
