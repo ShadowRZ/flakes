@@ -49,6 +49,7 @@
       featherpad
       ungoogled-chromium
       sqlitebrowser
+      pdfarranger
       ## KDE Packages
       kdePackages.kdenlive
       kdePackages.kcalc
