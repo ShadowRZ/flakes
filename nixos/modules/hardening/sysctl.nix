@@ -38,7 +38,7 @@
     "net.ipv4.tcp_fack" = "0";
 
     # User Space
-    "kernel.yama.ptrace_scope" = "2";
+    "kernel.yama.ptrace_scope" = "1"; # was 2
     "vm.mmap_rnd_bits" = "32";
     "vm.mmap_rnd_compat_bits" = "16";
     "fs.protected_symlinks" = "1";
