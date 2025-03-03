@@ -39,6 +39,7 @@
             ".m2"
             ".mitmproxy"
             ".mozilla"
+            ".thunderbird"
             ".renpy"
             ".var"
             ".vscode"

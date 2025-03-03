@@ -107,6 +107,8 @@
     };
   };
 
+  programs.kde-pim.enable = false;
+
   security.pam.loginLimits = [
     {
       domain = "*";

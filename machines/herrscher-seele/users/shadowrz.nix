@@ -50,25 +50,12 @@
       ungoogled-chromium
       sqlitebrowser
       pdfarranger
+      thunderbird-latest
       ## KDE Packages
       kdePackages.kdenlive
       kdePackages.kcalc
       kdePackages.kcharselect
-      kdePackages.kontact
-      kdePackages.kmail
-      kdePackages.kmail-account-wizard
       kdePackages.plasma-sdk # Plasma SDK
-      ## Akonadi
-      kdePackages.akonadi
-      kdePackages.akonadi-mime
-      kdePackages.akonadi-search
-      kdePackages.akonadi-contacts
-      kdePackages.akonadi-calendar
-      kdePackages.akonadi-calendar-tools
-      kdePackages.akonadi-import-wizard
-      kdePackages.mbox-importer
-      kdePackages.kdepim-runtime
-      kdePackages.akonadiconsole
     ];
     hashedPasswordFile = config.sops.secrets.passwd.path;
   };
