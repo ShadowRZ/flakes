@@ -51,6 +51,7 @@
       sqlitebrowser
       pdfarranger
       thunderbird-latest
+      plasma-overdose-kde-theme
       ## KDE Packages
       kdePackages.kdenlive
       kdePackages.kcalc
