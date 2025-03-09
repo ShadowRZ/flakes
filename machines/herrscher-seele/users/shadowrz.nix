@@ -52,6 +52,7 @@
       pdfarranger
       thunderbird-latest
       plasma-overdose-kde-theme
+      jetbrains.idea-community-bin
       ## KDE Packages
       kdePackages.kdenlive
       kdePackages.kcalc
