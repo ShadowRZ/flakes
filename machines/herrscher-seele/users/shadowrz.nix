@@ -53,6 +53,7 @@
       thunderbird-latest
       plasma-overdose-kde-theme
       jetbrains.idea-community-bin
+      eclipses.eclipse-platform
       ## KDE Packages
       kdePackages.kdenlive
       kdePackages.kcalc

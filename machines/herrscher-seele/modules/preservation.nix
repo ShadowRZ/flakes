@@ -32,6 +32,7 @@
             ".cache"
             ".cargo"
             ".config" # FIXME
+            ".eclipse"
             ".gradle"
             ".java"
             ".local/share"
