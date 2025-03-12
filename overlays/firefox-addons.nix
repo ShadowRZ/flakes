@@ -1,6 +1,7 @@
 {
   buildFirefoxXpiAddon,
   lib,
+  stdenv,
 }:
 {
   "copy-linktab-name-and-url" = buildFirefoxXpiAddon {
@@ -98,10 +99,10 @@
   };
   "pwas-for-firefox" = buildFirefoxXpiAddon {
     pname = "pwas-for-firefox";
-    version = "2.13.1";
+    version = "2.14.1";
     addonId = "firefoxpwa@filips.si";
-    url = "https://addons.mozilla.org/firefox/downloads/file/4383345/pwas_for_firefox-2.13.1.xpi";
-    sha256 = "aff2b25a0d4068c0e77776e624404219e3355735cc8d13a160bb77ebb9412e4d";
+    url = "https://addons.mozilla.org/firefox/downloads/file/4437768/pwas_for_firefox-2.14.1.xpi";
+    sha256 = "f8e9ba0ae3a728084d746d11598f6840acbbda45bdc2e9e52b74bd1b95ec5d1c";
     meta = with lib; {
       homepage = "https://github.com/filips123/PWAsForFirefox";
       description = "A tool to install, manage and use Progressive Web Apps (PWAs) in Mozilla Firefox";
