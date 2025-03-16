@@ -4,7 +4,7 @@
     settings = {
       substituters = [
         "https://mirrors.ustc.edu.cn/nix-channels/store?priority=10"
-        "https://mirror.sjtu.edu.cn/nix-channels/store?priority=10"
+        "https://mirrors.sjtug.sjtu.edu.cn/nix-channels/store?priority=10"
         "https://shadowrz.cachix.org?priority=20"
         "https://nix-community.cachix.org?priority=20"
         "https://cache.garnix.io?priority=30"
