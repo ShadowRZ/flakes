@@ -79,7 +79,7 @@
     ];
 
     variables = {
-      VK_ICD_FILENAMES = "${pkgs.mesa.drivers}/share/vulkan/icd.d/intel_icd.x86_64.json";
+      VK_ICD_FILENAMES = "${pkgs.mesa}/share/vulkan/icd.d/intel_icd.x86_64.json";
       GSK_RENDERER = "gl";
     };
   };
