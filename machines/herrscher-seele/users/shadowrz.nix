@@ -54,11 +54,13 @@
       plasma-overdose-kde-theme
       jetbrains.idea-community-bin
       eclipses.eclipse-platform
+      zed-editor
       ## KDE Packages
       kdePackages.kdenlive
       kdePackages.kcalc
       kdePackages.kcharselect
       kdePackages.plasma-sdk # Plasma SDK
+      kdePackages.kdevelop
     ];
     hashedPasswordFile = config.sops.secrets.passwd.path;
   };
