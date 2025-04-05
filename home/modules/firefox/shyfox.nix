@@ -5,13 +5,13 @@
 }:
 stdenvNoCC.mkDerivation rec {
   pname = "ShyFox";
-  version = "a22933f6c887a5cbfc098eb8565f147f6e718c66";
+  version = "c95270d559a67becb3dad194843520766d9bbed2";
 
   src = fetchFromGitHub {
     owner = "ShadowRZ";
     repo = pname;
     rev = version;
-    hash = "sha256-tYrsIPbgpqtSwD2UGcH5kbpD1J02os51ZZH9HbNm3CA=";
+    hash = "sha256-d3p3T7EdY6cL2eLVwEqU6F8cNefQ3MK4drzwrt5kpxQ=";
   };
 
   # Installs to $prefix/lib
