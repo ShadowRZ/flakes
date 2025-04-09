@@ -104,7 +104,6 @@
       (iosevka-bin.override {
         variant = "Aile";
       })
-      maoken-assorted-sans
       # Iosevka Builds
       iosevka-aile-minoko
       iosevka-minoko
