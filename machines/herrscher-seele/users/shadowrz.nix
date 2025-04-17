@@ -47,7 +47,6 @@
       cmus
       ghostty
       featherpad
-      ungoogled-chromium
       sqlitebrowser
       pdfarranger
       thunderbird-latest
