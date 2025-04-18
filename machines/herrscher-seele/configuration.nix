@@ -121,6 +121,11 @@
   users.mutableUsers = false;
   powerManagement.powertop.enable = true;
 
+  boot.binfmt = {
+    emulatedSystems = [ "aarch64-linux" ];
+    preferStaticEmulators = true;
+  };
+
   system.etc.overlay = {
     enable = true;
     mutable = true;
