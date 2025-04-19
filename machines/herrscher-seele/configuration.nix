@@ -129,6 +129,18 @@
     mutable = true;
   };
 
+  systemd.user.extraConfig = ''
+    DefaultOOMScoreAdjust=0
+  '';
+
+  systemd.units = {
+    "user@.service" = {
+      serviceConfig = {
+        OOMScoreAdjust = 0;
+      };
+    };
+  };
+
   # DO NOT FIDDLE WITH THIS VALUE !!!
   # This value determines the NixOS release from which the default
   # settings for stateful data, like file locations and database versions
