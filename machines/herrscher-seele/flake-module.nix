@@ -50,6 +50,7 @@
                       inputs.self.hmModules.obs
                       inputs.self.hmModules.cursor
                       inputs.self.hmModules.vscode
+                      inputs.self.hmModules.wezterm
                     ];
                   };
                 };

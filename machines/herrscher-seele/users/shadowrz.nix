@@ -45,7 +45,6 @@
       android-studio
       mindustry-wayland
       cmus
-      ghostty
       featherpad
       sqlitebrowser
       pdfarranger
