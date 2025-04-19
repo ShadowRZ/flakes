@@ -72,7 +72,7 @@
       # Kvantum
       pkgs.libsForQt5.qtstyleplugin-kvantum
       pkgs.kdePackages.qtstyleplugin-kvantum
-      pkgs.papirus-icon-theme
+      pkgs.tela-icon-theme
       pkgs.plasma-panel-colorizer
       pkgs.gparted
     ];
