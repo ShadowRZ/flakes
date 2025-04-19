@@ -54,6 +54,7 @@
       jetbrains.idea-community-bin
       eclipses.eclipse-platform
       zed-editor
+      telegram-desktop
       ## KDE Packages
       kdePackages.kdenlive
       kdePackages.kcalc
