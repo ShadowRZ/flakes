@@ -33,15 +33,5 @@
           android_sdk.accept_license = true;
         };
       };
-
-      devShells = {
-        rust = pkgs.mkShell {
-          buildInputs = with pkgs; [
-            openssl
-            pkg-config
-            rust-bin.stable.latest.default
-          ];
-        };
-      };
     };
 }
