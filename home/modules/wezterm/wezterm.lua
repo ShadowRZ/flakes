@@ -5,7 +5,7 @@ end
 
 config.xcursor_theme = 'BreezeX-RosePineDawn-Linux'
 config.xcursor_size = 32
-config.color_scheme = 'rose-pine'
+config.color_scheme = 'Laser'
 config.font_size = 19.0
 
 config.colors = {
@@ -23,8 +23,8 @@ config.colors = {
 }
 
 config.font = wezterm.font_with_fallback({
-  'Iosevka Minoko Term',
-  'Sarasa Mono SC'
+  { family = 'Iosevka Minoko Term', weight = 'Light' },
+  { family = 'Sarasa Mono SC', weight = 'Light' },
 })
 
 config.window_padding = {
@@ -42,8 +42,8 @@ config.window_frame = {
     }
   ),
   font_size = 11.5,
-  active_titlebar_bg = wezterm.color.get_builtin_schemes()[config.color_scheme].cursor_fg,
-  inactive_titlebar_bg = wezterm.color.get_builtin_schemes()[config.color_scheme].cursor_fg
+  active_titlebar_bg = "#8c5acc",
+  inactive_titlebar_bg = "#8c5acc",
 }
 
 config.mouse_bindings = {
