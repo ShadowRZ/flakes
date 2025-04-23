@@ -34,7 +34,7 @@
       helvum
       blanket
       geany # Geany
-      gimp # GIMP
+      gimp3 # GIMP 3
       inkscape # Inkscape
       d-spy # D-Spy
       meld # Meld
