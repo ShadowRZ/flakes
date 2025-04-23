@@ -12,13 +12,13 @@ config.colors = {
   tab_bar = {
     active_tab = {
       bg_color = wezterm.color.get_builtin_schemes()[config.color_scheme].background,
-      fg_color = wezterm.color.get_builtin_schemes()[config.color_scheme].cursor_bg,
+      fg_color = "#FFFFFF",
     },
     inactive_tab = {
-      bg_color = wezterm.color.get_builtin_schemes()[config.color_scheme].cursor_fg,
-      fg_color = wezterm.color.get_builtin_schemes()[config.color_scheme].cursor_bg,
+      bg_color = "#707070",
+      fg_color = "#FFFFFF",
     },
-    inactive_tab_edge = wezterm.color.get_builtin_schemes()[config.color_scheme].cursor_bg
+    inactive_tab_edge = "#707070"
   }
 }
 
