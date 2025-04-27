@@ -33,6 +33,8 @@
     kernelPackages = pkgs.linuxKernel.packages.linux_xanmod_latest;
     # Set path for Lanzaboote
     lanzaboote.pkiBundle = "${config.users.users.shadowrz.home}/Documents/Secureboot";
+
+    kernelParams = [ "btusb.enable_autosuspend=n" ];
   };
 
   # System programs
