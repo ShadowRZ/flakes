@@ -131,6 +131,11 @@
     mutable = true;
   };
 
+  # Increase open files for all users
+  systemd.user.extraConfig = ''
+    DefaultLimitNOFILE=524288:524288
+  '';
+
   # DO NOT FIDDLE WITH THIS VALUE !!!
   # This value determines the NixOS release from which the default
   # settings for stateful data, like file locations and database versions
