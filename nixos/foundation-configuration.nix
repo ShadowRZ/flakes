@@ -97,9 +97,11 @@
   };
 
   system.tools = {
-    nixos-option.enable = false;
+    nixos-option.enable = true;
     nixos-generate-config.enable = false;
   };
+
+  environment.defaultPackages = [];
 
   services.dbus.implementation = "broker";
 }

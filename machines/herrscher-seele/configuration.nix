@@ -51,16 +51,6 @@
     ssh = {
       startAgent = true;
     };
-    # Steam
-    steam = {
-      enable = true;
-      package = pkgs.steam.override {
-        extraArgs = "-forcedesktopscaling 1.5";
-      };
-      protontricks.enable = true;
-      remotePlay.openFirewall = true;
-      dedicatedServer.openFirewall = true;
-    };
     wireshark = {
       enable = true;
       package = pkgs.wireshark;
