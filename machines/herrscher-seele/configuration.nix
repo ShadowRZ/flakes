@@ -136,6 +136,13 @@
     DefaultLimitNOFILE=524288:524288
   '';
 
+  # Always ensure UHID is enabled
+  hardware.bluetooth.input = {
+    General = {
+      UserspaceHID = true;
+    };
+  };
+
   # DO NOT FIDDLE WITH THIS VALUE !!!
   # This value determines the NixOS release from which the default
   # settings for stateful data, like file locations and database versions
