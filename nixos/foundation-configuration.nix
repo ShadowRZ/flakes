@@ -101,7 +101,7 @@
     nixos-generate-config.enable = false;
   };
 
-  environment.defaultPackages = [];
+  environment.defaultPackages = [ ];
 
   services.dbus.implementation = "broker";
 }

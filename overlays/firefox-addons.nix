@@ -1,6 +1,7 @@
 {
   buildFirefoxXpiAddon,
   lib,
+  stdenv,
 }:
 {
   "copy-linktab-name-and-url" = buildFirefoxXpiAddon {
@@ -45,13 +46,13 @@
   };
   "emoji-sav" = buildFirefoxXpiAddon {
     pname = "emoji-sav";
-    version = "3.23.1.2";
+    version = "3.24";
     addonId = "emoji@saveriomorelli.com";
-    url = "https://addons.mozilla.org/firefox/downloads/file/4407001/emoji_sav-3.23.1.2.xpi";
-    sha256 = "cebceedb8b72c9c4064fa787e7a4e25d6afd41e7060cd3a2173b6c387e0ab380";
+    url = "https://addons.mozilla.org/firefox/downloads/file/4482363/emoji_sav-3.24.xpi";
+    sha256 = "847512a46853c8ea82351d6d6265f0067b24abbddd81212c20996d0cd430ce4c";
     meta = with lib; {
       homepage = "https://www.emojiaddon.com";
-      description = "It permits just with a single click to copy an emoji.\r\nThere is a search-box and the \"Most used emojis\" section (the first one).\r\n\r\nIf you want to send feedback or report bug, please contact me";
+      description = "It permits just with a single click to copy an emoji.\nThere is a search-box and the \"Most used emojis\" section (the first one).\n\nIf you want to send feedback or report bug, please contact me";
       license = licenses.mpl20;
       mozPermissions = [ "storage" ];
       platforms = platforms.all;
@@ -118,10 +119,10 @@
   };
   "textarea-cache" = buildFirefoxXpiAddon {
     pname = "textarea-cache";
-    version = "4.10.2";
+    version = "5.0.4";
     addonId = "textarea-cache-lite@wildsky.cc";
-    url = "https://addons.mozilla.org/firefox/downloads/file/4355082/textarea_cache-4.10.2.xpi";
-    sha256 = "e98270a6f0de4691fe30ef58df02cd8bcf685a4bcdd9b5f37f23268336f26247";
+    url = "https://addons.mozilla.org/firefox/downloads/file/4477429/textarea_cache-5.0.4.xpi";
+    sha256 = "924ec496f64581bd6d0bdf5c4c344213704125e5cd84216fd2227bee17aa00ba";
     meta = with lib; {
       description = "Allows to save automatically the content in a text input field.";
       license = licenses.mit;
@@ -129,28 +130,9 @@
         "storage"
         "clipboardWrite"
         "menus"
-        "alarms"
-        "<all_urls>"
-      ];
-      platforms = platforms.all;
-    };
-  };
-  "tranquility-reader" = buildFirefoxXpiAddon {
-    pname = "tranquility-reader";
-    version = "3.0.26";
-    addonId = "tranquility@ushnisha.com";
-    url = "https://addons.mozilla.org/firefox/downloads/file/4300302/tranquility_1-3.0.26.xpi";
-    sha256 = "0effa816ae196eca8f2403c62738b182e6e7ce26477bafda8f27d3f958996330";
-    meta = with lib; {
-      homepage = "https://github.com/ushnisha/tranquility-reader-webextensions";
-      description = "Tranquility Reader improves the readability of web articles by removing unnecessary elements like ads, images, social sharing widgets, and other distracting fluff.";
-      license = licenses.gpl3;
-      mozPermissions = [
-        "<all_urls>"
+        "tabs"
         "activeTab"
-        "storage"
-        "alarms"
-        "contextMenus"
+        "<all_urls>"
       ];
       platforms = platforms.all;
     };
