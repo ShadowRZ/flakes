@@ -73,9 +73,8 @@
     };
     ### Personal packages
     rycee-firefox = {
-      url = "gitlab:rycee/nur-expressions";
-      # We import it ourselves
-      flake = false;
+      url = "gitlab:rycee/nur-expressions?dir=pkgs/firefox-addons";
+      inputs.nixpkgs.follows = "nixpkgs";
     };
     shadowrz = {
       url = "github:ShadowRZ/nur-packages";

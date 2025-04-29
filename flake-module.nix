@@ -18,13 +18,12 @@
       _module.args.pkgs = import inputs.nixpkgs {
         inherit system;
         overlays = [
+          inputs.nix-indexdb.overlays.nix-index
+          inputs.rycee-firefox.overlays.default
+          inputs.shadowrz.overlays.default
+
           inputs.self.overlays.default
           inputs.self.overlays.blender-bin
-          inputs.self.overlays.firefox-addons
-
-          inputs.nix-indexdb.overlays.nix-index
-          inputs.shadowrz.overlays.default
-          inputs.rust-overlay.overlays.default
         ];
         config = {
           allowUnfree = true;
@@ -32,11 +31,6 @@
           # https://developer.android.google.cn/studio/terms
           android_sdk.accept_license = true;
         };
-      };
-
-      # Export package
-      packages = {
-        inherit (pkgs) mozilla-addons-to-nix;
       };
     };
 }
