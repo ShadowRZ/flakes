@@ -33,5 +33,10 @@
           android_sdk.accept_license = true;
         };
       };
+
+      # Export package
+      packages = {
+        inherit (pkgs) mozilla-addons-to-nix;
+      };
     };
 }

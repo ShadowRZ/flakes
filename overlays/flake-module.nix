@@ -7,13 +7,14 @@
       firefox-addons =
         _self: super:
         let
-          rycee = import "${inputs.rycee-firefox}/pkgs/firefox-addons" {
-            inherit (super) fetchurl lib stdenv;
+          rycee = import inputs.rycee-firefox {
+            pkgs = super;
           };
           shadowrz = super.callPackage ./firefox-addons.nix { inherit (rycee) buildFirefoxXpiAddon; };
         in
         {
-          firefox-addons = rycee // shadowrz;
+          firefox-addons = rycee.firefox-addons // shadowrz;
+          mozilla-addons-to-nix = rycee.mozilla-addons-to-nix;
         };
     };
   };
