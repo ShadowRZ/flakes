@@ -34,7 +34,7 @@
         allow-loopback-pinentry
         allow-emacs-pinentry
       '';
-      pinentryPackage = pkgs.pinentry-qt;
+      pinentry.package = pkgs.pinentry-qt;
     };
   };
 
