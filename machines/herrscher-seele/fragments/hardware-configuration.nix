@@ -8,8 +8,9 @@
     cpu.intel.updateMicrocode = true;
     nvidia = {
       package = config.boot.kernelPackages.nvidiaPackages.latest;
-      open = true;
-      nvidiaSettings = true;
+      open = false;
+      nvidiaSettings = false;
+      gsp.enable = false;
       prime = {
         offload = {
           enable = true;
