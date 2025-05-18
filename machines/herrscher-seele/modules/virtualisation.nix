@@ -22,7 +22,6 @@
     # Podman
     podman = {
       enable = true;
-      dockerCompat = true;
     };
     # For Dev Containers
     containers = {

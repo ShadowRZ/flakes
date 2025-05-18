@@ -30,9 +30,7 @@
   # Kernel
   boot = {
     loader.timeout = 0;
-    kernelPackages = pkgs.linuxKernel.packages.linux_xanmod_latest;
-
-    kernelParams = [ "btusb.enable_autosuspend=n" ];
+    kernelPackages = pkgs.linuxKernel.packages.linux_xanmod;
   };
 
   # System programs
@@ -49,19 +47,10 @@
     ssh = {
       startAgent = true;
     };
-    wireshark = {
-      enable = true;
-      package = pkgs.wireshark;
-    };
   };
 
   environment = {
     systemPackages = [
-      # For FirefoxPWA
-      pkgs.firefoxpwa
-      # Kvantum
-      pkgs.libsForQt5.qtstyleplugin-kvantum
-      pkgs.kdePackages.qtstyleplugin-kvantum
       pkgs.tela-icon-theme
       pkgs.plasma-panel-colorizer
       pkgs.gparted
@@ -82,7 +71,6 @@
       };
     };
     pcscd.enable = true;
-    system76-scheduler.enable = true;
     # Userborn
     userborn.enable = true;
     # SDDM
@@ -118,13 +106,6 @@
   systemd.user.extraConfig = ''
     DefaultLimitNOFILE=524288:524288
   '';
-
-  # Always ensure UHID is enabled
-  hardware.bluetooth.input = {
-    General = {
-      UserspaceHID = true;
-    };
-  };
 
   # DO NOT FIDDLE WITH THIS VALUE !!!
   # This value determines the NixOS release from which the default
