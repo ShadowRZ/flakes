@@ -7,5 +7,6 @@
     deadnix
     nixpkgs-fmt
     sops
+    taplo
   ];
 }
