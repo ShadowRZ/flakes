@@ -196,10 +196,10 @@ in
 
   blender_3_6 = mkBlender {
     pname = "blender-bin";
-    version = "3.6.19";
+    version = "3.6.22";
     src = prev.fetchurl {
-      url = "https://ftp.nluug.nl/pub/graphics/blender/release/Blender3.6/blender-3.6.19-linux-x64.tar.xz";
-      hash = "sha256-QJUDZ4uHT6BLXGyIO1tenMhGo3qPPnWrIwlymmRM+BI=";
+      url = "https://ftp.nluug.nl/pub/graphics/blender/release/Blender3.6/blender-3.6.22-linux-x64.tar.xz";
+      hash = "sha256-WVPIf21INgUGGng5dYUnxny4ITjQ01kPktjHarx1dgA=";
     };
   };
 
@@ -223,10 +223,10 @@ in
 
   blender_4_2 = mkBlender {
     pname = "blender-bin";
-    version = "4.2.5";
+    version = "4.2.9";
     src = prev.fetchurl {
-      url = "https://ftp.nluug.nl/pub/graphics/blender/release/Blender4.2/blender-4.2.5-linux-x64.tar.xz";
-      hash = "sha256-zSirgWTYgjfAxFoYjvfkl0vLjGUd4V/Lw2NRZuWE5LM=";
+      url = "https://ftp.nluug.nl/pub/graphics/blender/release/Blender4.2/blender-4.2.9-linux-x64.tar.xz";
+      hash = "sha256-37wSen0o+cIXWyO/nWcBsoVfMe7fs5H5puYK2yRXKEY=";
     };
   };
 
@@ -236,6 +236,15 @@ in
     src = prev.fetchurl {
       url = "https://ftp.nluug.nl/pub/graphics/blender/release/Blender4.3/blender-4.3.2-linux-x64.tar.xz";
       hash = "sha256-TaHJVmc8BIXmMFTlY+5pGYzI+A2BV911kt/8impVkuY=";
+    };
+  };
+
+  blender_4_4 = mkBlender {
+    pname = "blender-bin";
+    version = "4.4.3";
+    src = prev.fetchurl {
+      url = "https://ftp.nluug.nl/pub/graphics/blender/release/Blender4.4/blender-4.4.3-linux-x64.tar.xz";
+      hash = "sha256-jTvgfSvEErUCxr/jz+PiIZWkFkB2hn2ph84UjXPCeUY=";
     };
   };
 }
