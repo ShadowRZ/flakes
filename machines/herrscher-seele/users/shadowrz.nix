@@ -28,7 +28,7 @@
     packages = with pkgs; [
       fractal
       keepassxc
-      blender_3_6 # Blender 3.6.* (Binary)
+      blender_4_4 # Blender 4.4.* (Binary)
       hugo # Hugo
       ffmpeg-full # FFmpeg
       helvum
