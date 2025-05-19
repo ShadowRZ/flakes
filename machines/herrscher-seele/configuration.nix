@@ -30,7 +30,7 @@
   # Kernel
   boot = {
     loader.timeout = 0;
-    kernelPackages = pkgs.linuxKernel.packages.linux_xanmod_latest;
+    kernelPackages = pkgs.linuxKernel.packages.linux_xanmod;
   };
 
   # System programs
