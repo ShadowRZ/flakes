@@ -19,7 +19,7 @@ vim.opt.softtabstop = 4
 vim.opt.expandtab = true
 
 vim.cmd.colorscheme('nord')
-# vim.cmd('highlight! Normal ctermbg=NONE guibg=NONE')
+--vim.cmd('highlight! Normal ctermbg=NONE guibg=NONE')
 
 -- Space open / closes folds
 vim.keymap.set('n', '<Space>', 'za')
