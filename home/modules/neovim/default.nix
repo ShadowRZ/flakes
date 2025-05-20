@@ -13,7 +13,7 @@
       cmp-nvim-lsp
       luasnip
       editorconfig-nvim
-      rose-pine
+      nord-vim
       # Tree Sitter
       (nvim-treesitter.withPlugins (
         plugins: with plugins; [

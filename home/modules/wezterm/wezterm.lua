@@ -5,7 +5,7 @@ end
 
 config.xcursor_theme = 'BreezeX-RosePineDawn-Linux'
 config.xcursor_size = 32
-config.color_scheme = 'Laser'
+config.color_scheme = 'nord'
 config.font_size = 19.0
 
 config.colors = {
@@ -42,8 +42,8 @@ config.window_frame = {
     }
   ),
   font_size = 11.5,
-  active_titlebar_bg = "#8c5acc",
-  inactive_titlebar_bg = "#8c5acc",
+  active_titlebar_bg = "#eceff4",
+  inactive_titlebar_bg = "#eceff4",
 }
 
 config.mouse_bindings = {
@@ -97,3 +97,4 @@ config.mouse_bindings = {
 
 return config
 -- vim:ts=2:sw=2:et
+
