@@ -60,6 +60,7 @@
       kdePackages.kcharselect
       kdePackages.plasma-sdk # Plasma SDK
       kdePackages.kdevelop
+      kdePackages.kleopatra
     ];
     hashedPasswordFile = config.sops.secrets.passwd.path;
   };
