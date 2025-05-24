@@ -8,9 +8,9 @@
     cpu.intel.updateMicrocode = true;
     nvidia = {
       package = config.boot.kernelPackages.nvidiaPackages.latest;
-      open = false;
+      open = true;
       nvidiaSettings = false;
-      gsp.enable = false;
+      # gsp.enable = false;
       prime = {
         offload = {
           enable = true;
@@ -59,6 +59,9 @@
         env.NIX_CFLAGS_COMPILE = "-Wno-error=incompatible-pointer-types";
       })
     ];
+    extraModprobeConfig = ''
+      softdep i915 post: nvidia nvidia_drm
+    '';
   };
 
   # Bolt
