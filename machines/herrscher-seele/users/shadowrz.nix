@@ -33,17 +33,11 @@
       ffmpeg-full # FFmpeg
       helvum
       blanket
-      geany # Geany
       gimp3 # GIMP 3
       inkscape # Inkscape
       d-spy # D-Spy
-      meld # Meld
-      mangohud
-      audacity
       libreoffice-fresh # LibreOffice Fresh
-      waylyrics
       android-studio
-      mindustry-wayland
       cmus
       featherpad
       sqlitebrowser
@@ -54,6 +48,7 @@
       eclipses.eclipse-platform
       zed-editor
       telegram-desktop
+      pika-backup
       ## KDE Packages
       kdePackages.kdenlive
       kdePackages.kcalc
