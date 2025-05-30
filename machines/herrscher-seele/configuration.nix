@@ -31,7 +31,7 @@
   boot = {
     loader.timeout = 0;
     kernelParams = [ "btusb.enable_autosuspend=n" ];
-    kernelPackages = pkgs.linuxKernel.packages.linux_xanmod;
+    kernelPackages = pkgs.linuxKernel.packages.linux_xanmod_latest;
   };
 
   # System programs
