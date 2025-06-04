@@ -56,6 +56,7 @@
       kdePackages.plasma-sdk # Plasma SDK
       kdePackages.kdevelop
       kdePackages.kleopatra
+      temurin-bin-21
     ];
     hashedPasswordFile = config.sops.secrets.passwd.path;
   };
