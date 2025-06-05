@@ -49,6 +49,7 @@
       zed-editor
       telegram-desktop
       pika-backup
+      github-desktop
       ## KDE Packages
       kdePackages.kdenlive
       kdePackages.kcalc
@@ -56,6 +57,7 @@
       kdePackages.plasma-sdk # Plasma SDK
       kdePackages.kdevelop
       kdePackages.kleopatra
+      # Library
       temurin-bin-21
     ];
     hashedPasswordFile = config.sops.secrets.passwd.path;
