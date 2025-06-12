@@ -46,7 +46,7 @@
           buildInputs = with pkgs; [
             openssl
             pkg-config
-            rust-bin.selectLatestNightlyWith (toolchain: toolchain.default)
+            (rust-bin.selectLatestNightlyWith (toolchain: toolchain.default))
           ];
         };
       };
