@@ -71,6 +71,11 @@
       url = "github:numtide/treefmt-nix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    # Rust Overlay
+    rust-overlay = {
+      url = "github:oxalica/rust-overlay";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     ### Personal packages
     rycee-firefox = {
       url = "gitlab:rycee/nur-expressions?dir=pkgs/firefox-addons";
@@ -81,11 +86,6 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     ### Dedupes
-    # Rust Overlay
-    rust-overlay = {
-      url = "github:oxalica/rust-overlay";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
     crane = {
       url = "github:ipetkov/crane";
     };
