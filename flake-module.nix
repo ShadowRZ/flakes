@@ -19,6 +19,7 @@
         inherit system;
         overlays = [
           inputs.nix-indexdb.overlays.nix-index
+          inputs.rust-overlay.overlays.default
           inputs.rycee-firefox.overlays.default
           inputs.shadowrz.overlays.default
 
