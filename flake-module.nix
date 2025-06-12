@@ -41,6 +41,13 @@
             rust-bin.stable.latest.default
           ];
         };
+        rust-nightly = pkgs.mkShell {
+          buildInputs = with pkgs; [
+            openssl
+            pkg-config
+            rust-bin.selectLatestNightlyWith (toolchain: toolchain.default)
+          ];
+        };
       };
     };
 }
