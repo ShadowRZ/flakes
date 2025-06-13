@@ -56,7 +56,7 @@
               }
             )
             // builtins.mapAttrs (
-              version: toolchain:
+              _version: toolchain:
               toolchain.default.override {
                 extensions = [ "rust-src" ];
               }
@@ -71,7 +71,7 @@
               )
             )
             // builtins.mapAttrs (
-              version: toolchain:
+              _version: toolchain:
               toolchain.default.override {
                 extensions = [ "rust-src" ];
               }
