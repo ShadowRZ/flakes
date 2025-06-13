@@ -1,4 +1,3 @@
 builds:
   exclude:
-    - 'devShell.*.rust.*'
-    - 'devShell.*.rust-nightly.*'
+    - 'devShell.*'
