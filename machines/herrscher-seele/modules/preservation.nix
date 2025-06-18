@@ -31,6 +31,7 @@
             ".android"
             ".cache"
             ".cargo"
+            ".conda"
             ".config" # FIXME
             ".eclipse"
             ".gradle"
