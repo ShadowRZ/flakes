@@ -1,6 +1,7 @@
 {
   buildFirefoxXpiAddon,
   lib,
+  stdenv,
 }:
 {
   "copy-linktab-name-and-url" = buildFirefoxXpiAddon {
@@ -133,19 +134,6 @@
         "activeTab"
         "<all_urls>"
       ];
-      platforms = platforms.all;
-    };
-  };
-  "userchrome-toggle-extended" = buildFirefoxXpiAddon {
-    pname = "userchrome-toggle-extended";
-    version = "2.0.1";
-    addonId = "userchrome-toggle-extended@n2ezr.ru";
-    url = "https://addons.mozilla.org/firefox/downloads/file/4341014/userchrome_toggle_extended-2.0.1.xpi";
-    sha256 = "3f5be2684284c0b79aaad0f70872a87f21a9a1329a5eaf8e60090e6f0e6a741d";
-    meta = with lib; {
-      description = "This extension allows you to toggle userchrome.css styles on-the-fly with buttons and hotkeys. You'll be able to switch up to six styles";
-      license = licenses.mpl20;
-      mozPermissions = [ "storage" ];
       platforms = platforms.all;
     };
   };

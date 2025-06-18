@@ -135,7 +135,6 @@
                 measure-it
                 textarea-cache
                 pwas-for-firefox
-                userchrome-toggle-extended
               ]);
         };
       };
