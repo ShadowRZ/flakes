@@ -45,6 +45,7 @@
       thunderbird-latest
       plasma-overdose-kde-theme
       jetbrains.idea-community-bin
+      jetbrains.pycharm-community-bin
       eclipses.eclipse-platform
       zed-editor
       telegram-desktop
