@@ -9,7 +9,7 @@
       userName = "夜坂雅";
       signing = {
         signByDefault = true;
-        key = "3237D49E8F815A45213364EA4FF35790F40553A9";
+        key = "AC597AD389D1CC5618AD1ED9B7123A2B6B0AE434";
       };
       # Delta highlighter
       delta = {
