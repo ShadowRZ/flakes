@@ -2,7 +2,7 @@
   programs.kitty = {
     enable = true;
     font = {
-      name = "Iosevka Minoko Term";
+      name = "Hanekokoro Mono";
       size = 19;
     };
     themeFile = "rose-pine";

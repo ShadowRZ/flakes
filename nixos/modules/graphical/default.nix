@@ -105,10 +105,9 @@
         variant = "Aile";
       })
       # Iosevka Builds
-      iosevka-aile-minoko
-      iosevka-minoko
-      iosevka-minoko-term
-      iosevka-minoko-e
+      hanekokoro-sans
+      hanekokoro-mono
+      hanekokoro-mono-e
     ];
     fontconfig = {
       defaultFonts = lib.mkForce {
@@ -126,7 +125,7 @@
           "Noto Color Emoji"
         ];
         monospace = [
-          "Iosevka Minoko-E"
+          "Hanekokoro Mono-E"
           "Sarasa Mono SC"
         ];
         emoji = [ "Noto Color Emoji" ];

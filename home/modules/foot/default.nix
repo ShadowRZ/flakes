@@ -3,7 +3,7 @@
     enable = true;
     settings = {
       main = {
-        font = "Iosevka Minoko Term:size=19";
+        font = "Hanekokoro Mono:size=19";
         box-drawings-uses-font-glyphs = true;
         initial-window-mode = "maximized";
         resize-by-cells = true;

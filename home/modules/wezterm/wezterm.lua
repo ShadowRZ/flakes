@@ -23,7 +23,7 @@ config.colors = {
 }
 
 config.font = wezterm.font_with_fallback({
-  { family = 'Iosevka Minoko Term', weight = 'Light' },
+  { family = 'Hanekokoro Mono', weight = 'Light' },
   { family = 'Sarasa Mono SC', weight = 'Light' },
 })
 

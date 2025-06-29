@@ -38,12 +38,12 @@
     };
     scriptOpts = {
       console = {
-        font = "Iosevka Minoko";
+        font = "Hanekokoro Mono";
         font_size = 24;
       };
       stats = {
         font = "Iosevka Aile";
-        font_mono = "Iosevka Minoko-E";
+        font_mono = "Hanekokoro Mono-E";
       };
       uosc = {
         timeline_size = 24;
