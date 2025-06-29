@@ -33,7 +33,9 @@
                   crypttabExtraOpts = [
                     "same-cpu-crypt"
                     "submit-from-crypt-cpus"
+                    "tpm2-measure-pcr=yes"
                     "fido2-device=auto"
+                    "tpm2-device=auto"
                   ];
                 };
                 content = {
