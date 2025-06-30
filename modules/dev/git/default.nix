@@ -9,8 +9,8 @@
             enable = true;
             package = pkgs.gitFull;
             # Basic
-            userEmail = config.flake.meta.users.shadowrz.email;
-            userName = config.flake.meta.users.shadowrz.name;
+            userEmail = config.flake.meta.users.shadowrz.git.email;
+            userName = config.flake.meta.users.shadowrz.git.name;
             signing = {
               signByDefault = true;
               inherit (config.flake.meta.users.shadowrz) key;
