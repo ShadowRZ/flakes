@@ -21,7 +21,7 @@
         (lib.mapAttrs' (
           name: module: {
             inherit name;
-            value = withSystem (config.flake.meta.system.nixos.${name}) (
+            value = withSystem config.flake.meta.system.nixos.${name} (
               { pkgs, ... }:
               inputs.nixpkgs.lib.nixosSystem {
                 modules = [

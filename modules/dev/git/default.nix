@@ -13,7 +13,7 @@
             userName = config.flake.meta.users.shadowrz.name;
             signing = {
               signByDefault = true;
-              key = config.flake.meta.users.shadowrz.key;
+              inherit (config.flake.meta.users.shadowrz) key;
             };
             # Delta highlighter
             delta = {
