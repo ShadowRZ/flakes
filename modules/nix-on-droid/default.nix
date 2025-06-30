@@ -16,6 +16,7 @@
               imports = with config.flake.modules.nix-on-droid; [
                 base
                 nix
+                shell
               ];
             }
             {
