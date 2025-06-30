@@ -15,6 +15,10 @@
       url = "github:hercules-ci/flake-parts";
       inputs.nixpkgs-lib.follows = "nixpkgs";
     };
+    # Import Tree
+    import-tree = {
+      url = "github:vic/import-tree";
+    };
     # Home Manager
     home-manager = {
       url = "github:nix-community/home-manager";
@@ -71,11 +75,6 @@
       url = "github:numtide/treefmt-nix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    # Rust Overlay
-    rust-overlay = {
-      url = "github:oxalica/rust-overlay";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
     ### Personal packages
     rycee-firefox = {
       url = "gitlab:rycee/nur-expressions?dir=pkgs/firefox-addons";
@@ -89,29 +88,11 @@
     crane = {
       url = "github:ipetkov/crane";
     };
+    rust-overlay = {
+      url = "github:oxalica/rust-overlay";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
-  outputs =
-    inputs@{ flake-parts, ... }:
-    flake-parts.lib.mkFlake { inherit inputs; } (
-      { ... }:
-      {
-        imports = [
-          # Private flake module
-          ./flake-module.nix
-          # Lib
-          ./lib/flake-module.nix
-          # NixOS modules
-          ./nixos/flake-module.nix
-          # Home configurations
-          ./home/flake-module.nix
-          # System derivations
-          ./machines/flake-module.nix
-          # Nix On Droid
-          ./nix-on-droid/flake-module.nix
-          # Overlay
-          ./overlays/flake-module.nix
-        ];
-      }
-    );
+  outputs = inputs: inputs.flake-parts.lib.mkFlake { inherit inputs; } (inputs.import-tree ./modules);
 }
