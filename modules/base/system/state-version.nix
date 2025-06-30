@@ -31,5 +31,11 @@
           home = { inherit stateVersion; };
         };
       };
+
+      nix-on-droid = {
+        base = {
+          system.stateVersion = "23.05";
+        };
+      };
     };
 }
