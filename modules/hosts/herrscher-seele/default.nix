@@ -22,6 +22,7 @@
             plasma-desktop
             shell
             sound
+            steam
 
             root
             shadowrz
