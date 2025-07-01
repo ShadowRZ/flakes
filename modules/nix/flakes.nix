@@ -4,10 +4,13 @@
     nixos = {
       nix = {
         # Enable Flakes
-        nix.settings.experimental-features = [
-          "nix-command"
-          "flakes"
-        ];
+        nix.settings = {
+          experimental-features = [
+            "nix-command"
+            "flakes"
+          ];
+          flake-registry = "/etc/flake/registry.json";
+        };
 
         # Disable nix-channel
         nix.channel.enable = false;
