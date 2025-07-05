@@ -79,11 +79,6 @@
 
         # fwupd
         services.fwupd.enable = true;
-
-        # Tweak SDDM for the machine's HiDPI
-        services.displayManager.sddm.settings = {
-          General.GreeterEnvironment = "QT_SCALE_FACTOR=1.25,QT_FONT_DPI=96";
-        };
       };
   };
 }

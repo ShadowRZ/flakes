@@ -17,6 +17,14 @@
             # SDDM
             sddm = {
               enable = true;
+              theme = pkgs.silent-sddm-customized.pname;
+              extraPackages = pkgs.silent-sddm-customized.propagatedBuildInputs;
+              settings = {
+                General = {
+                  GreeterEnvironment = "QML2_IMPORT_PATH=${pkgs.silent-sddm-customized}/share/sddm/themes/${pkgs.silent-sddm-customized.pname}/components/,QT_IM_MODULE=qtvirtualkeyboard,QT_SCALE_FACTOR=1.25,QT_FONT_DPI=96";
+                  InputMethod = "qtvirtualkeyboard";
+                };
+              };
               wayland.enable = true;
             };
           };
@@ -32,11 +40,6 @@
             vulkan-tools # vulkaninfo
             wayland-utils # wayland-info
             rose-pine-cursor
-            # Used to configure SDDM Breeze Theme
-            (writeTextDir "share/sddm/themes/breeze/theme.conf.user" ''
-              [General]
-              background=${nixos-artwork.wallpapers.nineish}/share/backgrounds/nixos/nix-wallpaper-nineish.png
-            '')
           ];
           plasma6.excludePackages = with pkgs; [
             kdePackages.konsole
