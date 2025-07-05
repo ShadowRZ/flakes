@@ -234,6 +234,7 @@
         "rust-overlay": "rust-overlay",
         "rycee-firefox": "rycee-firefox",
         "shadowrz": "shadowrz",
+        "silent-sddm": "silent-sddm",
         "sops-nix": "sops-nix",
         "treefmt-nix": "treefmt-nix"
       }
@@ -297,6 +298,22 @@
       "original": {
         "owner": "ShadowRZ",
         "repo": "nur-packages",
+        "type": "github"
+      }
+    },
+    "silent-sddm": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1751667307,
+        "narHash": "sha256-/wxUMx+JOzLYCDgw5zdOZdXNFRA9FYmcMPEWj4yC8PM=",
+        "owner": "uiriansan",
+        "repo": "SilentSDDM",
+        "rev": "815d9ca6e46848862a47cb1051d154e309e8fdba",
+        "type": "github"
+      },
+      "original": {
+        "owner": "uiriansan",
+        "repo": "SilentSDDM",
         "type": "github"
       }
     },

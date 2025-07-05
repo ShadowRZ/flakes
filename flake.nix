@@ -84,6 +84,11 @@
       url = "github:ShadowRZ/nur-packages";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    ### Non flake
+    silent-sddm = {
+      url = "github:uiriansan/SilentSDDM";
+      flake = false;
+    };
     ### Dedupes
     crane = {
       url = "github:ipetkov/crane";
