@@ -17,11 +17,11 @@
             # SDDM
             sddm = {
               enable = true;
-              theme = pkgs.silent-sddm-customized.pname;
-              extraPackages = pkgs.silent-sddm-customized.propagatedBuildInputs;
+              theme = pkgs.shadowrz.silent-sddm.pname;
+              extraPackages = pkgs.shadowrz.silent-sddm.propagatedBuildInputs;
               settings = {
                 General = {
-                  GreeterEnvironment = "QML2_IMPORT_PATH=${pkgs.silent-sddm-customized}/share/sddm/themes/${pkgs.silent-sddm-customized.pname}/components/,QT_IM_MODULE=qtvirtualkeyboard,QT_SCALE_FACTOR=1.25,QT_FONT_DPI=96";
+                  GreeterEnvironment = "QML2_IMPORT_PATH=${pkgs.shadowrz.silent-sddm}/share/sddm/themes/${pkgs.shadowrz.silent-sddm.pname}/components/,QT_IM_MODULE=qtvirtualkeyboard,QT_SCALE_FACTOR=1.5,QT_FONT_DPI=96";
                   InputMethod = "qtvirtualkeyboard";
                 };
               };
@@ -40,7 +40,7 @@
             vulkan-tools # vulkaninfo
             wayland-utils # wayland-info
             rose-pine-cursor
-            pkgs.silent-sddm-customized
+            pkgs.shadowrz.silent-sddm
           ];
           plasma6.excludePackages = with pkgs; [
             kdePackages.konsole
