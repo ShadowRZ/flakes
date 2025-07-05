@@ -40,6 +40,7 @@
             vulkan-tools # vulkaninfo
             wayland-utils # wayland-info
             rose-pine-cursor
+            pkgs.silent-sddm-customized
           ];
           plasma6.excludePackages = with pkgs; [
             kdePackages.konsole
