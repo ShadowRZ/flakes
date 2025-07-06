@@ -14,9 +14,11 @@
         extraBackgrounds = [ final.nixos-artwork.wallpapers.nineish.src ];
         theme-overrides = {
           "LoginScreen" = {
+            blur = 75;
             background = "${final.nixos-artwork.wallpapers.nineish.src.name}";
           };
           "LockScreen" = {
+            blur = 0;
             background = "${final.nixos-artwork.wallpapers.nineish.src.name}";
           };
           "LockScreen.Clock" = {
