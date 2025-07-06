@@ -26,9 +26,7 @@
             plugins = with pkgs.vimPlugins; [
               lualine-nvim
               nvim-lspconfig
-              nvim-cmp
-              cmp-nvim-lsp
-              luasnip
+              blink-cmp
               editorconfig-nvim
               nord-vim
               # Tree Sitter
