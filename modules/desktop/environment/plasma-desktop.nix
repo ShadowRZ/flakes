@@ -39,7 +39,7 @@
             mesa-demos # glxinfo, eglinfo
             vulkan-tools # vulkaninfo
             wayland-utils # wayland-info
-            rose-pine-cursor
+            bibata-cursors
             pkgs.shadowrz.silent-sddm
           ];
           plasma6.excludePackages = with pkgs; [

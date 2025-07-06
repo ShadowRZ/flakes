@@ -3,7 +3,7 @@ if wezterm.config_builder then
   config = wezterm.config_builder()
 end
 
-config.xcursor_theme = 'BreezeX-RosePineDawn-Linux'
+config.xcursor_theme = 'Bibata-Modern-Ice'
 config.xcursor_size = 32
 config.color_scheme = 'nord'
 config.font_size = 19.0

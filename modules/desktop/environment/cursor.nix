@@ -4,7 +4,7 @@
       desktop = {
         services.displayManager.sddm.settings = {
           Theme = {
-            CursorTheme = "BreezeX-RosePineDawn-Linux";
+            CursorTheme = "Bibata-Modern-Ice";
             CursorSize = 32;
           };
         };
@@ -15,8 +15,8 @@
         { pkgs, ... }:
         {
           home.pointerCursor = {
-            package = pkgs.rose-pine-cursor;
-            name = "BreezeX-RosePineDawn-Linux";
+            package = pkgs.bibata-cursors;
+            name = "Bibata-Modern-Ice";
             size = 32;
             gtk.enable = true;
             x11.enable = true;
