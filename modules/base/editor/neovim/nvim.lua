@@ -64,14 +64,6 @@ require('lualine').setup {
 }
 
 -- LSP
-local lspconfig = require('lspconfig')
-vim.lsp.config(
-  '*',
-  --@type vim.lsp.Config
-  {
-    capabilities = require('blink.cmp').get_lsp_capabilities(config.capabilities)
-  }
-)
 vim.lsp.enable({
   'rust_analyzer',
   'nixd',
