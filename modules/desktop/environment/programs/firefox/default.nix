@@ -67,22 +67,6 @@
                   "toolkit.legacyUserProfileCustomizations.stylesheets" = true;
                   # Enable SVG context-propertes
                   "svg.context-properties.content.enabled" = true;
-                  # Required by ShyFox
-                  "sidebar.revamp" = false;
-                  "layout.css.has-selector.enabled" = true;
-                  "browser.urlbar.suggest.calculator" = true;
-                  "browser.urlbar.unitConversion.enabled" = true;
-                  "browser.urlbar.trimHttps" = true;
-                  "browser.urlbar.trimURLs" = true;
-                  "widget.gtk.rounded-bottom-corners.enabled" = true;
-                  "widget.gtk.ignore-bogus-leave-notify" = "1";
-                  # ShyFox
-                  "shyfox.larger.context.menu" = true;
-                  "shyfox.enable.ext.mono.toolbar.icons" = true;
-                  "shyfox.enable.ext.mono.context.icons" = true;
-                  "shyfox.enable.context.menu.icons" = true;
-                  "shyfox.fill.accent.with.icons.fill.color" = true;
-                  "shyfox.force.native.controls" = true;
                 };
                 # Firefox extensions
                 extensions.packages =
