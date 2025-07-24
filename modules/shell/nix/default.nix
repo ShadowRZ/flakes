@@ -5,12 +5,13 @@
       {
         home.packages = with pkgs; [
           nixd
-          nixfmt-rfc-style
+          nixfmt
           statix
           deadnix
-          nixpkgs-fmt
           sops
           taplo
+          nix-tree
+          nh
         ];
       };
   };
