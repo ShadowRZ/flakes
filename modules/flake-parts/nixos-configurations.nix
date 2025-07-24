@@ -27,13 +27,16 @@
                 modules = [
                   module
 
-                  {
-                    networking.hostName = name;
+                  (
+                    { lib, ... }:
+                    {
+                      networking.hostName = lib.mkDefault name;
 
-                    nixpkgs = {
-                      inherit pkgs;
-                    };
-                  }
+                      nixpkgs = {
+                        inherit pkgs;
+                      };
+                    }
+                  )
                 ];
               }
             );

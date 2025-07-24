@@ -9,7 +9,7 @@
             "nix-command"
             "flakes"
           ];
-          flake-registry = "/etc/flake/registry.json";
+          flake-registry = "";
         };
 
         # Disable nix-channel
