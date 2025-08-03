@@ -27,7 +27,7 @@
             packages = with pkgs; [
               fractal
               keepassxc
-              blender_4_4 # Blender 4.4.* (Binary)
+              blender_4_5 # Blender 4.5.* (Binary)
               helvum
               blanket
               gimp3 # GIMP 3
