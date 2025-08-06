@@ -13,7 +13,7 @@
           inherit pkgs;
           modules = [
             {
-              imports = with config.flake.modules.nix-on-droid; [
+              imports = with config.flake.modules.nixOnDroid; [
                 base
                 nix
                 shell
