@@ -13,7 +13,7 @@
       };
     };
 
-    nix-on-droid = {
+    nixOnDroid = {
       base = {
         ## Home Manager
         home-manager = {

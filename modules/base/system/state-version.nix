@@ -32,7 +32,7 @@
         };
       };
 
-      nix-on-droid = {
+      nixOnDroid = {
         base = {
           system.stateVersion = "23.05";
         };

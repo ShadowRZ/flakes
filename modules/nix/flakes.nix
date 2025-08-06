@@ -23,7 +23,7 @@
       };
     };
 
-    nix-on-droid = {
+    nixOnDroid = {
       nix = _: {
         nix = {
           nixPath = [ "nixpkgs=${inputs.nixpkgs}" ];

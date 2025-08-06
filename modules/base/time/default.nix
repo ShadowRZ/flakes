@@ -5,7 +5,7 @@
         time.timeZone = "Asia/Shanghai";
       };
     };
-    nix-on-droid = {
+    nixOnDroid = {
       base = {
         time.timeZone = "Asia/Shanghai";
       };

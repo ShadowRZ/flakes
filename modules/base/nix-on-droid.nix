@@ -1,6 +1,6 @@
 { inputs, ... }:
 {
-  flake.modules.nix-on-droid = {
+  flake.modules.nixOnDroid = {
     base =
       { pkgs, ... }:
       {

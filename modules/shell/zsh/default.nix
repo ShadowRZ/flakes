@@ -10,7 +10,7 @@
         };
       };
     };
-    nix-on-droid = {
+    nixOnDroid = {
       shell =
         { lib, pkgs, ... }:
         {

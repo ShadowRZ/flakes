@@ -1,5 +1,5 @@
 {
-  flake.modules.nix-on-droid = {
+  flake.modules.nixOnDroid = {
     shell =
       { lib, pkgs, ... }:
       {

@@ -20,7 +20,7 @@
         };
       };
     };
-    nix-on-droid = {
+    nixOnDroid = {
       nix =
         { lib, ... }:
         {

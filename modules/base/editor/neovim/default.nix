@@ -8,7 +8,7 @@
         };
       };
     };
-    nix-on-droid = {
+    nixOnDroid = {
       shell = {
         environment.sessionVariables."EDITOR" = "nvim";
       };
