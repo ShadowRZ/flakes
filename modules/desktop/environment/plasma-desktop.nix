@@ -17,12 +17,12 @@
             # SDDM
             sddm = {
               enable = true;
-              theme = pkgs.shadowrz.silent-sddm.pname;
-              extraPackages = pkgs.shadowrz.silent-sddm.propagatedBuildInputs;
+              theme = "breeze";
+              # extraPackages = pkgs.shadowrz.silent-sddm.propagatedBuildInputs;
               settings = {
                 General = {
-                  GreeterEnvironment = "QML2_IMPORT_PATH=${pkgs.shadowrz.silent-sddm}/share/sddm/themes/${pkgs.shadowrz.silent-sddm.pname}/components/,QT_IM_MODULE=qtvirtualkeyboard,QT_SCALE_FACTOR=1.5,QT_FONT_DPI=96";
-                  InputMethod = "qtvirtualkeyboard";
+                  GreeterEnvironment = "QT_SCALE_FACTOR=1.5,QT_FONT_DPI=96";
+                  # InputMethod = "qtvirtualkeyboard";
                 };
               };
               wayland.enable = true;
