@@ -33,6 +33,9 @@
             xorg.libSM
             xorg.libICE
             zlib
+          ]
+          ++ lib.optionals (lib.versionAtLeast version "4.3") [
+            vulkan-loader
           ];
         in
 
