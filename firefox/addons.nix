@@ -45,10 +45,10 @@
   };
   "emoji-sav" = buildFirefoxXpiAddon {
     pname = "emoji-sav";
-    version = "3.24";
+    version = "3.25";
     addonId = "emoji@saveriomorelli.com";
-    url = "https://addons.mozilla.org/firefox/downloads/file/4482363/emoji_sav-3.24.xpi";
-    sha256 = "847512a46853c8ea82351d6d6265f0067b24abbddd81212c20996d0cd430ce4c";
+    url = "https://addons.mozilla.org/firefox/downloads/file/4541694/emoji_sav-3.25.xpi";
+    sha256 = "0448a650c146b40e66191fd5ab68ef37bca1125c91a6665eded68350b4f97205";
     meta = with lib; {
       homepage = "https://www.emojiaddon.com";
       description = "It permits just with a single click to copy an emoji.\nThere is a search-box and the \"Most used emojis\" section (the first one).\n\nIf you want to send feedback or report bug, please contact me";
@@ -98,10 +98,10 @@
   };
   "pwas-for-firefox" = buildFirefoxXpiAddon {
     pname = "pwas-for-firefox";
-    version = "2.14.1";
+    version = "2.15.0";
     addonId = "firefoxpwa@filips.si";
-    url = "https://addons.mozilla.org/firefox/downloads/file/4437768/pwas_for_firefox-2.14.1.xpi";
-    sha256 = "f8e9ba0ae3a728084d746d11598f6840acbbda45bdc2e9e52b74bd1b95ec5d1c";
+    url = "https://addons.mozilla.org/firefox/downloads/file/4537285/pwas_for_firefox-2.15.0.xpi";
+    sha256 = "75dda1bfd5b4737210c7bec1949de939e1c8f3f5d0ac4f196c0d8fd24d9657ce";
     meta = with lib; {
       homepage = "https://github.com/filips123/PWAsForFirefox";
       description = "A tool to install, manage and use Progressive Web Apps (PWAs) in Mozilla Firefox";
