@@ -46,7 +46,6 @@
 
         boot = {
           kernelModules = [
-            "i915"
             "legion-laptop"
           ];
           initrd = {
@@ -65,9 +64,6 @@
               env.NIX_CFLAGS_COMPILE = "-Wno-error=incompatible-pointer-types";
             })
           ];
-          extraModprobeConfig = ''
-            softdep i915 post: nvidia nvidia_drm
-          '';
         };
 
         # Bolt
