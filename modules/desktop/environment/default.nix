@@ -15,13 +15,7 @@
             ];
           };
 
-          services = {
-            xserver = {
-              enable = true;
-              excludePackages = [ pkgs.xterm ];
-            };
-            gvfs.enable = true;
-          };
+          services.gvfs.enable = true;
 
           users.users.shadowrz = {
             packages = with pkgs; [
