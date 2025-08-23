@@ -16,7 +16,7 @@
           nvidia = {
             package = config.boot.kernelPackages.nvidiaPackages.latest;
             open = true;
-            nvidiaSettings = false;
+            nvidiaSettings = true;
             prime = {
               offload = {
                 enable = true;
@@ -47,6 +47,9 @@
         boot = {
           kernelModules = [
             "legion-laptop"
+          ];
+          kernelParams = [
+            "nvidia.NVreg_TemporaryFilePath=/var/tmp"
           ];
           initrd = {
             availableKernelModules = [
