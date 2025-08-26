@@ -1,0 +1,7 @@
+{
+    "recommendations": [
+        "bbenoist.nix",
+        "jnoortheen.nix-ide",
+        "io-github-oops418.nix-env-picker"
+    ]
+}
