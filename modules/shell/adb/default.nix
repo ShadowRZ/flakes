@@ -1,7 +1,9 @@
 {
   flake.modules.nixos = {
-    shell = {
-      programs.adb.enable = true;
-    };
+    shell =
+      _:
+      {
+        programs.adb.enable = true;
+      };
   };
 }

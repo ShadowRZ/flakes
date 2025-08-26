@@ -1,15 +1,19 @@
 {
   flake.modules = {
     nixos = {
-      shell = {
-        programs.ssh.startAgent = true;
-      };
+      shell =
+        _:
+        {
+          programs.ssh.startAgent = true;
+        };
     };
 
     homeManager = {
-      shell = {
-        services.ssh-agent.enable = true;
-      };
+      shell =
+        _:
+        {
+          services.ssh-agent.enable = true;
+        };
     };
   };
 }

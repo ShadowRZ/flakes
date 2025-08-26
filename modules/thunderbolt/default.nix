@@ -1,7 +1,9 @@
 {
   flake.modules.nixos = {
-    thunderbolt = {
-      services.hardware.bolt.enable = true;
-    };
+    thunderbolt =
+      _:
+      {
+        services.hardware.bolt.enable = true;
+      };
   };
 }

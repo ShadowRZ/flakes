@@ -32,9 +32,7 @@
                     {
                       networking.hostName = lib.mkDefault name;
 
-                      nixpkgs = {
-                        inherit pkgs;
-                      };
+                      nixpkgs.pkgs = pkgs;
                     }
                   )
                 ];

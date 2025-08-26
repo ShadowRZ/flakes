@@ -1,6 +1,6 @@
 {
   flake.modules.nixos = {
-    base = {
+    base = _: {
       i18n = {
         defaultLocale = "C.UTF-8";
         # Build all Glibc supported locales as defined in:

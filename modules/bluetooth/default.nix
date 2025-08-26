@@ -1,7 +1,9 @@
 {
   flake.modules.nixos = {
-    bluetooth = {
-      hardware.bluetooth.enable = true;
-    };
+    bluetooth =
+      _:
+      {
+        hardware.bluetooth.enable = true;
+      };
   };
 }

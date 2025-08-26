@@ -1,10 +1,12 @@
 {
   flake.modules.homeManager = {
-    shell = {
-      programs.dircolors = {
-        enable = true;
-        extraConfig = builtins.readFile ./dircolors.dircolors;
+    shell =
+      _:
+      {
+        programs.dircolors = {
+          enable = true;
+          extraConfig = builtins.readFile ./dircolors.dircolors;
+        };
       };
-    };
   };
 }

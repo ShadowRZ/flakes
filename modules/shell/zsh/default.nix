@@ -1,14 +1,16 @@
 {
   flake.modules = {
     nixos = {
-      shell = {
-        programs = {
-          zsh = {
-            enable = true;
-            enableLsColors = false;
+      shell =
+        _:
+        {
+          programs = {
+            zsh = {
+              enable = true;
+              enableLsColors = false;
+            };
           };
         };
-      };
     };
     nixOnDroid = {
       shell =

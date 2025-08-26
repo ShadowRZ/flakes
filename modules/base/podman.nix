@@ -1,10 +1,12 @@
 {
   flake.modules.nixos = {
-    base = {
-      # Podman
-      virtualisation.podman = {
-        enable = true;
+    base =
+      _:
+      {
+        # Podman
+        virtualisation.podman = {
+          enable = true;
+        };
       };
-    };
   };
 }

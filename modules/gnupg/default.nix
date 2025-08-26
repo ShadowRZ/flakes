@@ -1,9 +1,11 @@
 {
   flake.modules = {
     nixos = {
-      gnupg = {
-        services.pcscd.enable = true;
-      };
+      gnupg =
+        _:
+        {
+          services.pcscd.enable = true;
+        };
     };
 
     homeManager = {

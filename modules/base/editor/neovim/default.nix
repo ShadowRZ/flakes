@@ -1,7 +1,7 @@
 {
   flake.modules = {
     nixos = {
-      base = {
+      base = _: {
         programs.neovim = {
           enable = true;
           defaultEditor = true;
@@ -9,9 +9,11 @@
       };
     };
     nixOnDroid = {
-      shell = {
-        environment.sessionVariables."EDITOR" = "nvim";
-      };
+      shell =
+        _:
+        {
+          environment.sessionVariables."EDITOR" = "nvim";
+        };
     };
     homeManager = {
       base =

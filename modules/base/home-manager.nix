@@ -2,28 +2,32 @@
 {
   flake.modules = {
     nixos = {
-      base = {
-        imports = [ inputs.home-manager.nixosModules.home-manager ];
+      base =
+        { ... }:
+        {
+          imports = [ inputs.home-manager.nixosModules.home-manager ];
 
-        ## Home Manager
-        home-manager = {
-          useUserPackages = true;
-          useGlobalPkgs = true;
+          ## Home Manager
+          home-manager = {
+            useUserPackages = true;
+            useGlobalPkgs = true;
+          };
         };
-      };
     };
 
     nixOnDroid = {
-      base = {
-        ## Home Manager
-        home-manager = {
-          useGlobalPkgs = true;
+      base =
+        _:
+        {
+          ## Home Manager
+          home-manager = {
+            useGlobalPkgs = true;
+          };
         };
-      };
     };
 
     homeManager = {
-      base = {
+      base = _: {
         manual.manpages.enable = false;
       };
     };

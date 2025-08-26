@@ -1,9 +1,11 @@
 {
   flake.modules = {
     homeManager = {
-      desktop = {
-        fonts.fontconfig.enable = false;
-      };
+      desktop =
+        _:
+        {
+          fonts.fontconfig.enable = false;
+        };
     };
     nixos = {
       desktop =

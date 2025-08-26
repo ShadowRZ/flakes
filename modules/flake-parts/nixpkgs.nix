@@ -1,7 +1,7 @@
 { inputs, ... }:
 {
   perSystem =
-    { system, pkgs, ... }:
+    { system, ... }:
     {
       # Instance a global Nixpkgs
       _module.args.pkgs = import inputs.nixpkgs {
