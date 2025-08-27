@@ -47,8 +47,7 @@
             packages = with pkgs; [
               hugo # Hugo
               ffmpeg-full # FFmpeg
-              # Library
-              temurin-bin-21
+              cntr
             ];
 
             openssh.authorizedKeys.keys = config.flake.meta.users.shadowrz.authorizedKeys;
