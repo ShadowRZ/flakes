@@ -14,7 +14,7 @@
         hardware = {
           cpu.intel.updateMicrocode = true;
           nvidia = {
-            package = config.boot.kernelPackages.nvidiaPackages.latest;
+            package = config.boot.kernelPackages.nvidiaPackages.production;
             open = true;
             nvidiaSettings = true;
             prime = {
