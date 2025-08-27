@@ -41,6 +41,7 @@
             wayland-utils # wayland-info
             bibata-cursors
             pkgs.shadowrz.silent-sddm
+            kde-rounded-corners
           ];
           plasma6.excludePackages = with pkgs; [
             kdePackages.konsole
