@@ -7,20 +7,22 @@ My personal NixOS configuration. for packages see [`github:ShadowRZ/nur-packages
 ## Components
 
 * **Desktop Environment:** [KDE Plasma 6]
-* **Terminal:** [Kitty]
+* **Terminal:** [WezTerm]
+* **Browser:** Firefox + [Firefox GNOME Theme]
 * **Shell:** [Zsh] [^1] + [Starship]
 * **Display Manager:** [SDDM]
-* **Colorscheme:** [Rosé Pine]
+* **Colorscheme:** [Catppuccin]
 * **Media player:** [mpv]
-* **Terminal Editor:** [Neovim]
-* **\[Desktop\] Filesystem & Encryption**: tmpfs `/`, [Btrfs] subvolumes on a [LUKS] encrypted partition for Nix Store and persisted data. Uses a passphrase to unlock. [^2]
+* **Terminal Editor:** [Neovim], maybe explore [Helix]?
+* **\[Desktop\] GUI Editor:** [VS Code] currently, have plans to build my own editor.
+* **\[Desktop\] Filesystem & Encryption**: tmpfs `/`, [Btrfs] subvolumes on a [LUKS] encrypted partition for Nix Store and persisted data. Uses TPM with optional [CanoKey] support.
 * **\[Desktop\] Secure Boot:** [lanzaboote]
 
 [^1]: Yes I'm still somewhat oldschool and uses a `sh` compatible shell.
-[^2]: For unknown reason, FIDO2 unlocking failed to work for me despite I have a compatible FIDO2 device ([CanoKey]).
 
 ## Config References
 
+* [`github:drupol/infra`](https://github.com/drupol/infra) (See also: [Refactoring My Infrastructure As Code Configurations](https://not-a-number.io/2025/refactoring-my-infrastructure-as-code-configurations/))
 * [`github:Guanran928/flakes`](https://github.com/Guanran928/flakes)
 * [`github:Zaechus/nixos-config`](https://github.com/Zaechus/nixos-config)
 * [`github:NickCao/flakes`](https://github.com/NickCao/flakes)
@@ -28,14 +30,17 @@ My personal NixOS configuration. for packages see [`github:ShadowRZ/nur-packages
 <!-- References -->
 
 [KDE Plasma 6]: https://kde.org/plasma-desktop
-[Kitty]: https://sw.kovidgoyal.net/kitty/
+[WezTerm]: https://wezterm.org
 [Zsh]: https://zsh.sourceforge.io
 [Starship]: https://starship.rs
 [SDDM]: https://wiki.archlinux.org/title/SDDM
-[Rosé Pine]: https://rosepinetheme.com
+[Catppuccin]: https://catppuccin.com
 [mpv]: https://mpv.io
 [Neovim]: https://neovim.io
+[Helix]: https://helix-editor.com
+[VS Code]: https://code.visualstudio.com
 [Btrfs]: https://btrfs.readthedocs.io
 [LUKS]: https://wiki.archlinux.org/title/Dm-crypt/Encrypting_an_entire_system
 [lanzaboote]: https://github.com/nix-community/lanzaboote
 [CanoKey]: https://canokeys.org
+[Firefox GNOME Theme]: https://github.com/rafaelmardojai/firefox-gnome-theme

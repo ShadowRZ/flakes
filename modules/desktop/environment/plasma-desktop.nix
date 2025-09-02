@@ -45,7 +45,7 @@
             pkgs.shadowrz.silent-sddm
             (catppuccin-kde.override {
               flavour = [
-                "frappe"
+                "latte"
               ];
               accents = [
                 "rosewater"

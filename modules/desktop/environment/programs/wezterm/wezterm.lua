@@ -42,8 +42,8 @@ config.window_frame = {
     }
   ),
   font_size = 11.5,
-  active_titlebar_bg = "#eceff4",
-  inactive_titlebar_bg = "#eceff4",
+  active_titlebar_bg = "#e6e9ef",
+  inactive_titlebar_bg = "#e6e9ef",
 }
 
 config.mouse_bindings = {
