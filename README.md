@@ -1,4 +1,4 @@
-# Codename Hanekokoro
+# Hanekokoro (はねこころ) Infra
 
 My personal NixOS configuration. for packages see [`github:ShadowRZ/nur-packages`](https://github.com/ShadowRZ/nur-packages)
 

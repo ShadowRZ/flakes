@@ -1,5 +1,5 @@
 {
-  description = "Codename Hanekokoro";
+  description = "Hanekokoro Infra";
 
   inputs = {
     # Nixpkgs

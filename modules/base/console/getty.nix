@@ -5,7 +5,7 @@
       {
         services.getty.greetingLine = with config.system.nixos; ''
           NixOS ${release} (${codeName})
-          \e{lightmagenta}Codename Hanekokoro
+          \e{lightmagenta}Belongs to Hanekokoro Infra (https://github.com/ShadowRZ/flakes)
         '';
       };
   };
