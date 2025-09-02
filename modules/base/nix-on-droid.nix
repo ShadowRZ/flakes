@@ -75,7 +75,7 @@
 
         home-manager.config = {
           imports = [
-            inputs.nix-indexdb.hmModules.nix-index
+            inputs.nix-indexdb.homeModules.nix-index
             {
               programs.nix-index-database.comma.enable = true;
             }
