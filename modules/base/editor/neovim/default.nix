@@ -9,11 +9,9 @@
       };
     };
     nixOnDroid = {
-      shell =
-        _:
-        {
-          environment.sessionVariables."EDITOR" = "nvim";
-        };
+      shell = _: {
+        environment.sessionVariables."EDITOR" = "nvim";
+      };
     };
     homeManager = {
       base =

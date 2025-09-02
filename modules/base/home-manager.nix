@@ -16,14 +16,12 @@
     };
 
     nixOnDroid = {
-      base =
-        _:
-        {
-          ## Home Manager
-          home-manager = {
-            useGlobalPkgs = true;
-          };
+      base = _: {
+        ## Home Manager
+        home-manager = {
+          useGlobalPkgs = true;
         };
+      };
     };
 
     homeManager = {

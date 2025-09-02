@@ -1,9 +1,7 @@
 {
   flake.modules.homeManager = {
-    shell =
-      _:
-      {
-        programs.zoxide.enable = true;
-      };
+    shell = _: {
+      programs.zoxide.enable = true;
+    };
   };
 }

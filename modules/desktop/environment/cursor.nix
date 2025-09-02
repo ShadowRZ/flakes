@@ -1,16 +1,14 @@
 {
   flake.modules = {
     nixos = {
-      desktop =
-        _:
-        {
-          services.displayManager.sddm.settings = {
-            Theme = {
-              CursorTheme = "Bibata-Modern-Ice";
-              CursorSize = 32;
-            };
+      desktop = _: {
+        services.displayManager.sddm.settings = {
+          Theme = {
+            CursorTheme = "Bibata-Modern-Ice";
+            CursorSize = 32;
           };
         };
+      };
     };
     homeManager = {
       desktop =
