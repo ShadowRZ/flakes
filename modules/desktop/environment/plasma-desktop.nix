@@ -40,8 +40,19 @@
             vulkan-tools # vulkaninfo
             wayland-utils # wayland-info
             bibata-cursors
-            pkgs.shadowrz.silent-sddm
             kde-rounded-corners
+            plasma-overdose-kde-theme
+            pkgs.shadowrz.silent-sddm
+            (catppuccin-kde.override {
+              flavour = [
+                "frappe"
+              ];
+              accents = [
+                "rosewater"
+                "pink"
+                "lavender"
+              ];
+            })
           ];
           plasma6.excludePackages = with pkgs; [
             kdePackages.konsole

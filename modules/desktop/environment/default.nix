@@ -33,8 +33,6 @@
               sqlitebrowser
               pdfarranger
               thunderbird-latest
-              plasma-overdose-kde-theme
-              eclipses.eclipse-platform
               zed-editor
               telegram-desktop
               pika-backup

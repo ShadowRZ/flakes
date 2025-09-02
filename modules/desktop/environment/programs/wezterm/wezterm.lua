@@ -5,7 +5,7 @@ end
 
 config.xcursor_theme = 'Bibata-Modern-Ice'
 config.xcursor_size = 32
-config.color_scheme = 'nord'
+config.color_scheme = 'Catppuccin Mocha'
 config.font_size = 19.0
 
 config.colors = {
