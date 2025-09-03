@@ -62,6 +62,9 @@
               "legion-laptop"
             ];
           };
+          blacklistedKernelModules = [
+            "hid_apple"
+          ];
           extraModulePackages = [
             (config.boot.kernelPackages.lenovo-legion-module.overrideAttrs {
               env.NIX_CFLAGS_COMPILE = "-Wno-error=incompatible-pointer-types";
