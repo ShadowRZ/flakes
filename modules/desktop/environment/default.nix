@@ -33,7 +33,6 @@
               sqlitebrowser
               pdfarranger
               thunderbird-latest
-              zed-editor
               telegram-desktop
               pika-backup
               github-desktop
