@@ -1,7 +1,4 @@
-{
-  buildFirefoxXpiAddon,
-  lib,
-}:
+{ buildFirefoxXpiAddon, lib }:
 {
   "copy-linktab-name-and-url" = buildFirefoxXpiAddon {
     pname = "copy-linktab-name-and-url";
@@ -118,10 +115,10 @@
   };
   "textarea-cache" = buildFirefoxXpiAddon {
     pname = "textarea-cache";
-    version = "5.0.4";
+    version = "5.0.6";
     addonId = "textarea-cache-lite@wildsky.cc";
-    url = "https://addons.mozilla.org/firefox/downloads/file/4477429/textarea_cache-5.0.4.xpi";
-    sha256 = "924ec496f64581bd6d0bdf5c4c344213704125e5cd84216fd2227bee17aa00ba";
+    url = "https://addons.mozilla.org/firefox/downloads/file/4566747/textarea_cache-5.0.6.xpi";
+    sha256 = "864f738af3c1cfb76b23322dbb7e3498c6fc417b4ac2dbd67564ba7f0873da73";
     meta = with lib; {
       description = "Allows to save automatically the content in a text input field.";
       license = licenses.mit;

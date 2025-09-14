@@ -69,56 +69,48 @@
                   "svg.context-properties.content.enabled" = true;
                 };
                 # Firefox extensions
-                extensions.packages =
-                  (with pkgs.firefox-addons; [
-                    auto-tab-discard
-                    behind-the-overlay-revival
-                    bitwarden
-                    clearurls
-                    cliget
-                    copy-selection-as-markdown
-                    don-t-fuck-with-paste
-                    fediact
-                    firefox-color
-                    ghosttext
-                    link-gopher
-                    linkhints
-                    localcdn
-                    multi-account-containers
-                    no-pdf-download
-                    offline-qr-code-generator
-                    open-in-browser
-                    plasma-integration
-                    qr-code-address-bar
-                    re-enable-right-click
-                    react-devtools
-                    reduxdevtools
-                    side-view
-                    sidebery
-                    single-file
-                    streetpass-for-mastodon
-                    stylus
-                    tabliss
-                    tranquility-1
-                    (ublock-origin.override rec {
-                      version = "1.61.2";
-                      url = "https://github.com/gorhill/uBlock/releases/download/${version}/uBlock0_${version}.firefox.signed.xpi";
-                      sha256 = "sha256-7jpySkb/MsF9FyMHf+zG7ef9q3QhVAILUftiU93LuhQ=";
-                    })
-                    violentmonkey
-                    vue-js-devtools
-                    webhint
-                  ])
-                  ++ (with pkgs.shadowrz.firefox-addons; [
-                    # Additional
-                    copy-linktab-name-and-url
-                    custom-scrollbars
-                    emoji-sav
-                    foxyimage
-                    measure-it
-                    textarea-cache
-                    pwas-for-firefox
-                  ]);
+                extensions.packages = [
+                  pkgs.firefox-addons.auto-tab-discard
+                  pkgs.firefox-addons.behind-the-overlay-revival
+                  pkgs.firefox-addons.bitwarden
+                  pkgs.firefox-addons.clearurls
+                  pkgs.firefox-addons.cliget
+                  pkgs.firefox-addons.copy-selection-as-markdown
+                  pkgs.firefox-addons.don-t-fuck-with-paste
+                  pkgs.firefox-addons.fediact
+                  pkgs.firefox-addons.firefox-color
+                  pkgs.firefox-addons.ghosttext
+                  pkgs.firefox-addons.link-gopher
+                  pkgs.firefox-addons.linkhints
+                  pkgs.firefox-addons.localcdn
+                  pkgs.firefox-addons.multi-account-containers
+                  pkgs.firefox-addons.no-pdf-download
+                  pkgs.firefox-addons.offline-qr-code-generator
+                  pkgs.firefox-addons.open-in-browser
+                  pkgs.firefox-addons.plasma-integration
+                  pkgs.firefox-addons.qr-code-address-bar
+                  pkgs.firefox-addons.re-enable-right-click
+                  pkgs.firefox-addons.react-devtools
+                  pkgs.firefox-addons.reduxdevtools
+                  pkgs.firefox-addons.side-view
+                  pkgs.firefox-addons.sidebery
+                  pkgs.firefox-addons.single-file
+                  pkgs.firefox-addons.streetpass-for-mastodon
+                  pkgs.firefox-addons.stylus
+                  pkgs.firefox-addons.tabliss
+                  pkgs.firefox-addons.tranquility-1
+                  pkgs.firefox-addons.ublock-origin
+                  pkgs.firefox-addons.violentmonkey
+                  pkgs.firefox-addons.vue-js-devtools
+                  pkgs.firefox-addons.webhint
+                  pkgs.shadowrz.firefox-addons.copy-linktab-name-and-url
+                  pkgs.shadowrz.firefox-addons.custom-scrollbars
+                  pkgs.shadowrz.firefox-addons.emoji-sav
+                  pkgs.shadowrz.firefox-addons.foxyimage
+                  pkgs.shadowrz.firefox-addons.measure-it
+                  pkgs.shadowrz.firefox-addons.textarea-cache
+                  pkgs.shadowrz.firefox-addons.pwas-for-firefox
+                ];
               };
             };
           };
