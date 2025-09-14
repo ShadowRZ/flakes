@@ -37,6 +37,7 @@
               pika-backup
               github-desktop
               ## KDE Packages
+              krusader
               kdePackages.kdenlive
               kdePackages.kcalc
               kdePackages.kcharselect
