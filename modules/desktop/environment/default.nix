@@ -10,8 +10,7 @@
             systemPackages = with pkgs; [
               adw-gtk3
               wl-clipboard
-              tela-icon-theme
-              pkgs.gparted
+              papirus-icon-theme
             ];
           };
 
@@ -36,6 +35,7 @@
               telegram-desktop
               pika-backup
               github-desktop
+              gparted
               ## KDE Packages
               krusader
               kdePackages.kdenlive
