@@ -19,10 +19,8 @@
           users.users.shadowrz = {
             packages = with pkgs; [
               fractal
-              keepassxc
               blender_4_5 # Blender 4.5.* (Binary)
               helvum
-              blanket
               gimp3 # GIMP 3
               inkscape # Inkscape
               d-spy # D-Spy
@@ -31,10 +29,8 @@
               featherpad
               sqlitebrowser
               pdfarranger
-              thunderbird-latest
               telegram-desktop
               pika-backup
-              github-desktop
               gparted
               ## KDE Packages
               krusader
@@ -43,7 +39,6 @@
               kdePackages.kcharselect
               kdePackages.plasma-sdk # Plasma SDK
               kdePackages.kdevelop
-              kdePackages.kleopatra
             ];
           };
         };

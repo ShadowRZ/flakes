@@ -56,7 +56,7 @@
             # Profiles
             profiles = {
               default = {
-                name = "羽心印音";
+                name = "Hanekokoro (はねこころ)";
                 settings = {
                   # Disable builtin MPRIS support in favor of Plasma Integration's one
                   "media.hardwaremediakeys.enabled" = false;
