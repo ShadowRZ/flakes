@@ -11,11 +11,6 @@
               package = pkgs.qemu_kvm;
               # Don't run as root
               runAsRoot = false;
-              # Enable UEFI
-              ovmf = {
-                enable = true;
-                packages = [ pkgs.OVMFFull.fd ];
-              };
               # Enable virtual TPM support
               swtpm.enable = true;
               vhostUserPackages = [ pkgs.virtiofsd ];
