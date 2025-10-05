@@ -10,7 +10,7 @@ My personal NixOS configuration. for packages see [`github:ShadowRZ/nur-packages
 * **Desktop Environment:** [KDE Plasma 6]
 * **Terminal:** [WezTerm]
 * **Browser:** Firefox + [Firefox GNOME Theme]
-* **Shell:** [Zsh] [^1] + [Starship]
+* **Shell:** [Fish] [^1] + [Starship]
 * **Display Manager:** [SDDM]
 * **Colorscheme:** [Catppuccin]
 * **Media player:** [mpv]
@@ -18,8 +18,6 @@ My personal NixOS configuration. for packages see [`github:ShadowRZ/nur-packages
 * **\[Desktop\] GUI Editor:** [VS Code] currently, have plans to build my own editor.
 * **\[Desktop\] Filesystem & Encryption**: tmpfs `/`, [Btrfs] subvolumes on a [LUKS] encrypted partition for Nix Store and persisted data. Uses TPM with optional [CanoKey] support.
 * **\[Desktop\] Secure Boot:** [lanzaboote]
-
-[^1]: Yes I'm still somewhat oldschool and uses a `sh` compatible shell.
 
 ## Config References
 
@@ -32,7 +30,7 @@ My personal NixOS configuration. for packages see [`github:ShadowRZ/nur-packages
 
 [KDE Plasma 6]: https://kde.org/plasma-desktop
 [WezTerm]: https://wezterm.org
-[Zsh]: https://zsh.sourceforge.io
+[Fish]: https://fishshell.com
 [Starship]: https://starship.rs
 [SDDM]: https://wiki.archlinux.org/title/SDDM
 [Catppuccin]: https://catppuccin.com

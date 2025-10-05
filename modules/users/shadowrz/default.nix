@@ -35,7 +35,7 @@
           users.users.shadowrz = {
             uid = 1000;
             isNormalUser = true;
-            shell = pkgs.zsh;
+            shell = pkgs.fish;
             description = config.flake.meta.users.shadowrz.name;
 
             extraGroups = [

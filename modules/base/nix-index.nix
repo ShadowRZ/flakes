@@ -10,7 +10,7 @@
           nix-index = {
             enable = true;
             package = pkgs.nix-index-with-db;
-            enableZshIntegration = true;
+            enableFishIntegration = true;
           };
         };
       };

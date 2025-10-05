@@ -4,7 +4,7 @@
       { pkgs, ... }:
       {
         users.users.root = {
-          shell = pkgs.zsh;
+          shell = pkgs.fish;
         };
       };
   };
