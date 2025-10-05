@@ -1,3 +1,4 @@
+{ inputs, ... }:
 {
   flake.modules = {
     nixos = {
@@ -18,12 +19,34 @@
         };
     };
     homeManager = {
-      shell = _: {
-        programs.fish = {
-          enable = true;
-          generateCompletions = true;
+      shell =
+        { pkgs, ... }:
+        {
+
+          imports = [
+            inputs.catppuccin-nix.homeModules.catppuccin
+          ];
+
+          programs.fish = {
+            enable = true;
+            generateCompletions = true;
+            shellInit = builtins.readFile ./config.fish;
+            binds = {
+              "ctrl-z".command = "fg";
+            };
+            plugins = [
+              {
+                name = "plugin-git";
+                src = pkgs.fishPlugins.plugin-git.src;
+              }
+            ];
+          };
+
+          catppuccin.fish = {
+            enable = true;
+            flavor = "mocha";
+          };
         };
-      };
     };
   };
 }
