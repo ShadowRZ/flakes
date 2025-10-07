@@ -37,7 +37,7 @@
             plugins = [
               {
                 name = "plugin-git";
-                src = pkgs.fishPlugins.plugin-git.src;
+                inherit (pkgs.fishPlugins.plugin-git) src;
               }
             ];
           };
