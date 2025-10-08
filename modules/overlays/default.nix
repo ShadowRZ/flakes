@@ -1,9 +1,15 @@
 { inputs, ... }:
 {
   flake.overlays.default = final: prev: {
-    # lilydjwg/subreap
-    zsh = prev.zsh.overrideAttrs (attrs: {
-      patches = (attrs.patches or [ ]) ++ [ ./patches/zsh-subreap.patch ];
+    # https://github.com/NixOS/nixpkgs/pull/449551 TODO: Remove when merged
+    ltrace = prev.zsh.overrideAttrs (attrs: {
+      patches = (attrs.patches or [ ]) ++ [
+        (final.fetchpatch {
+          name = "ltrace-0.7.3-print-test-pie.patch";
+          url = "https://raw.githubusercontent.com/gentoo/gentoo/refs/heads/master/dev-debug/ltrace/files/ltrace-0.7.3-print-test-pie.patch";
+          hash = "sha256-rUafTv13a4vS/yNIVRMbm5zwWTVTqMmFgmnS/XtPfdE=";
+        })
+      ];
     });
     shadowrz = {
       firefox-addons = final.callPackage ../../firefox/addons.nix {
