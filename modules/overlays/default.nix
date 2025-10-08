@@ -2,7 +2,7 @@
 {
   flake.overlays.default = final: prev: {
     # https://github.com/NixOS/nixpkgs/pull/449551 TODO: Remove when merged
-    ltrace = prev.zsh.overrideAttrs (attrs: {
+    ltrace = prev.ltrace.overrideAttrs (attrs: {
       patches = (attrs.patches or [ ]) ++ [
         (final.fetchpatch {
           name = "ltrace-0.7.3-print-test-pie.patch";
