@@ -1,4 +1,3 @@
-{ inputs, ... }:
 {
   flake.modules = {
     nixos = {
@@ -22,11 +21,6 @@
       shell =
         { pkgs, ... }:
         {
-
-          imports = [
-            inputs.catppuccin-nix.homeModules.catppuccin
-          ];
-
           programs.fish = {
             enable = true;
             generateCompletions = true;
@@ -40,11 +34,6 @@
                 inherit (pkgs.fishPlugins.plugin-git) src;
               }
             ];
-          };
-
-          catppuccin.fish = {
-            enable = true;
-            flavor = "mocha";
           };
         };
     };

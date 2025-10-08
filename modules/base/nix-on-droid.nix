@@ -39,26 +39,26 @@
 
         terminal.font = "${pkgs.hanekokoro-mono}/share/fonts/truetype/HanekokoroMono-Regular.ttf";
 
-        # https://github.com/catppuccin/termux/blob/main/themes/catppuccin-mocha.properties
+        # https://github.com/catppuccin/termux/blob/main/themes/catppuccin-latte.properties
         terminal.colors = {
-          background = "#1e1e2e";
-          foreground = "#cdd6f4";
-          color0 = "#45475a";
-          color8 = "#585b70";
-          color1 = "#f38ba8";
-          color9 = "#f38ba8";
-          color2 = "#a6e3a1";
-          color10 = "#a6e3a1";
-          color3 = "#f9e2af";
-          color11 = "#f9e2af";
-          color4 = "#89b4fa";
-          color12 = "#89b4fa";
-          color5 = "#f5c2e7";
-          color13 = "#f5c2e7";
-          color6 = "#94e2d5";
-          color14 = "#94e2d5";
-          color7 = "#bac2de";
-          color15 = "#a6adc8";
+          background = "#eff1f5";
+          foreground = "#4c4f69";
+          color0 = "#5c5f77";
+          color8 = "#acb0be";
+          color1 = "#d20f39";
+          color9 = "#d20f39";
+          color2 = "#40a02b";
+          color10 = "#40a02b";
+          color3 = "#df8e1d";
+          color11 = "#df8e1d";
+          color4 = "#1e66f5";
+          color12 = "#1e66f5";
+          color5 = "#ea76cb";
+          color13 = "#ea76cb";
+          color6 = "#179299";
+          color14 = "#179299";
+          color7 = "#acb0be";
+          color15 = "#bcc0cc";
         };
 
         android-integration = {

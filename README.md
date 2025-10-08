@@ -8,7 +8,7 @@ My personal NixOS configuration. for packages see [`github:ShadowRZ/nur-packages
 ## Components
 
 * **Desktop Environment:** [KDE Plasma 6]
-* **Terminal:** [WezTerm]
+* **Terminal:** [Ghostty]
 * **Browser:** Firefox + [Firefox GNOME Theme]
 * **Shell:** [Fish] [^1] + [Starship]
 * **Display Manager:** [SDDM]
@@ -29,7 +29,7 @@ My personal NixOS configuration. for packages see [`github:ShadowRZ/nur-packages
 <!-- References -->
 
 [KDE Plasma 6]: https://kde.org/plasma-desktop
-[WezTerm]: https://wezterm.org
+[Ghostty]: https://ghostty.org
 [Fish]: https://fishshell.com
 [Starship]: https://starship.rs
 [SDDM]: https://wiki.archlinux.org/title/SDDM
