@@ -6,7 +6,10 @@
         programs.ghostty = {
           enable = true;
           settings = {
-            font-family = "Hanekokoro Mono Light";
+            theme = "Rose Pine Dawn";
+            font-family = "Hanekokoro Mono";
+            font-style = "Light";
+            font-style-italic = "Light Italic";
             font-size = 16;
             window-padding-balance = true;
             gtk-titlebar = false;

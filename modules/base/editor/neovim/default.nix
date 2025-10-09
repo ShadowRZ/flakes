@@ -28,7 +28,7 @@
               nvim-lspconfig
               blink-cmp
               editorconfig-nvim
-              catppuccin-nvim
+              rose-pine
               # Tree Sitter
               (nvim-treesitter.withPlugins (
                 plugins: with plugins; [

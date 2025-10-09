@@ -12,7 +12,7 @@ My personal NixOS configuration. for packages see [`github:ShadowRZ/nur-packages
 * **Browser:** Firefox + [Firefox GNOME Theme]
 * **Shell:** [Fish] [^1] + [Starship]
 * **Display Manager:** [SDDM]
-* **Colorscheme:** [Catppuccin]
+* **Colorscheme:** [Rosé Pine Dawn]
 * **Media player:** [mpv]
 * **Terminal Editor:** [Neovim], maybe explore [Helix]?
 * **\[Desktop\] GUI Editor:** [VS Code] currently, have plans to build my own editor.
@@ -33,7 +33,7 @@ My personal NixOS configuration. for packages see [`github:ShadowRZ/nur-packages
 [Fish]: https://fishshell.com
 [Starship]: https://starship.rs
 [SDDM]: https://wiki.archlinux.org/title/SDDM
-[Catppuccin]: https://catppuccin.com
+[Rosé Pine Dawn]: https://rosepinetheme.com
 [mpv]: https://mpv.io
 [Neovim]: https://neovim.io
 [Helix]: https://helix-editor.com

@@ -39,26 +39,27 @@
 
         terminal.font = "${pkgs.hanekokoro-mono}/share/fonts/truetype/HanekokoroMono-Regular.ttf";
 
-        # https://github.com/catppuccin/termux/blob/main/themes/catppuccin-latte.properties
+        # https://github.com/rose-pine/termux/blob/master/app/src/main/assets/colors/ros%C3%A9-pine-dawn.properties
         terminal.colors = {
-          background = "#eff1f5";
-          foreground = "#4c4f69";
-          color0 = "#5c5f77";
-          color8 = "#acb0be";
-          color1 = "#d20f39";
-          color9 = "#d20f39";
-          color2 = "#40a02b";
-          color10 = "#40a02b";
-          color3 = "#df8e1d";
-          color11 = "#df8e1d";
-          color4 = "#1e66f5";
-          color12 = "#1e66f5";
-          color5 = "#ea76cb";
-          color13 = "#ea76cb";
-          color6 = "#179299";
-          color14 = "#179299";
-          color7 = "#acb0be";
-          color15 = "#bcc0cc";
+          background = "#faf4ed";
+          foreground = "#575279";
+          cursor = "#797593";
+          color0 = "#f2e9e1";
+          color8 = "#797593";
+          color1 = "#b4637a";
+          color9 = "#b4637a";
+          color2 = "#286983";
+          color10 = "#286983";
+          color3 = "#ea9d34";
+          color11 = "#ea9d34";
+          color4 = "#56949f";
+          color12 = "#56949f";
+          color5 = "#907aa9";
+          color13 = "#907aa9";
+          color6 = "#d7827e";
+          color14 = "#d7827e";
+          color7 = "#575279";
+          color15 = "#575279";
         };
 
         android-integration = {

@@ -75,11 +75,6 @@
       url = "github:numtide/treefmt-nix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    # Catppuccin Nix
-    catppuccin-nix = {
-      url = "github:catppuccin/nix";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
     ### Personal packages
     rycee-firefox = {
       url = "gitlab:rycee/nur-expressions?dir=pkgs/firefox-addons";
