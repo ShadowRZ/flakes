@@ -1,6 +1,6 @@
 { inputs, ... }:
 {
-  flake.overlays.default = final: prev: {
+  flake.overlays.default = final: _prev: {
     shadowrz = {
       firefox-addons = final.callPackage ../../firefox/addons.nix {
         inherit (final.firefox-addons) buildFirefoxXpiAddon;
