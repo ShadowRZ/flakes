@@ -35,6 +35,27 @@
         "type": "github"
       }
     },
+    "firefox-addons-nix": {
+      "inputs": {
+        "flake-utils": [],
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1760489417,
+        "narHash": "sha256-9FVdHqHoLVbShVcBOLR2qHwhwzUlPNuSdrrdb/Vyqs4=",
+        "owner": "petrkozorezov",
+        "repo": "firefox-addons-nix",
+        "rev": "98e6e3fa069727c7b8a979d64471ef1687bf3498",
+        "type": "github"
+      },
+      "original": {
+        "owner": "petrkozorezov",
+        "repo": "firefox-addons-nix",
+        "type": "github"
+      }
+    },
     "flake-parts": {
       "inputs": {
         "nixpkgs-lib": [
@@ -222,6 +243,7 @@
       "inputs": {
         "crane": "crane",
         "disko": "disko",
+        "firefox-addons-nix": "firefox-addons-nix",
         "flake-parts": "flake-parts",
         "home-manager": "home-manager",
         "import-tree": "import-tree",
@@ -232,7 +254,6 @@
         "nixpkgs": "nixpkgs",
         "preservation": "preservation",
         "rust-overlay": "rust-overlay",
-        "rycee-firefox": "rycee-firefox",
         "shadowrz": "shadowrz",
         "silent-sddm": "silent-sddm",
         "sops-nix": "sops-nix",
@@ -257,28 +278,6 @@
         "owner": "oxalica",
         "repo": "rust-overlay",
         "type": "github"
-      }
-    },
-    "rycee-firefox": {
-      "inputs": {
-        "nixpkgs": [
-          "nixpkgs"
-        ]
-      },
-      "locked": {
-        "dir": "pkgs/firefox-addons",
-        "lastModified": 1760432159,
-        "narHash": "sha256-JIJnj+iXMRQSYJImEB4NDl0/SINMl15dG03YfEG+MEg=",
-        "owner": "rycee",
-        "repo": "nur-expressions",
-        "rev": "435c7a1ce417f375269a04ec2a70fa53dcf6c36d",
-        "type": "gitlab"
-      },
-      "original": {
-        "dir": "pkgs/firefox-addons",
-        "owner": "rycee",
-        "repo": "nur-expressions",
-        "type": "gitlab"
       }
     },
     "shadowrz": {

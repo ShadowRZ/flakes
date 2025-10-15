@@ -75,11 +75,16 @@
       url = "github:numtide/treefmt-nix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    ### Personal packages
-    rycee-firefox = {
-      url = "gitlab:rycee/nur-expressions?dir=pkgs/firefox-addons";
-      inputs.nixpkgs.follows = "nixpkgs";
+    # Firefox Addons Nix
+    firefox-addons-nix = {
+      url = "github:petrkozorezov/firefox-addons-nix";
+      inputs = {
+        # Unused
+        flake-utils.follows = "";
+        nixpkgs.follows = "nixpkgs";
+      };
     };
+    ### Personal packages
     shadowrz = {
       url = "github:ShadowRZ/nur-packages";
       inputs.nixpkgs.follows = "nixpkgs";

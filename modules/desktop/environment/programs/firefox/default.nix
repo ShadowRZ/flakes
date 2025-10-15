@@ -72,7 +72,7 @@
                 extensions.packages = [
                   pkgs.firefox-addons.auto-tab-discard
                   pkgs.firefox-addons.behind-the-overlay-revival
-                  pkgs.firefox-addons.bitwarden
+                  pkgs.firefox-addons.bitwarden-password-manager
                   pkgs.firefox-addons.clearurls
                   pkgs.firefox-addons.cliget
                   pkgs.firefox-addons.copy-selection-as-markdown
@@ -82,8 +82,9 @@
                   pkgs.firefox-addons.ghosttext
                   pkgs.firefox-addons.link-gopher
                   pkgs.firefox-addons.linkhints
-                  pkgs.firefox-addons.localcdn
+                  pkgs.firefox-addons.localcdn-fork-of-decentraleyes
                   pkgs.firefox-addons.multi-account-containers
+                  pkgs.firefox-addons.mynt
                   pkgs.firefox-addons.no-pdf-download
                   pkgs.firefox-addons.offline-qr-code-generator
                   pkgs.firefox-addons.open-in-browser
@@ -96,20 +97,20 @@
                   pkgs.firefox-addons.sidebery
                   pkgs.firefox-addons.single-file
                   pkgs.firefox-addons.streetpass-for-mastodon
-                  pkgs.firefox-addons.stylus
+                  pkgs.firefox-addons.styl-us
                   pkgs.firefox-addons.tabliss
                   pkgs.firefox-addons.tranquility-1
                   pkgs.firefox-addons.ublock-origin
                   pkgs.firefox-addons.violentmonkey
                   pkgs.firefox-addons.vue-js-devtools
                   pkgs.firefox-addons.webhint
-                  pkgs.shadowrz.firefox-addons.copy-linktab-name-and-url
-                  pkgs.shadowrz.firefox-addons.custom-scrollbars
-                  pkgs.shadowrz.firefox-addons.emoji-sav
-                  pkgs.shadowrz.firefox-addons.foxyimage
-                  pkgs.shadowrz.firefox-addons.measure-it
-                  pkgs.shadowrz.firefox-addons.textarea-cache
-                  pkgs.shadowrz.firefox-addons.pwas-for-firefox
+                  pkgs.firefox-addons.copy-linktab-name-and-url
+                  pkgs.firefox-addons.custom-scrollbars
+                  pkgs.firefox-addons.emoji-sav
+                  pkgs.firefox-addons.foxyimage
+                  pkgs.firefox-addons.measure-it
+                  pkgs.firefox-addons.textarea-cache
+                  pkgs.firefox-addons.pwas-for-firefox
                 ];
               };
             };
