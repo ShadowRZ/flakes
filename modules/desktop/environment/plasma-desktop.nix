@@ -46,6 +46,7 @@
             (catppuccin-kde.override {
               flavour = [
                 "latte"
+                "mocha"
               ];
               accents = [
                 "rosewater"

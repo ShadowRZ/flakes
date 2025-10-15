@@ -18,7 +18,7 @@ vim.opt.shiftwidth = 4
 vim.opt.softtabstop = 4
 vim.opt.expandtab = true
 
-vim.cmd.colorscheme('catppuccin-latte')
+vim.cmd.colorscheme('catppuccin-mocha')
 --vim.cmd('highlight! Normal ctermbg=NONE guibg=NONE')
 
 -- Space open / closes folds

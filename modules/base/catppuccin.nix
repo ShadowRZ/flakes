@@ -8,11 +8,11 @@
     catppuccin = {
       fish = {
         enable = true;
-        flavor = "latte";
+        flavor = "mocha";
       };
       ghostty = {
         enable = true;
-        flavor = "latte";
+        flavor = "mocha";
       };
     };
   };
