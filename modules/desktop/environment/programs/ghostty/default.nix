@@ -4,7 +4,6 @@
       programs.ghostty = {
         enable = true;
         settings = {
-          theme = "Rose Pine Dawn";
           font-family = "Hanekokoro Mono";
           font-style = "Light";
           font-style-italic = "Light Italic";
@@ -12,7 +11,6 @@
           window-padding-balance = true;
           gtk-titlebar = false;
           window-decoration = true;
-
           window-width = 80;
           window-height = 22;
         };

@@ -39,10 +39,20 @@
             mesa-demos # glxinfo, eglinfo
             vulkan-tools # vulkaninfo
             wayland-utils # wayland-info
+            bibata-cursors
             kde-rounded-corners
             plasma-overdose-kde-theme
-            materia-kde-theme
             pkgs.shadowrz.silent-sddm
+            (catppuccin-kde.override {
+              flavour = [
+                "latte"
+              ];
+              accents = [
+                "rosewater"
+                "pink"
+                "lavender"
+              ];
+            })
           ];
           plasma6.excludePackages = with pkgs; [
             kdePackages.konsole

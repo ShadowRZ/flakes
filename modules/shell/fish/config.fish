@@ -10,6 +10,3 @@ function fish_greeting
   echo (set_color brcyan -o)Fish $version
   echo (set_color brmagenta -o)"Belongs to Hanekokoro Infra (https://github.com/ShadowRZ/flakes)"
 end
-
-fish_config theme choose 'fish default'
-set fish_color_command green --bold

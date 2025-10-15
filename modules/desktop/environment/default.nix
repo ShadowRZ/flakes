@@ -11,10 +11,6 @@
               adw-gtk3
               wl-clipboard
               papirus-icon-theme
-              bibata-cursors
-              rose-pine-gtk-theme
-              rose-pine-icon-theme
-              rose-pine-cursor
             ];
           };
 

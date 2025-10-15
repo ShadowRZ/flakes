@@ -84,6 +84,11 @@
         nixpkgs.follows = "nixpkgs";
       };
     };
+    # Catppuccin Nix
+    catppuccin-nix = {
+      url = "github:catppuccin/nix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     ### Personal packages
     shadowrz = {
       url = "github:ShadowRZ/nur-packages";
