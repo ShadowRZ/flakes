@@ -26,7 +26,6 @@
           dnsutils
           ripgrep
           file
-          gdu
           wget
           tree
           man-pages
