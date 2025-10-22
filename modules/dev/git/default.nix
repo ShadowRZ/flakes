@@ -8,27 +8,14 @@
           git = {
             enable = true;
             package = pkgs.gitFull;
-            # Basic
-            userEmail = config.flake.meta.users.shadowrz.git.email;
-            userName = config.flake.meta.users.shadowrz.git.name;
             signing = {
               signByDefault = true;
               inherit (config.flake.meta.users.shadowrz) key;
             };
-            # Delta highlighter
-            delta = {
-              enable = true;
-              options = {
-                decorations = {
-                  commit-decoration-style = "bold yellow box ul";
-                  file-decoration-style = "none";
-                  file-style = "bold yellow ul";
-                };
-                features = "decorations";
-                whitespace-error-style = "22 reverse";
+            settings = {
+              user = {
+                inherit (config.flake.meta.users.shadowrz.git) name email;
               };
-            };
-            extraConfig = {
               init.defaultBranch = "master";
               sendemail.identity = "ShadowRZ";
             };
@@ -41,6 +28,21 @@
               version = "1";
             };
           };
+          ### Delta highlighter
+          delta = {
+            enable = true;
+            enableGitIntegration = true;
+            options = {
+              decorations = {
+                commit-decoration-style = "bold yellow box ul";
+                file-decoration-style = "none";
+                file-style = "bold yellow ul";
+              };
+              features = "decorations";
+              whitespace-error-style = "22 reverse";
+            };
+          };
+          ### Git Cliff
           git-cliff = {
             enable = true;
             settings = {
