@@ -11,6 +11,7 @@
               adw-gtk3
               wl-clipboard
               papirus-icon-theme
+              tela-icon-theme
             ];
           };
 
@@ -32,6 +33,7 @@
               telegram-desktop
               pika-backup
               gparted
+              ungoogled-chromium
               ## KDE Packages
               krusader
               kdePackages.kdenlive
