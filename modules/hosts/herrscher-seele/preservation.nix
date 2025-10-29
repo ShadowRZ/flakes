@@ -45,6 +45,7 @@
                   ".eclipse"
                   ".gradle"
                   ".java"
+                  ".konan"
                   ".local/share"
                   ".local/state"
                   ".m2"
