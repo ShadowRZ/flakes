@@ -40,7 +40,6 @@
               kdePackages.kcalc
               kdePackages.kcharselect
               kdePackages.plasma-sdk # Plasma SDK
-              kdePackages.kdevelop
             ];
           };
         };
