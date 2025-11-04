@@ -65,6 +65,14 @@
               referrer = "https://www.bilibili.com/";
               ytdl-raw-options = "cookies-from-browser=firefox,sub-lang=[all,-danmaku],write-sub=";
             };
+            bililive = {
+              profile-desc = "[BiliBili] Livestream";
+              profile-cond = "path:match('https://live.bilibili.com')~=nil";
+              profile-restore = "copy";
+              referrer = "https://live.bilibili.com/";
+              ytdl-raw-options = "cookies-from-browser=firefox";
+              profile = "fast";
+            };
           };
           scripts = with pkgs.mpvScripts; [
             mpris
