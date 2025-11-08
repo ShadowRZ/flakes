@@ -32,8 +32,6 @@
               pdfarranger
               telegram-desktop
               pika-backup
-              gparted
-              ungoogled-chromium
               ## KDE Packages
               krusader
               kdePackages.kdenlive
