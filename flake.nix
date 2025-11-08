@@ -49,11 +49,10 @@
       inputs = {
         nixpkgs.follows = "nixpkgs";
         home-manager.follows = "home-manager";
-        nixpkgs-docs.follows = "nixpkgs";
+        nixpkgs-docs.follows = "";
         nix-formatter-pack.follows = "";
         nmd.follows = "";
-        # Unsupported?
-        nixpkgs-for-bootstrap.follows = "nixpkgs";
+        nixpkgs-for-bootstrap.follows = "";
       };
     };
     # Lanzaboote

@@ -191,12 +191,8 @@
         "nixpkgs": [
           "nixpkgs"
         ],
-        "nixpkgs-docs": [
-          "nixpkgs"
-        ],
-        "nixpkgs-for-bootstrap": [
-          "nixpkgs"
-        ],
+        "nixpkgs-docs": [],
+        "nixpkgs-for-bootstrap": [],
         "nmd": []
       },
       "locked": {
