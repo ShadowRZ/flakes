@@ -26,18 +26,8 @@
             osd-border-size = 1;
             osd-border-color = "#C0808080";
 
-            # Prefer hardware decoding.
-            hwdec = "vulkan,vaapi";
-
-            gpu-hwdec-interop = "vaapi";
+            hwdec = "vaapi";
             vo = "gpu-next";
-            tone-mapping = "auto";
-            hwdec-codecs = "all";
-            sub-auto = "fuzzy";
-            vd-lavc-dr = "yes";
-            replaygain = "album";
-            gpu-api = "vulkan";
-            native-keyrepeat = true;
           };
           scriptOpts = {
             console = {
@@ -69,9 +59,8 @@
               profile-desc = "[BiliBili] Livestream";
               profile-cond = "path:match('https://live.bilibili.com')~=nil";
               profile-restore = "copy";
-              referrer = "https://live.bilibili.com/";
+              ytdl-format = "source-7/source-0/source";
               ytdl-raw-options = "cookies-from-browser=firefox";
-              profile = "fast";
             };
           };
           scripts = with pkgs.mpvScripts; [
