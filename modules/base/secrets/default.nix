@@ -18,14 +18,6 @@
             passwd = {
               neededForUsers = true;
             };
-            dae = { };
-          };
-
-          templates = {
-            "config.dae".content = ''
-              ${builtins.readFile ./files/dae.conf}
-              ${config.sops.placeholder.dae}
-            '';
           };
         };
       };
