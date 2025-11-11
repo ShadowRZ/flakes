@@ -17,10 +17,6 @@
             };
           };
           spiceUSBRedirection.enable = true;
-          # Podman
-          podman = {
-            enable = true;
-          };
           # For Dev Containers
           containers = {
             enable = true;

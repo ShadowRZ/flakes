@@ -88,15 +88,6 @@
       url = "github:catppuccin/nix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    # Zjstatus
-    zjstatus = {
-      url = "github:dj95/zjstatus";
-      inputs = {
-        nixpkgs.follows = "nixpkgs";
-        crane.follows = "crane";
-        rust-overlay.follows = "rust-overlay";
-      };
-    };
     ### Personal packages
     shadowrz = {
       url = "github:ShadowRZ/nur-packages";
