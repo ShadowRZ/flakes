@@ -22,7 +22,13 @@
         };
       };
 
-      services.resolved.enable = true;
+      services.resolved = {
+        enable = true;
+        llmnr = "true";
+        extraConfig = ''
+          MulticastDNS=true
+        '';
+      };
 
       ### https://wiki.archlinux.org/title/Sysctl#Improving_performance
       boot.kernelModules = [ "tcp_bbr" ];
