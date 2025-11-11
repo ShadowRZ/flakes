@@ -2,7 +2,7 @@
 {
   flake.modules.nixos = {
     base =
-      { config, ... }:
+      { ... }:
       {
         imports = [ inputs.sops-nix.nixosModules.sops ];
 
