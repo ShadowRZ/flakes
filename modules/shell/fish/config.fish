@@ -7,6 +7,10 @@ function fish_title
 end
 
 function fish_greeting
-  echo (set_color brcyan -o)Fish $version
-  echo (set_color brmagenta -o)"Belongs to Hanekokoro Infra (https://github.com/ShadowRZ/flakes)"
+  if test -n "$ZELLIJ"
+    echo (set_color brcyan -o)Fish $version
+    echo (set_color brmagenta -o)"Belongs to Hanekokoro Infra (https://github.com/ShadowRZ/flakes)"
+  else
+    fastfetch
+  end
 end

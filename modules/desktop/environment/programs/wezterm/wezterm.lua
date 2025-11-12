@@ -6,19 +6,19 @@ end
 config.xcursor_theme = 'Bibata-Modern-Ice'
 config.xcursor_size = 32
 config.color_scheme = 'Catppuccin Mocha'
-config.font_size = 19.0
+config.font_size = 16.0
 
 config.colors = {
   tab_bar = {
     active_tab = {
       bg_color = wezterm.color.get_builtin_schemes()[config.color_scheme].background,
-      fg_color = "#FFFFFF",
+      fg_color = wezterm.color.get_builtin_schemes()[config.color_scheme].foreground,
     },
     inactive_tab = {
-      bg_color = "#707070",
-      fg_color = "#FFFFFF",
+      bg_color = "#313244",
+      fg_color = wezterm.color.get_builtin_schemes()[config.color_scheme].foreground,
     },
-    inactive_tab_edge = "#707070"
+    inactive_tab_edge = "#313244"
   }
 }
 
@@ -28,10 +28,10 @@ config.font = wezterm.font_with_fallback({
 })
 
 config.window_padding = {
-  left = 0,
-  right = 0,
-  top = 0,
-  bottom = 0
+  left = 2,
+  right = 2,
+  top = 8,
+  bottom = 8
 }
 
 config.window_frame = {
@@ -41,9 +41,9 @@ config.window_frame = {
       'Source Han Sans SC VF'
     }
   ),
-  font_size = 11.5,
-  active_titlebar_bg = "#e6e9ef",
-  inactive_titlebar_bg = "#e6e9ef",
+  font_size = 11,
+  active_titlebar_bg = "#181825",
+  inactive_titlebar_bg = "#1e1e2e",
 }
 
 config.mouse_bindings = {
@@ -97,4 +97,5 @@ config.mouse_bindings = {
 
 return config
 -- vim:ts=2:sw=2:et
+
 
