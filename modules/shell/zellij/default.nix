@@ -5,7 +5,7 @@
       {
         programs.zellij = {
           enable = true;
-          enableFishIntegration = true;
+          enableFishIntegration = false;
           layouts = {
             default = ./layouts/default.kdl;
             strider = ./layouts/strider.kdl;
