@@ -59,7 +59,6 @@
               profile-desc = "[BiliBili] Livestream";
               profile-cond = "path:match('https://live.bilibili.com')~=nil";
               profile-restore = "copy";
-              ytdl-format = "source-7/source-0/source";
               ytdl-raw-options = "cookies-from-browser=firefox";
             };
           };
