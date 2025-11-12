@@ -60,6 +60,7 @@
               profile-cond = "path:match('https://live.bilibili.com')~=nil";
               profile-restore = "copy";
               ytdl-raw-options = "cookies-from-browser=firefox";
+              ytdl-format = "best[protocol=https]";
             };
           };
           scripts = with pkgs.mpvScripts; [
