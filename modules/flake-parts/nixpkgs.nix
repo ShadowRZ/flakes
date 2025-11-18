@@ -8,7 +8,6 @@
         inherit system;
         overlays = [
           inputs.nix-indexdb.overlays.nix-index
-          inputs.rust-overlay.overlays.default
           inputs.firefox-addons-nix.overlays.default
           inputs.shadowrz.overlays.default
 
