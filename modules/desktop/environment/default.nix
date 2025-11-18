@@ -32,6 +32,7 @@
               pdfarranger
               telegram-desktop
               pika-backup
+              mkxp-z
               ## KDE Packages
               krusader
               kdePackages.kdenlive
