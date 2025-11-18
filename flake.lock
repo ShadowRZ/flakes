@@ -58,10 +58,9 @@
     "fenix": {
       "inputs": {
         "nixpkgs": [
-          "lanzaboote",
           "nixpkgs"
         ],
-        "rust-analyzer-src": "rust-analyzer-src"
+        "rust-analyzer-src": []
       },
       "locked": {
         "lastModified": 1763361733,
@@ -158,7 +157,9 @@
         "crane": [
           "crane"
         ],
-        "fenix": "fenix",
+        "fenix": [
+          "fenix"
+        ],
         "flake-compat": [],
         "flake-parts": [
           "flake-parts"
@@ -280,6 +281,7 @@
         "catppuccin-nix": "catppuccin-nix",
         "crane": "crane",
         "disko": "disko",
+        "fenix": "fenix",
         "firefox-addons-nix": "firefox-addons-nix",
         "flake-parts": "flake-parts",
         "home-manager": "home-manager",
@@ -290,48 +292,10 @@
         "nixos-sensible": "nixos-sensible",
         "nixpkgs": "nixpkgs",
         "preservation": "preservation",
-        "rust-overlay": "rust-overlay",
         "shadowrz": "shadowrz",
         "silent-sddm": "silent-sddm",
         "sops-nix": "sops-nix",
         "treefmt-nix": "treefmt-nix"
-      }
-    },
-    "rust-analyzer-src": {
-      "flake": false,
-      "locked": {
-        "lastModified": 1762860488,
-        "narHash": "sha256-rMfWMCOo/pPefM2We0iMBLi2kLBAnYoB9thi4qS7uk4=",
-        "owner": "rust-lang",
-        "repo": "rust-analyzer",
-        "rev": "2efc80078029894eec0699f62ec8d5c1a56af763",
-        "type": "github"
-      },
-      "original": {
-        "owner": "rust-lang",
-        "ref": "nightly",
-        "repo": "rust-analyzer",
-        "type": "github"
-      }
-    },
-    "rust-overlay": {
-      "inputs": {
-        "nixpkgs": [
-          "nixpkgs"
-        ]
-      },
-      "locked": {
-        "lastModified": 1763433504,
-        "narHash": "sha256-cVid5UNpk88sPYHkLAA5aZEHOFQXSB/2L1vl18Aq7IM=",
-        "owner": "oxalica",
-        "repo": "rust-overlay",
-        "rev": "42ce16c6d8318a654d53f047c9400b7d902d6e61",
-        "type": "github"
-      },
-      "original": {
-        "owner": "oxalica",
-        "repo": "rust-overlay",
-        "type": "github"
       }
     },
     "shadowrz": {
