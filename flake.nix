@@ -62,11 +62,11 @@
         nixpkgs.follows = "nixpkgs";
         flake-parts.follows = "flake-parts";
         crane.follows = "crane";
-        fenix.follows = "fenix";
         # https://github.com/nix-community/lanzaboote/blob/v0.4.1/flake.nix#L11
         pre-commit-hooks-nix.follows = "";
         # Unneeded because we are **in** the flake
         flake-compat.follows = "";
+        rust-overlay.follows = "rust-overlay";
       };
     };
     # Treefmt
@@ -102,10 +102,9 @@
     crane = {
       url = "github:ipetkov/crane";
     };
-    fenix = {
-      url = "github:nix-community/fenix";
+    rust-overlay = {
+      url = "github:oxalica/rust-overlay";
       inputs.nixpkgs.follows = "nixpkgs";
-      inputs.rust-analyzer-src.follows = "";
     };
   };
 
