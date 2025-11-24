@@ -60,12 +60,9 @@
       url = "github:nix-community/lanzaboote";
       inputs = {
         nixpkgs.follows = "nixpkgs";
-        flake-parts.follows = "flake-parts";
         crane.follows = "crane";
         # https://github.com/nix-community/lanzaboote/blob/v0.4.1/flake.nix#L11
-        pre-commit-hooks-nix.follows = "";
-        # Unneeded because we are **in** the flake
-        flake-compat.follows = "";
+        pre-commit.follows = "";
         rust-overlay.follows = "rust-overlay";
       };
     };
