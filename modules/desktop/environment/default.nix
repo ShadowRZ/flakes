@@ -27,6 +27,7 @@
               d-spy # D-Spy
               libreoffice-fresh # LibreOffice Fresh
               android-studio
+              godot
               featherpad
               sqlitebrowser
               pdfarranger
