@@ -12,6 +12,8 @@
               wl-clipboard
               papirus-icon-theme
               tela-icon-theme
+              numix-icon-theme
+              numix-icon-theme-circle
             ];
           };
 
