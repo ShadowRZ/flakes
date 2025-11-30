@@ -22,7 +22,7 @@
           users.users.shadowrz = {
             packages = with pkgs; [
               fractal
-              blender_5_0 # Blender 5.0.* (Binary)
+              blender-bin.blender_5_0 # Blender 5.0.* (Binary)
               helvum
               gimp3 # GIMP 3
               inkscape # Inkscape
