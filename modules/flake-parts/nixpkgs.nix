@@ -11,9 +11,7 @@
           inputs.rust-overlay.overlays.default
           inputs.firefox-addons-nix.overlays.default
           inputs.shadowrz.overlays.default
-
           inputs.self.overlays.default
-          inputs.self.overlays.blender-bin
         ];
         config = {
           allowUnfree = true;
