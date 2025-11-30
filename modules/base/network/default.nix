@@ -19,6 +19,10 @@
           enable = true;
           allowPing = true;
           trustedInterfaces = [ "virbr0" ];
+          allowedUDPPorts = [
+            53
+            67
+          ];
         };
       };
 
