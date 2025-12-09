@@ -7,7 +7,7 @@
         programs = {
           git = {
             enable = true;
-            package = pkgs.gitFull;
+            package = pkgs.gitMinimal;
             signing = {
               signByDefault = true;
               inherit (config.flake.meta.users.shadowrz) key;
