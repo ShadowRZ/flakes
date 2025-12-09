@@ -1,6 +1,6 @@
 {
   flake.modules.nixos = {
-    "hosts/herrscher-seele" =
+    "hosts/amphoreus" =
       { pkgs, ... }:
       {
         virtualisation = {

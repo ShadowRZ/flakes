@@ -1,7 +1,7 @@
 {
   hanekokoro = {
     nixos = {
-      herrscher-seele = {
+      amphoreus = {
         system = "x86_64-linux";
         modules = [
           "base"

@@ -1,6 +1,6 @@
 {
   flake.modules.nixos = {
-    "hosts/herrscher-seele" = _: {
+    "hosts/amphoreus" = _: {
       security.pam = {
         services = {
           login.u2fAuth = true;
