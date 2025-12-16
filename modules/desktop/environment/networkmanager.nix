@@ -16,6 +16,7 @@
         };
         unmanaged = [
           "interface-name:virbr*"
+          "interface-name:waydroid*"
           "lo"
         ];
       };
