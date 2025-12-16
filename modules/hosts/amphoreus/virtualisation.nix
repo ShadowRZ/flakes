@@ -21,6 +21,10 @@
           containers = {
             enable = true;
           };
+          # Waydroid
+          waydroid = {
+            enable = true;
+          };
         };
 
         # Users
