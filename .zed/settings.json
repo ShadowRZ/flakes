@@ -1,0 +1,37 @@
+// https://zed.dev/docs/configuring-zed#project-settings-file
+{
+  "lsp": {
+    "nixd": {
+      "settings": {
+        "nixpkgs": {
+          "expr": "(builtins.getFlake (builtins.toString ./.)).currentSystem._module.args.pkgs",
+        },
+        "formatting": {
+          "command": ["nixfmt"],
+        },
+        "options": {
+          // NixOS
+          "nixos": {
+            "expr": "(builtins.getFlake \"${workspaceFolder}\").nixosConfigurations.amphoreus.options",
+          },
+          // Home Manager
+          "homeManager": {
+            "expr": "(builtins.getFlake \"${workspaceFolder}\").nixosConfigurations.amphoreus.options.home-manager.users.type.getSubOptions []",
+          },
+          // Flake Parts
+          "flake": {
+            "expr": "(builtins.getFlake \"${workspaceFolder}\").debug.options",
+          },
+          // Flake Parts perSystem
+          "perSystem": {
+            "expr": "(builtins.getFlake \"${workspaceFolder}\").currentSystem.options",
+          },
+          // Home Manager
+          "nixOnDroid": {
+            "expr": "(builtins.getFlake \"${workspaceFolder}\").nixOnDroidConfigurations.akasha.options",
+          },
+        },
+      },
+    },
+  },
+}
