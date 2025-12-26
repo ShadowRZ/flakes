@@ -10,11 +10,11 @@
       "options": {
         // NixOS
         "nixos": {
-          "expr": "(builtins.getFlake \"${workspaceFolder}\").nixosConfigurations.herrscher-seele.options"
+          "expr": "(builtins.getFlake \"${workspaceFolder}\").nixosConfigurations.amphoreus.options"
         },
         // Home Manager
         "homeManager": {
-          "expr": "(builtins.getFlake \"${workspaceFolder}\").nixosConfigurations.herrscher-seele.options.home-manager.users.type.getSubOptions []"
+          "expr": "(builtins.getFlake \"${workspaceFolder}\").nixosConfigurations.amphoreus.options.home-manager.users.type.getSubOptions []"
         },
         // Flake Parts
         "flake": {
