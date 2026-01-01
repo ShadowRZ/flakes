@@ -10,7 +10,6 @@
             pciutils
             usbutils
             lsof
-            ltrace
             strace
             file
             gdu
