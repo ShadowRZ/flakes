@@ -1,7 +1,7 @@
 {
   flake.modules = {
     nixos = {
-      base = _: {
+      dev = _: {
         programs.neovim = {
           enable = true;
           defaultEditor = true;
@@ -14,7 +14,7 @@
       };
     };
     homeManager = {
-      base =
+      dev =
         { pkgs, ... }:
         {
           programs.neovim = {
@@ -22,11 +22,9 @@
             vimAlias = true;
             viAlias = true;
             vimdiffAlias = true;
-            extraLuaConfig = builtins.readFile ./nvim.lua;
             plugins = with pkgs.vimPlugins; [
               lualine-nvim
               nvim-lspconfig
-              blink-cmp
               editorconfig-nvim
               catppuccin-nvim
               # Tree Sitter
@@ -41,6 +39,13 @@
                 ]
               ))
             ];
+          };
+
+          xdg.configFile = {
+            "nvim/plugin" = {
+              source = ./plugin;
+              recursive = true;
+            };
           };
         };
     };
