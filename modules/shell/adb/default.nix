@@ -1,7 +1,9 @@
 {
   flake.modules.nixos = {
-    shell = _: {
-      programs.adb.enable = true;
-    };
+    shell =
+      { pkgs, ... }:
+      {
+        environment.systemPackages = [ pkgs.android-tools ];
+      };
   };
 }
