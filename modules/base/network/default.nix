@@ -29,9 +29,11 @@
       services.resolved = {
         enable = true;
         llmnr = "true";
-        extraConfig = ''
-          MulticastDNS=true
-        '';
+        settings = {
+          Resolve = {
+            MulticastDNS = true;
+          };
+        };
       };
 
       ### https://wiki.archlinux.org/title/Sysctl#Improving_performance
