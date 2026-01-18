@@ -33,7 +33,7 @@
         environment = {
           systemPackages = with pkgs; [
             plasma-panel-colorizer
-            klassy-qt6
+            klassy
             aha # aha
             clinfo # clinfo
             mesa-demos # glxinfo, eglinfo
