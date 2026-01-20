@@ -28,10 +28,10 @@
 
       services.resolved = {
         enable = true;
-        llmnr = "true";
         settings = {
           Resolve = {
             MulticastDNS = true;
+            LLMNR = "true";
           };
         };
       };
