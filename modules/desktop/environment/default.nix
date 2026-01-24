@@ -29,7 +29,7 @@
               d-spy # D-Spy
               libreoffice-fresh # LibreOffice Fresh
               android-studio
-              jetbrains.idea-oss
+              mindustry-wayland
               godot
               featherpad
               sqlitebrowser
