@@ -85,6 +85,15 @@
       url = "github:catppuccin/nix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    # Nixvim
+    nixvim = {
+      url = "github:nix-community/nixvim";
+      inputs = {
+        flake-parts.follows = "flake-parts";
+        nixpkgs.follows = "nixpkgs";
+        systems.follows = "systems";
+      };
+    };
     ### Personal packages
     shadowrz = {
       url = "github:ShadowRZ/nur-packages";
@@ -98,6 +107,9 @@
     ### Dedupes
     crane = {
       url = "github:ipetkov/crane";
+    };
+    systems = {
+      url = "github:nix-systems/default";
     };
     rust-overlay = {
       url = "github:oxalica/rust-overlay";

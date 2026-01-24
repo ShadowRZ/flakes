@@ -1,3 +1,4 @@
+{ inputs, ... }:
 {
   flake.modules = {
     nixos = {
@@ -17,34 +18,111 @@
       dev =
         { pkgs, ... }:
         {
-          programs.neovim = {
+          imports = [
+            inputs.nixvim.homeModules.nixvim
+          ];
+
+          programs.nixvim = {
             enable = true;
+            defaultEditor = true;
             vimAlias = true;
             viAlias = true;
             vimdiffAlias = true;
-            plugins = with pkgs.vimPlugins; [
-              lualine-nvim
-              nvim-lspconfig
-              editorconfig-nvim
-              catppuccin-nvim
-              # Tree Sitter
-              (nvim-treesitter.withPlugins (
-                plugins: with plugins; [
-                  tree-sitter-nix
-                  tree-sitter-lua
-                  tree-sitter-rust
-                  tree-sitter-c
-                  tree-sitter-cpp
-                  tree-sitter-python
-                ]
-              ))
-            ];
-          };
 
-          xdg.configFile = {
-            "nvim/plugin" = {
-              source = ./plugin;
-              recursive = true;
+            nixpkgs.useGlobalPackages = true;
+
+            colorscheme = "catppuccin-mocha";
+            opts = {
+              title = true;
+              number = true;
+              mouse = "a";
+              background = "dark";
+              termguicolors = true;
+
+              tabstop = 8;
+              shiftwidth = 4;
+              softtabstop = 4;
+              expandtab = true;
+            };
+            globals = {
+              neovide_padding_top = 5;
+              neovide_padding_bottom = 5;
+              neovide_padding_right = 4;
+              neovide_padding_left = 4;
+            };
+
+            editorconfig = {
+              enable = true;
+            };
+
+            colorschemes = {
+              catppuccin = {
+                enable = true;
+              };
+            };
+
+            plugins = {
+              lsp = {
+                enable = true;
+              };
+              treesitter = {
+                enable = true;
+                highlight.enable = true;
+                indent.enable = true;
+                folding.enable = true;
+              };
+              lualine = {
+                enable = true;
+              };
+              blink-cmp = {
+                enable = true;
+              };
+            };
+
+            lsp = {
+
+              servers = {
+                "*" = {
+                  config = {
+                    capabilities = {
+                      textDocument = {
+                        semanticTokens = {
+                          multilineTokenSupport = true;
+                        };
+                      };
+                    };
+                    root_markers = [
+                      ".git"
+                    ];
+                  };
+                };
+                clangd = {
+                  config = {
+                    cmd = [
+                      "clangd"
+                      "--background-index"
+                    ];
+                    filetypes = [
+                      "c"
+                      "cpp"
+                    ];
+                    root_markers = [
+                      "compile_commands.json"
+                      "compile_flags.txt"
+                    ];
+                  };
+                  enable = true;
+                };
+                lua_ls = {
+                  enable = true;
+                };
+                rust_analyzer = {
+                  enable = true;
+                };
+                nixd = {
+                  enable = true;
+                };
+              };
             };
           };
         };
