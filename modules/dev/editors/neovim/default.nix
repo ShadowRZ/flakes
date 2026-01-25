@@ -16,7 +16,7 @@
     };
     homeManager = {
       dev =
-        { pkgs, ... }:
+        { ... }:
         {
           imports = [
             inputs.nixvim.homeModules.nixvim
