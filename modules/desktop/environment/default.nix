@@ -38,7 +38,7 @@
               mkxp-z
               ## KDE Packages
               krusader
-              kdePackages.kdenlive
+              #kdePackages.kdenlive
               kdePackages.kcalc
               kdePackages.kcharselect
               kdePackages.plasma-sdk # Plasma SDK
