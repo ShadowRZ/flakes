@@ -12,6 +12,14 @@
     nixOnDroid = {
       shell = _: {
         environment.sessionVariables."EDITOR" = "nvim";
+
+        home-manager.config = {
+          imports = [
+            {
+              programs.nixvim.enableMan = false;
+            }
+          ];
+        };
       };
     };
     homeManager = {
