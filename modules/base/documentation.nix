@@ -2,9 +2,7 @@
   flake.modules.nixos = {
     base = _: {
       documentation = {
-        # NixOS manual pages depends on <nixpkgs/nixos> store path
-        # Which can cause unrelated derivation changes between NixOS updates
-        enable = false;
+        enable = true;
         doc.enable = false;
         info.enable = false;
 
