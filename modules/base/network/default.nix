@@ -35,6 +35,7 @@
           };
         };
       };
+      services.zerotierone.enable = true;
 
       ### https://wiki.archlinux.org/title/Sysctl#Improving_performance
       boot.kernelModules = [ "tcp_bbr" ];
