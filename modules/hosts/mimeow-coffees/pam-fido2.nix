@@ -1,6 +1,6 @@
 {
   flake.modules.nixos = {
-    "hosts/amphoreus" = _: {
+    "hosts/mimeow-coffees" = _: {
       security.pam = {
         services = {
           login.u2fAuth = true;

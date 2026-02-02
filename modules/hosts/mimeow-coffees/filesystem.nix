@@ -1,7 +1,7 @@
 { inputs, ... }:
 {
   flake.modules.nixos = {
-    "hosts/amphoreus" =
+    "hosts/mimeow-coffees" =
       { ... }:
       {
         imports = [

@@ -1,7 +1,7 @@
 {
   hanekokoro = {
     nixos = {
-      amphoreus = {
+      mimeow-coffees = {
         system = "x86_64-linux";
         modules = [
           "base"
