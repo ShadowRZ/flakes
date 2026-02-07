@@ -1,6 +1,6 @@
 { inputs, ... }:
 {
-  flake.overlays.default = final: prev: {
+  flake.overlays.default = final: _prev: {
     shadowrz = {
       silent-sddm = final.silent-sddm.override {
         theme = "default";
