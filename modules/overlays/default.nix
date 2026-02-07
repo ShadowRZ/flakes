@@ -1,16 +1,6 @@
 { inputs, ... }:
 {
   flake.overlays.default = final: prev: {
-    klassy = prev.klassy.overrideAttrs (finalAttrs: {
-      version = "6.5";
-
-      src = prev.fetchFromGitHub {
-        owner = "paulmcauley";
-        repo = "klassy";
-        tag = "v${finalAttrs.version}";
-        hash = "sha256-zf+RO+GolA9Gnf1/izIG7jCSu8Qlo0d0kRc90llMRIc=";
-      };
-    });
     shadowrz = {
       silent-sddm = final.silent-sddm.override {
         theme = "default";
