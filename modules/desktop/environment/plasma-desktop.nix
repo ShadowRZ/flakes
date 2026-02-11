@@ -41,6 +41,7 @@
             wayland-utils # wayland-info
             bibata-cursors
             plasma-overdose-kde-theme
+            haruna
             pkgs.shadowrz.silent-sddm
             (catppuccin-kde.override {
               flavour = [
@@ -56,6 +57,7 @@
           ];
           plasma6.excludePackages = with pkgs; [
             kdePackages.discover
+            kdePackages.elisa
             kdePackages.konsole
             kdePackages.khelpcenter
           ];
