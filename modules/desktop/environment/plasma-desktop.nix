@@ -17,13 +17,6 @@
             # Plasma Login Manager
             plasma-login-manager = {
               enable = true;
-              settings = {
-                Greeter.Wallpaper = {
-                  "org.kde.image" = {
-                    General.Image = "file://${pkgs.nixos-artwork.wallpapers.nineish.src}";
-                  };
-                };
-              };
             };
           };
         };
