@@ -61,12 +61,6 @@
               cache32Bit = true;
             };
           };
-
-          services.displayManager.sddm.settings = {
-            Theme = {
-              Font = "Space Grotesk";
-            };
-          };
         };
     };
   };
