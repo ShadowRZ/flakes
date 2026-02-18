@@ -24,6 +24,9 @@
                 how = "symlink";
                 configureParent = true;
               }
+              {
+                file = "/etc/plasmalogin.conf";
+              }
             ];
             users = {
               shadowrz = {
