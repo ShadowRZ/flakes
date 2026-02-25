@@ -22,7 +22,7 @@
             packages = with pkgs; [
               fractal
               blender-bin.blender_5_0 # Blender 5.0.* (Binary)
-              helvum
+              qpwgraph
               gimp3 # GIMP 3
               inkscape # Inkscape
               d-spy # D-Spy
