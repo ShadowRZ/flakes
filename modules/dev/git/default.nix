@@ -19,6 +19,10 @@
               init.defaultBranch = "master";
               sendemail.identity = "ShadowRZ";
             };
+            lfs = {
+              enable = true;
+              skipSmudge = true;
+            };
           };
           ### Delta highlighter
           delta = {
