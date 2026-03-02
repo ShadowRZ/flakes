@@ -20,7 +20,6 @@
             };
             policies = {
               PasswordManagerEnabled = false;
-              DisableFirefoxAccounts = true;
               DisablePocket = true;
               ExtensionUpdate = false;
               FirefoxHome = {
