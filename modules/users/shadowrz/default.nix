@@ -42,6 +42,7 @@
               "wheel"
               "networkmanager"
               "wireshark"
+              "video"
             ];
 
             packages = with pkgs; [

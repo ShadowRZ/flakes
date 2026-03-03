@@ -1,10 +1,11 @@
 {
-  flake.modules.homeManager = {
+  flake.modules.nixos = {
     desktop =
       { pkgs, ... }:
       {
         programs.obs-studio = {
           enable = true;
+          enableVirtualCamera = true;
           plugins = with pkgs.obs-studio-plugins; [
             wlrobs
             obs-3d-effect
