@@ -20,13 +20,14 @@
         ## Home Manager
         home-manager = {
           useGlobalPkgs = true;
+          config = {
+            imports = [
+              {
+                manual.manpages.enable = false;
+              }
+            ];
+          };
         };
-      };
-    };
-
-    homeManager = {
-      base = _: {
-        manual.manpages.enable = false;
       };
     };
   };
