@@ -94,6 +94,22 @@
         systems.follows = "systems";
       };
     };
+    # Neovim Overlay
+    neovim-overlay = {
+      url = "github:nix-community/neovim-nightly-overlay";
+      inputs = {
+        flake-parts.follows = "flake-parts";
+        nixpkgs.follows = "nixpkgs";
+      };
+    };
+    # Emacs Overlay
+    emacs-overlay = {
+      url = "github:nix-community/emacs-overlay";
+      inputs = {
+        nixpkgs.follows = "nixpkgs";
+        nixpkgs-stable.follows = ""; # Only used for Nix Community Hydra jobs
+      };
+    };
     ### Personal packages
     shadowrz = {
       url = "github:ShadowRZ/nur-packages";

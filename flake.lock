@@ -55,6 +55,27 @@
         "type": "github"
       }
     },
+    "emacs-overlay": {
+      "inputs": {
+        "nixpkgs": [
+          "nixpkgs"
+        ],
+        "nixpkgs-stable": []
+      },
+      "locked": {
+        "lastModified": 1772676165,
+        "narHash": "sha256-qxFaOygeumG/fAaKQRCp/r07pDPumk9EcbPLhck8ER0=",
+        "owner": "nix-community",
+        "repo": "emacs-overlay",
+        "rev": "9599aa4d86b18f81eee6555578dbf3456ce15cc6",
+        "type": "github"
+      },
+      "original": {
+        "owner": "nix-community",
+        "repo": "emacs-overlay",
+        "type": "github"
+      }
+    },
     "firefox-addons-nix": {
       "inputs": {
         "flake-utils": [],
@@ -155,6 +176,46 @@
       "original": {
         "owner": "nix-community",
         "repo": "lanzaboote",
+        "type": "github"
+      }
+    },
+    "neovim-overlay": {
+      "inputs": {
+        "flake-parts": [
+          "flake-parts"
+        ],
+        "neovim-src": "neovim-src",
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1772669086,
+        "narHash": "sha256-w11FPYngGvHJ+F1c+SJ/lAa2lsEzSlIiYNd0s6rLxVQ=",
+        "owner": "nix-community",
+        "repo": "neovim-nightly-overlay",
+        "rev": "76f571b9189d954b39b75fcf95b77029a59b8372",
+        "type": "github"
+      },
+      "original": {
+        "owner": "nix-community",
+        "repo": "neovim-nightly-overlay",
+        "type": "github"
+      }
+    },
+    "neovim-src": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1772668450,
+        "narHash": "sha256-YGYnYdm2DYbHTb6OZmLExUY/6/ZVC6IUAM3Ydcne8zM=",
+        "owner": "neovim",
+        "repo": "neovim",
+        "rev": "843bc1aa8d1596d8665f36b52ab0447f956016b8",
+        "type": "github"
+      },
+      "original": {
+        "owner": "neovim",
+        "repo": "neovim",
         "type": "github"
       }
     },
@@ -282,11 +343,13 @@
         "catppuccin-nix": "catppuccin-nix",
         "crane": "crane",
         "disko": "disko",
+        "emacs-overlay": "emacs-overlay",
         "firefox-addons-nix": "firefox-addons-nix",
         "flake-parts": "flake-parts",
         "home-manager": "home-manager",
         "import-tree": "import-tree",
         "lanzaboote": "lanzaboote",
+        "neovim-overlay": "neovim-overlay",
         "nix-indexdb": "nix-indexdb",
         "nix-on-droid": "nix-on-droid",
         "nixos-sensible": "nixos-sensible",
