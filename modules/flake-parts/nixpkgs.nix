@@ -8,7 +8,9 @@
         inherit system;
         overlays = [
           # keep-sorted start
+          inputs.emacs-overlay.overlays.default
           inputs.firefox-addons-nix.overlays.default
+          inputs.neovim-overlay.overlays.default
           inputs.nix-indexdb.overlays.nix-index
           inputs.rust-overlay.overlays.default
           inputs.self.overlays.default
