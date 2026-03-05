@@ -7,11 +7,13 @@
       _module.args.pkgs = import inputs.nixpkgs {
         inherit system;
         overlays = [
+          # keep-sorted start
+          inputs.firefox-addons-nix.overlays.default
           inputs.nix-indexdb.overlays.nix-index
           inputs.rust-overlay.overlays.default
-          inputs.firefox-addons-nix.overlays.default
-          inputs.shadowrz.overlays.default
           inputs.self.overlays.default
+          inputs.shadowrz.overlays.default
+          # keep-sorted end
         ];
         config = {
           allowUnfree = true;

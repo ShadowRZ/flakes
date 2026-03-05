@@ -46,9 +46,11 @@
             ];
 
             packages = with pkgs; [
-              hugo # Hugo
-              ffmpeg-full # FFmpeg
+              # keep-sorted start
               cntr
+              ffmpeg-full # FFmpeg
+              hugo # Hugo
+              # keep-sorted end
             ];
 
             openssh.authorizedKeys.keys = config.flake.meta.users.shadowrz.authorizedKeys;

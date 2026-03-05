@@ -20,28 +20,30 @@
 
           users.users.shadowrz = {
             packages = with pkgs; [
-              fractal
-              blender-bin.blender_5_0 # Blender 5.0.* (Binary)
-              qpwgraph
-              gimp3 # GIMP 3
-              inkscape # Inkscape
-              d-spy # D-Spy
-              libreoffice-fresh # LibreOffice Fresh
+              # keep-sorted start
               android-studio
-              mindustry-wayland
-              godot
+              blender-bin.blender_5_0 # Blender 5.0.* (Binary)
+              d-spy # D-Spy
               featherpad
-              sqlitebrowser
-              pdfarranger
-              telegram-desktop
-              pika-backup
-              mkxp-z
-              ## KDE Packages
-              krusader
-              kdePackages.kdenlive
+              fractal
+              gimp3 # GIMP 3
+              godot
+              inkscape # Inkscape
               kdePackages.kcalc
               kdePackages.kcharselect
+              kdePackages.kdenlive
               kdePackages.plasma-sdk # Plasma SDK
+              ## KDE Packages
+              krusader
+              libreoffice-fresh # LibreOffice Fresh
+              mindustry-wayland
+              mkxp-z
+              pdfarranger
+              pika-backup
+              qpwgraph
+              sqlitebrowser
+              telegram-desktop
+              # keep-sorted end
             ];
           };
         };
