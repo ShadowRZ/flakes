@@ -10,23 +10,23 @@
       "options": {
         // NixOS
         "nixos": {
-          "expr": "(builtins.getFlake \"${workspaceFolder}\").nixosConfigurations.mimeow-coffees.options"
+          "expr": "(builtins.getFlake (builtins.toString ./.)).nixosConfigurations.mimeow-coffees.options"
         },
         // Home Manager
         "homeManager": {
-          "expr": "(builtins.getFlake \"${workspaceFolder}\").nixosConfigurations.mimeow-coffees.options.home-manager.users.type.getSubOptions []"
+          "expr": "(builtins.getFlake (builtins.toString ./.)).nixosConfigurations.mimeow-coffees.options.home-manager.users.type.getSubOptions []"
         },
         // Flake Parts
         "flake": {
-          "expr": "(builtins.getFlake \"${workspaceFolder}\").debug.options"
+          "expr": "(builtins.getFlake (builtins.toString ./.)).debug.options"
         },
         // Flake Parts perSystem
         "perSystem": {
-          "expr": "(builtins.getFlake \"${workspaceFolder}\").currentSystem.options"
+          "expr": "(builtins.getFlake (builtins.toString ./.)).currentSystem.options"
         },
         // Home Manager
         "nixOnDroid": {
-          "expr": "(builtins.getFlake \"${workspaceFolder}\").nixOnDroidConfigurations.akasha.options"
+          "expr": "(builtins.getFlake (builtins.toString ./.)).nixOnDroidConfigurations.akasha.options"
         }
       }
     }
