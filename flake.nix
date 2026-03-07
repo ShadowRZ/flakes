@@ -18,15 +18,8 @@
     inputs.flake-parts.lib.mkFlake { inherit inputs; } (
       {
         inputs,
-        lib,
         ...
       }:
-      let
-        # A simplified version of import-tree using only nixpkgs.lib
-        import-tree = path: {
-          imports = lib.fileset.toList (lib.fileset.fileFilter (f: f.hasExt "nix") path);
-        };
-      in
       {
         debug = true;
 
@@ -40,56 +33,15 @@
         partitions = {
           home-manager = {
             extraInputsFlake = ./home-manager;
-            module = {
-              imports = [
-                (import-tree ./home-manager/modules)
-              ];
-            };
+            module = import ./home-manager;
           };
           nixos = {
             extraInputsFlake = ./nixos;
-            module = {
-              imports = [
-                (import-tree ./nixos/modules)
-              ];
-            };
+            module = import ./nixos;
           };
           dev = {
             extraInputsFlake = ./dev;
-            module =
-              { inputs, ... }:
-              {
-                imports = [
-                  inputs.treefmt-nix.flakeModule
-                ];
-
-                perSystem =
-                  { config, pkgs, ... }:
-                  {
-                    treefmt.config = {
-                      projectRootFile = "flake.nix";
-
-                      ### nix
-                      programs.deadnix.enable = true;
-                      programs.statix.enable = true;
-                      programs.nixfmt.enable = true;
-                    };
-
-                    devShells.default = pkgs.mkShellNoCC {
-                      packages = [
-                        config.treefmt.build.wrapper
-                        # keep-sorted start
-                        pkgs.deadnix
-                        pkgs.just
-                        pkgs.keep-sorted
-                        pkgs.nixd
-                        pkgs.nixfmt
-                        pkgs.statix
-                        # keep-sorted end
-                      ];
-                    };
-                  };
-              };
+            module = import ./dev;
           };
         };
 
