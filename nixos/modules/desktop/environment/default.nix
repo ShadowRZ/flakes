@@ -22,7 +22,7 @@
             packages = with pkgs; [
               # keep-sorted start
               android-studio
-              blender-bin.blender_5_0 # Blender 5.0.* (Binary)
+              blender_5_0 # Blender 5.0.* (Binary)
               d-spy # D-Spy
               featherpad
               fractal

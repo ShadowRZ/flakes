@@ -1,3 +1,3 @@
 {
-  flake.modules.homeManager.gnupg = {};
+  flake.modules.homeManager.gnupg = { };
 }

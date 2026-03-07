@@ -8,6 +8,7 @@
         inherit system;
         overlays = [
           # keep-sorted start
+          inputs.blender-bin.overlays.default
           inputs.emacs-overlay.overlays.default
           inputs.firefox-addons-nix.overlays.default
           inputs.neovim-overlay.overlays.default

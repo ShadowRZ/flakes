@@ -7,6 +7,10 @@
       url = "github:NixOS/nixpkgs/nixos-unstable-small";
     };
     # keep-sorted start block=yes
+    blender-bin = {
+      url = "github:edolstra/nix-warez?dir=blender";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     catppuccin-nix = {
       url = "github:catppuccin/nix";
       inputs.nixpkgs.follows = "nixpkgs";
