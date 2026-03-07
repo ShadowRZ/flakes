@@ -19,6 +19,44 @@
             http-connections = 0;
             max-substitution-jobs = 128;
           };
+
+          registry = {
+            # A constrained set of flake registry in https://channels.nixos.org/flake-registry.json
+            nix = {
+              from = {
+                id = "nix";
+                type = "indirect";
+              };
+              to = {
+                owner = "NixOS";
+                repo = "nix";
+                type = "github";
+              };
+            };
+            templates = {
+              from = {
+                id = "nix";
+                type = "indirect";
+              };
+              to = {
+                owner = "NixOS";
+                repo = "templates";
+                type = "github";
+              };
+            };
+            ## Use inpure path instead of exact path to minimize rebuilds
+            hanekokoro-infra = {
+              from = {
+                id = "hanekokoro-infra";
+                type = "indirect";
+              };
+              to = {
+                owner = "ShadowRZ";
+                repo = "flakes";
+                type = "github";
+              };
+            };
+          };
         };
       };
     };

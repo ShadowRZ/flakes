@@ -1,7 +1,7 @@
 { inputs, ... }:
 {
   perSystem =
-    { system, ... }:
+    { system, pkgs, ... }:
     {
       # Instance a global Nixpkgs
       _module.args.pkgs = import inputs.nixpkgs {
@@ -24,5 +24,9 @@
           android_sdk.accept_license = true;
         };
       };
+
+      # Wire our own global Nixpkgs to legacyPackages
+      # Allows doing, e.g. nix run hanekokoro-infra#hello-unfree
+      legacyPackages = pkgs;
     };
 }
