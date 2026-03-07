@@ -33,7 +33,6 @@
             bibata-cursors
             plasma-overdose-kde-theme
             haruna
-            pkgs.shadowrz.silent-sddm
             (catppuccin-kde.override {
               flavour = [
                 "latte"
