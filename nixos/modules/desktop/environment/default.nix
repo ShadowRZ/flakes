@@ -54,6 +54,11 @@
         systemd.user.sessionVariables.QT_SCALE_FACTOR_ROUNDING_POLICY = "RoundPreferFloor";
         home.sessionVariables.QT_SCALE_FACTOR_ROUNDING_POLICY = "RoundPreferFloor";
       };
+      gnupg =
+        { pkgs, ... }:
+        {
+          services.gpg-agent.pinentry.package = pkgs.pinentry-qt;
+        };
     };
   };
 }
