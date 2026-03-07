@@ -1,4 +1,4 @@
-{ inputs, ... }:
+_:
 {
   flake.modules = {
     nixos = {
@@ -20,17 +20,6 @@
 
         # Does not work with Flake based configurations
         system.copySystemConfiguration = false;
-      };
-    };
-
-    nixOnDroid = {
-      nix = _: {
-        nix = {
-          nixPath = [ "nixpkgs=${inputs.nixpkgs}" ];
-          registry = {
-            nixpkgs.flake = inputs.nixpkgs;
-          };
-        };
       };
     };
   };

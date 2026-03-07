@@ -17,11 +17,5 @@
           system.stateVersion = stateVersion; # Did you read the comment?
         };
       };
-
-      nixOnDroid = {
-        base = {
-          system.stateVersion = "23.05";
-        };
-      };
     };
 }

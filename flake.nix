@@ -31,13 +31,17 @@
         imports = [ inputs.flake-parts.flakeModules.partitions ];
 
         partitions = {
+          nixos = {
+            extraInputsFlake = ./nixos;
+            module = import ./nixos;
+          };
           home-manager = {
             extraInputsFlake = ./home-manager;
             module = import ./home-manager;
           };
-          nixos = {
-            extraInputsFlake = ./nixos;
-            module = import ./nixos;
+          nix-on-droid = {
+            extraInputsFlake = ./nix-on-droid;
+            module = import ./nix-on-droid;
           };
           dev = {
             extraInputsFlake = ./dev;
@@ -47,6 +51,7 @@
 
         partitionedAttrs = {
           nixosConfigurations = "nixos";
+          nixOnDroidConfigurations = "nix-on-droid";
           devShells = "dev";
         };
       }
