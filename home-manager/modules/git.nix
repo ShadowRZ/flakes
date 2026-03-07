@@ -6,10 +6,11 @@
         git = {
           enable = true;
           package = pkgs.gitMinimal;
+          signing = {
+            signByDefault = true;
+            key = "AC597AD389D1CC5618AD1ED9B7123A2B6B0AE434";
+          };
           settings = {
-            signing = {
-              key = "AC597AD389D1CC5618AD1ED9B7123A2B6B0AE434";
-            };
             user = {
               name = "Yorusaka Miyabi";
               email = "23130178+ShadowRZ@users.noreply.github.com";
