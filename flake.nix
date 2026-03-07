@@ -1,5 +1,5 @@
 {
-  description = "Hanekokoro Infra";
+  description = "Hanekokoro Flake";
 
   inputs = {
     # Nixpkgs

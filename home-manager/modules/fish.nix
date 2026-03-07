@@ -17,7 +17,7 @@
           function fish_greeting
             if test -n "$ZELLIJ" || test -n "$TERMUX_VERSION"
               echo (set_color brcyan -o)Fish $version
-              echo (set_color brmagenta -o)"Belongs to Hanekokoro Infra (https://github.com/ShadowRZ/flakes)"
+              echo (set_color brmagenta -o)"@ Hanekokoro Flake (https://github.com/ShadowRZ/hanekokoro-flake)"
             else
               fastfetch
             end

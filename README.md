@@ -1,7 +1,9 @@
 ![Hanekokoro Logo](./assets/hanekokoro-logo.svg)
-# Hanekokoro (はねこころ) Infra
 
-My personal NixOS configuration. for packages see [`github:ShadowRZ/nur-packages`](https://github.com/ShadowRZ/nur-packages)
+# Hanekokoro (はねこころ) Flake
+
+My personal NixOS + Home Manager + Nix On Droid configuration.
+for packages see [`github:ShadowRZ/nur-packages`](https://github.com/ShadowRZ/nur-packages)
 
 [![built with nix](https://builtwithnix.org/badge.svg)](https://builtwithnix.org)
 
@@ -10,13 +12,12 @@ My personal NixOS configuration. for packages see [`github:ShadowRZ/nur-packages
 * **Desktop Environment:** [KDE Plasma 6]
 * **Terminal:** [WezTerm]
 * **Browser:** Firefox + [Firefox GNOME Theme]
-* **Shell:** [Fish] [^1] + [Starship]
+* **Shell:** [Fish] + [Starship]
 * **Display Manager:** [SDDM]
 * **Colorscheme:** [Catppuccin]
 * **Media player:** [mpv]
 * **Terminal Editor:** [Neovim], maybe explore [Helix]?
-* **\[Desktop\] GUI Editor:** [VS Code] currently, have plans to build my own editor.
-* **\[Desktop\] Filesystem & Encryption**: tmpfs `/`, [Btrfs] subvolumes on a [LUKS] encrypted partition for Nix Store and persisted data. Uses TPM with optional [CanoKey] support.
+* **\[Desktop\] GUI Editor:** [VS Code] + [Zed] currently, have plans to build my own editor.
 * **\[Desktop\] Secure Boot:** [lanzaboote]
 
 ## Config References
@@ -27,19 +28,17 @@ My personal NixOS configuration. for packages see [`github:ShadowRZ/nur-packages
 * [`github:NickCao/flakes`](https://github.com/NickCao/flakes)
 
 <!-- References -->
-
-[KDE Plasma 6]: https://kde.org/plasma-desktop
-[WezTerm]: https://wezterm.org
-[Fish]: https://fishshell.com
-[Starship]: https://starship.rs
-[SDDM]: https://wiki.archlinux.org/title/SDDM
+<!-- keep-sorted start -->
 [Catppuccin]: https://catppuccin.com
-[mpv]: https://mpv.io
-[Neovim]: https://neovim.io
-[Helix]: https://helix-editor.com
-[VS Code]: https://code.visualstudio.com
-[Btrfs]: https://btrfs.readthedocs.io
-[LUKS]: https://wiki.archlinux.org/title/Dm-crypt/Encrypting_an_entire_system
-[lanzaboote]: https://github.com/nix-community/lanzaboote
-[CanoKey]: https://canokeys.org
 [Firefox GNOME Theme]: https://github.com/rafaelmardojai/firefox-gnome-theme
+[Fish]: https://fishshell.com
+[Helix]: https://helix-editor.com
+[KDE Plasma 6]: https://kde.org/plasma-desktop
+[Neovim]: https://neovim.io
+[SDDM]: https://wiki.archlinux.org/title/SDDM
+[Starship]: https://starship.rs
+[VS Code]: https://code.visualstudio.com
+[WezTerm]: https://wezterm.org
+[lanzaboote]: https://github.com/nix-community/lanzaboote
+[mpv]: https://mpv.io
+<!-- keep-sorted end -->

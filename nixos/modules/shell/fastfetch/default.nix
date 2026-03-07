@@ -25,9 +25,9 @@
             }
             {
               type = "custom";
-              key = "• Hanekokoro Infra";
+              key = "• Hanekokoro Flake";
               keyColor = "bold_#fab387";
-              format = "https://github.com/ShadowRZ/flakes";
+              format = "https://github.com/ShadowRZ/hanekokoro-flake";
               outputColor = "bold_#fab387";
             }
             "break"

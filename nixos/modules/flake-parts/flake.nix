@@ -7,5 +7,5 @@
     '';
   };
 
-  config.flake.meta.uri = "github:ShadowRZ/flakes";
+  config.flake.meta.uri = "github:ShadowRZ/hanekokoro-flake";
 }

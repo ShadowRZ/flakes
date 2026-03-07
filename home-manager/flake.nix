@@ -1,5 +1,5 @@
 {
-  description = "Hanekokoro Home";
+  description = "Hanekokoro Flake @ Home Manager";
 
   inputs = {
     # Nixpkgs

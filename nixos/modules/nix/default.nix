@@ -45,14 +45,14 @@
               };
             };
             ## Use inpure path instead of exact path to minimize rebuilds
-            hanekokoro-infra = {
+            hanekokoro-flake = {
               from = {
-                id = "hanekokoro-infra";
+                id = "hanekokoro-flake";
                 type = "indirect";
               };
               to = {
                 owner = "ShadowRZ";
-                repo = "flakes";
+                repo = "hanekokoro-flake";
                 type = "github";
               };
             };
