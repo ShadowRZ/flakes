@@ -6,26 +6,19 @@
     nixpkgs = {
       url = "github:NixOS/nixpkgs/nixpkgs-unstable";
     };
-    # Use all supported systems, at least for Hanekokoro Home
-    systems = {
-      url = "github:nix-systems/default";
-    };
-    # Flake Parts
-    flake-parts = {
-      url = "github:hercules-ci/flake-parts";
-      inputs.nixpkgs-lib.follows = "nixpkgs";
-    };
-    # Home Manager
-    home-manager = {
-      url = "github:nix-community/home-manager";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-    # Catppuccin Nix
+    # keep-sorted start block=yes
     catppuccin-nix = {
       url = "github:catppuccin/nix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    # Nixvim
+    flake-parts = {
+      url = "github:hercules-ci/flake-parts";
+      inputs.nixpkgs-lib.follows = "nixpkgs";
+    };
+    home-manager = {
+      url = "github:nix-community/home-manager";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     nixvim = {
       url = "github:nix-community/nixvim";
       inputs = {
@@ -34,6 +27,10 @@
         systems.follows = "systems";
       };
     };
+    systems = {
+      url = "github:nix-systems/default";
+    };
+    # keep-sorted end
   };
 
   outputs =
