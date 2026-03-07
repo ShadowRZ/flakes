@@ -50,7 +50,7 @@
             extraInputsFlake = ./nixos;
             module = {
               imports = [
-                (import-tree ./modules)
+                (import-tree ./nixos/modules)
               ];
             };
           };
