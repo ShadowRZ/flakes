@@ -1,11 +1,9 @@
 {
-  description = "Hanekokoro Flake @ NixOS";
-
   inputs = {
-    # Nixpkgs
-    nixpkgs = {
-      url = "github:NixOS/nixpkgs/nixos-unstable-small";
-    };
+    hanekokoro-flake.url = "path:../.";
+    nixpkgs.follows = "hanekokoro-flake/nixpkgs";
+    flake-parts.follows = "hanekokoro-flake/flake-parts";
+
     # keep-sorted start block=yes
     blender-bin = {
       url = "github:edolstra/nix-warez?dir=blender";
@@ -79,10 +77,6 @@
     # keep-sorted start block=yes
     crane = {
       url = "github:ipetkov/crane";
-    };
-    flake-parts = {
-      url = "github:hercules-ci/flake-parts";
-      inputs.nixpkgs-lib.follows = "nixpkgs";
     };
     rust-overlay = {
       url = "github:oxalica/rust-overlay";

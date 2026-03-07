@@ -1,19 +1,13 @@
 {
-  description = "Hanekokoro Flake @ Home Manager";
-
   inputs = {
-    # Nixpkgs
-    nixpkgs = {
-      url = "github:NixOS/nixpkgs/nixpkgs-unstable";
-    };
+    hanekokoro-flake.url = "path:../.";
+    nixpkgs.follows = "hanekokoro-flake/nixpkgs";
+    flake-parts.follows = "hanekokoro-flake/flake-parts";
+
     # keep-sorted start block=yes
     catppuccin-nix = {
       url = "github:catppuccin/nix";
       inputs.nixpkgs.follows = "nixpkgs";
-    };
-    flake-parts = {
-      url = "github:hercules-ci/flake-parts";
-      inputs.nixpkgs-lib.follows = "nixpkgs";
     };
     home-manager = {
       url = "github:nix-community/home-manager";

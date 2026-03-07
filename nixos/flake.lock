@@ -122,6 +122,7 @@
     "flake-parts": {
       "inputs": {
         "nixpkgs-lib": [
+          "hanekokoro-flake",
           "nixpkgs"
         ]
       },
@@ -138,6 +139,21 @@
         "repo": "flake-parts",
         "type": "github"
       }
+    },
+    "hanekokoro-flake": {
+      "inputs": {
+        "flake-parts": "flake-parts",
+        "nixpkgs": "nixpkgs"
+      },
+      "locked": {
+        "path": "../.",
+        "type": "path"
+      },
+      "original": {
+        "path": "../.",
+        "type": "path"
+      },
+      "parent": []
     },
     "home-manager": {
       "inputs": {
@@ -300,13 +316,20 @@
         "disko": "disko",
         "emacs-overlay": "emacs-overlay",
         "firefox-addons-nix": "firefox-addons-nix",
-        "flake-parts": "flake-parts",
+        "flake-parts": [
+          "hanekokoro-flake",
+          "flake-parts"
+        ],
+        "hanekokoro-flake": "hanekokoro-flake",
         "home-manager": "home-manager",
         "lanzaboote": "lanzaboote",
         "neovim-overlay": "neovim-overlay",
         "nix-indexdb": "nix-indexdb",
         "nixos-sensible": "nixos-sensible",
-        "nixpkgs": "nixpkgs",
+        "nixpkgs": [
+          "hanekokoro-flake",
+          "nixpkgs"
+        ],
         "preservation": "preservation",
         "rust-overlay": "rust-overlay",
         "shadowrz": "shadowrz",

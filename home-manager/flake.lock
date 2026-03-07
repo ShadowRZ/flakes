@@ -23,6 +23,7 @@
     "flake-parts": {
       "inputs": {
         "nixpkgs-lib": [
+          "hanekokoro-flake",
           "nixpkgs"
         ]
       },
@@ -39,6 +40,21 @@
         "repo": "flake-parts",
         "type": "github"
       }
+    },
+    "hanekokoro-flake": {
+      "inputs": {
+        "flake-parts": "flake-parts",
+        "nixpkgs": "nixpkgs"
+      },
+      "locked": {
+        "path": "../.",
+        "type": "path"
+      },
+      "original": {
+        "path": "../.",
+        "type": "path"
+      },
+      "parent": []
     },
     "home-manager": {
       "inputs": {
@@ -71,7 +87,7 @@
       },
       "original": {
         "owner": "NixOS",
-        "ref": "nixpkgs-unstable",
+        "ref": "nixos-unstable-small",
         "repo": "nixpkgs",
         "type": "github"
       }
@@ -105,9 +121,16 @@
     "root": {
       "inputs": {
         "catppuccin-nix": "catppuccin-nix",
-        "flake-parts": "flake-parts",
+        "flake-parts": [
+          "hanekokoro-flake",
+          "flake-parts"
+        ],
+        "hanekokoro-flake": "hanekokoro-flake",
         "home-manager": "home-manager",
-        "nixpkgs": "nixpkgs",
+        "nixpkgs": [
+          "hanekokoro-flake",
+          "nixpkgs"
+        ],
         "nixvim": "nixvim",
         "systems": "systems"
       }
