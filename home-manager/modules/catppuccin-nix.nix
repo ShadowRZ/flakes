@@ -6,7 +6,7 @@
     ];
 
     catppuccin = {
-      ghostty = {
+      fish = {
         enable = true;
         flavor = "mocha";
       };

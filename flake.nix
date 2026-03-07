@@ -6,132 +6,100 @@
     nixpkgs = {
       url = "github:NixOS/nixpkgs/nixos-unstable-small";
     };
-    # NixOS Sensible
-    nixos-sensible = {
-      url = "github:Guanran928/nixos-sensible";
-    };
     # Flake Parts
     flake-parts = {
       url = "github:hercules-ci/flake-parts";
       inputs.nixpkgs-lib.follows = "nixpkgs";
-    };
-    # Import Tree
-    import-tree = {
-      url = "github:vic/import-tree";
-    };
-    # Home Manager
-    home-manager = {
-      url = "github:nix-community/home-manager";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-    # Disko
-    disko = {
-      url = "github:nix-community/disko";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-    # Sops-Nix
-    sops-nix = {
-      url = "github:Mic92/sops-nix";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-    # Preservation
-    preservation = {
-      url = "github:nix-community/preservation";
-    };
-    # Prebuilt Nix Index DB
-    nix-indexdb = {
-      url = "github:nix-community/nix-index-database";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-    # Nix On Droid
-    nix-on-droid = {
-      url = "github:nix-community/nix-on-droid";
-      inputs = {
-        nixpkgs.follows = "nixpkgs";
-        home-manager.follows = "home-manager";
-        nixpkgs-docs.follows = "";
-        nix-formatter-pack.follows = "";
-        nmd.follows = "";
-        nixpkgs-for-bootstrap.follows = "";
-      };
-    };
-    # Lanzaboote
-    lanzaboote = {
-      url = "github:nix-community/lanzaboote";
-      inputs = {
-        nixpkgs.follows = "nixpkgs";
-        crane.follows = "crane";
-        # https://github.com/nix-community/lanzaboote/blob/v0.4.1/flake.nix#L11
-        pre-commit.follows = "";
-        rust-overlay.follows = "rust-overlay";
-      };
     };
     # Treefmt
     treefmt-nix = {
       url = "github:numtide/treefmt-nix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    # Firefox Addons Nix
-    firefox-addons-nix = {
-      url = "github:petrkozorezov/firefox-addons-nix";
-      inputs = {
-        # Unused
-        flake-utils.follows = "";
-        nixpkgs.follows = "nixpkgs";
-      };
-    };
-    # Catppuccin Nix
-    catppuccin-nix = {
-      url = "github:catppuccin/nix";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-    # Nixvim
-    nixvim = {
-      url = "github:nix-community/nixvim";
-      inputs = {
-        flake-parts.follows = "flake-parts";
-        nixpkgs.follows = "nixpkgs";
-        systems.follows = "systems";
-      };
-    };
-    # Neovim Overlay
-    neovim-overlay = {
-      url = "github:nix-community/neovim-nightly-overlay";
-      inputs = {
-        flake-parts.follows = "flake-parts";
-        nixpkgs.follows = "nixpkgs";
-      };
-    };
-    # Emacs Overlay
-    emacs-overlay = {
-      url = "github:nix-community/emacs-overlay";
-      inputs = {
-        nixpkgs.follows = "nixpkgs";
-        nixpkgs-stable.follows = ""; # Only used for Nix Community Hydra jobs
-      };
-    };
-    ### Personal packages
-    shadowrz = {
-      url = "github:ShadowRZ/nur-packages";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-    ### Non flake
-    silent-sddm = {
-      url = "github:uiriansan/SilentSDDM";
-      flake = false;
-    };
-    ### Dedupes
-    crane = {
-      url = "github:ipetkov/crane";
-    };
-    systems = {
-      url = "github:nix-systems/default";
-    };
-    rust-overlay = {
-      url = "github:oxalica/rust-overlay";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
   };
 
-  outputs = inputs: inputs.flake-parts.lib.mkFlake { inherit inputs; } (inputs.import-tree ./modules);
+  outputs =
+    inputs:
+    inputs.flake-parts.lib.mkFlake { inherit inputs; } (
+      {
+        inputs,
+        lib,
+        ...
+      }:
+      let
+        # A simplified version of import-tree using only nixpkgs.lib
+        import-tree = path: {
+          imports = lib.fileset.toList (lib.fileset.fileFilter (f: f.hasExt "nix") path);
+        };
+      in
+      {
+        debug = true;
+
+        systems = [
+          "x86_64-linux"
+          "aarch64-linux"
+        ];
+
+        imports = [ inputs.flake-parts.flakeModules.partitions ];
+
+        partitions = {
+          home-manager = {
+            extraInputsFlake = ./home-manager;
+            module = {
+              imports = [
+                (import-tree ./home-manager/modules)
+              ];
+            };
+          };
+          nixos = {
+            extraInputsFlake = ./nixos;
+            module = {
+              imports = [
+                (import-tree ./modules)
+              ];
+            };
+          };
+          dev = {
+            extraInputsFlake = ./dev;
+            module = {
+              imports = [
+                inputs.treefmt-nix.flakeModule
+              ];
+
+              perSystem =
+                { config, pkgs, ... }:
+                {
+                  treefmt.config = {
+                    projectRootFile = "flake.nix";
+
+                    ### nix
+                    programs.deadnix.enable = true;
+                    programs.statix.enable = true;
+                    programs.nixfmt.enable = true;
+                  };
+
+                  devShells.default = pkgs.mkShellNoCC {
+                    packages = [
+                      config.treefmt.build.wrapper
+                      # keep-sorted start
+                      pkgs.deadnix
+                      pkgs.just
+                      pkgs.keep-sorted
+                      pkgs.nixd
+                      pkgs.nixfmt
+                      pkgs.statix
+                      # keep-sorted end
+                    ];
+                  };
+                };
+            };
+          };
+        };
+
+        partitionedAttrs = {
+          nixosConfigurations = "nixos";
+          devShells = "dev";
+        };
+      }
+    );
 }

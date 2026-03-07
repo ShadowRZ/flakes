@@ -22,15 +22,5 @@
         ];
       };
     };
-    nix-on-droid = {
-      name = "akasha";
-      system = "aarch64-linux";
-      modules = [
-        "base"
-        "nix"
-        "dev"
-        "shell"
-      ];
-    };
   };
 }
