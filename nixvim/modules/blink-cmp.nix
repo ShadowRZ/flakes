@@ -10,7 +10,7 @@
 
           cmdline = {
             keymap.preset = "inherit";
-            completiom.menu.auto_show = true;
+            completion.menu.auto_show = true;
           };
 
           completion = {
