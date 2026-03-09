@@ -1,3 +1,4 @@
+{ config, ... }:
 {
   flake.modules = {
     nixOnDroid = {
@@ -13,6 +14,13 @@
             ];
           };
         };
+      };
+    };
+    homeManager = {
+      dev = {
+        imports = [
+          config.partitions.nixvim.module.flake.modules.homeManager.nixvim
+        ];
       };
     };
   };

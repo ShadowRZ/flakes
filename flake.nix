@@ -43,6 +43,10 @@
             extraInputsFlake = ./nix-on-droid;
             module = import ./nix-on-droid;
           };
+          nixvim = {
+            extraInputsFlake = ./nixvim;
+            module = import ./nixvim;
+          };
           dev = {
             extraInputsFlake = ./dev;
             module = import ./dev;
