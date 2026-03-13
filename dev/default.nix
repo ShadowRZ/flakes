@@ -14,6 +14,9 @@
         programs.deadnix.enable = true;
         programs.statix.enable = true;
         programs.nixfmt.enable = true;
+
+        ### Keep Sorted
+        programs.keep-sorted.enable = true;
       };
 
       devShells.default = pkgs.mkShellNoCC {
