@@ -39,9 +39,7 @@
     },
     "disko": {
       "inputs": {
-        "nixpkgs": [
-          "nixpkgs"
-        ]
+        "nixpkgs": []
       },
       "locked": {
         "lastModified": 1773025010,
@@ -59,9 +57,7 @@
     },
     "emacs-overlay": {
       "inputs": {
-        "nixpkgs": [
-          "nixpkgs"
-        ],
+        "nixpkgs": [],
         "nixpkgs-stable": []
       },
       "locked": {
@@ -137,9 +133,7 @@
     },
     "home-manager": {
       "inputs": {
-        "nixpkgs": [
-          "nixpkgs"
-        ]
+        "nixpkgs": []
       },
       "locked": {
         "lastModified": 1773264496,
@@ -224,9 +218,7 @@
     },
     "nix-indexdb": {
       "inputs": {
-        "nixpkgs": [
-          "nixpkgs"
-        ]
+        "nixpkgs": []
       },
       "locked": {
         "lastModified": 1772945408,
@@ -317,9 +309,7 @@
     },
     "rust-overlay": {
       "inputs": {
-        "nixpkgs": [
-          "nixpkgs"
-        ]
+        "nixpkgs": []
       },
       "locked": {
         "lastModified": 1773216618,

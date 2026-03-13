@@ -1,46 +1,8 @@
 {
   "nodes": {
-    "flake-parts": {
-      "inputs": {
-        "nixpkgs-lib": [
-          "hanekokoro-flake",
-          "nixpkgs"
-        ]
-      },
-      "locked": {
-        "lastModified": 1772408722,
-        "narHash": "sha256-rHuJtdcOjK7rAHpHphUb1iCvgkU3GpfvicLMwwnfMT0=",
-        "owner": "hercules-ci",
-        "repo": "flake-parts",
-        "rev": "f20dc5d9b8027381c474144ecabc9034d6a839a3",
-        "type": "github"
-      },
-      "original": {
-        "owner": "hercules-ci",
-        "repo": "flake-parts",
-        "type": "github"
-      }
-    },
-    "hanekokoro-flake": {
-      "inputs": {
-        "flake-parts": "flake-parts",
-        "nixpkgs": "nixpkgs"
-      },
-      "locked": {
-        "path": "../.",
-        "type": "path"
-      },
-      "original": {
-        "path": "../.",
-        "type": "path"
-      },
-      "parent": []
-    },
     "home-manager": {
       "inputs": {
-        "nixpkgs": [
-          "nixpkgs"
-        ]
+        "nixpkgs": []
       },
       "locked": {
         "lastModified": 1773264496,
@@ -58,9 +20,7 @@
     },
     "nix-indexdb": {
       "inputs": {
-        "nixpkgs": [
-          "nixpkgs"
-        ]
+        "nixpkgs": []
       },
       "locked": {
         "lastModified": 1772945408,
@@ -82,9 +42,7 @@
           "home-manager"
         ],
         "nix-formatter-pack": [],
-        "nixpkgs": [
-          "nixpkgs"
-        ],
+        "nixpkgs": [],
         "nixpkgs-docs": [],
         "nixpkgs-for-bootstrap": [],
         "nmd": []
@@ -103,40 +61,17 @@
         "type": "github"
       }
     },
-    "nixpkgs": {
-      "locked": {
-        "lastModified": 1773233959,
-        "narHash": "sha256-Rwvc4HuCfnaDk5ExDwwm0ryaC1olJu1Up+fBtwIDqz8=",
-        "owner": "NixOS",
-        "repo": "nixpkgs",
-        "rev": "a0f2821b48406ae8e34aed85dfc02bf3799e1f79",
-        "type": "github"
-      },
-      "original": {
-        "owner": "NixOS",
-        "ref": "nixos-unstable-small",
-        "repo": "nixpkgs",
-        "type": "github"
-      }
-    },
     "root": {
       "inputs": {
-        "hanekokoro-flake": "hanekokoro-flake",
         "home-manager": "home-manager",
         "nix-indexdb": "nix-indexdb",
         "nix-on-droid": "nix-on-droid",
-        "nixpkgs": [
-          "hanekokoro-flake",
-          "nixpkgs"
-        ],
         "shadowrz": "shadowrz"
       }
     },
     "shadowrz": {
       "inputs": {
-        "nixpkgs": [
-          "nixpkgs"
-        ]
+        "nixpkgs": []
       },
       "locked": {
         "lastModified": 1770776444,

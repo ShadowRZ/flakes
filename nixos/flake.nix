@@ -11,12 +11,12 @@
     };
     disko = {
       url = "github:nix-community/disko";
-      inputs.nixpkgs.follows = "nixpkgs";
+      inputs.nixpkgs.follows = "";
     };
     emacs-overlay = {
       url = "github:nix-community/emacs-overlay";
       inputs = {
-        nixpkgs.follows = "nixpkgs";
+        nixpkgs.follows = "";
         nixpkgs-stable.follows = ""; # Only used for Nix Community Hydra jobs
       };
     };
@@ -30,7 +30,7 @@
     };
     home-manager = {
       url = "github:nix-community/home-manager";
-      inputs.nixpkgs.follows = "nixpkgs";
+      inputs.nixpkgs.follows = "";
     };
     lanzaboote = {
       url = "github:nix-community/lanzaboote";
@@ -51,7 +51,7 @@
     };
     nix-indexdb = {
       url = "github:nix-community/nix-index-database";
-      inputs.nixpkgs.follows = "nixpkgs";
+      inputs.nixpkgs.follows = "";
     };
     nixos-sensible = {
       url = "github:Guanran928/nixos-sensible";
@@ -76,7 +76,7 @@
     };
     rust-overlay = {
       url = "github:oxalica/rust-overlay";
-      inputs.nixpkgs.follows = "nixpkgs";
+      inputs.nixpkgs.follows = "";
     };
     # keep-sorted end
   };

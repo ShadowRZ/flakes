@@ -1,21 +1,18 @@
 {
   inputs = {
-    hanekokoro-flake.url = "path:../.";
-    nixpkgs.follows = "hanekokoro-flake/nixpkgs";
-
     # keep-sorted start block=yes
     home-manager = {
       url = "github:nix-community/home-manager";
-      inputs.nixpkgs.follows = "nixpkgs";
+      inputs.nixpkgs.follows = "";
     };
     nix-indexdb = {
       url = "github:nix-community/nix-index-database";
-      inputs.nixpkgs.follows = "nixpkgs";
+      inputs.nixpkgs.follows = "";
     };
     nix-on-droid = {
       url = "github:nix-community/nix-on-droid";
       inputs = {
-        nixpkgs.follows = "nixpkgs";
+        nixpkgs.follows = "";
         home-manager.follows = "home-manager";
         nixpkgs-docs.follows = "";
         nix-formatter-pack.follows = "";
@@ -25,7 +22,7 @@
     };
     shadowrz = {
       url = "github:ShadowRZ/nur-packages";
-      inputs.nixpkgs.follows = "nixpkgs";
+      inputs.nixpkgs.follows = "";
     };
     # keep-sorted end
   };
