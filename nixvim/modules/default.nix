@@ -21,12 +21,6 @@
         softtabstop = 4;
         expandtab = true;
       };
-      globals = {
-        neovide_padding_top = 5;
-        neovide_padding_bottom = 5;
-        neovide_padding_right = 4;
-        neovide_padding_left = 4;
-      };
 
       plugins = {
         treesitter = {
