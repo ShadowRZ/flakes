@@ -12,7 +12,7 @@
           };
           settings = {
             user = {
-              name = "Yorusaka Miyabi";
+              name = "夜坂雅";
               email = "23130178+ShadowRZ@users.noreply.github.com";
             };
             init.defaultBranch = "master";
