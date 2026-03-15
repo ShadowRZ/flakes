@@ -100,7 +100,6 @@
                   pkgs.firefox-addons.react-devtools
                   pkgs.firefox-addons.reduxdevtools
                   pkgs.firefox-addons.side-view
-                  pkgs.firefox-addons.sidebery
                   pkgs.firefox-addons.single-file
                   pkgs.firefox-addons.streetpass-for-mastodon
                   pkgs.firefox-addons.styl-us
@@ -108,6 +107,7 @@
                   pkgs.firefox-addons.textarea-cache
                   pkgs.firefox-addons.tranquility-1
                   pkgs.firefox-addons.ublock-origin
+                  pkgs.firefox-addons.vimium-ff
                   pkgs.firefox-addons.violentmonkey
                   pkgs.firefox-addons.vue-js-devtools
                   pkgs.firefox-addons.webhint
