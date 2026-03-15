@@ -11,8 +11,6 @@
               adw-gtk3
               wl-clipboard
               fluent-icon-theme
-              numix-icon-theme-circle
-              numix-icon-theme-square
             ];
           };
 
@@ -28,13 +26,11 @@
               fractal
               gimp3 # GIMP 3
               inkscape # Inkscape
-              kdePackages.kcalc
-              kdePackages.kcharselect
               kdePackages.kdenlive
               kdePackages.plasma-sdk # Plasma SDK
               ## KDE Packages
               krusader
-              libreoffice-fresh # LibreOffice Fresh
+              onlyoffice-desktopeditors # ONLYOFFICE Desktop editors
               pdfarranger
               pika-backup
               qpwgraph

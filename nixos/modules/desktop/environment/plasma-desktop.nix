@@ -31,8 +31,6 @@
             vulkan-tools # vulkaninfo
             wayland-utils # wayland-info
             bibata-cursors
-            plasma-overdose-kde-theme
-            haruna
             (catppuccin-kde.override {
               flavour = [
                 "latte"
@@ -44,6 +42,8 @@
                 "lavender"
               ];
             })
+            kdePackages.kcalc
+            kdePackages.kcharselect
           ];
           plasma6.excludePackages = with pkgs; [
             kdePackages.discover
