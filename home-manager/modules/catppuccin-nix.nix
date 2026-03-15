@@ -6,9 +6,27 @@
     ];
 
     catppuccin = {
+      accent = "rosewater";
+      flavor = "mocha";
+
       fish = {
         enable = true;
-        flavor = "mocha";
+      };
+      gh-dash = {
+        enable = true;
+      };
+      mpv = {
+        enable = true;
+      };
+      delta = {
+        enable = true;
+      };
+      obs = {
+        enable = true;
+        flavor = "latte";
+      };
+      starship = {
+        enable = true;
       };
     };
   };

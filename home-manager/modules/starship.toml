@@ -1,80 +1,99 @@
-scan_timeout = 10
+'$schema' = 'https://starship.rs/config-schema.json'
+
 add_newline = false
-
-[battery]
-disabled = true
-
-[character]
-success_symbol = '[@](bold green)'
-error_symbol = '[@](bold red)'
-vimcmd_symbol = '[\[VISUAL\]](bold yellow) [@](bold green)'
-
-[git_commit]
-tag_symbol = ' tag '
-
-[git_status]
-ahead = '>'
-behind = '<'
-diverged = '<>'
-renamed = 'r'
-deleted = 'x'
-style = "bold"
+palette = 'catppuccin_mocha'
+scan_timeout = 10
 
 [aws]
+style = 'bold'
 symbol = 'aws '
-style = "bold"
 
 [azure]
 symbol = 'az '
 
+[battery]
+disabled = true
+
+[buf]
+format = '(with [$symbol($version )]($style))'
+
 [bun]
+format = '(via [$symbol($version )]($style))'
 symbol = 'bun '
 
 [c]
+format = '(via [$symbol($version(-$name) )]($style))'
 symbol = 'C '
 
+[character]
+error_symbol = '[@](bold red)'
+success_symbol = '[@](bold green)'
+vimcmd_replace_one_symbol = '[@](bold teal)'
+vimcmd_replace_symbol = '[\\[NORMAL\\]](bold maroon) [@](bold green)'
+vimcmd_symbol = '[\\[NORMAL\\]](bold blue) [@](bold green)'
+vimcmd_visual_symbol = '[\\[NORMAL\\]](bold mauve) [@](bold green)'
+
+[cmake]
+format = '(via [$symbol($version )]($style))'
+symbol = 'cmake '
+
 [cmd_duration]
-style = "bold"
+style = 'bold'
 
 [cobol]
+format = '(via [$symbol($version )]($style))'
 symbol = 'cobol '
 
 [conda]
 symbol = 'conda '
 
+[cpp]
+format = '(via [$symbol($version(-$name) )]($style))'
+
 [crystal]
+format = '(via [$symbol($version )]($style))'
 symbol = 'cr '
 
-[cmake]
-symbol = 'cmake '
-
 [daml]
+format = '(via [$symbol($version )]($style))'
 symbol = 'daml '
 
 [dart]
+format = '(via [$symbol($version )]($style))'
 symbol = 'dart '
 
 [deno]
+format = '(via [$symbol($version )]($style))'
 symbol = 'deno '
-
-[dotnet]
-symbol = '.NET '
 
 [directory]
 read_only = ' ro'
-style = "bold"
+style = 'bold'
 
 [docker_context]
 symbol = 'docker '
 
+[dotnet]
+format = '(via [$symbol($version )(🎯 $tfm )]($style))'
+symbol = '.NET '
+
 [elixir]
+format = '(via [$symbol($version \\(OTP $otp_version\\) )]($style))'
 symbol = 'exs '
 
 [elm]
+format = '(via [$symbol($version )]($style))'
 symbol = 'elm '
 
+[erlang]
+format = '(via [$symbol($version )]($style))'
+
 [fennel]
+format = '(via [$symbol($version )]($style))'
 symbol = 'fnl '
+
+[fortran]
+format = '(via [$symbol($version )]($style))'
 
 [fossil_branch]
 symbol = 'fossil '
@@ -83,10 +102,25 @@ symbol = 'fossil '
 symbol = 'gcp '
 
 [git_branch]
+style = 'bold'
 symbol = 'git '
-style = "bold"
+
+[git_commit]
+tag_symbol = ' tag '
+
+[git_status]
+ahead = '>'
+behind = '<'
+deleted = 'x'
+diverged = '<>'
+renamed = 'r'
+style = 'bold'
+
+[gleam]
+format = '(via [$symbol($version )]($style))'
 
 [golang]
+format = '(via [$symbol($version )]($style))'
 symbol = 'go '
 
 [gradle]
@@ -95,26 +129,38 @@ symbol = 'gradle '
 [guix_shell]
 symbol = 'guix '
 
+[haskell]
+format = '(via [$symbol($version )]($style))'
+
+[helm]
+format = '(via [$symbol($version )]($style))'
+
 [hg_branch]
 symbol = 'hg '
 
 [hostname]
-style = "bold"
+style = 'bold'
 
 [java]
+format = '(via [$symbol($version )]($style))'
 symbol = 'java '
 
+[jobs]
+number_threshold = 4
+symbol = '+ '
+symbol_threshold = 1
+
 [julia]
+format = '(via [$symbol($version )]($style))'
 symbol = 'jl '
 
 [kotlin]
+format = '(via [$symbol($version )]($style))'
 symbol = 'kt '
 
 [lua]
+format = '(via [$symbol($version )]($style))'
 symbol = 'lua '
-
-[nodejs]
-symbol = 'nodejs '
 
 [memory_usage]
 symbol = 'memory '
@@ -123,15 +169,22 @@ symbol = 'memory '
 symbol = 'meson '
 
 [nim]
+format = '(via [$symbol($version )]($style))'
 symbol = 'nim '
 
 [nix_shell]
 symbol = 'nix '
 
+[nodejs]
+format = '(via [$symbol($version )]($style))'
+symbol = 'nodejs '
+
 [ocaml]
+format = '(via [$symbol($version )(\\($switch_indicator$switch_name\\) )]($style))'
 symbol = 'ml '
 
 [opa]
+format = '(via [$symbol($version )]($style))'
 symbol = 'opa '
 
 [os.symbols]
@@ -163,27 +216,30 @@ NetBSD = 'nbsd '
 NixOS = 'nix '
 OpenBSD = 'obsd '
 OpenCloudOS = 'ocos '
-openEuler = 'oeul '
-openSUSE = 'osuse '
 OracleLinux = 'orac '
 Pop = 'pop '
 Raspbian = 'rasp '
-Redhat = 'rhl '
 RedHatEnterprise = 'rhel '
+Redhat = 'rhl '
 Redox = 'redox '
-Solus = 'sol '
 SUSE = 'suse '
+Solus = 'sol '
 Ubuntu = 'ubnt '
 Unknown = 'unk '
 Windows = 'win '
+openEuler = 'oeul '
+openSUSE = 'osuse '
 
 [package]
+format = '(is [$symbol$version]($style) )'
 symbol = 'pkg '
 
 [perl]
+format = '(via [$symbol($version )]($style))'
 symbol = 'pl '
 
 [php]
+format = '(via [$symbol($version )]($style))'
 symbol = 'php '
 
 [pijul_channel]
@@ -193,28 +249,43 @@ symbol = 'pijul '
 symbol = 'pulumi '
 
 [purescript]
+format = '(via [$symbol($version )]($style))'
 symbol = 'purs '
 
 [python]
+format = '(via [${symbol}${pyenv_prefix}(${version} )(\\($virtualenv\\) )]($style))'
 symbol = 'py '
 
+[quarto]
+format = '(via [$symbol($version )]($style))'
+
 [raku]
+format = '(via [$symbol($version-$vm_version )]($style))'
 symbol = 'raku '
 
+[red]
+format = '(via [$symbol($version )]($style))'
+
+[rlang]
+format = '(via [$symbol($version )]($style))'
+
 [ruby]
+format = '(via [$symbol($version )]($style))'
 symbol = 'rb '
 
 [rust]
+format = '(via [$symbol($version )]($style))'
 symbol = 'rs '
 
 [scala]
+format = '(via [$symbol($version )]($style))'
 symbol = 'scala '
-
-[spack]
-symbol = 'spack '
 
 [solidity]
 symbol = 'solidity '
+
+[spack]
+symbol = 'spack '
 
 [status]
 symbol = '[:(](bold red) '
@@ -223,19 +294,28 @@ symbol = '[:(](bold red) '
 symbol = 'sudo '
 
 [swift]
+format = '(via [$symbol($version )]($style))'
 symbol = 'swift '
 
 [terraform]
 symbol = 'terraform '
 
+[typst]
+format = '(via [$symbol($version )]($style))'
+
 [username]
-format = "[$user]($style) on "
-style_user = "bold"
+format = '[$user]($style) on '
+style_user = 'bold'
+
+[vagrant]
+format = '(via [$symbol($version )]($style))'
+
+[vlang]
+format = '(via [$symbol($version )]($style))'
+
+[xmake]
+format = '(via [$symbol($version )]($style))'
 
 [zig]
+format = '(via [$symbol($version )]($style))'
 symbol = 'zig '
-
-[jobs]
-symbol = '+ '
-number_threshold = 4
-symbol_threshold = 1
