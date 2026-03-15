@@ -17,7 +17,7 @@
             enable = true;
             font = {
               name = "Space Grotesk";
-              size = 12;
+              size = 13;
             };
             gtk2 = {
               configLocation = "${config.xdg.configHome}/gtk-2.0/gtkrc";
@@ -34,7 +34,7 @@
             gtk3.extraConfig = gtkIni;
             gtk4.extraConfig = gtkIni;
             iconTheme = {
-              name = "klassy";
+              name = "Fluent-light";
             };
             theme = {
               name = "adw-gtk3";
