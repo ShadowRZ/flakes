@@ -9,6 +9,14 @@
       accent = "rosewater";
       flavor = "mocha";
 
+      # keep-sorted start block=yes
+      cursors = {
+        enable = true;
+        flavor = "latte";
+      };
+      delta = {
+        enable = true;
+      };
       fish = {
         enable = true;
       };
@@ -18,9 +26,6 @@
       mpv = {
         enable = true;
       };
-      delta = {
-        enable = true;
-      };
       obs = {
         enable = true;
         flavor = "latte";
@@ -28,6 +33,7 @@
       starship = {
         enable = true;
       };
+      # keep-sorted end
     };
   };
 }

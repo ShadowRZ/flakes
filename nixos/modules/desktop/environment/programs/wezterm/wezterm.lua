@@ -3,7 +3,8 @@ if wezterm.config_builder then
   config = wezterm.config_builder()
 end
 
-config.xcursor_theme = 'Bibata-Modern-Ice'
+-- Default cursor theme managed by Home Manager
+config.xcursor_theme = 'default'
 config.xcursor_size = 32
 config.color_scheme = 'Catppuccin Mocha'
 config.font_size = 16.0

@@ -22,6 +22,26 @@
         "type": "github"
       }
     },
+    "catppuccin-nix": {
+      "inputs": {
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1773403535,
+        "narHash": "sha256-47MZaFrHxNO8tVUAmtVnerXUw2WWVluBOiU9MulN/yM=",
+        "owner": "catppuccin",
+        "repo": "nix",
+        "rev": "d45b5665cc638bad1b794350de02f4dd41b0bb47",
+        "type": "github"
+      },
+      "original": {
+        "owner": "catppuccin",
+        "repo": "nix",
+        "type": "github"
+      }
+    },
     "crane": {
       "locked": {
         "lastModified": 1773189535,
@@ -283,6 +303,7 @@
     "root": {
       "inputs": {
         "blender-bin": "blender-bin",
+        "catppuccin-nix": "catppuccin-nix",
         "crane": "crane",
         "disko": "disko",
         "emacs-overlay": "emacs-overlay",
