@@ -27,7 +27,6 @@
               featherpad
               fractal
               gimp3 # GIMP 3
-              godot
               inkscape # Inkscape
               kdePackages.kcalc
               kdePackages.kcharselect
@@ -36,13 +35,10 @@
               ## KDE Packages
               krusader
               libreoffice-fresh # LibreOffice Fresh
-              mindustry-wayland
-              mkxp-z
               pdfarranger
               pika-backup
               qpwgraph
               sqlitebrowser
-              telegram-desktop
               # keep-sorted end
             ];
           };
