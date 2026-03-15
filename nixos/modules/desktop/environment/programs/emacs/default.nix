@@ -16,7 +16,10 @@
         programs.emacs = {
           enable = true;
           package = pkgs.emacs-git-pgtk;
-          extraPackages = epkgs: with epkgs; [ treesit-grammars.with-all-grammars ];
+          extraPackages = epkgs: [
+            epkgs.treesit-grammars.with-all-grammars
+            epkgs.vterm
+          ];
         };
       };
   };
