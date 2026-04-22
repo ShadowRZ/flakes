@@ -6,109 +6,51 @@
         settings = {
           logo = {
             type = "kitty";
-            width = 33;
             source = ./logo.png;
-            preserveAspectRatio = true;
+            preserveAspectRatio = "true";
+            padding = {
+              top = 1;
+            };
           };
           display = {
-            separator = " · ";
-            color = {
-              separator = "#313244";
-            };
-            hideCursor = true;
+            separator = "  ";
           };
           modules = [
-            {
-              type = "version";
-              key = " ";
-              format = "• Fastfetch {version}";
-              outputColor = "bold_#fab387";
-            }
-            {
-              type = "custom";
-              key = "• Hanekokoro Flake";
-              keyColor = "bold_#fab387";
-              format = "https://github.com/ShadowRZ/hanekokoro-flake";
-              outputColor = "bold_#fab387";
-            }
             "break"
+            "title"
             {
-              key = "• Host     ";
-              keyColor = "#f5c2e7";
-              type = "host";
-            }
-            {
-              key = "  • Memory ";
-              keyColor = "#eba0ac";
-              type = "memory";
-            }
-            {
-              key = "  • CPU    ";
-              keyColor = "#cba6f7";
-              type = "cpu";
-            }
-            {
-              key = "  • GPU    ";
-              keyColor = "#94e2d5";
-              type = "gpu";
-            }
-            {
-              key = "• OS       ";
-              keyColor = "#89dceb";
               type = "os";
+              key = "os    ";
+              keyColor = "red";
             }
             {
-              key = "  • Kernel ";
-              keyColor = "#a6adc8";
               type = "kernel";
+              key = "kernel";
+              keyColor = "green";
             }
             {
-              key = "  • Uptime ";
-              keyColor = "#b4befe";
-              type = "uptime";
+              type = "host";
+              format = "{vendor} {family}";
+              key = "host  ";
+              keyColor = "yellow";
             }
             {
-              key = "• Packages ";
-              keyColor = "#f9e2af";
               type = "packages";
+              key = "pkgs  ";
+              keyColor = "blue";
             }
             {
-              key = "• Btrfs    ";
-              keyColor = "#cba6f7";
-              type = "btrfs";
+              type = "uptime";
+              format = "{?days}{days}d {?}{hours}h {minutes}m";
+              key = "uptime";
+              keyColor = "magenta";
             }
             {
-              key = "• Terminal ";
-              keyColor = "#f2cdcd";
-              type = "terminal";
-            }
-            {
-              key = "  • Font   ";
-              keyColor = "#6c7086";
-              type = "terminalfont";
-            }
-            {
-              key = "• Desktop  ";
-              keyColor = "#74c7ec";
-              type = "de";
-            }
-            {
-              key = "  • Font   ";
-              keyColor = "#6c7086";
-              type = "font";
+              type = "memory";
+              key = "memory";
+              keyColor = "cyan";
             }
             "break"
-            {
-              type = "colors";
-              symbol = "diamond";
-            }
-            {
-              type = "title";
-              key = "The Star-Chase Nameless";
-              keyColor = "bold_#fab387";
-              format = "{full-user-name} ({user-name}@{host-name})";
-              outputColor = "bold_#fab387";
-            }
           ];
         };
       };
