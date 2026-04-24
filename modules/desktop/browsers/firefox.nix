@@ -1,6 +1,7 @@
 {
   flake.modules.homeManager.desktop =
     {
+      config,
       pkgs,
       ...
     }:
@@ -9,6 +10,7 @@
         ### Firefox
         firefox = {
           enable = true;
+          configPath = "${config.xdg.configHome}/mozilla/firefox";
           policies = {
             PasswordManagerEnabled = false;
             DisablePocket = true;
@@ -141,6 +143,6 @@
   flake.modules.nixos.desktop = {
     hanekokoro.nixos.allowedUnfreePredicates = [ "wappalyzer" ];
 
-    hanekokoro.nixos.preservation.user.directories = [ ".thunderbird/default" ];
+    hanekokoro.nixos.preservation.user.directories = [ ".config/mozilla/firefox/default" ];
   };
 }

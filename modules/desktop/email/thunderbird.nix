@@ -17,6 +17,6 @@
     };
 
   flake.modules.nixos.desktop = {
-    hanekokoro.nixos.preservation.user.directories = [ ".mozilla/firefox/default" ];
+    hanekokoro.nixos.preservation.user.directories = [ ".thunderbird/default" ];
   };
 }
