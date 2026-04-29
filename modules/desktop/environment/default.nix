@@ -23,6 +23,7 @@
           godot_4
           inkscape # Inkscape
           nix-kotone.blender-bin.blender_5_1 # Blender 5.1.* (Binary)
+          obsidian
           onlyoffice-desktopeditors # ONLYOFFICE Desktop editors
           pika-backup
           quodlibet-full
@@ -30,6 +31,8 @@
           # keep-sorted end
         ];
       };
+
+      hanekokoro.nixos.allowedUnfreePredicates = [ "obsidian" ];
 
       hanekokoro.nixos.preservation.user.directories = [
         {
@@ -45,6 +48,7 @@
         ".config/dconf"
         ".config/godot"
         ".config/inkscape"
+        ".config/obsidian"
         ".config/onlyoffice"
         ".config/pika-backup"
         ".config/quodlibet"
