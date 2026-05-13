@@ -94,13 +94,9 @@
       };
     };
     noctalia-shell = {
-      url = "github:noctalia-dev/noctalia-shell";
+      url = "github:noctalia-dev/noctalia-shell/v5";
       inputs = {
         nixpkgs.follows = "nixpkgs";
-        noctalia-qs.inputs = {
-          treefmt-nix.follows = "";
-          systems.follows = "systems";
-        };
       };
     };
     preservation = {

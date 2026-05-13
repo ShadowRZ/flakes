@@ -8,7 +8,7 @@ cursor {
     xcursor-size 36
 }
 
-spawn-at-startup "noctalia-shell"
+spawn-at-startup "noctalia"
 
 hotkey-overlay {
     skip-at-startup
@@ -66,17 +66,25 @@ window-rule {
     open-floating true
 }
 
+window-rule {
+    match app-id="dev.noctalia.Noctalia.Settings"
+    open-floating true
+    default-column-width { fixed 1080; }
+    default-window-height { fixed 920; }
+}
+
 // [Nocatalia Shell] Set the overview wallpaper on the backdrop.
 layer-rule {
-    match namespace="^noctalia-overview*"
+    match namespace="^noctalia-backdrop"
     place-within-backdrop true
 }
 
 // [Nocatalia Shell] Drop blur on bars
 layer-rule {
-    match namespace="^noctalia-bar*"
+    match namespace="^noctalia-(bar-main|notification|dock|panel)$"
 
     background-effect {
+        xray false
         blur false
     }
 }
@@ -127,21 +135,21 @@ window-rule {
 }
 
 binds {
-    Super+L   { spawn "noctalia-shell" "ipc" "call" "lockScreen" "lock"; }
+    Super+L   { spawn "noctalia" "msg" "screen-lock"; }
     Mod+T     { spawn "kitty"; }
-    Mod+S     { spawn "noctalia-shell" "ipc" "call" "controlCenter" "toggle"; }
-    Mod+Space { spawn "noctalia-shell" "ipc" "call" "launcher" "toggle"; }
+    Mod+S     { spawn "noctalia" "msg" "panel-toggle" "control-center"; }
+    Mod+Space { spawn "noctalia" "msg" "panel-toggle" "launcher"; }
 
-    XF86AudioRaiseVolume  allow-when-locked=true { spawn "noctalia-shell" "ipc" "call" "volume" "increase"; }
-    XF86AudioLowerVolume  allow-when-locked=true { spawn "noctalia-shell" "ipc" "call" "volume" "decrease"; }
-    XF86AudioMute         allow-when-locked=true { spawn "noctalia-shell" "ipc" "call" "volume" "muteOutput"; }
-    XF86AudioMicMute      allow-when-locked=true { spawn "noctalia-shell" "ipc" "call" "volume" "muteInput"; }
-    XF86AudioPlay         allow-when-locked=true { spawn "noctalia-shell" "ipc" "call" "media" "playPause"; }
-    XF86AudioStop         allow-when-locked=true { spawn "noctalia-shell" "ipc" "call" "media" "stop"; }
-    XF86AudioPrev         allow-when-locked=true { spawn "noctalia-shell" "ipc" "call" "media" "prev"; }
-    XF86AudioNext         allow-when-locked=true { spawn "noctalia-shell" "ipc" "call" "media" "next"; }
-    XF86MonBrightnessUp   allow-when-locked=true { spawn "noctalia-shell" "ipc" "call" "brightness" "increase"; }
-    XF86MonBrightnessDown allow-when-locked=true { spawn "noctalia-shell" "ipc" "call" "brightness" "decrease"; }
+    XF86AudioRaiseVolume  allow-when-locked=true { spawn "noctalia" "msg" "volume-up"; }
+    XF86AudioLowerVolume  allow-when-locked=true { spawn "noctalia" "msg" "volume-down"; }
+    XF86AudioMute         allow-when-locked=true { spawn "noctalia" "msg" "volume-mute"; }
+    XF86AudioMicMute      allow-when-locked=true { spawn "noctalia" "msg" "mic-mute"; }
+    XF86AudioPlay         allow-when-locked=true { spawn "noctalia" "msg" "media" "toggle"; }
+    XF86AudioStop         allow-when-locked=true { spawn "noctalia" "msg" "media" "stop"; }
+    XF86AudioPrev         allow-when-locked=true { spawn "noctalia" "msg" "media" "previous"; }
+    XF86AudioNext         allow-when-locked=true { spawn "noctalia" "msg" "media" "next"; }
+    XF86MonBrightnessUp   allow-when-locked=true { spawn "noctalia" "msg" "brightness-up"; }
+    XF86MonBrightnessDown allow-when-locked=true { spawn "noctalia" "msg" "brightness-down"; }
     Mod+O repeat=false { toggle-overview; }
     Mod+Q repeat=false { close-window; }
     Mod+Left  { focus-column-left; }
@@ -229,7 +237,7 @@ binds {
     Alt+Print { screenshot-window; }
     Mod+Escape allow-inhibiting=false { toggle-keyboard-shortcuts-inhibit; }
     Mod+Shift+E { quit; }
-    Ctrl+Alt+Delete { spawn "noctalia-shell" "ipc" "call" "sessionMenu" "toggle"; }
+    Ctrl+Alt+Delete { spawn "noctalia" "msg" "panel-toggle" "session"; }
     Mod+Shift+P { power-off-monitors; }
 }
 

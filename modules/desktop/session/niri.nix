@@ -109,6 +109,7 @@
           ".config/noctalia"
           ".local/share/keyrings"
           ".local/share/nautilus"
+          ".local/state/noctalia"
         ];
       };
     };
@@ -116,12 +117,7 @@
   flake.modules.homeManager."desktop/niri" =
     { pkgs, ... }:
     {
-      imports = [ inputs.noctalia-shell.homeModules.default ];
-
-      programs.noctalia-shell = {
-        enable = true;
-        package = pkgs.noctalia-shell;
-      };
+      home.packages = [ pkgs.noctalia ];
 
       qt = {
         enable = true;
