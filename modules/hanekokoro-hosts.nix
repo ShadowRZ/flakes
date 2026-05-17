@@ -31,6 +31,7 @@
         "users/root"
         "users/shadowrz"
         "virt/libvirt"
+        "virt/podman"
         "virt/waydroid"
         # keep-sorted end
       ];
